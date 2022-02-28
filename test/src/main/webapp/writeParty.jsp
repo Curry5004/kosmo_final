@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -9,41 +8,42 @@
 </head>
 <body>
 	<form action="wirteParty.do">
-		<span>Á¦¸ñ : </span><input type="text" name="title" /> <br /> <span>Ä«Å×°í¸®
-			: </span> <select name="categorybox" id="categorybox">
+		<span>ì œëª© : </span><input type="text" name="PARTY_TITLE" /> <br /> 
+		<span>ì¹´í…Œê³ ë¦¬ : </span> <select name="CATEGORY_NAME">
 			<c:forEach var="i" begin="1" end="${CategoryList.size() }" step="1">
-				<option value="categoryType">${i }.${CategoryList[i-1].getCategory_name() }</option>
-			</c:forEach>
-		</select> <br /> 
-		<span>MBTI1 : </span> <select name="mbtibox" id="mbtibox">
-			<c:forEach var="i" begin="1" end="${MbtiList.size() }" step="1">
-				<option value="mbtiType">${i }.${MbtiList[i-1].getMBTI_NAME() }</option>
+				<option value="${CategoryList[i-1].getCategory_name()}">${CategoryList[i-1].getCategory_name() }</option>
 			</c:forEach>
 		</select> <br />
-		<span>MBTI2 : </span> <select name="mbtibox" id="mbtibox">
+		
+		<span>MBTI1 : </span> <select name="PARTY_PRE_MBTI1">
 			<c:forEach var="i" begin="1" end="${MbtiList.size() }" step="1">
-				<option value="mbtiType">${i }.${MbtiList[i-1].getMBTI_NAME() }</option>
+				<option value="${MbtiList[i-1].getMBTI_NAME() }">${MbtiList[i-1].getMBTI_NAME() }</option>
 			</c:forEach>
 		</select> <br />
-		<span>MBTI3 : </span> <select name="mbtibox" id="mbtibox">
+		<span>MBTI2 : </span> <select name="PARTY_PRE_MBTI2">
 			<c:forEach var="i" begin="1" end="${MbtiList.size() }" step="1">
-				<option value="mbtiType">${i }.${MbtiList[i-1].getMBTI_NAME() }</option>
+				<option value="${MbtiList[i-1].getMBTI_NAME() }">${MbtiList[i-1].getMBTI_NAME() }</option>
 			</c:forEach>
 		</select> <br />
-		<span>MBTI4 : </span> <select name="mbtibox" id="mbtibox">
+		<span>MBTI3 : </span> <select name="PARTY_PRE_MBTI3">
 			<c:forEach var="i" begin="1" end="${MbtiList.size() }" step="1">
-				<option value="mbtiType">${i }.${MbtiList[i-1].getMBTI_NAME() }</option>
+				<option value="${MbtiList[i-1].getMBTI_NAME() }">${MbtiList[i-1].getMBTI_NAME() }</option>
 			</c:forEach>
 		</select> <br />
-		 <span>¼±È£À§Ä¡ : </span> <input type="text" name="location" /><br />
-		<span>ÀÌ¹ÌÁö »ğÀÔ </span><br /> <span>¸â¹ö Á¤¿ø : </span> <input type="text"
-			name="party_maximum" /><br />
+		<span>MBTI4 : </span> <select name="PARTY_PRE_MBTI4">
+			<c:forEach var="i" begin="1" end="${MbtiList.size() }" step="1">
+				<option value="${MbtiList[i-1].getMBTI_NAME() }">${MbtiList[i-1].getMBTI_NAME() }</option>
+			</c:forEach>
+		</select> <br />
+		 <span>ì„ í˜¸ìœ„ì¹˜ : </span> <input type="text" name="PARTY_LOCATION" /><br />
+		<span>ì´ë¯¸ì§€ ì‚½ì… </span><br /> <span>ë©¤ë²„ ì •ì› : </span> <input type="text"
+			name="PARTY_MAXIMUM" /><br />
 
-		<textarea name="" id="" cols="30" rows="10"></textarea>
+		<textarea name="PARTY_INTRODUCE" cols="30" rows="10" ></textarea>
 		<div>
-			<h1>°áÁ¦ ¸ğµâÀÌ µé¾î°¥ °÷ ÀÔ´Ï´Ù</h1>
+			<h1>ê²°ì œ ëª¨ë“ˆì´ ë“¤ì–´ê°ˆ ê³³ ì…ë‹ˆë‹¤</h1>
 		</div>
-		<input type="submit" value="»ı¼º" />
+		<input type="submit" value="ìƒì„±" />
 	
 
 

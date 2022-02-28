@@ -6,4 +6,5 @@
 <select id = "getUserList" resultType="user">
 	select * from test
 </select>
+
 </mapper>

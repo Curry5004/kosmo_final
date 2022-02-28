@@ -11,8 +11,8 @@
 	<form action="wirteParty.do">
 		<span>제목 : </span><input type="text" name="title" /> <br /> <span>카테고리
 			: </span> <select name="categorybox" id="categorybox">
-			<c:forEach var="i" begin="1" end="10" step="1">
-				<option value="categoryType">${i }.${category }</option>
+			<c:forEach var="i" begin="1" end="${CategoryList.size() }" step="1">
+				<option value="categoryType">${i }.${CategoryList[i-1].getCategory_name() }</option>
 			</c:forEach>
 		</select> <br /> 
 		<span>MBTI1 : </span> <select name="mbtibox" id="mbtibox">

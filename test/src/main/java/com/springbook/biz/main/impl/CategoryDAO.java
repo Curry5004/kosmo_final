@@ -15,6 +15,6 @@ public class CategoryDAO {
 
 	public List<CategoryVO> getCategoryList(CategoryVO vo){
 		System.out.println("===> Mybatis  getCategotyList()");
-		return mybatis.selectList("CategoryDAO.getCategotyList", vo);
+		return mybatis.selectList("CategoryDAO.getCategoryList", vo);
 	}
 }

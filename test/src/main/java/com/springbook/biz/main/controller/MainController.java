@@ -17,8 +17,9 @@ public class MainController {
 	
 	
 	@RequestMapping("/writeParty.do")
-	public String writeParty(MbtiVO vo, Model model){
+	public String writeParty(MbtiVO vo,CategoryVO vo2,Model model){
 		model.addAttribute("MbtiList",mainService.getMbtiList(vo));
+		model.addAttribute("CategoryList",mainService.getCategoryList(vo2));
 		return "writeParty.jsp";
 	}
 	

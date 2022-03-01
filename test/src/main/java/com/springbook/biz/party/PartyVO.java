@@ -16,15 +16,13 @@ public class PartyVO {
 	private String PARTY_INTRODUCE;
 	private String PARTY_LOCATION;
 	private MultipartFile PARTY_TUMB;
+	private String PARTY_TUMB_PATH;
 	private int PARTY_MAXIMUM;
 	private double PARTY_RATE1;
 	private double PARTY_RATE2;
 	private double PARTY_RATE3;
 	private Date PARTY_REG_DATE;
 	private boolean PARTY_AVAILABLE;
-	
-	
-	
 	public int getPARTY_ID() {
 		return PARTY_ID;
 	}
@@ -91,6 +89,12 @@ public class PartyVO {
 	public void setPARTY_TUMB(MultipartFile pARTY_TUMB) {
 		PARTY_TUMB = pARTY_TUMB;
 	}
+	public String getPARTY_TUMB_PATH() {
+		return PARTY_TUMB_PATH;
+	}
+	public void setPARTY_TUMB_PATH(String pARTY_TUMB_PATH) {
+		PARTY_TUMB_PATH = pARTY_TUMB_PATH;
+	}
 	public int getPARTY_MAXIMUM() {
 		return PARTY_MAXIMUM;
 	}
@@ -133,10 +137,13 @@ public class PartyVO {
 				+ ", PARTY_PRE_MBTI1=" + PARTY_PRE_MBTI1 + ", PARTY_PRE_MBTI2=" + PARTY_PRE_MBTI2 + ", PARTY_PRE_MBTI3="
 				+ PARTY_PRE_MBTI3 + ", PARTY_PRE_MBTI4=" + PARTY_PRE_MBTI4 + ", CATEGORY_NAME=" + CATEGORY_NAME
 				+ ", PARTY_INTRODUCE=" + PARTY_INTRODUCE + ", PARTY_LOCATION=" + PARTY_LOCATION + ", PARTY_TUMB="
-				+ PARTY_TUMB + ", PARTY_MAXIMUM=" + PARTY_MAXIMUM + ", PARTY_RATE1=" + PARTY_RATE1 + ", PARTY_RATE2="
-				+ PARTY_RATE2 + ", PARTY_RATE3=" + PARTY_RATE3 + ", PARTY_REG_DATE=" + PARTY_REG_DATE
-				+ ", PARTY_AVAILABLE=" + PARTY_AVAILABLE + "]";
+				+ PARTY_TUMB + ", PARTY_TUMB_PATH=" + PARTY_TUMB_PATH + ", PARTY_MAXIMUM=" + PARTY_MAXIMUM
+				+ ", PARTY_RATE1=" + PARTY_RATE1 + ", PARTY_RATE2=" + PARTY_RATE2 + ", PARTY_RATE3=" + PARTY_RATE3
+				+ ", PARTY_REG_DATE=" + PARTY_REG_DATE + ", PARTY_AVAILABLE=" + PARTY_AVAILABLE + "]";
 	}
-
+	
+	
+	
+	
 	
 }

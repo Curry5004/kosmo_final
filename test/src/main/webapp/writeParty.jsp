@@ -36,8 +36,8 @@
 			</c:forEach>
 		</select> <br />
 		 <span>선호위치 : </span> <input type="text" name="PARTY_LOCATION" /><br />
-		<span>이미지 삽입 </span> <input type="file" name="uploadFile"/><<br /> <span>멤버 정원 : </span> <input type="text"
-			name="PARTY_MAXIMUM" /><br />
+		<span>이미지 삽입 </span> <input type="file" name="PARTY_TUMB"/><br /> 
+		<span>멤버 정원 : </span> <input type="text" name="PARTY_MAXIMUM" /><br />
 
 		<textarea name="PARTY_INTRODUCE" cols="30" rows="10" ></textarea>
 		<div>

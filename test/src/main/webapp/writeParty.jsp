@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="wirteParty.do">
+	<form action="wirteParty.do" method="POST" enctype="multipart/form-data">
 		<span>제목 : </span><input type="text" name="PARTY_TITLE" /> <br /> 
 		<span>카테고리 : </span> <select name="CATEGORY_NAME">
 			<c:forEach var="i" begin="1" end="${CategoryList.size() }" step="1">
@@ -36,7 +36,7 @@
 			</c:forEach>
 		</select> <br />
 		 <span>선호위치 : </span> <input type="text" name="PARTY_LOCATION" /><br />
-		<span>이미지 삽입 </span><br /> <span>멤버 정원 : </span> <input type="text"
+		<span>이미지 삽입 </span> <input type="file" name="uploadFile"/><<br /> <span>멤버 정원 : </span> <input type="text"
 			name="PARTY_MAXIMUM" /><br />
 
 		<textarea name="PARTY_INTRODUCE" cols="30" rows="10" ></textarea>

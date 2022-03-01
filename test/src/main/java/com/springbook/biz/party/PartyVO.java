@@ -2,6 +2,8 @@ package com.springbook.biz.party;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class PartyVO {
 	private int PARTY_ID;
 	private String PARTY_TITLE;
@@ -13,13 +15,16 @@ public class PartyVO {
 	private String CATEGORY_NAME;
 	private String PARTY_INTRODUCE;
 	private String PARTY_LOCATION;
-	private String PARTY_TUMB;
+	private MultipartFile PARTY_TUMB;
 	private int PARTY_MAXIMUM;
 	private double PARTY_RATE1;
 	private double PARTY_RATE2;
 	private double PARTY_RATE3;
 	private Date PARTY_REG_DATE;
 	private boolean PARTY_AVAILABLE;
+	
+	
+	
 	public int getPARTY_ID() {
 		return PARTY_ID;
 	}
@@ -80,10 +85,10 @@ public class PartyVO {
 	public void setPARTY_LOCATION(String pARTY_LOCATION) {
 		PARTY_LOCATION = pARTY_LOCATION;
 	}
-	public String getPARTY_TUMB() {
+	public MultipartFile getPARTY_TUMB() {
 		return PARTY_TUMB;
 	}
-	public void setPARTY_TUMB(String pARTY_TUMB) {
+	public void setPARTY_TUMB(MultipartFile pARTY_TUMB) {
 		PARTY_TUMB = pARTY_TUMB;
 	}
 	public int getPARTY_MAXIMUM() {

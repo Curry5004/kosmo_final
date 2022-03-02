@@ -13,15 +13,15 @@ import com.springbook.biz.main.MbtiVO;
 public class MainServicImpl implements MainService {
 	@Autowired
 	private CategoryDAO categoryDAO;
-	
+
 	@Autowired
 	private MbtiDAO mbtiDAO;
-	
-	public List<MbtiVO> getMbtiList(MbtiVO vo){
+
+	public List<MbtiVO> getMbtiList(MbtiVO vo) {
 		return mbtiDAO.getMbtiList(vo);
 	}
-	
-	public List<CategoryVO> getCategoryList(CategoryVO vo){
+
+	public List<CategoryVO> getCategoryList(CategoryVO vo) {
 		return categoryDAO.getCategoryList(vo);
 	}
 }

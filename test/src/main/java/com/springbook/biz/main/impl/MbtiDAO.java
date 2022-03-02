@@ -12,9 +12,9 @@ import com.springbook.biz.main.MbtiVO;
 public class MbtiDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
-
+	
+	//MBTI 리스트 호출
 	public List<MbtiVO> getMbtiList(MbtiVO vo){
-		System.out.println("===> Mybatis로  getMbtiList() 실행");
 		return mybatis.selectList("MbtiDAO.getMbtiList", vo);
 	}
 }

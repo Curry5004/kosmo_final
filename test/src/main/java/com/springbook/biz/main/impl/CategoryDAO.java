@@ -13,8 +13,8 @@ public class CategoryDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 
-	public List<CategoryVO> getCategoryList(CategoryVO vo){
-		System.out.println("===> Mybatis  getCategotyList()");
+	// 카테고리 리스트 호출
+	public List<CategoryVO> getCategoryList(CategoryVO vo) {
 		return mybatis.selectList("CategoryDAO.getCategoryList", vo);
 	}
 }

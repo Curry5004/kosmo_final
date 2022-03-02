@@ -28,6 +28,11 @@
 			f.maximum.focus();
 			return false;
 		}
+		if (isNaN(f.maximum.value)) {
+			alert("정원은 숫자로 입력해주세요");
+			f.maximum.focus();
+			return false;
+		}
 		if (f.introduce.value == "") {
 			alert("소개글을 입력해주세요");
 			f.introduce.focus();

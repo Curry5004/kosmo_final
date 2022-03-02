@@ -1,69 +1,109 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Insert title here</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            border: 1px solid #444444;
+        }
+
+        th,
+        td {
+            border: 1px solid #444444;
+        }
+    </style>
 </head>
+<script>
+
+    function doSearch(event) {
+    	let searchArea = document.getElementById("searchArea");
+        let valSelectedCategory = searchArea.querySelector("select[id=searchCategory]").value;
+        let valSearchKeyword = searchArea.querySelector("input[id=searchText]").value;
+    	let params = {
+    			category: valSelectedCategory,
+    			keyword: valSearchKeyword,
+    	};
+        $.ajax({
+            type: "GET",
+            url: "groups.do",
+            data: params,
+            success: function (res) {
+                let tableData = res.resultBody;
+                drawTable(tableData);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("í†µì‹  ì‹¤íŒ¨.");
+            }
+        });
+    }
+
+    function drawTable(tableData) {
+		console.log("ì„±ê³µ")
+    }
+</script>
+
 <body>
-<form id="form" name="form" method="post">
-    
-	<table class="board">
-		<colgroup>
-			<col style="width:10%;">
-		
+
+    <table class="board" id="searchArea">
+        <colgroup>
+            <col style="width:10%;">
+            <col style="width:40%;">
+            <col style="width:10%;">
+            <col style="width:40%;">
         </colgroup>
-       
-		<tbody>
-<tr><th>Ä«Å×°í¸®</th><td style="text-align: left; padding-left: 15px;">
+        <tbody>
+            <tr>
+                <th>ì¹´í…Œê³ ë¦¬</th>
+                <td style="text-align: left; padding-left: 15px;">
+                    <select id="searchCategory">
+                        <option value="CC01">ì¸ë¬¸í•™/ì±…/ê¸€</option>
+                        <option value="CC02">ì•„ì›ƒë„ì–´/ì—¬í–‰</option>
+                        <option value="CC03">ìš´ë™/ìŠ¤í¬ì¸ </option>
+                        <option value="CC04">ì—…ì¢…/ì§ë¬´</option>
+                        <option value="CC05">ì™¸êµ­/ì–¸ì–´</option>
+                        <option value="CC06">ë¬¸í™”/ê³µì—°/ì¶•ì œ</option>
+                        <option value="CC07">ìŒì•…/ì•…ê¸°</option>
+                        <option value="CC08">ê³µì˜ˆ/ë§Œë“¤ê¸°</option>
+                        <option value="CC09">ëŒ„ìŠ¤/ë¬´ìš©</option>
+                        <option value="CC10">ë´‰ì‚¬í™œë™</option>
+                        <option value="CC11">ì‚¬êµ/ì¸ë§¥</option>
+                        <option value="CC12">ì°¨/ì˜¤í† ë°”ì´</option>
+                        <option value="CC13">ì‚¬ì§„/ì˜ìƒ</option>
+                        <option value="CC14">ì•¼êµ¬ê´€ëŒ</option>
+                        <option value="CC15">ê²Œì„/ì˜¤ë½</option>
+                        <option value="CC16">ìš”ë¦¬/ì œì¡°</option>
+                        <option value="CC17">ë°˜ë ¤ë™ë¬¼</option>
+                        <option value="CC18">ê°€ì¡±/ê²°í˜¼</option>
+                        <option value="CC19">ììœ ì£¼ì œ</option>
+                    </select>
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="4"> <input type="text" id="searchText" placeholder="ê²€ìƒ‰í•  ë‹¨ì–´ ì…ë ¥"
+                        style="width: 80%; right: 0;" maxlength="20" size="50" colspan="2"><button id="searchBtn"
+                        onclick="doSearch(event)">ê²€ìƒ‰</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     
-      <input type="checkbox" id="category" name="category" value="ME"style="width: 15px;"> ÀÎ¹®ÇĞ/Ã¥/±Û
-  
-      <input type="checkbox" id="category" name="category" value="ST"style="width: 15px;"> ¾Æ¿ôµµ¾î/¿©Çà
- 
-      <input type="checkbox" id="category" name="category" value="YG"style="width: 15px;"> ¿îµ¿/½ºÆ÷Ã÷
-  
-      <input type="checkbox" id="category" name="category" value="PI"style="width: 15px;"> ¾÷Á¾/Á÷¹«
-
-      <input type="checkbox" id="category" name="category" value="AE"style="width: 15px;"> ¿Ü±¹/¾ğ¾î
-
-      <input type="checkbox" id="category" name="category" value="DA"style="width: 15px;"> ¹®È­/°ø¿¬/ÃàÁ¦
-
-      <input type="checkbox" id="category" name="category" value="MS"style="width: 15px;"> À½¾Ç/¾Ç±â
-  
-      <input type="checkbox" id="category" name="category" value="HS"style="width: 15px;"> °ø¿¹/¸¸µé±â
- 
-      <input type="checkbox" id="category" name="category" value="MA"style="width: 15px;"> ´í½º/¹«¿ë
-
-      <input type="checkbox" id="category" name="category" value="ET"style="width: 15px;"> ºÀ»çÈ°µ¿
-  
-      <input type="checkbox" id="category" name="category" value="ET"style="width: 15px;"> »ç±³/ÀÎ¸Æ
-  
-      <input type="checkbox" id="category" name="category" value="ET"style="width: 15px;"> Â÷/¿ÀÅä¹ÙÀÌ
-
-      <input type="checkbox" id="category" name="category" value="ET"style="width: 15px;"> »çÁø/¿µ»ó
-   
-      <input type="checkbox" id="category" name="category" value="ET"style="width: 15px;"> ¾ß±¸°ü¶÷
-   
-      <input type="checkbox" id="category" name="category" value="ET"style="width: 15px;"> °ÔÀÓ/¿À¶ô
-    
-      <input type="checkbox" id="category" name="category" value="ET"style="width: 15px;"> ¿ä¸®/Á¦Á¶
-   
-      <input type="checkbox" id="category" name="category" value="ET"style="width: 15px;"> ¹İ·Áµ¿¹°
-  
-      <input type="checkbox" id="category" name="category" value="ET"style="width: 15px;"> °¡Á·/°áÈ¥
-    
-      <input type="checkbox" id="category" name="category" value="ET"style="width: 15px;"> ÀÚÀ¯ÁÖÁ¦
- 
-</td>
-	<tr>°Ë»öÇÒ ´Ü¾î : </tr>
-
-	<form id="search-form">
-		<input type="text" id="search" placeholder="°Ë»öÇÒ ´Ü¾î ÀÔ·Â" style="width: 80%; right: 0;" maxlength="20" size="50" colspan="2">
-		<button id="searchBtn">°Ë»ö</button>
-	</form>
-       </tbody>
-	</form>
+  	<div class="groupList">
+  	<table>
+  		<thead></thead>
+  		<tbody></tbody>
+  	</table>
+  	<div>
+  		< 1 2 3 4 5 6 7 8 9 10 > 
+  	</div>
+  	</div>
 </body>
+
 </html>

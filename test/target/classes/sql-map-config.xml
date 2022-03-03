@@ -9,6 +9,7 @@
 		<typeAlias alias="category" type="com.springbook.biz.main.CategoryVO" />
 		<typeAlias alias="mbti" type="com.springbook.biz.main.MbtiVO" />
 		<typeAlias alias="party" type="com.springbook.biz.party.PartyVO" />
+		<typeAlias alias="member" type="com.springbook.biz.memberList.MemberListVO" />
 	</typeAliases>
 
 	<!-- Sql Mapper 설정 -->
@@ -17,6 +18,7 @@
 		<mapper resource="mappings/category-mapping.xml"></mapper>
 		<mapper resource="mappings/mbti-mapping.xml"></mapper>
 		<mapper resource="mappings/party-mapping.xml"></mapper>
+		<mapper resource="mappings/memberList-mapping.xml"></mapper>
 	</mappers>
 	
 </configuration>

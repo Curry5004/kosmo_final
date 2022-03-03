@@ -12,7 +12,7 @@ public class MemberListDAO {
 	SqlSession mybatis;
 	
 	public void joinParty(MemberListVO vo){
-		mybatis.insert("MemberListDAO.insertMembberList", vo);
+		mybatis.insert("memberListDAO.insertMemberList", vo);
 	}
 	
 }

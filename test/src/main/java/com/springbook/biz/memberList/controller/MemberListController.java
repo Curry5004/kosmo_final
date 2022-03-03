@@ -13,9 +13,9 @@ public class MemberListController {
 	@Autowired
 	MemberListService memberListService;
 	
-	@RequestMapping("/joinParty")
+	@RequestMapping("/joinParty.do")
 	public String joinParty(MemberListVO vo, Model model){
-		
+		memberListService.joinParty(vo);
 		return "index.jsp";
 	}
 	

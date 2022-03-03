@@ -1,14 +1,10 @@
 package com.springbook.biz.party.controller;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.UUID;
 
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.springbook.biz.party.PartyService;
 import com.springbook.biz.party.PartyVO;
+@Controller
 public class PartyController {
 	@Autowired
 	PartyService partyService;

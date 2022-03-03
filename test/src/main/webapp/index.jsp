@@ -9,5 +9,6 @@
 <body>
 	<h1>인덱스</h1>
 	<a href="getuserList.do">회원 조회</a>
+	<a href="getuserList.do">회원 조회</a>
 </body>
 </html>

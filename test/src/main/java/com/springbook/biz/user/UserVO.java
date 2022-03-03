@@ -17,12 +17,11 @@ public class UserVO {
    private boolean userAvailable;
    private String mbti_Path;
    private String mbti_Id;
-   
 public String getUser_Id() {
-	return user_Id;
+   return user_Id;
 }
-public void setUser_Id(String user_Id) {
-	this.user_Id = user_Id;
+public void setUserId(String userId) {
+   this.user_Id = userId;
 }
 public String getName() {
    return name;

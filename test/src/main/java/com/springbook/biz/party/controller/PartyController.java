@@ -1,10 +1,14 @@
 package com.springbook.biz.party.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.UUID;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,7 +45,8 @@ public class PartyController {
 			String ext = originFileName.substring(originFileName.lastIndexOf(".")); 
 			String ranFileName = UUID.randomUUID().toString() + ext; //랜덤변수가 붙은 파일이름
 			
-			File changeFile = new File(root + "\\" + ranFileName); //파일생성
+			File changeFile = new File(root + "\\" + ranFileName); //파일생성 
+			
 			
 			// 파일업로드
 			try {
@@ -62,7 +67,11 @@ public class PartyController {
 		partyService.insertParty(vo); //DB 갱신
 		
 		return "index.jsp";
-				
 	}
-
+	@RequestMapping("/getParty.do")
+	public String getParty(PartyVO vo,Model model){
+		model.addAttribute("party",partyService.getParty(vo));
+		return "intro.jsp";
+	}
+	
 }

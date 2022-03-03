@@ -1,5 +1,7 @@
 package com.springbook.biz.party.impl;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +17,11 @@ public class PartyServiceImpl implements PartyService{
 	public void insertParty(PartyVO vo) {
 		partyDAO.insertParty(vo);
 	}
+
+	@Override
+	public PartyVO getParty(PartyVO vo) {
+		return partyDAO.getParty(vo);
+	}
+	
 
 }

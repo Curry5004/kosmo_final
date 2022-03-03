@@ -20,7 +20,7 @@ public class PartyController {
 	PartyService partyService;
 	
 	//소모임 작성
-	@RequestMapping("/wirteParty.do")
+	@RequestMapping("/insertParty.do")
 	public String insertParty(PartyVO vo,Model model,HttpServletRequest request){
 		
 		//form에서 전달받은 이미지가 있다면

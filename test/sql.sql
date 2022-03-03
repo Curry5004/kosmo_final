@@ -1,3 +1,12 @@
+create database mbti default character set utf8;
+
+create user 'kosmo'@'localhost' identified by 'kosmo'; 
+create user 'kosmo'@'%' identified by 'kosmo';
+
+
+grant all privileges on mbti.* To 'kosmo'@'localhost'; 
+grant all privileges on mbti.* To 'kosmo'@'%';
+
 CREATE TABLE `USER` (
 	`USER_ID`	VARCHAR(255)	NOT NULL,
 	`NAME`	VARCHAR(255)	NOT NULL,

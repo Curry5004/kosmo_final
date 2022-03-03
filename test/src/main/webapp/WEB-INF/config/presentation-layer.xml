@@ -21,9 +21,4 @@
 		<property name="defaultEncoding" value="UTF-8" />
 	</bean>
 
-	<!-- 파일업로드 디렉토리 설정 -->
-	<bean id="uploadPath" class="java.lang.String">
-		<constructor-arg value="C:\Users\Default\Pictures" />
-	</bean>
-
 </beans>

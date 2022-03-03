@@ -42,29 +42,29 @@
 </script>
 
 <body>
-	<form action="wirteParty.do" method="POST"
+	<form action="insertParty.do" method="POST"
 		enctype="multipart/form-data" name="Reg_form"
 		onsubmit="return check()">
 		<span>제목 : </span><input type="text" name="PARTY_TITLE" id="title" />
 		<br /> <span>카테고리 : </span> <select name="CATEGORY_NAME">
-			<c:forEach var="i" begin="1" end="${CategoryList.size() }" step="1">
-				<option value="${CategoryList[i-1].getCategory_name()}">${CategoryList[i-1].getCategory_name() }</option>
+			<c:forEach var="Category" items="${CategoryList}">
+				<option value="${Category.category_name}">${Category.category_name}</option>
 			</c:forEach>
 		</select> <br /> <span>MBTI1 : </span> <select name="PARTY_PRE_MBTI1">
-			<c:forEach var="i" begin="1" end="${MbtiList.size() }" step="1">
-				<option value="${MbtiList[i-1].getMBTI_NAME() }">${MbtiList[i-1].getMBTI_NAME() }</option>
+			<c:forEach var="MBTI" items="${MbtiList}">
+				<option value="${MBTI.MBTI_NAME}">${MBTI.MBTI_NAME}</option>
 			</c:forEach>
 		</select> <br /> <span>MBTI2 : </span> <select name="PARTY_PRE_MBTI2">
-			<c:forEach var="i" begin="1" end="${MbtiList.size() }" step="1">
-				<option value="${MbtiList[i-1].getMBTI_NAME() }">${MbtiList[i-1].getMBTI_NAME() }</option>
+			<c:forEach var="MBTI" items="${MbtiList}">
+				<option value="${MBTI.MBTI_NAME}">${MBTI.MBTI_NAME}</option>
 			</c:forEach>
 		</select> <br /> <span>MBTI3 : </span> <select name="PARTY_PRE_MBTI3">
-			<c:forEach var="i" begin="1" end="${MbtiList.size() }" step="1">
-				<option value="${MbtiList[i-1].getMBTI_NAME() }">${MbtiList[i-1].getMBTI_NAME() }</option>
+			<c:forEach var="MBTI" items="${MbtiList}">
+				<option value="${MBTI.MBTI_NAME}">${MBTI.MBTI_NAME}</option>
 			</c:forEach>
 		</select> <br /> <span>MBTI4 : </span> <select name="PARTY_PRE_MBTI4">
-			<c:forEach var="i" begin="1" end="${MbtiList.size() }" step="1">
-				<option value="${MbtiList[i-1].getMBTI_NAME() }">${MbtiList[i-1].getMBTI_NAME() }</option>
+			<c:forEach var="MBTI" items="${MbtiList}">
+				<option value="${MBTI.MBTI_NAME}">${MBTI.MBTI_NAME}</option>
 			</c:forEach>
 		</select> <br /> <span>선호위치 : </span> <input type="text" name="PARTY_LOCATION"
 			id="location" /><br /> <span>이미지 삽입 </span> <input type="file"

@@ -9,6 +9,10 @@
 <body>
 	<h1>인덱스</h1>
 	<a href="getuserList.do">회원 조회</a>
+<<<<<<< HEAD
 	<a href="/registryPage.jsp">회원가입</a>
+=======
+	<a href="writeParty.do">소모임 작성</a>
+>>>>>>> refs/remotes/origin/Chansol
 </body>
-</html>
+</html>	

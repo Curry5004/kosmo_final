@@ -6,11 +6,17 @@
 	<!-- Alias 설정 -->
 	<typeAliases>
 		<typeAlias alias="user" type="com.springbook.biz.user.UserVO" />
+		<typeAlias alias="category" type="com.springbook.biz.main.CategoryVO" />
+		<typeAlias alias="mbti" type="com.springbook.biz.main.MbtiVO" />
+		<typeAlias alias="party" type="com.springbook.biz.party.PartyVO" />
 	</typeAliases>
 
 	<!-- Sql Mapper 설정 -->
 	<mappers>
-		<mapper resource="mappings/user-mapping.xml" />
+		<mapper resource="mappings/user-mapping.xml" ></mapper>
+		<mapper resource="mappings/category-mapping.xml"></mapper>
+		<mapper resource="mappings/mbti-mapping.xml"></mapper>
+		<mapper resource="mappings/party-mapping.xml"></mapper>
 	</mappers>
 	
 </configuration>

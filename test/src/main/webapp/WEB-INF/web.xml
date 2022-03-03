@@ -23,7 +23,7 @@
 			<param-value>/WEB-INF/config/presentation-layer.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
-	</servlet>
+	</servlet> 
 		
 	<servlet-mapping>
 		<servlet-name>action</servlet-name>
@@ -42,8 +42,7 @@
 	
 	<filter-mapping>
 		<filter-name>characterEncoding</filter-name>
-		<url-pattern>*.do</url-pattern>
+		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
-
 </web-app>

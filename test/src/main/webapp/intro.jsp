@@ -9,7 +9,6 @@
 <body>
 
 
-
 <div>
 	<img src="${party.PARTY_TUMB_PATH}" width=200px  height="200">
 </div>
@@ -25,5 +24,6 @@
 <div  style="border: 1px solid black">${party.PARTY_INTRODUCE}</div>
 
 <a href="deleteParty.do?PARTY_ID=${party.PARTY_ID}"><button>소모임제거</button></a>
+<a href="joinParty.do?PARTY_ID=${party.PARTY_ID}"><button>소모임가입</button></a>
 </body>
 </html>

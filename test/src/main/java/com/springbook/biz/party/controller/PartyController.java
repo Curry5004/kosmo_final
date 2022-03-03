@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.springbook.biz.party.PartyService;
 import com.springbook.biz.party.PartyVO;
-
-@Controller
 public class PartyController {
 	@Autowired
 	PartyService partyService;
@@ -70,8 +68,15 @@ public class PartyController {
 	}
 	@RequestMapping("/getParty.do")
 	public String getParty(PartyVO vo,Model model){
-		model.addAttribute("party",partyService.getParty(vo));
+		PartyVO getVO =partyService.getParty(vo);
+		if(getVO==null){
+			return "error.jsp";
+			}
+		else{
+		model.addAttribute("party",getVO);
 		return "intro.jsp";
+		}
+		
 	}
 	@RequestMapping("/deleteParty.do")
 	public String deleteParty(PartyVO vo,Model model){

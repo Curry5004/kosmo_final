@@ -15,10 +15,31 @@
 	PARTY_LOCATION,
 	PARTY_TUMB_PATH,
 	PARTY_MAXIMUM)
+<<<<<<< HEAD
 	VALUES (#{PARTY_TITLE},'로그인미구현',#{PARTY_PRE_MBTI1},
 	#{PARTY_PRE_MBTI2},#{PARTY_PRE_MBTI3},#{PARTY_PRE_MBTI4}
 	,#{CATEGORY_NAME},#{PARTY_INTRODUCE},#{PARTY_LOCATION},
 	#{PARTY_TUMB_PATH},${PARTY_MAXIMUM})
+=======
+	VALUES ('${PARTY_TITLE}','로그인미구현','${PARTY_PRE_MBTI1}',
+	'${PARTY_PRE_MBTI2}','${PARTY_PRE_MBTI3}','${PARTY_PRE_MBTI4}'
+	,'${CATEGORY_NAME}','${PARTY_INTRODUCE}','${PARTY_LOCATION}','${PARTY_TUMB_PATH}',${PARTY_MAXIMUM})
+	
+	
+>>>>>>> branch 'Chansol' of https://github.com/Curry5004/kosmo_final
 </insert>
+	
+	<select id = "getParty" resultType="party">
+	select *  from Party where party_id =#{PARTY_ID} and PARTY_AVAILABLE = true
+	
+	</select>
+	
+	<delete id= "deleteParty" parameterType="party">
+	update party
+	set PARTY_AVAILABLE = false
+	where party_id = ${PARTY_ID}
+	
+	</delete>
 
+	
 </mapper>

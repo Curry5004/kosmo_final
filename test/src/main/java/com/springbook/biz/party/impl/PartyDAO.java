@@ -14,4 +14,11 @@ public class PartyDAO {
 	public void insertParty(PartyVO vo){
 		mybatis.insert("PartyDAO.insertParty", vo);
 	}
+	public PartyVO getParty(PartyVO vo){
+		return mybatis.selectOne("PartyDAO.getParty", vo);
+	}
+	public void deleteParty(PartyVO vo){
+	 mybatis.delete("PartyDAO.deleteParty",vo);
+	}
 }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            

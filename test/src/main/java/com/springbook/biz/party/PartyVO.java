@@ -23,6 +23,7 @@ public class PartyVO {
 	private double PARTY_RATE3;
 	private Date PARTY_REG_DATE;
 	private boolean PARTY_AVAILABLE;
+	
 	public int getPARTY_ID() {
 		return PARTY_ID;
 	}

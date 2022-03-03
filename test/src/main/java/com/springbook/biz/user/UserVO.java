@@ -3,7 +3,7 @@ package com.springbook.biz.user;
 import java.util.Date;
 
 public class UserVO {
-   private String userId;
+   private String user_Id;
    private String name;
    private String password;
    private String birthDay;
@@ -17,11 +17,12 @@ public class UserVO {
    private boolean userAvailable;
    private String mbti_Path;
    private String mbti_Id;
-public String getUserId() {
-   return userId;
+   
+public String getUser_Id() {
+	return user_Id;
 }
-public void setUserId(String userId) {
-   this.userId = userId;
+public void setUser_Id(String user_Id) {
+	this.user_Id = user_Id;
 }
 public String getName() {
    return name;
@@ -103,7 +104,7 @@ public void setMbti_Id(String mbti_Id) {
 }
 @Override
 public String toString() {
-   return "UserVO [userId=" + userId + ", name=" + name + ", password=" + password + ", birthDay=" + birthDay
+   return "UserVO [userId=" + user_Id + ", name=" + name + ", password=" + password + ", birthDay=" + birthDay
          + ", gender=" + gender + ", location=" + location + ", phone_Num=" + phone_Num + ", join_Date=" + join_Date
          + ", admin=" + admin + ", profile_Image=" + profile_Image + ", modified_Day=" + modified_Day
          + ", userAvailable=" + userAvailable + ", mbti_Path=" + mbti_Path + ", mbti_Id=" + mbti_Id + "]";

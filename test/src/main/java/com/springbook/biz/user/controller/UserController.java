@@ -18,5 +18,9 @@ public class UserController {
 //		model.addAttribute("userList", userService.insertUser(vo));
 		return "registryPage.jsp";
 	}
-	
+	@RequestMapping("/registry.do")	
+	public String insertUser(UserVO vo, Model model) {			
+//		model.addAttribute("userList", userService.insertUser(vo));
+		return "registryPage.jsp";
+	}
 }

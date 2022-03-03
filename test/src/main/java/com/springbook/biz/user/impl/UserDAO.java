@@ -16,7 +16,6 @@ public class UserDAO {
 	public void insertUser(UserVO vo) {
 		System.out.println("Mybatis insert ()");
 		mybatis.insert("UserDAO.insertUser", vo);
-		mybatis.commit();
 	}
 //	public List<UserVO> getUserList(UserVO_serverTest vo){
 //		System.out.println("===> Mybatis  getUser() ");

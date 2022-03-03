@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -78,22 +79,11 @@
                     <td id="title">MBTI Type</td>
                     <td>
                         <select name="mbti">
-                        	<option value=1>ISTJ</option>
-                        	<option value=2>ISFJ</option>
-                        	<option value=3>INFJ</option>
-                        	<option value=4>INTJ</option>
-                        	<option value=5>ISTP</option>
-                        	<option value=6>ISFP</option>
-                        	<option value=7>INFP</option>
-                        	<option value=8>INTP</option>
-                        	<option value=9>ESTP</option>
-                        	<option value=10>ESFP</option>
-                        	<option value=11>ENFP</option>
-                        	<option value=12>ENTP</option>
-                        	<option value=13>ESTJ</option>
-                        	<option value=14>ESFJ</option>
-                        	<option value=15>ENFJ</option>
-                        	<option value=16>ENTJ</option>                        	
+                        <!-- 
+                        	<c:forEach var="temp" items="${MbtiList}">
+                        		<option value="${temp.getMBTI_ID}">${temp.getMBTI_NAME}</option>
+                        	</c:forEach>                       	
+                         -->
                         </select>
                     </td>
                 </tr>

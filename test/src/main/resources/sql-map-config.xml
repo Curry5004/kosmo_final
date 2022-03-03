@@ -6,11 +6,13 @@
 	<!-- Alias 설정 -->
 	<typeAliases>
 		<typeAlias alias="user" type="com.springbook.biz.user.UserVO" />
+		<typeAlias alias="board" type="com.springbook.biz.board.BoardVO"/>
 	</typeAliases>
 
 	<!-- Sql Mapper 설정 -->
 	<mappers>
 		<mapper resource="mappings/user-mapping.xml" />
+		<mapper resource="mappings/board-mapping.xml" />
 	</mappers>
 	
 </configuration>

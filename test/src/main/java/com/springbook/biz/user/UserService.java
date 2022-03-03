@@ -1,8 +1,7 @@
 package com.springbook.biz.user;
 
-import java.util.List;
 
 public interface UserService {
-
-	List<UserVO> getUserList(UserVO vo);
+	void insertUser(UserVO vo);
+//	List<UserVO_serverTest> getUserList(UserVO_serverTest vo);
 }

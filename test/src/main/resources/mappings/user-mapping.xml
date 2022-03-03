@@ -3,7 +3,17 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="UserDAO">
 
-<select id = "getUserList" resultType="user">
-	select * from test
-</select>
+	<select id = "getUserList" resultType="user">
+		select * from test
+	</select>
+	
+	<insert id = "insertUser" parameterType="user">
+		INSERT INTO USER (USER_ID,NAME,PASSWORD,BIRTHDAY,GENDER,LOCATION,
+		PHONE_NUM,JOIN_DATE,ADMIN,PROFILE_IMAGE,MODIFIED_DAY,USER_AVAILABLE,
+		MBTI_PATH,MBTI_ID)
+		VALUES('ADMIN0','愿�由ъ옄','admin123',now(),'male','Korea',01012345678,now(),true,
+		null,null,true,null,11)
+	</insert>
+	
 </mapper>
+

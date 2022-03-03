@@ -13,10 +13,10 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping("/getuserList.do")
-	public String getUser(UserVO vo, Model model) {			
-		model.addAttribute("userList", userService.getUserList(vo));
-		return "userList.jsp";
+	@RequestMapping("/registry.do")	
+	public String insertUser(UserVO vo, Model model) {			
+//		model.addAttribute("userList", userService.insertUser(vo));
+		return "registryPage.jsp";
 	}
 	
 }

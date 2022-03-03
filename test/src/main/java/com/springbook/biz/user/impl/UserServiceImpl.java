@@ -11,9 +11,14 @@ import com.springbook.biz.user.UserVO;
 @Service("userService")
 public class UserServiceImpl implements UserService {
 	@Autowired
-	private UserDAOMybatis userDAO;
+	private UserDAO userDAO;
 
-	public List<UserVO> getUserList(UserVO vo) {
-		return userDAO.getUserList(vo);
+//	public List<UserVO_serverTest> getUserList(UserVO_serverTest vo) {
+//		return userDAO.getUserList(vo);
+//	}
+
+	@Override
+	public void insertUser(UserVO vo) {
+		userDAO.insertUser(vo);
 	}
 }

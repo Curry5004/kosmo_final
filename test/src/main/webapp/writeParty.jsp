@@ -42,7 +42,7 @@
 </script>
 
 <body>
-	<form action="wirteParty.do" method="POST"
+	<form action="insertParty.do" method="POST"
 		enctype="multipart/form-data" name="Reg_form"
 		onsubmit="return check()">
 		<span>제목 : </span><input type="text" name="PARTY_TITLE" id="title" />

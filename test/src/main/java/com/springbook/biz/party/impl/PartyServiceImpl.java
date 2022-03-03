@@ -22,6 +22,10 @@ public class PartyServiceImpl implements PartyService{
 	public PartyVO getParty(PartyVO vo) {
 		return partyDAO.getParty(vo);
 	}
+	@Override
+	public void deleteParty(PartyVO vo){
+		partyDAO.deleteParty(vo);
+	}
 	
 
 }

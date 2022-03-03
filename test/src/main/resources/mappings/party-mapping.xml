@@ -23,7 +23,16 @@
 </insert>
 	
 	<select id = "getParty" resultType="party">
-	select *  from Party where party_id =#{PARTY_ID}
+	select *  from Party where party_id =#{PARTY_ID} and PARTY_AVAILABLE = true
 	
 	</select>
+	
+	<delete id= "deleteParty" parameterType="party">
+	update party
+	set PARTY_AVAILABLE = false
+	where party_id = ${PARTY_ID}
+	
+	</delete>
+
+	
 </mapper>

@@ -1,7 +1,5 @@
 package com.springbook.biz.party.impl;
 
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -19,4 +17,8 @@ public class PartyDAO {
 	public PartyVO getParty(PartyVO vo){
 		return mybatis.selectOne("PartyDAO.getParty", vo);
 	}
+	public void deleteParty(PartyVO vo){
+	 mybatis.delete("PartyDAO.deleteParty",vo);
+	}
 }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            

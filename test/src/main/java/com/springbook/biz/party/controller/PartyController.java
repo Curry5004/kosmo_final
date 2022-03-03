@@ -24,7 +24,7 @@ public class PartyController {
 	PartyService partyService;
 	
 	//소모임 작성
-	@RequestMapping("/wirteParty.do")
+	@RequestMapping("/insertParty.do")
 	public String insertParty(PartyVO vo,Model model,HttpServletRequest request){
 		
 		//form에서 전달받은 이미지가 있다면
@@ -73,5 +73,11 @@ public class PartyController {
 		model.addAttribute("party",partyService.getParty(vo));
 		return "intro.jsp";
 	}
-	
+	@RequestMapping("/deleteParty.do")
+	public String deleteParty(PartyVO vo,Model model){
+		System.out.println(vo.getPARTY_ID());
+		partyService.deleteParty(vo);
+		return "index.jsp";
+	}
 }
+                                                                                                                                                                                                

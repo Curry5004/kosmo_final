@@ -2,6 +2,8 @@ package com.springbook.biz.user;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class UserVO {
    private String user_Id;
    private String name;
@@ -12,9 +14,13 @@ public class UserVO {
    private int phone_Num;
    private Date join_Date;
    private boolean admin;
+   //profile 이미지 업로드용
+   private MultipartFile profile_root;
    private String profile_Image;
    private Date modified_Day;
    private boolean userAvailable;
+   //mbti 이미지 업로드용
+   private MultipartFile mbti_root;
    private String mbti_Path;
    private String mbti_Id;
 

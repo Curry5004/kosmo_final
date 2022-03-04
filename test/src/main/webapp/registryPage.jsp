@@ -9,13 +9,12 @@
 </head>
 
 <body>
-    <!-- div 왼쪽, 오른쪽 바깥여백을 auto로 주면 중앙정렬된다.  -->
     <div id="wrap">
         <br><br>
         <b><font size="6" color="gray">회원가입</font></b>
         <br><br><br>
 
-        <form method="post" action="registry.do" name="userInfo">
+        <form method="post" action="registry.do" name="userInfo" enctype="multipart/form-data">
             <table>
                 <tr>
                     <td id="title">아이디</td>
@@ -94,13 +93,13 @@
                 <tr>
                     <td id="title">MBTI 결과지</td>
                     <td>
-                        <!-- <input type="file" name="mbti_Path"/> -->
+                        <input type="file" name="mbti_root"/>
                     </td>
                 </tr>
                 <tr>
                     <td id="title">프로필 사진</td>
                     <td>
-                        <!-- <input type="file" name="profile_Image"/> -->
+                        <input type="file" name="profile_root"/>
                     </td>
                 </tr>
             </table>

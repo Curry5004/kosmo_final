@@ -25,5 +25,7 @@
 
 <a href="deleteParty.do?PARTY_ID=${party.PARTY_ID}"><button>소모임제거</button></a>
 <a href="joinParty.do?PARTY_ID=${party.PARTY_ID}"><button>소모임가입</button></a>
+
+<p>${user.user_Id }</p>
 </body>
 </html>

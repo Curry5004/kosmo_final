@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.springbook.biz.party.PartyService;
 import com.springbook.biz.party.PartyVO;
+import com.springbook.biz.user.UserVO;
 @Controller
 public class PartyController {
 	@Autowired
@@ -64,8 +66,12 @@ public class PartyController {
 		return "index.jsp";
 	}
 	@RequestMapping("/getParty.do")
-	public String getParty(PartyVO vo,Model model){
+	public String getParty(PartyVO vo,Model model,HttpServletRequest request){
 		PartyVO getVO =partyService.getParty(vo);
+		HttpSession session=request.getSession();
+		UserVO userVO=new UserVO();
+		userVO.setUserId("로그인미구현대체");
+		session.setAttribute("user", userVO);
 		if(getVO==null){
 			return "error.jsp";
 			}

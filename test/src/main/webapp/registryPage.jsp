@@ -15,13 +15,15 @@
         <b><font size="6" color="gray">회원가입</font></b>
         <br><br><br>
 
-        <form method="post" action="/registry.do" name="userInfo">
+        <form method="post" action="registry_form.do" name="userInfo">
             <table>
                 <tr>
                     <td id="title">아이디</td>
                     <td>
-                        <input type="text" name="userId" maxlength="50">
+                        <input type="text" name="user_Id" maxlength="50">
+                        <!-- 
                         <input type="button" value="중복확인" >    
+                    	 -->
                     </td>
                 </tr>
                         
@@ -33,10 +35,12 @@
                 </tr>
                 
                 <tr>
+                	<!-- 
                     <td id="title">비밀번호 확인</td>
                     <td>
                         <input type="password" name="passwordcheck" maxlength="50">
                     </td>
+                     -->
                 </tr>
                     
                 <tr>
@@ -57,7 +61,7 @@
                 <tr>
                     <td id="title">생일</td>
                     <td>
-                        <input type="text" name="birthyy" maxlength="10" placeholder="양식)YYYY-MM-DD ex)1993-12-05" size="6" >
+                        <input type="text" name="birthDay" maxlength="10" placeholder="양식)YYYY-MM-DD ex)1993-12-05" size="6" >
                     </td>    
                 </tr>
                     
@@ -66,24 +70,22 @@
                 <tr>
                     <td id="title">휴대전화</td>
                     <td>
-                        <input type="text" name="phoneNum" />
+                        <input type="text" name="phone_Num" />
                     </td>
                 </tr>
                 <tr>
                     <td id="title">선호 만남 지역</td>
                     <td>
-                        <input type="text" size="50" name="address" placeholder="시, 구 까지만 작성해 주세요 ex)서울특별시 금천구"/>
+                        <input type="text" size="50" name="location" placeholder="시, 구 까지만 작성해 주세요 ex)서울특별시 금천구"/>
                     </td>
                 </tr>
                 <tr>
                     <td id="title">MBTI Type</td>
                     <td>
-                        <select name="mbti">
-                        <!-- 
-                        	<c:forEach var="temp" items="${MbtiList}">
-                        		<option value="${temp.getMBTI_ID}">${temp.getMBTI_NAME}</option>
-                        	</c:forEach>                       	
-                         -->
+                        <select name="mbti_Id">
+                     		<c:forEach var="temp" items="${MbtiList}">
+								<option value="${temp.MBTI_ID}">${temp.MBTI_NAME}</option>
+							</c:forEach>
                         </select>
                     </td>
                 </tr>

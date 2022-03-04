@@ -14,9 +14,11 @@ public class UserController {
 	private UserService userService;
 	
 
-	@RequestMapping("/registry.do")	
-	public String insertUser(UserVO vo, Model model) {			
-//		model.addAttribute("userList", userService.insertUser(vo));
+	@RequestMapping("/registry_form.do")	
+	public String insertUser(UserVO vo, Model model) {
+		System.out.println("회원가입 시작");
+		userService.insertUser(vo);
+		System.out.println("insert 완료");
 		return "registryPage.jsp";
 	}
 }

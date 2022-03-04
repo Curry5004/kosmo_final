@@ -12,10 +12,6 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDAO userDAO;
 
-//	public List<UserVO_serverTest> getUserList(UserVO_serverTest vo) {
-//		return userDAO.getUserList(vo);
-//	}
-
 	@Override
 	public void insertUser(UserVO vo) {
 		userDAO.insertUser(vo);

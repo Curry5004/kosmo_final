@@ -23,7 +23,7 @@ public class MainController {
 		return "writeParty.jsp";
 	}
 	@RequestMapping(value="/registry.do", method=RequestMethod.GET)
-	public String writeParty(MbtiVO vo,Model model){
+	public String registryForm(MbtiVO vo,Model model){
 		System.out.println("로그인 페이지 진입 완료");
 		model.addAttribute("MbtiList",mainService.getMbtiList(vo)); //MbtiList model 추가
 		return "registryPage.jsp";

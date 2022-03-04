@@ -97,10 +97,12 @@
                     </td>
                 </tr>
                 <tr>
+                <!-- 
                     <td id="title">프로필 사진</td>
                     <td>
                         <input type="file" name="profile_root"/>
                     </td>
+                 -->
                 </tr>
             </table>
             <br>

@@ -9,7 +9,7 @@ import com.springbook.biz.memberList.MemberListVO;
 public class MemberListServiceImpl {
 	@Autowired
 	MemberListDAO memberListDAO;
-	
+	//test
 
 	
 }

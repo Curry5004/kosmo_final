@@ -16,6 +16,7 @@ public class UserDAO {
 	public void insertUser(UserVO vo) {
 		System.out.println("Mybatis insert ()");
 		mybatis.insert("UserDAO.insertUser", vo);
+		mybatis.insert("UserDAO.insertRegList", vo);
 	}
 //	public List<UserVO> getUserList(UserVO_serverTest vo){
 //		System.out.println("===> Mybatis  getUser() ");

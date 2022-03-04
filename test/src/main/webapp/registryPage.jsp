@@ -94,13 +94,13 @@
                 <tr>
                     <td id="title">MBTI 결과지</td>
                     <td>
-                        <input type="text" size="50" name="address" />
+                        <!-- <input type="file" name="mbti_Path"/> -->
                     </td>
                 </tr>
                 <tr>
                     <td id="title">프로필 사진</td>
                     <td>
-                        <input type="text" size="50" name="address"/>
+                        <!-- <input type="file" name="profile_Image"/> -->
                     </td>
                 </tr>
             </table>

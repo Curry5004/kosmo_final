@@ -11,5 +11,10 @@
 	,'${phone_Num}',now(),false,
 	null,null,true,null,'${mbti_Id}');
 	</insert>
+	
+	<insert id="insertRegList">
+	INSERT INTO registry (USER_ID, REQUEST)
+	VALUES('${user_Id}', FALSE);
+	</insert>
 
 </mapper>

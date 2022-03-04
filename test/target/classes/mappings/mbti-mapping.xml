@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MbtiDAO">
+
+<select id = "getMbtiList" resultType="mbti">
+	select * from mbti
+</select>
+
+<select id = "getMbtiRate" resultType="mbti">
+	select m.MBTI_name as mbti_name ,count(m.MBTI_ID) as cnt from user u join mbti m
+where user_ID in (select user_id from member_list where party_id="${party_id}") and u.MBTI_ID=m.MBTI_ID
+group by m.MBTI_name with rollup
+order by cnt desc;
+</select>
+</mapper>

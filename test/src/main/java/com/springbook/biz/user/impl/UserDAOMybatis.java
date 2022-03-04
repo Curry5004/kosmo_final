@@ -14,7 +14,7 @@ public class UserDAOMybatis {
 	private SqlSessionTemplate mybatis;
 
 	public List<UserVO> getUserList(UserVO vo){
-		System.out.println("===> Mybatis·Î  getUser() ±â´É Ã³¸®");
+		System.out.println("===> Mybatisï¿½ï¿½  getUser() ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½");
 		return mybatis.selectList("UserDAO.getUserList", vo);
 	}
 }

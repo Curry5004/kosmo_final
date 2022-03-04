@@ -15,7 +15,7 @@
         <b><font size="6" color="gray">회원가입</font></b>
         <br><br><br>
 
-        <form method="post" action="registry_form.do" name="userInfo">
+        <form method="post" action="registry.do" name="userInfo">
             <table>
                 <tr>
                     <td id="title">아이디</td>

@@ -75,8 +75,9 @@
 		<div>
 			<h1>결제 모듈이 들어갈 곳 입니다</h1>
 		</div>
+		<input type="hidden" value="${user.user_Id }" name="PARTY_CREATOR"/>
 		<input type="submit" value="생성" />
 	</form>
-
+<p>${user.user_Id }</p>
 </body>
 </html>

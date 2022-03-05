@@ -16,5 +16,11 @@ public class UserDAO {
 		mybatis.insert("UserDAO.insertUser", vo);
 		mybatis.insert("UserDAO.insertRegList", vo);
 	}
+	//아이디 중복 체크
+	public int idCheck(UserVO vo){
+		System.out.println("Mybatis idCheck");
+		int result = mybatis.selectOne("UserDAO.idCheck", vo);
+		return result;
+	}
 
 }

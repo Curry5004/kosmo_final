@@ -4,18 +4,23 @@
 <mapper namespace="UserDAO">
 
 	<insert id="insertUser">
-	INSERT INTO USER (USER_ID,NAME,PASSWORD,BIRTHDAY,GENDER,LOCATION,
-	PHONE_NUM,JOIN_DATE,ADMIN,PROFILE_IMAGE,MODIFIED_DAY,USER_AVAILABLE,
-	MBTI_PATH,MBTI_ID)
-	VALUES('${user_Id}','${name}','${password}','${birthDay}','${gender}','${location}'
-	,'${phone_Num}',now(),false,
-	'${profile_Image}',null,true,'${mbti_Path}','${mbti_Id}');
+		INSERT INTO USER (USER_ID,NAME,PASSWORD,BIRTHDAY,GENDER,LOCATION,
+		PHONE_NUM,JOIN_DATE,ADMIN,PROFILE_IMAGE,MODIFIED_DAY,USER_AVAILABLE,
+		MBTI_PATH,MBTI_ID)
+		VALUES('${user_Id}','${name}','${password}','${birthDay}','${gender}','${location}'
+		,#{phone_Num},now(),false,
+		'${profile_Image}',null,true,'${mbti_Path}','${mbti_Id}');
 	</insert>
 	
 	<insert id="insertRegList">
-	INSERT INTO registry (USER_ID, REQUEST)
-	VALUES('${user_Id}', FALSE);
+		INSERT INTO registry (USER_ID, REQUEST)
+		VALUES('${user_Id}', FALSE);
 	</insert>
+	
+	<select id="idCheck" resultType="int">
+		SELECT COUNT(*) FROM USER
+		WHERE USER_ID = #{user_Id}
+	</select>
 	
 	
 

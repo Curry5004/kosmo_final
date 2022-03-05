@@ -16,4 +16,10 @@ public class UserServiceImpl implements UserService {
 	public void insertUser(UserVO vo) {
 		userDAO.insertUser(vo);
 	}
+
+	@Override
+	public int idCheck(UserVO vo) {
+		int result = userDAO.idCheck(vo);
+		return result;
+	}
 }

@@ -5,18 +5,24 @@ import java.io.IOException;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.springbook.biz.memberList.MemberListService;
+import com.springbook.biz.memberList.MemberListVO;
 import com.springbook.biz.party.PartyService;
 import com.springbook.biz.party.PartyVO;
+import com.springbook.biz.user.UserVO;
 @Controller
 public class PartyController {
 	@Autowired
 	PartyService partyService;
+	@Autowired
+	MemberListService memberListService;
 	
 	//소모임 작성
 	@RequestMapping("/insertParty.do")
@@ -64,15 +70,22 @@ public class PartyController {
 		return "index.jsp";
 	}
 	@RequestMapping("/getParty.do")
-	public String getParty(PartyVO vo,Model model){
+	public String getParty(PartyVO vo,Model model,MemberListVO vo2,HttpServletRequest request){
 		PartyVO getVO =partyService.getParty(vo);
+		HttpSession session=request.getSession();
+		UserVO userVO=new UserVO();
+		userVO.setUserId("로그인미구현대체");
+		session.setAttribute("user", userVO);
 		if(getVO==null){
 			return "error.jsp";
 			}
 		else{
+		model.addAttribute("mbtiList", memberListService.getMbtiList(vo2));
+		model.addAttribute("getGenderCount",memberListService.getGenderCount(vo2));
 		model.addAttribute("party",getVO);
 		return "intro.jsp";
 		}
+		
 		
 	}
 	@RequestMapping("/deleteParty.do")
@@ -81,5 +94,6 @@ public class PartyController {
 		partyService.deleteParty(vo);
 		return "index.jsp";
 	}
+	
 }
                                                                                                                                                                                                 

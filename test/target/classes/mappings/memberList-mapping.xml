@@ -4,10 +4,24 @@
 <mapper namespace="memberListDAO">
 
 <select id = "getMemberList" resultType="member">
-	select * from category
+	select * from member_List where PARTY_ID = "${PARTY_ID}"
 </select>
 
+
 <insert id="insertMemberList" parameterType="member">
-	insert into member_list values ('로그인미구현',${PARTY_ID},false)
+	insert into member_list values (#{USER_ID},${PARTY_ID},false)
 </insert>
+
+<select id="getMbtiList" resultType="member">
+	select m.MBTI_name as MBTI_NAME ,count(m.MBTI_ID) as COUNT from user u join mbti m
+where user_ID in (select user_id from member_list where party_id="${PARTY_ID}") and u.MBTI_ID=m.MBTI_ID
+group by m.MBTI_name with rollup
+order by COUNT desc;
+</select>
+
+<select id="getGenderCount" resultType="member">
+	select GENDER, count(gender) as GENDERCOUNT from member_list m join user u
+where m.user_id=u.USER_ID and PARTY_ID="${PARTY_ID}"
+group by gender;
+</select>
 </mapper>

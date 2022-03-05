@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
 			UserVO vo2 = viewUser(vo);
 		
 		// 세션 변수 등록
-		session.setAttribute("userId", vo2.getUser_Id());
+		session.setAttribute("user_Id", vo2.getUser_Id());
 		}
 		return result;
 	}
@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
 	// 회원 로그인 정보
 	@Override
 	public UserVO viewUser(UserVO vo) {
-		return UserDAO.viewUser(vo);
+		return userDAO.viewUser(vo);
 	}
 	
 	// 회원 로그아웃

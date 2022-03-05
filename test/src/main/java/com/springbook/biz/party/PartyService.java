@@ -9,4 +9,6 @@ public interface PartyService {
 	
 	public void deleteParty(PartyVO vo);
 	
+	public PartyVO getNewParty(PartyVO vo);
+	
 }

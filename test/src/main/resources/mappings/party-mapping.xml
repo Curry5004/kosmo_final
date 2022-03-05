@@ -27,6 +27,10 @@
 	
 	</select>
 	
+	<select id = "getNewParty" resultType="party">
+	select *  from Party order by PARTY_REG_DATE desc limit 1;
+	</select>
+	
 	<delete id= "deleteParty" parameterType="party">
 	update party
 	set PARTY_AVAILABLE = false

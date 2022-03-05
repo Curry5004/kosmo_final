@@ -26,7 +26,7 @@ public class PartyController {
 	
 	//소모임 작성
 	@RequestMapping("/insertParty.do")
-	public String insertParty(PartyVO vo,Model model,HttpServletRequest request){
+	public String insertParty(PartyVO vo,Model model,HttpServletRequest request,MemberListVO vo2){
 		
 		//form에서 전달받은 이미지가 있다면
 		if(vo.getPARTY_TUMB().getSize()!=0){
@@ -66,9 +66,14 @@ public class PartyController {
 		}
 		
 		HttpSession session=request.getSession();
-		MemberListVO vo2=(MemberListVO)session.getAttribute("user");
+		UserVO user= (UserVO)session.getAttribute("user");
+		vo2.setUSER_ID(user.getUser_Id());
+		
 		
 		partyService.insertParty(vo); //DB 갱신
+		PartyVO getVO =partyService.getNewParty(vo);
+		vo2.setPARTY_ID(getVO.getPARTY_ID());
+		
 		memberListService.joinParty(vo2);
 		
 		return "index.jsp";

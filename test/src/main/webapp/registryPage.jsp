@@ -7,6 +7,24 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+<script type="text/javascript">
+function fn_idChk(){
+	$.ajax({
+		url : "/member/idChk",
+		type : "post",
+		dataType : "json",
+		data : {"userId" : $("#userId").val()},
+		success : function(data){
+			if(data == 1){
+				alert("중복된 아이디입니다.");
+			}else if(data == 0){
+				$("#idChk").attr("value", "Y");
+				alert("사용가능한 아이디입니다.");
+			}
+		}
+	})
+}
+</script>
 
 <body>
     <div id="wrap">

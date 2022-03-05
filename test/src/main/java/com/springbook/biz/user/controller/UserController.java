@@ -27,6 +27,7 @@ public class UserController {
 		int result = userService.idCheck(vo);
 		try{
 			if(result==1){
+				System.out.println("중복된 아이디입니다.");
 				return "/registry.do";
 			} else if (result == 0){
 				if(vo.getMbti_root().getSize()!=0){

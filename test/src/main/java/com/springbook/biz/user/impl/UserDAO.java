@@ -20,9 +20,9 @@ public class UserDAO {
 	}
 	// 회원 로그인체크
 	public boolean loginCheck(UserVO vo) {
-		System.out.println("userDao 진입");
+//		System.out.println("userDao 진입");
 		String name = mybatis.selectOne("UserDAO.loginCheck", vo);
-		System.out.println(vo.toString());
+//		System.out.println(vo.toString());
 		return(name == null) ? false : true;
 	}
 	

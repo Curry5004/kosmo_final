@@ -22,13 +22,16 @@ public class UserServiceImpl implements UserService {
 	// 회원 로그인 체크
 	@Override
 	public boolean loginCheck(UserVO vo, HttpSession session) {
-		System.out.println("service 서비스 진입");
+//		System.out.println("service 서비스 진입");
 		boolean result = userDAO.loginCheck(vo);
 		if (result) { //true일 경우 세션에 등록
 			UserVO vo2 = viewUser(vo);
 		
 		// 세션 변수 등록
+		// 세션변수는 우선 user_Id만 삽입.
+		// 혹시나 해서 location 넣어봤는데 삽입 정상적으로 됨. session에 필요한 정보 있으면 이렇게 넣을 수 있을 듯
 		session.setAttribute("user_Id", vo2.getUser_Id());
+		session.setAttribute("location", vo2.getLocation());
 		}
 		return result;
 	}

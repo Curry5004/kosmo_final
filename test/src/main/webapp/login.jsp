@@ -26,9 +26,11 @@
 				<input type="submit" value="로그인"/>
 			</td>
 		</tr>
+		
 	</table>
 	</form>
 	<hr>
+	<a href="registry.do">회원가입</a>
 	</center>
 	</body>
 </html>

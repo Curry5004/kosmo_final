@@ -13,5 +13,9 @@
 	<a href="writeParty.do">소모임 작성</a>	
 	<a href="login.do">로그인</a>	
 	<a href="logout.do">로그아웃</a>	
+	<!-- 세션 테스트용 
+	${sessionScope.user_Id}님이 로그인 중입니다. 
+	다른 페이지 넘어가도 잘됨
+	-->
 </body>
 </html>	

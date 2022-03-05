@@ -3,6 +3,8 @@ package com.springbook.biz.board.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,5 +49,10 @@ public class BoardController {
 		model.addAttribute("pages", pages);
 		return "boardList.jsp";
 		
+	}
+	@RequestMapping(value="/insertBoard.do", method=RequestMethod.POST)
+	public String insertBoard(BoardVO vo, Model model, HttpServletRequest request) {
+		boardService.insertBoard(vo);
+		return "boardList.jsp";
 	}
 }

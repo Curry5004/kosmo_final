@@ -1,7 +1,5 @@
 package com.springbook.biz.user.impl;
 
-import java.util.List;
-
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,8 +16,5 @@ public class UserDAO {
 		mybatis.insert("UserDAO.insertUser", vo);
 		mybatis.insert("UserDAO.insertRegList", vo);
 	}
-//	public List<UserVO> getUserList(UserVO_serverTest vo){
-//		System.out.println("===> Mybatis  getUser() ");
-//		return mybatis.selectList("UserDAO.getUserList", vo);
-//	}
+
 }

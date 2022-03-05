@@ -4,7 +4,8 @@
 <mapper namespace="memberListDAO">
 
 <select id = "getMemberList" resultType="member">
-	select * from member_List where PARTY_ID = "${PARTY_ID}"
+	select u.name, u.user_id,MBTI_NAME from member_list m join user u 
+	join mbti on m.user_id = u.user_id and u.mbti_id=mbti.MBTI_ID where party_id ="1";
 </select>
 
 

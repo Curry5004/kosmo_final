@@ -65,7 +65,11 @@ public class PartyController {
 		vo.setPARTY_TUMB_PATH(changeName); //VO갱신
 		}
 		
+		HttpSession session=request.getSession();
+		MemberListVO vo2=(MemberListVO)session.getAttribute("user");
+		
 		partyService.insertParty(vo); //DB 갱신
+		memberListService.joinParty(vo2);
 		
 		return "index.jsp";
 	}

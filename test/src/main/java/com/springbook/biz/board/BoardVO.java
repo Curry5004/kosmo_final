@@ -5,7 +5,6 @@ import java.util.Date;
 import org.springframework.web.multipart.MultipartFile;
 
 public class BoardVO {
-	//테스
 	private int art_id;
 	private int party_id; 
 	private String art_title; 

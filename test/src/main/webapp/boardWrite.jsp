@@ -10,7 +10,7 @@
 <body>
 <div class="container" style="margin-top:30px">
 	<div class="row">
-		<form method="post" action="insertBoard.do">
+		<form method="post" action="insertBoard.do" enctype="multipart/form-data">
 			
 	      <h1>게시글 작성하기</h1>
 				<div class="form-group">
@@ -38,7 +38,8 @@
 				  
 				</div>
 				 <div class="form-group">  
-
+				 	이미지 삽입 : 
+					<input type="file" name="art_img" accept=".jpeg, .jpg, .png"/>
 			    </div>
 			    <button type="submit" class="btn btn-primary">작성완료</button>
 			  </form>

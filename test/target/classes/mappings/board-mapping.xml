@@ -15,7 +15,7 @@
 	WHERE ART_AVAILABLE = TRUE AND PARTY_ID = #{party_id}
 </select>
 <insert id="insertBoard" parameterType="board">
-	insert into board(party_id, art_title,art_writer,art_content)
-	values('1',#{art_title},'kms',#{art_content})
+	insert into board(party_id, art_title,art_writer,art_content, art_img_path)
+	values('1',#{art_title},'kms',#{art_content}, #{art_img_path})
 </insert>
 </mapper>

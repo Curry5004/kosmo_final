@@ -18,10 +18,18 @@ public class UserDAO {
 		mybatis.insert("UserDAO.insertUser", vo);
 		mybatis.insert("UserDAO.insertRegList", vo);
 	}
+	// 회원 로그인체크
+	public boolean loginCheck(UserVO vo) {
+		String name = mybatis.selectOne("user.loginCheck", vo);
+		return(name == null) ? false : true;
+	}
 	
-	public String getUser_Id(UserVO vo) {
-		System.out.println("로그인 시도");
-		mybatis.
+	// 회원 로그인 정보
+	public UserVO viewUser(UserVO vo) {
+		return mybatis.selectOne("User.viewUser", vo);
+	}
+	// 회원 로그아웃
+	public void logout(HttpSession session) {
 	}
 }
 

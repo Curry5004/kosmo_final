@@ -11,6 +11,5 @@
 	<a href="getuserList.do">회원 조회</a>
 	<a href="registry.do">회원가입</a>
 	<a href="writeParty.do">소모임 작성</a>	
-	<a href="login.do">로그인</a>
 </body>
 </html>	

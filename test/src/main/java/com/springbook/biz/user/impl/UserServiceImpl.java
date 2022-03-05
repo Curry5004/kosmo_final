@@ -27,8 +27,7 @@ public class UserServiceImpl implements UserService {
 			UserVO vo2 = viewUser(vo);
 		
 		// 세션 변수 등록
-		session.setAttribute("userId", vo2.getUserId());
-		session.setAttribute("userName", vo2.getUserName());
+		session.setAttribute("userId", vo2.getUser_Id());
 		}
 		return result;
 	}

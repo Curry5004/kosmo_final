@@ -111,9 +111,41 @@ public class UserController {
 		System.out.println("insert 완료");
 		return "index.jsp";
 	}
+		// 로깅을 위한 변수
+		private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+		
+		// 로그인 화면
 		@RequestMapping("login.do")
-		public String login(UserVO vo, UserDAO userDAO) {
-			if(userDAO.getUser_Id(vo) != null) return "index.jsp";
-			else return "login.jsp";
+		public String login() {
+			return "webapp/login"; // main/webapp/login.jsp로 포워드
+		}
+		
+		// 로그인 처리
+		@@RequestMapping("loginCheck.do")
+		public ModelAndView loginCheck(@ModelAttribute UserVO vo, HttpSession session) {
+			boolean result = UserService.loginCheck(vo, session);
+			ModelAndView mav = new ModelAndView();
+			if (result == true) { // 로그인 성공
+				// main.jsp로 이동
+				mav.setViewName("index");
+				mav.addObject("msg", "success");
+				
+			} else { // 로그인 실패
+				// login.jsp로 이동
+				mav.setViewName("webapp/login");
+				mav.addObject("msg", "failure");
+			}
+			return mav;
+		}
+		
+		// 로그아웃 처리
+		@RequestMapping("logout.do")
+		public ModelAndView logout(HttpSession session) {
+			UserService.logout(session);
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("webapp/login");
+			mav.addObject("msg", "logout");
+			return mav;
 		}
 }
+		

@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 
@@ -68,15 +68,16 @@
 			</c:forEach>
 		</select> <br /> <span>선호위치 : </span> <input type="text" name="PARTY_LOCATION"
 			id="location" /><br /> <span>이미지 삽입 </span> <input type="file"
-			name="PARTY_TUMB" /><br /> <span>멤버 정원 : </span> <input type="text"
+			name="PARTY_TUMB" accept=".jpeg, .jpg, .png"/><br /> <span>멤버 정원 : </span> <input type="text"
 			name="PARTY_MAXIMUM" id="maximum" /><br />
 
 		<textarea name="PARTY_INTRODUCE" cols="30" rows="10" id="introduce"></textarea>
 		<div>
 			<h1>결제 모듈이 들어갈 곳 입니다</h1>
 		</div>
+		<input type="hidden" value="${user.user_Id }" name="PARTY_CREATOR"/>
 		<input type="submit" value="생성" />
 	</form>
-
+<p>${user.user_Id }</p>
 </body>
 </html>

@@ -8,8 +8,8 @@
 </head>
 <body>
 	<h1>인덱스</h1>
-	<a href="getuserList.do">회원 조회</a>
+	<a href="getBoardList.do?party_id=1">게시글 조회</a>
 	<a href="writeParty.do">소모임 작성</a>
 	<a href="getParty.do?PARTY_ID=2">소모임상세글</a>
 </body>
-</html>	
+</html>

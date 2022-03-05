@@ -19,14 +19,14 @@
 	
 	
 	<select id="loginCheck" resultType="String">
-		SELECT user_id FROM user
-		WHERE user_id = #{user_id} AND password = #{password};
+		SELECT user_Id FROM user
+		WHERE user_Id = #{user_Id} AND password = #{password};
 	</select>
 	
 	<select id="viewUser" resultType="user">
 		SELECT *
 		FROM user
-		WHERE user_id = #{user_id} AND password = #{password};
+		WHERE user_Id = #{user_Id} AND password = #{password};
 	</select>
 	
 </mapper>

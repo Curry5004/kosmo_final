@@ -156,9 +156,12 @@ public class UserVO {
 
 	@Override
 	public String toString() {
-		return "UserVO [userId=" + user_Id + ", name=" + name + ", password=" + password + ", birthDay=" + birthDay
+		return "UserVO [user_Id=" + user_Id + ", name=" + name + ", password=" + password + ", birthDay=" + birthDay
 				+ ", gender=" + gender + ", location=" + location + ", phone_Num=" + phone_Num + ", join_Date="
-				+ join_Date + ", admin=" + admin + ", profile_Image=" + profile_Image + ", modified_Day=" + modified_Day
-				+ ", userAvailable=" + userAvailable + ", mbti_Path=" + mbti_Path + ", mbti_Id=" + mbti_Id + "]";
+				+ join_Date + ", admin=" + admin + ", profile_root=" + profile_root + ", profile_Image=" + profile_Image
+				+ ", modified_Day=" + modified_Day + ", userAvailable=" + userAvailable + ", mbti_root=" + mbti_root
+				+ ", mbti_Path=" + mbti_Path + ", mbti_Id=" + mbti_Id + "]";
 	}
+
+	
 }

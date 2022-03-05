@@ -125,13 +125,12 @@ public class UserController {
 			ModelAndView mav = new ModelAndView();
 			if (result == true) { // 로그인 성공
 				// main.jsp로 이동
-				mav.setViewName("index");
-				mav.addObject("msg", "success");
-				
+				mav.setViewName("index.jsp");
+//				mav.addObject("msg", "success");
 			} else { // 로그인 실패
 				// login.jsp로 이동
-				mav.setViewName("webapp/login");
-				mav.addObject("msg", "failure");
+				mav.setViewName("login.jsp");
+//				mav.addObject("msg", "failure");
 			}
 			return mav;
 		}
@@ -139,10 +138,12 @@ public class UserController {
 		// 로그아웃 처리
 		@RequestMapping("logout.do")
 		public ModelAndView logout(HttpSession session) {
-			UserService.logout(session);
+			System.out.println("로그아웃");
+			userService.logout(session);
 			ModelAndView mav = new ModelAndView();
-			mav.setViewName("webapp/login");
-			mav.addObject("msg", "logout");
+			mav.setViewName("login.jsp");
+//			mav.addObject("msg", "logout");
+			System.out.println("로그아웃 완료");
 			return mav;
 		}
 }

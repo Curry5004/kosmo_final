@@ -16,5 +16,9 @@ public class UserDAO {
 		mybatis.insert("UserDAO.insertUser", vo);
 		mybatis.insert("UserDAO.insertRegList", vo);
 	}
-
+	public UserVO getUser_id(UserVO vo){
+		System.out.println("로그인 처리");
+		mybatis.selectOne("UserDAO.");
+		return "";
+	}
 }

@@ -12,9 +12,9 @@
 <header>
 </header>
 <section>
-	<button><a href="boardWrite.do">게시글 쓰기 </a></button>
+	<button onclick="location.href='boardWrite.jsp';">게시글 쓰기 </a></button>
 	<c:if test="${empty boardList }">
-		<button><a href="boardWrite.do">첫 게시물 작성</button>
+		<button onclick="location.href='boardWrite.jsp';">첫 게시물 작성</a></button>
 	</c:if>
 	<c:forEach items="${boardList}" var="board">
 		<div style="display:flex;">

@@ -93,6 +93,6 @@ public class BoardController {
 		vo.setArt_img_path(changeName); //VO갱신
 		}
 		boardService.insertBoard(vo);
-		return "boardWrite.jsp";
+		return "index.jsp";
 	}
 }

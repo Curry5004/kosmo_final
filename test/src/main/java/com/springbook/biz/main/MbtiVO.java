@@ -4,7 +4,6 @@ public class MbtiVO {
 	private int MBTI_ID;
 	private String MBTI_IMG_PATH;
 	private String MBTI_NAME;
-	public int a;
 	public int getMBTI_ID() {
 		return MBTI_ID;
 	}

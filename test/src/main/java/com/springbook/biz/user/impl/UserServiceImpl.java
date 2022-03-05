@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
 	// 회원 로그인 체크
 	@Override
 	public boolean loginCheck(UserVO vo, HttpSession session) {
-		boolean result = UserDAO.loginCheck(vo);
+		boolean result = userDAO.loginCheck(vo);
 		if (result) { //true일 경우 세션에 등록
 			UserVO vo2 = viewUser(vo);
 		

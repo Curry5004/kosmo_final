@@ -20,13 +20,13 @@ public class UserDAO {
 	}
 	// 회원 로그인체크
 	public boolean loginCheck(UserVO vo) {
-		String name = mybatis.selectOne("user.loginCheck", vo);
+		String name = mybatis.selectOne("UserDAO.loginCheck", vo);
 		return(name == null) ? false : true;
 	}
 	
 	// 회원 로그인 정보
 	public UserVO viewUser(UserVO vo) {
-		return mybatis.selectOne("User.viewUser", vo);
+		return mybatis.selectOne("UserDAO.viewUser", vo);
 	}
 	// 회원 로그아웃
 	public void logout(HttpSession session) {

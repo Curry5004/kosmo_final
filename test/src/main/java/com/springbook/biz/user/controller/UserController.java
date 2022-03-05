@@ -111,19 +111,17 @@ public class UserController {
 		System.out.println("insert 완료");
 		return "index.jsp";
 	}
-		// 로깅을 위한 변수
-		private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 		
 		// 로그인 화면
-		@RequestMapping("login.do")
+		@RequestMapping("/login.do")
 		public String login() {
-			return "webapp/login"; // main/webapp/login.jsp로 포워드
+			return "login.jsp"; // main/webapp/login.jsp로 포워드
 		}
 		
 		// 로그인 처리
-		@@RequestMapping("loginCheck.do")
-		public ModelAndView loginCheck(@ModelAttribute UserVO vo, HttpSession session) {
-			boolean result = UserService.loginCheck(vo, session);
+		@RequestMapping("/loginCheck.do")
+		public ModelAndView loginCheck(UserVO vo, HttpSession session) {
+			boolean result = userService.loginCheck(vo, session);
 			ModelAndView mav = new ModelAndView();
 			if (result == true) { // 로그인 성공
 				// main.jsp로 이동

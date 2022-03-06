@@ -1,6 +1,6 @@
 package com.springbook.biz.main;
 
-public class CategoryVO_ {
+public class CategoryVO {
 
 	private String category_name;
 	private String category_value;

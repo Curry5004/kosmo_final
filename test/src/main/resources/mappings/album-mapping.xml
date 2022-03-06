@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AlbumDAO">
+
+
+
+<insert id="insertAlbum" parameterType="album">
+	INSERT INTO ALBUM(PARTY_ID,ALB_WRITER,ALB_IMG_PATH,
+	ALB_REG_DATE) 
+	VALUES(${party_id},#{alb_writer},#{alb_img_path},#{alb_reg_date})
+</insert>
+</mapper>

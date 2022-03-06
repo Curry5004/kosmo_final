@@ -10,7 +10,7 @@
 
 
 <insert id="insertMemberList" parameterType="member">
-	insert into member_list values (#{USER_ID},${PARTY_ID},false)
+	insert into member_list(USER_ID,PARTY_ID,PARTY_REQUEST) values (#{USER_ID},${PARTY_ID},false)
 </insert>
 
 <select id="getMbtiList" resultType="member">

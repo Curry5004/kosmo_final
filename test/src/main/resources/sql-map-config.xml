@@ -23,6 +23,7 @@
 		<mapper resource="mappings/memberList-mapping.xml"></mapper>
 		<mapper resource="mappings/board-mapping.xml" />
 		<mapper resource="mappings/album-mapping.xml" />
+		<mapper resource="mappings/mypage-mapping.xml" />		
 	</mappers>
 	
 </configuration>

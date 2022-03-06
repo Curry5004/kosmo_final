@@ -30,7 +30,7 @@
 	</table>
 	</form>
 	<hr>
-	<a href="registry.do">회원가입</a>
+	<a href="registry_form.do">회원가입</a>
 	</center>
 	</body>
 </html>

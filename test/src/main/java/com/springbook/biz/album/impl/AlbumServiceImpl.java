@@ -28,4 +28,14 @@ public class AlbumServiceImpl implements AlbumService {
 	public List<AlbumVO> getAlbumList(AlbumVO vo) {
 		return albumDAO.getAlbumList(vo);
 	}
+	
+	@Override
+	public AlbumVO getAlbum(AlbumVO vo) {
+		return albumDAO.getAlbum(vo);
+	}
+	
+	@Override
+	public void likeUp(AlbumVO vo) {
+		albumDAO.likeUp(vo);
+	}
 }

@@ -55,7 +55,7 @@
 	
 	<div id="imgArticle">
 	<c:forEach items="${albumList}" var="album">
-			<a href="getAlbum.jsp?alb_id=${album.alb_id}">
+			<a href="getAlbum.do?alb_id=${album.alb_id}">
 			 <img src="${album.alb_img_path}" width=300 height=300 />
 			<span id="like">${album.likeCnt}</span>
 			</a>

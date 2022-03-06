@@ -28,4 +28,13 @@ public class AlbumDAO {
 		return mybatis.selectList("AlbumDAO.getAlbumList", vo);
 	}
 	
+	public AlbumVO getAlbum(AlbumVO vo){
+		return mybatis.selectOne("AlbumDAO.getAlbum", vo);
+	}
+	
+	public void likeUp(AlbumVO vo){
+		System.out.println("작성자 : "+vo.getAlb_writer()+" id: "+vo.getAlb_id()+"파티 "+vo.getParty_id());
+		mybatis.insert("AlbumDAO.likeUp",vo);
+	}
+	
 }

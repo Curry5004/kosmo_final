@@ -2,22 +2,22 @@ package com.springbook.biz.album.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.springbook.biz.album.AlbumService;
 import com.springbook.biz.album.AlbumVO;
 import com.springbook.biz.board.PageVO;
+import com.springbook.biz.party.PartyVO;
+import com.springbook.biz.user.UserVO;
 
 @Controller
 public class AlbumController {
@@ -67,9 +67,7 @@ public class AlbumController {
 	}
 	
 	@RequestMapping(value="/getAlbumList.do")
-	public String getBoardList(AlbumVO vo, Model model, PageVO page) {
-		
-		
+	public String getAlbumList(AlbumVO vo, Model model, PageVO page) {
 		 //vo.getPartId();
 		int count = albumService.getAlbumCnt(vo);
 		String pageNo = page.getPageNo();
@@ -96,5 +94,24 @@ public class AlbumController {
 		model.addAttribute("albumList", getList);
 		model.addAttribute("pages", pages);
 		return "albumList.jsp";
+	}
+	
+	@RequestMapping("getAlbum.do")
+	public String getAlbum(PartyVO vo,AlbumVO vo2,Model model,HttpSession session){
+		UserVO userVO=new UserVO();
+		userVO.setUserId("ADMIN10");
+		session.setAttribute("user", userVO);
+		model.addAttribute("album", albumService.getAlbum(vo2));
+		
+		return "readAlbum.jsp";
+	}
+	
+	@RequestMapping("likeUp.do")
+	public String likeUp(AlbumVO vo,Model model){
+		
+		
+		albumService.likeUp(vo);
+		System.out.println(vo.getAlb_id());
+		return "getAlbum.do?alb_id="+vo.getAlb_id();
 	}
 }

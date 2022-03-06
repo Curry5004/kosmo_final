@@ -9,4 +9,8 @@ public interface AlbumService {
 	public int getAlbumCnt(AlbumVO vo);
 	
 	public List<AlbumVO> getAlbumList(AlbumVO vo);
+	
+	public AlbumVO getAlbum(AlbumVO vo);
+	
+	public void likeUp(AlbumVO vo);
 }

@@ -28,7 +28,7 @@
 
 <div  style="border: 1px solid black">${party.PARTY_INTRODUCE}</div>
 
-<a href="deleteParty.do?PARTY_ID=${party.PARTY_ID}"><button>소모임제거</button></a>
+<a href="deleteParty.do?PARTY_ID=${party.PARTY_ID}"><button>소모임 제거</button></a>
 <a href="joinParty.do?PARTY_ID=${party.PARTY_ID}"><button>소모임가입</button></a>
 <a href="deletePartyMember.do?PARTY_ID=${party.PARTY_ID}" ><button>소모임탈퇴 </button></a>
 <a href="memberFav.do?PARTY_ID=${party.PARTY_ID}&USER_ID=${user.user_Id}"><button>찜하기</button></a>

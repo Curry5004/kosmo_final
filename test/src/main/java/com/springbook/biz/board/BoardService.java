@@ -8,5 +8,9 @@ public interface BoardService {
 	int getBoardCnt(BoardVO vo);
 	
 	void insertBoard(BoardVO vo);
+	
+	void updateBoard(BoardVO vo);
+	
+	void deleteBoard(BoardVO vo);
 
 }

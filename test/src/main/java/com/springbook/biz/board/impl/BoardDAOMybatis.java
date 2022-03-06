@@ -28,4 +28,12 @@ public class BoardDAOMybatis {
 		System.out. println ("===> Mybatis로 insertBoard() 기능 처리"); 
 		mybatis.insert("BoardDAO.insertBoard", vo);
 	}
+	public void updateBoard(BoardVO vo) {
+		System.out. println ("===> Mybatis로 updateBoard() 기능 처리"); 
+		mybatis.update("BoardDAO.updateBoard", vo);
+	}
+	public void deleteBoard(BoardVO vo) {
+		System.out. println ("===> Mybatis로 deleteBoard() 기능 처리"); 
+		mybatis.delete("BoardDAO.deleteBoard", vo);
+	}
 }

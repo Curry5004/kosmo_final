@@ -25,4 +25,14 @@ order by COUNT desc;
 where m.user_id=u.USER_ID and PARTY_ID="${PARTY_ID}"
 group by gender;
 </select>
+
+<delete id ="deletePartyMember" parameterType="member">
+	delete from member_list where USER_ID =#{USER_ID} and PARTY_ID=#{PARTY_ID}
+</delete>
+<insert id ="memberFav" parameterType="member">
+ 	insert into member_fav values (#{USER_ID},#{PARTY_ID})
+</insert>
+<select id="getJoinMemberList" resultType="member">
+	select name from member_list m join user u on m.user_id = u.user_id order by reg_date;
+</select>
 </mapper>

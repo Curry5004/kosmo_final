@@ -14,7 +14,7 @@ public class MemberListServiceImpl implements MemberListService{
 	MemberListDAO memberListDAO;
 	
 	public void joinParty(MemberListVO vo){
-	 memberListDAO.joinParty(vo);
+		memberListDAO.joinParty(vo);
 	}
 	
 	public List <MemberListVO> getMbtiList(MemberListVO vo){
@@ -22,6 +22,15 @@ public class MemberListServiceImpl implements MemberListService{
 	}
 	public List <MemberListVO> getGenderCount(MemberListVO vo){
 		return memberListDAO.getGenderCount(vo);
+	}
+	public void deletePartyMember(MemberListVO vo){
+			memberListDAO.deletePartyMember(vo);
+	}
+	public void memberFav(MemberListVO vo){
+			memberListDAO.memberFav(vo);
+	}
+	public List<MemberListVO> getJoinMemberList(MemberListVO vo){
+		return 	memberListDAO.getJoinMemberList(vo);
 	}
 	
 }

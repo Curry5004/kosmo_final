@@ -22,5 +22,14 @@ public class MemberListDAO {
 	public List<MemberListVO> getGenderCount(MemberListVO vo){
 		return mybatis.selectList("memberListDAO.getGenderCount",vo);
 	}
-	
+	public void deletePartyMember(MemberListVO vo){
+		mybatis.delete("memberListDAO.deletePartyMember",vo);
+	}
+	public void memberFav(MemberListVO vo){
+		mybatis.insert("memberListDAO.memberFav",vo);
+	}
+	public List<MemberListVO> getJoinMemberList(MemberListVO vo){
+		return  mybatis.selectList("memberListDAO.getJoinedMemberList",vo);
+	}
+
 }

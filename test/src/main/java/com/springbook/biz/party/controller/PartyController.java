@@ -83,7 +83,7 @@ public class PartyController {
 		PartyVO getVO =partyService.getParty(vo);
 		HttpSession session=request.getSession();
 		UserVO userVO=new UserVO();
-		userVO.setUserId("로그인미구현대체");
+		userVO.setUserId("ADMIN10");
 		session.setAttribute("user", userVO);
 		if(getVO==null){
 			return "error.jsp";
@@ -103,6 +103,8 @@ public class PartyController {
 		partyService.deleteParty(vo);
 		return "index.jsp";
 	}
+	
+	
 	
 }
                                                                                                                                                                                                 

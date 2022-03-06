@@ -7,8 +7,15 @@ public class MemberListVO {
 	private String MBTI_NAME;
 	private int COUNT;
 	private int GENDERCOUNT;
+	private String  NAME;
 	
 	
+	public String getNAME() {
+		return NAME;
+	}
+	public void setNAME(String nAME) {
+		NAME = nAME;
+	}
 	public int getGENDERCOUNT() {
 		return GENDERCOUNT;
 	}
@@ -48,6 +55,7 @@ public class MemberListVO {
 	@Override
 	public String toString() {
 		return "MemberListVO [USER_ID=" + USER_ID + ", PARTY_ID=" + PARTY_ID + ", PARTY_REQUEST=" + PARTY_REQUEST
-				+ ", MBTI_NAME=" + MBTI_NAME + ", COUNT=" + COUNT + ", GENDERCOUNT=" + GENDERCOUNT + "]";	
+				+ ", MBTI_NAME=" + MBTI_NAME + ", COUNT=" + COUNT + ", GENDERCOUNT=" + GENDERCOUNT + ", NAME=" + NAME
+				+ "]";
 	}
 }

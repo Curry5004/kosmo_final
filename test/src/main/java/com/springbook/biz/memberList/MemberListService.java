@@ -9,5 +9,11 @@ public interface MemberListService {
 	
 	public List<MemberListVO> getGenderCount(MemberListVO vo);
 	
+	public void deletePartyMember(MemberListVO vo);
+	
+	public void memberFav(MemberListVO vo);
+	
+	public List<MemberListVO> getJoinMemberList(MemberListVO vo);
+	
 }
 	

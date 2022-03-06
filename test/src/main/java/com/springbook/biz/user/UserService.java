@@ -1,8 +1,9 @@
 package com.springbook.biz.user;
 
-import java.util.List;
 
 public interface UserService {
-
-	List<UserVO> getUserList(UserVO vo);
+	//회원가입
+	public void insertUser(UserVO vo);
+	//아이디 중복 체크
+	public int idCheck(UserVO vo);
 }

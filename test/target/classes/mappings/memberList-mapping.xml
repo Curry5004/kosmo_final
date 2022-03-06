@@ -5,7 +5,7 @@
 
 <select id = "getMemberList" resultType="member">
 	select u.name, u.user_id,MBTI_NAME from member_list m join user u 
-	join mbti on m.user_id = u.user_id and u.mbti_id=mbti.MBTI_ID where party_id ="1"
+	join mbti on m.user_id = u.user_id and u.mbti_id=mbti.MBTI_ID where party_id ="${PARTY_ID}"
 	order by reg_date;
 </select>
 
@@ -36,4 +36,11 @@ group by gender;
 <select id="getJoinMemberList" resultType="member">
 	select name from member_list m join user u on m.user_id = u.user_id order by reg_date;
 </select>
+
+<select id="getFavList" resultType="member">
+	SELECT USER_ID FROM MEMBER_FAV WHERE PARTY_ID=${PARTY_ID}
+</select>
+<delete id ="deleteMemberFav" parameterType="member">
+	DELETE FROM MEMBER_FAV WHERE USER_ID = #{USER_ID} and PARTY_ID = #{PARTY_ID}
+</delete>
 </mapper>

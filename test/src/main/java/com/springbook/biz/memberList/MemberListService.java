@@ -13,7 +13,13 @@ public interface MemberListService {
 	
 	public void memberFav(MemberListVO vo);
 	
+	public void deleteMemberFav(MemberListVO vo);
+	
 	public List<MemberListVO> getJoinMemberList(MemberListVO vo);
+	
+	public List<MemberListVO> getFavList(MemberListVO vo);
+	
+	
 	
 }
 	

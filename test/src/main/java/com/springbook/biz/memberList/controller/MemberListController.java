@@ -1,6 +1,5 @@
 package com.springbook.biz.memberList.controller;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,4 +38,13 @@ public class MemberListController {
 			memberListService.memberFav(vo);
 			return "getParty.do?PARTY_ID="+vo.getPARTY_ID();
 	}
+	@RequestMapping("/deleteMemberFav.do")
+	public String deleteMemberFav(MemberListVO vo, Model model,HttpSession session){
+		System.out.println("찜하기 삭제 테스트 ");
+		UserVO user=(UserVO)session.getAttribute("user");
+		System.out.println("유저아이디: "+user.getUser_Id());
+		vo.setUSER_ID(user.getUser_Id());
+		memberListService.deleteMemberFav(vo);
+		return "getParty.do?PARTY_ID="+vo.getPARTY_ID();
+}
 }

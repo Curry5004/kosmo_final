@@ -2,6 +2,8 @@ package com.springbook.biz.party.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.w3c.dom.NameList;
 
 import com.springbook.biz.memberList.MemberListService;
 import com.springbook.biz.memberList.MemberListVO;
@@ -92,8 +95,25 @@ public class PartyController {
 		model.addAttribute("mbtiList", memberListService.getMbtiList(vo2));
 		model.addAttribute("getGenderCount",memberListService.getGenderCount(vo2));
 		model.addAttribute("party",getVO);
-		model.addAttribute("memberList", memberListService.getJoinMemberList(vo2));
-		System.out.println(memberListService.getJoinMemberList(vo2).toString());
+		List<MemberListVO> list=memberListService.getJoinMemberList(vo2);
+		model.addAttribute("memberList", list);
+
+		List<String> idList =new ArrayList<>();
+		for(MemberListVO v:list){
+			idList.add(v.getUSER_ID());
+		}
+		System.out.println(idList.toString());
+		model.addAttribute("idList",idList);
+		
+
+		List<MemberListVO> list2=memberListService.getFavList(vo2);
+		List<String> favList =new ArrayList<>();
+		for(MemberListVO v:list2){
+			favList.add(v.getUSER_ID());
+		}
+		System.out.println(favList.toString());
+		model.addAttribute("favList", favList);
+		
 		return "intro.jsp";
 		}
 		

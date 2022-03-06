@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,15 +28,24 @@
 <p> rate3 : ${party.PARTY_RATE3 }</p>
 
 <div  style="border: 1px solid black">${party.PARTY_INTRODUCE}</div>
-
+<c:if test="${memberList[0].USER_ID==sessionScope.user.user_Id}">
 <a href="deleteParty.do?PARTY_ID=${party.PARTY_ID}"><button>소모임 제거</button></a>
+</c:if>
+<c:if test="${!fn:contains(idList, sessionScope.user.user_Id)}">
 <a href="joinParty.do?PARTY_ID=${party.PARTY_ID}"><button>소모임가입</button></a>
+</c:if>
+<c:if test="${fn:contains(idList, sessionScope.user.user_Id)}">
 <a href="deletePartyMember.do?PARTY_ID=${party.PARTY_ID}" ><button>소모임탈퇴 </button></a>
+</c:if>
+<c:if test="${!fn:contains(favList, sessionScope.user.user_Id)}">
 <a href="memberFav.do?PARTY_ID=${party.PARTY_ID}&USER_ID=${user.user_Id}"><button>찜하기</button></a>
-
+</c:if>
+<c:if test="${fn:contains(favList, sessionScope.user.user_Id)}">
+<a href="deleteMemberFav.do?PARTY_ID=${party.PARTY_ID}&USER_ID=${user.user_Id}"><button>찜하기 취소</button></a>
+</c:if>
 <ul>
 <c:forEach var="member" items="${memberList}">
-<li>이름 : ${member.NAME} , : ${member.MBTI_NAME} </li>
+<li>이름 : ${member.NAME} , MBTI : ${member.MBTI_NAME} </li>
 </c:forEach>
 </ul>
 

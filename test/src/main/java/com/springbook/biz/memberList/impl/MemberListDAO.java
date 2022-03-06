@@ -25,8 +25,6 @@ public class MemberListDAO {
 		return mybatis.selectList("memberListDAO.getGenderCount",vo);
 	}
 	public void deletePartyMember(MemberListVO vo){
-		System.out.println("dao 유저아이디"+ vo.getUSER_ID());
-		System.out.println("dao 유저아이디"+ vo.getPARTY_ID());
 		mybatis.delete("memberListDAO.deletePartyMember",vo);
 	}
 	public void memberFav(MemberListVO vo){
@@ -34,6 +32,12 @@ public class MemberListDAO {
 	}
 	public List<MemberListVO> getJoinMemberList(MemberListVO vo){
 		return  mybatis.selectList("memberListDAO.getMemberList",vo);
+	}
+	public List<MemberListVO> getFavList(MemberListVO vo){
+		return mybatis.selectList("memberListDAO.getFavList",vo);
+	}
+	public void deleteMemberFav(MemberListVO vo){
+		mybatis.delete("memberListDAO.deleteMemberFav",vo);
 	}
 
 }

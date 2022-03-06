@@ -10,22 +10,22 @@ import com.springbook.biz.album.AlbumService;
 import com.springbook.biz.album.AlbumVO;
 
 @Service("albumService")
-public class AlbumServiceImpl implements AlbumService{
+public class AlbumServiceImpl implements AlbumService {
 	@Autowired
 	AlbumDAO albumDAO;
-	
+
 	@Override
 	public void insertAlbum(AlbumVO vo) {
 		albumDAO.insertAlbum(vo);
 	}
-	
+
 	@Override
 	public int getAlbumCnt(AlbumVO vo) {
 		return albumDAO.getAlbumCnt(vo);
 	}
-	
+
 	@Override
-	public List<AlbumVO> getAlbumList(Map<String,Object> map) {
-		return albumDAO.getAlbumList(map);
+	public List<AlbumVO> getAlbumList(AlbumVO vo) {
+		return albumDAO.getAlbumList(vo);
 	}
 }

@@ -61,7 +61,7 @@ public class AlbumController {
 		String changeName=oldName.replaceAll("\\\\", "\\\\\\\\"); //DB와 string에서 \를 인식 못하기 때문에 \\로 바꿔줘야함, \\를 인식하기 위해선 \\\\를 적어야함
 		vo.setAlb_img_path(changeName); //VO갱신
 		}
-		vo.setAlb_writer("admin02");
+		vo.setAlb_writer("admin2");
 		albumService.insertAlbum(vo);
 		return "/getAlbumList.do?party_id="+vo.getParty_id();
 	}
@@ -71,7 +71,6 @@ public class AlbumController {
 		
 		
 		 //vo.getPartId();
-		int party_id=vo.getParty_id();
 		int count = albumService.getAlbumCnt(vo);
 		String pageNo = page.getPageNo();
 		System.out.println(pageNo);
@@ -82,19 +81,17 @@ public class AlbumController {
 			currentPage = Integer.parseInt(pageNo);
 		}
 		int startRow = (currentPage-1) * listSize;
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("party_id", party_id);
-		map.put("startRow", startRow);
-		map.put("listSize", listSize);
+		
+		vo.setStartRow(startRow);
+		vo.setListSize(listSize);
 		System.out.println("시작번호"+startRow);
-		System.out.println(map);
 		
 		
 		PageVO pages = new PageVO(count, currentPage, listSize, pageSize);
 		System.out.println(pages.getTotal());
 		System.out.println(count);
 		 
-		List<AlbumVO> getList =albumService.getAlbumList(map);
+		List<AlbumVO> getList =albumService.getAlbumList(vo);
 		System.out.println(getList.toString());
 		model.addAttribute("albumList", getList);
 		model.addAttribute("pages", pages);

@@ -8,5 +8,5 @@ public interface AlbumService {
 	
 	public int getAlbumCnt(AlbumVO vo);
 	
-	public List<AlbumVO> getAlbumList(Map<String,Object> map);
+	public List<AlbumVO> getAlbumList(AlbumVO vo);
 }

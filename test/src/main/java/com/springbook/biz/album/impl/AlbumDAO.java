@@ -22,8 +22,10 @@ public class AlbumDAO {
 		return mybatis.selectOne("AlbumDAO.getAlbumCnt", vo);
 	}
 	
-	public List<AlbumVO> getAlbumList(Map<String,Object> map){
-		return mybatis.selectList("AlbumDAO.getAlbumList", map);
+	public List<AlbumVO> getAlbumList(AlbumVO vo){
+
+		System.out.println(vo.toString());
+		return mybatis.selectList("AlbumDAO.getAlbumList", vo);
 	}
 	
 }

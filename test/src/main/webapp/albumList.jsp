@@ -12,24 +12,17 @@
 	#imgArticle {
 		float: left;
 	}
+	#like{
+		color : red;
+		position: relative; bottom: 50px; right: 50px;
+	}
+	
 </style>
 <header>
 </header>
 <body>
 	
 <section>
-	
-	
-	
-	<div id="imgArticle">
-	<c:forEach items="${albumList}" var="album">
-		
-			<a href="getAlbum.jsp?alb_id=${album.alb_id}">
-			 <img src="${album.alb_img_path}" width=300 height=300 />
-			</a>
-	</c:forEach> 
-	</div>
-	
 	<div>
 	<c:if test="${pages.hasBoard()}">
 	<table>
@@ -58,6 +51,18 @@
 		<button onclick="location.href='writeAlbum.jsp?party_id=${param.party_id}';">첫 게시물 작성</button>
 	</c:if>
 	</div>
+	
+	
+	<div id="imgArticle">
+	<c:forEach items="${albumList}" var="album">
+			<a href="getAlbum.jsp?alb_id=${album.alb_id}">
+			 <img src="${album.alb_img_path}" width=300 height=300 />
+			<span id="like">${album.likeCnt}</span>
+			</a>
+	</c:forEach> 
+	</div>
+	
+	
 
 	
 </section>

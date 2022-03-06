@@ -12,6 +12,9 @@ public class AlbumVO {
 	private String alb_img_path;
 	private Date alb_reg_date;
 	private boolean alb_available;
+	private int likeCnt;
+	private int listSize;
+	private int startRow;
 	public int getAlb_id() {
 		return alb_id;
 	}
@@ -54,12 +57,32 @@ public class AlbumVO {
 	public void setAlb_available(boolean alb_available) {
 		this.alb_available = alb_available;
 	}
+	public int getLikeCnt() {
+		return likeCnt;
+	}
+	public void setLikeCnt(int likeCnt) {
+		this.likeCnt = likeCnt;
+	}
+	public int getListSize() {
+		return listSize;
+	}
+	public void setListSize(int listSize) {
+		this.listSize = listSize;
+	}
+	public int getStartRow() {
+		return startRow;
+	}
+	public void setStartRow(int startRow) {
+		this.startRow = startRow;
+	}
 	@Override
 	public String toString() {
 		return "AlbumVO [alb_id=" + alb_id + ", party_id=" + party_id + ", alb_writer=" + alb_writer + ", alb_img="
 				+ alb_img + ", alb_img_path=" + alb_img_path + ", alb_reg_date=" + alb_reg_date + ", alb_available="
-				+ alb_available + "]";
+				+ alb_available + ", likeCnt=" + likeCnt + ", listSize=" + listSize + ", startRow=" + startRow + "]";
 	}
+	
+	
 	
 	
 	

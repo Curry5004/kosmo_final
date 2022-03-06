@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.springbook.biz.user.UserService;
 import com.springbook.biz.user.UserVO;
@@ -28,7 +29,7 @@ public class UserController {
 		try{
 			if(result==1){
 				System.out.println("중복된 아이디입니다.");
-				return "/registry.do";
+				return "index.jsp";
 			} else if (result == 0){
 				if(vo.getMbti_root().getSize()!=0){
 					
@@ -113,13 +114,17 @@ public class UserController {
 		} catch(Exception e){
 			throw new RuntimeException();
 		}
-		return "redirect:/";
+		return "index.jsp";
 		
 		
 	}
+	//ajax http-> 자바로 변환 하는 어노테이션
+	@ResponseBody
 	@RequestMapping(value="/idCheck.do", method=RequestMethod.POST)
 	public int idCheck(UserVO vo){
+		System.out.println("아이디 체크 시작");
 		int result = userService.idCheck(vo);
+		System.out.println("아이디 체크  완료");
 		return result;
 	}
 }

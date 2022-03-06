@@ -7,13 +7,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 function fn_idChk(){
+	
+	var user_id = $("#user_Id").val();
+	console.log(user_id);
 	$.ajax({
-		url : "/member/idChk",
-		type : "post",
+		url : "idCheck.do",
+		type : "POST",
 		dataType : "json",
-		data : {"userId" : $("#userId").val()},
+		data : {"user_Id" : $("#user_Id").val()},
 		success : function(data){
 			if(data == 1){
 				alert("중복된 아이디입니다.");
@@ -37,9 +41,8 @@ function fn_idChk(){
                 <tr>
                     <td id="title">아이디</td>
                     <td>
-                        <input type="text" name="user_Id" maxlength="50">
-                        <span class="id_input_re_1">사용 가능한 아이디입니다.</span>
-						<span class="id_input_re_2">아이디가 이미 존재합니다.</span>
+                        <input type="text" name="user_Id" id="user_Id" maxlength="50">
+                        <button class="idChk" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
                     </td>
                 </tr>
                         
@@ -48,15 +51,6 @@ function fn_idChk(){
                     <td>
                         <input type="password" name="password" maxlength="50">
                     </td>
-                </tr>
-                
-                <tr>
-                	<!-- 
-                    <td id="title">비밀번호 확인</td>
-                    <td>
-                        <input type="password" name="passwordcheck" maxlength="50">
-                    </td>
-                     -->
                 </tr>
                     
                 <tr>

@@ -6,7 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.springbook.biz.main.CategoryVO;
+import com.springbook.biz.main.CategoryVO_;
 
 @Repository
 public class CategoryDAO {
@@ -14,7 +14,7 @@ public class CategoryDAO {
 	private SqlSessionTemplate mybatis;
 
 	// 카테고리 리스트 호출
-	public List<CategoryVO> getCategoryList(CategoryVO vo) {
+	public List<CategoryVO_> getCategoryList(CategoryVO_ vo) {
 		return mybatis.selectList("CategoryDAO.getCategoryList", vo);
 	}
 }

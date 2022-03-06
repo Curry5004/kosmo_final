@@ -27,8 +27,12 @@ public class MemberListController {
 		return "index.jsp";
 	}
 	@RequestMapping("/deletePartyMember.do")
-		public String deletePartyMember(MemberListVO vo, Model model){
+		public String deletePartyMember(MemberListVO vo, Model model,HttpServletRequest request){
 			System.out.println("파티멤버 탈퇴 ");
+			HttpSession session =request.getSession();
+			UserVO user=(UserVO)session.getAttribute("user");
+			System.out.println("유저아이디: "+user.getUser_Id());
+			vo.setUSER_ID(user.getUser_Id());
 			memberListService.deletePartyMember(vo);
 			return "getParty.do?PARTY_ID="+vo.getPARTY_ID();
 	}

@@ -8,8 +8,7 @@
 </head>
 <body>
 	<h1>인덱스</h1>
-	<a href="getuserList.do">회원 조회</a>
-	<a href="registry.do">회원가입</a>
+	<a href="registry_form.do">회원가입</a>
 	<a href="writeParty.do">소모임 작성</a>
 </body>
 </html>	

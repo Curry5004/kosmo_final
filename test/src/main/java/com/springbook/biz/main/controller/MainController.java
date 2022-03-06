@@ -22,9 +22,9 @@ public class MainController {
 		model.addAttribute("CategoryList",mainService.getCategoryList(vo2)); //카테고리리스트  model 추가
 		return "writeParty.jsp";
 	}
-	@RequestMapping(value="/registry.do", method=RequestMethod.GET)
+	@RequestMapping(value="/registry_form.do", method=RequestMethod.GET)
 	public String registryForm(MbtiVO vo,Model model){
-		System.out.println("로그인 페이지 진입 완료");
+//		System.out.println("로그인 페이지 진입 완료");
 		model.addAttribute("MbtiList",mainService.getMbtiList(vo)); //MbtiList model 추가
 		return "registryPage.jsp";
 	}

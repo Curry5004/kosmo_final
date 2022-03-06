@@ -28,7 +28,7 @@ public class UserController {
 		int result = userService.idCheck(vo);
 		try{
 			if(result==1){
-				System.out.println("중복된 아이디입니다.");
+//				System.out.println("중복된 아이디입니다.");
 				return "index.jsp";
 			} else if (result == 0){
 				if(vo.getMbti_root().getSize()!=0){
@@ -94,7 +94,7 @@ public class UserController {
 					} catch (IllegalStateException | IOException e) {
 						e.printStackTrace();
 					
-					System.out.println("프로필 이미지 에러 ");
+//					System.out.println("프로필 이미지 에러 ");
 					return "index.jsp";
 					}
 				
@@ -102,18 +102,19 @@ public class UserController {
 				String oldName =root + "\\" + ranFileName;	 //변경전 이름
 				String changeName=oldName.replaceAll("\\\\", "\\\\\\\\"); //DB와 string에서 \를 인식 못하기 때문에 \\로 바꿔줘야함, \\를 인식하기 위해선 \\\\를 적어야함
 				vo.setProfile_Image(changeName); //VO갱신
-				System.out.println("프로필 이미지 갱신완료");
+//				System.out.println("프로필 이미지 갱신완료");
 				}
 				
 				
-				System.out.println("회원가입 시작");
+//				System.out.println("회원가입 시작");
 				userService.insertUser(vo);
-				System.out.println("insert 완료");
+//				System.out.println("insert 완료");
 				return "index.jsp";
 			}
 		} catch(Exception e){
 			throw new RuntimeException();
 		}
+		System.out.println("에러발생");
 		return "index.jsp";
 		
 		
@@ -122,9 +123,9 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping(value="/idCheck.do", method=RequestMethod.POST)
 	public int idCheck(UserVO vo){
-		System.out.println("아이디 체크 시작");
+//		System.out.println("아이디 체크 시작");
 		int result = userService.idCheck(vo);
-		System.out.println("아이디 체크  완료");
+//		System.out.println("아이디 체크  완료");
 		return result;
 	}
 }

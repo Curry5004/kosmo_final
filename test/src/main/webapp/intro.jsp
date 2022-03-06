@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -21,6 +22,10 @@
 <li>${party.PARTY_PRE_MBTI4}</li>
 </ul>
 
+<p> rate1 : ${party.PARTY_RATE1 }</p>
+<p> rate2 : ${party.PARTY_RATE2 }</p>
+<p> rate3 : ${party.PARTY_RATE3 }</p>
+
 <div  style="border: 1px solid black">${party.PARTY_INTRODUCE}</div>
 
 <a href="deleteParty.do?PARTY_ID=${party.PARTY_ID}"><button>소모임제거</button></a>
@@ -29,10 +34,9 @@
 <a href="memberFav.do?PARTY_ID=${party.PARTY_ID}&USER_ID=${user.user_Id}"><button>찜하기</button></a>
 
 <ul>
-<li>${member[0].NAME} </li>
-<li>${member[1].NAME} </li>
-<li>${member[2].NAME} </li>
-<li>${member[3].NAME} </li>
+<c:forEach var="member" items="${memberList}">
+<li>이름 : ${member.NAME} , : ${member.MBTI_NAME} </li>
+</c:forEach>
 </ul>
 
      

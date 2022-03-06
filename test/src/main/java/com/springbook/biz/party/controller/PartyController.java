@@ -92,6 +92,8 @@ public class PartyController {
 		model.addAttribute("mbtiList", memberListService.getMbtiList(vo2));
 		model.addAttribute("getGenderCount",memberListService.getGenderCount(vo2));
 		model.addAttribute("party",getVO);
+		model.addAttribute("memberList", memberListService.getJoinMemberList(vo2));
+		System.out.println(memberListService.getJoinMemberList(vo2).toString());
 		return "intro.jsp";
 		}
 		

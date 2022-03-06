@@ -5,12 +5,13 @@
 
 <select id = "getMemberList" resultType="member">
 	select u.name, u.user_id,MBTI_NAME from member_list m join user u 
-	join mbti on m.user_id = u.user_id and u.mbti_id=mbti.MBTI_ID where party_id ="1";
+	join mbti on m.user_id = u.user_id and u.mbti_id=mbti.MBTI_ID where party_id ="1"
+	order by reg_date;
 </select>
 
 
 <insert id="insertMemberList" parameterType="member">
-	insert into member_list values (#{USER_ID},${PARTY_ID},false)
+	insert into member_list (USER_ID,PARTY_ID,PARTY_REQUEST) values (#{USER_ID},${PARTY_ID},false) 
 </insert>
 
 <select id="getMbtiList" resultType="member">

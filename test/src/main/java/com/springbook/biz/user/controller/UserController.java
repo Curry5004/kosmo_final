@@ -109,7 +109,7 @@ public class UserController {
 //				System.out.println("회원가입 시작");
 				userService.insertUser(vo);
 //				System.out.println("insert 완료");
-				return "index.jsp";
+				return "registryComplete.jsp";
 			}
 		} catch(Exception e){
 			throw new RuntimeException();

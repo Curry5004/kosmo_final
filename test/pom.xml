@@ -159,6 +159,23 @@
 			<version>4.7</version>
 			<scope>test</scope>
 		</dependency>
+		
+		<!-- 아이디 중복 검증용 JQuery-->
+		<!-- jackson --> 
+		<dependency> 
+			<groupId>com.fasterxml.jackson.core</groupId> 
+			<artifactId>jackson-core</artifactId> 
+			<version>2.9.2</version> 
+		</dependency>
+		<!-- 아이디 중복 검증용 JQuery-->
+		<!-- jackson-core --> 
+		<dependency> 
+			<groupId>com.fasterxml.jackson.core</groupId> 
+			<artifactId>jackson-databind</artifactId> 
+			<version>2.9.2</version> 
+		</dependency>
+
+
 	</dependencies>
 	<build>
 		<plugins>

@@ -1,7 +1,9 @@
 package com.springbook.biz.album.impl;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.springbook.biz.album.AlbumService;
@@ -15,5 +17,15 @@ public class AlbumServiceImpl implements AlbumService{
 	@Override
 	public void insertAlbum(AlbumVO vo) {
 		albumDAO.insertAlbum(vo);
+	}
+	
+	@Override
+	public int getAlbumCnt(AlbumVO vo) {
+		return albumDAO.getAlbumCnt(vo);
+	}
+	
+	@Override
+	public List<AlbumVO> getAlbumList(Map<String,Object> map) {
+		return albumDAO.getAlbumList(map);
 	}
 }

@@ -10,4 +10,15 @@
 	ALB_REG_DATE) 
 	VALUES(${party_id},#{alb_writer},#{alb_img_path},#{alb_reg_date})
 </insert>
+
+<select id="getAlbumCnt" resultType="int">
+	SELECT COUNT(*) FROM ALBUM WHERE PARTY_ID=#{party_id} AND ALB_AVAILABLE=TRUE;
+</select>
+
+<select id="getAlbumList" resultType="album">
+	SELECT * FROM ALBUM
+	WHERE ALB_AVAILABLE=TRUE AND PARTY_ID=#{party_id}
+	ORDER BY ALB_ID DESC
+	LIMIT #{listSize} OFFSET #{startRow}
+</select>
 </mapper>

@@ -2,6 +2,9 @@ package com.springbook.biz.album.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,14 +13,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.springbook.biz.album.AlbumService;
 import com.springbook.biz.album.AlbumVO;
+import com.springbook.biz.board.PageVO;
 
 @Controller
 public class AlbumController {
 	@Autowired
-	AlbumService albumservice;
+	AlbumService albumService;
 	
 	@RequestMapping("insertAlbum.do")
 	public String insertAlbum(AlbumVO vo,Model model,HttpServletRequest request){
@@ -57,7 +62,42 @@ public class AlbumController {
 		vo.setAlb_img_path(changeName); //VO갱신
 		}
 		vo.setAlb_writer("admin02");
-		albumservice.insertAlbum(vo);
-		return "index.jsp";
+		albumService.insertAlbum(vo);
+		return "/getAlbumList.do?party_id="+vo.getParty_id();
+	}
+	
+	@RequestMapping(value="/getAlbumList.do")
+	public String getBoardList(AlbumVO vo, Model model, PageVO page) {
+		
+		
+		 //vo.getPartId();
+		int party_id=vo.getParty_id();
+		int count = albumService.getAlbumCnt(vo);
+		String pageNo = page.getPageNo();
+		System.out.println(pageNo);
+		int currentPage = 1;
+		int listSize = 10;
+		int pageSize = 5;
+		if(pageNo != null) {
+			currentPage = Integer.parseInt(pageNo);
+		}
+		int startRow = (currentPage-1) * listSize;
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("party_id", party_id);
+		map.put("startRow", startRow);
+		map.put("listSize", listSize);
+		System.out.println("시작번호"+startRow);
+		System.out.println(map);
+		
+		
+		PageVO pages = new PageVO(count, currentPage, listSize, pageSize);
+		System.out.println(pages.getTotal());
+		System.out.println(count);
+		 
+		List<AlbumVO> getList =albumService.getAlbumList(map);
+		System.out.println(getList.toString());
+		model.addAttribute("albumList", getList);
+		model.addAttribute("pages", pages);
+		return "albumList.jsp";
 	}
 }

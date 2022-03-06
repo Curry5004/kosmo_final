@@ -5,12 +5,19 @@ import java.util.Date;
 import org.springframework.web.multipart.MultipartFile;
 
 public class AlbumVO {
+	private int alb_id;
 	private int party_id;
 	private String alb_writer;
 	private MultipartFile alb_img;
 	private String alb_img_path;
 	private Date alb_reg_date;
 	private boolean alb_available;
+	public int getAlb_id() {
+		return alb_id;
+	}
+	public void setAlb_id(int alb_id) {
+		this.alb_id = alb_id;
+	}
 	public int getParty_id() {
 		return party_id;
 	}
@@ -49,10 +56,11 @@ public class AlbumVO {
 	}
 	@Override
 	public String toString() {
-		return "AlbumVO [party_id=" + party_id + ", alb_writer=" + alb_writer + ", alb_img=" + alb_img
-				+ ", alb_img_path=" + alb_img_path + ", alb_reg_date=" + alb_reg_date + ", alb_available="
+		return "AlbumVO [alb_id=" + alb_id + ", party_id=" + party_id + ", alb_writer=" + alb_writer + ", alb_img="
+				+ alb_img + ", alb_img_path=" + alb_img_path + ", alb_reg_date=" + alb_reg_date + ", alb_available="
 				+ alb_available + "]";
 	}
+	
 	
 	
 	

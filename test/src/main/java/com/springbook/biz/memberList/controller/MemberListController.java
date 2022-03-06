@@ -18,8 +18,7 @@ public class MemberListController {
 	MemberListService memberListService;
 	
 	@RequestMapping("/joinParty.do")
-	public String joinParty(MemberListVO vo, Model model,HttpServletRequest request){
-		HttpSession session =request.getSession();
+	public String joinParty(MemberListVO vo, Model model,HttpSession session){
 		UserVO user=(UserVO)session.getAttribute("user");
 		System.out.println("유저아이디: "+user.getUser_Id());
 		vo.setUSER_ID(user.getUser_Id());
@@ -27,9 +26,8 @@ public class MemberListController {
 		return "index.jsp";
 	}
 	@RequestMapping("/deletePartyMember.do")
-		public String deletePartyMember(MemberListVO vo, Model model,HttpServletRequest request){
+		public String deletePartyMember(MemberListVO vo, Model model,HttpSession session){
 			System.out.println("파티멤버 탈퇴 ");
-			HttpSession session =request.getSession();
 			UserVO user=(UserVO)session.getAttribute("user");
 			System.out.println("유저아이디: "+user.getUser_Id());
 			vo.setUSER_ID(user.getUser_Id());

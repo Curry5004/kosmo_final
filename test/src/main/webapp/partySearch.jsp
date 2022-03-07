@@ -19,15 +19,15 @@
 			<option value ="외국/언어">공예/만들기</option>
 			<option value ="외국/언어">댄스/무용</option>
 			<option value ="봉사활동">봉사활동</option>
-			<option value ="외국/언어">사교/인맥</option>
-			<option value ="외국/언어">차/오토바이</option>
-			<option value ="외국/언어">사진/영상</option>
-			<option value ="외국/언어">야구관람</option>
-			<option value ="외국/언어">게임/오락</option>
-			<option value ="외국/언어">요리/제조</option>
-			<option value ="외국/언어">뱐려동물</option>
-			<option value ="외국/언어">가족/결혼</option>
-			<option value ="외국/언어">자유주제</option>
+			<option value ="사교/인맥">사교/인맥</option>
+			<option value ="차/오토바이">차/오토바이</option>
+			<option value ="사진/영상">사진/영상</option>
+			<option value ="야구관람">야구관람</option>
+			<option value ="게임/오락">게임/오락</option>
+			<option value ="요리/제조">요리/제조</option>
+			<option value ="뱐려동물">뱐려동물</option>
+			<option value ="가족/결혼">가족/결혼</option>
+			<option value ="자유주제">자유주제</option>
 		</select>
 		<br />
 		<input name="SEARCH_KEYWORD" type="text"></input>

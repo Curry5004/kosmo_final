@@ -12,5 +12,6 @@ public interface BoardService {
 	void updateBoard(BoardVO vo);
 	
 	void deleteBoard(BoardVO vo);
+	
 
 }

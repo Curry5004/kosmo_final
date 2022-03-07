@@ -20,7 +20,7 @@
 		<mapper resource="mappings/mbti-mapping.xml"></mapper>
 		<mapper resource="mappings/party-mapping.xml"></mapper>
 		<mapper resource="mappings/memberList-mapping.xml"></mapper>
-		<mapper resource="mappings/board-mapping.xml" />
+		<mapper resource="mappings/board-mapping.xml"></mapper>
 	</mappers>
 	
 </configuration>

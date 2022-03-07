@@ -24,5 +24,8 @@ public class BoardDAOMybatis {
 		System.out.println("==> Mybatis getBoardCnt");
 		return mybatis.selectOne("BoardDAO.getBoardCnt", vo);
 	}
-	
+	public void insertBoard(BoardVO vo) {
+		System.out. println ("===> Mybatis로 insertBoard() 기능 처리"); 
+		mybatis.insert("BoardDAO.insertBoard", vo);
+	}
 }

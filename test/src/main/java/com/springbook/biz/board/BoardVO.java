@@ -2,12 +2,15 @@ package com.springbook.biz.board;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class BoardVO {
 	private int art_id;
 	private int party_id; 
 	private String art_title; 
 	private String art_writer;
 	private String art_content;
+	private MultipartFile art_img;
 	private String art_img_path;
 	private int art_view_cnt; 
 	private Date art_reg_date;
@@ -72,6 +75,12 @@ public class BoardVO {
 	}
 	public void setArt_available(boolean art_available) {
 		this.art_available = art_available;
+	}
+	public MultipartFile getArt_img() {
+		return art_img;
+	}
+	public void setArt_img(MultipartFile art_img) {
+		this.art_img = art_img;
 	}
 	
 	

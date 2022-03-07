@@ -101,6 +101,7 @@
         }else{
             month = month - 1;
         }
+        window.location.href='http://localhost:8081/biz/index.jsp?month='+(month+1)+"year="+year;
         this.drawHeader(1);
         this.drawDays();
     };

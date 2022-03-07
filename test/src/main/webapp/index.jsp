@@ -12,6 +12,9 @@
 	<a href="writeParty.do">소모임 작성</a>
 	<a href="getParty.do?PARTY_ID=1">소모임상세글</a>
 	<a href="writeSchedule.jsp">스케쥴 생성</a>
+	<a href="boardWrite.jsp">게시글 작성</a>
+	<a href="writeAlbum.jsp?party_id=1">앨범 작성</a>
+	<a href="getAlbumList.do?party_id=1">앨범목록</a>
 	
 </body>
 </html>

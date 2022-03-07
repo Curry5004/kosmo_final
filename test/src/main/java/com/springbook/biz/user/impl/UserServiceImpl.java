@@ -31,11 +31,8 @@ public class UserServiceImpl implements UserService {
 		boolean result = userDAO.loginCheck(vo);
 		if (result) { // true일 경우 세션에 등록
 			UserVO vo2 = viewUser(vo);
-
-			// 세션 변수 등록
-			// 세션변수는 우선 user_Id만 삽입.
-			// 혹시나 해서 location 넣어봤는데 삽입 정상적으로 됨. session에 필요한 정보 있으면 이렇게 넣을 수 있을
-			// 듯
+			
+			
 			session.setAttribute("user", vo2);
 		}
 		return result;

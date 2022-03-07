@@ -182,12 +182,16 @@ public class UserController {
 	// 로그아웃 처리
 	@RequestMapping("/logout.do")
 	public ModelAndView logout(HttpSession session) {
-		System.out.println("로그아웃");
 		userService.logout(session);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("index.jsp");
 		// mav.addObject("msg", "logout");
 		System.out.println("로그아웃 완료");
 		return mav;
+	}
+	
+	//로그인 필요한 작업 수행할 때 Session에서 들어가있는 UserVO 리턴받기.
+	public UserVO loginedUser(HttpSession session){
+		return (UserVO) session.getAttribute("user");
 	}
 }

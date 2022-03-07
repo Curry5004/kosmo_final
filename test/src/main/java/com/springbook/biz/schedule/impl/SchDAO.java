@@ -12,8 +12,8 @@ public class SchDAO {
 	SqlSession mybatis;
 	
 	public void insertSchedule(SchVO vo){
-		System.out.println(vo.getSch_title());
-		mybatis.insert("SchDAO.insertSchDAO",vo);
+		System.out.println(vo.getParty_id());
+		mybatis.insert("schDAO.insertSchDAO",vo);
 	}
 
 }

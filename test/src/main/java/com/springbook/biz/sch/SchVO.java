@@ -2,6 +2,8 @@ package com.springbook.biz.sch;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class SchVO {
 	private int sch_id;
 	private String user_id;
@@ -12,6 +14,7 @@ public class SchVO {
 	private String sch_location;
 	private String sch_note;
 	private int sch_member_count;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date sch_date;
 	private boolean sch_avliable;
 	private String member_id;

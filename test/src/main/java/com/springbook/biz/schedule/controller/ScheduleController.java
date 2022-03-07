@@ -17,6 +17,7 @@ public class ScheduleController {
 	public String insertSchedule(SchVO vo,Model model){
 		System.out.println(vo.getSch_date());
 		scheduleService.insertSchedule(vo);
+		
 		return "index.jsp";
 	}
 	

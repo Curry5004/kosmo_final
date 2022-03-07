@@ -18,7 +18,7 @@ public class UserVO {
 	private MultipartFile profile_root;
 	private String profile_Image;
 	private Date modified_Day;
-	private boolean userAvailable;
+	private boolean user_Available;
 	// mbti 이미지 업로드용
 	private MultipartFile mbti_root;
 	private String mbti_Path;
@@ -112,12 +112,13 @@ public class UserVO {
 		this.modified_Day = modified_Day;
 	}
 
-	public boolean isUserAvailable() {
-		return userAvailable;
+
+	public boolean isUser_Available() {
+		return user_Available;
 	}
 
-	public void setUserAvailable(boolean userAvailable) {
-		this.userAvailable = userAvailable;
+	public void setUser_Available(boolean user_Available) {
+		this.user_Available = user_Available;
 	}
 
 	public String getMbti_Path() {
@@ -159,7 +160,7 @@ public class UserVO {
 		return "UserVO [user_Id=" + user_Id + ", name=" + name + ", password=" + password + ", birthDay=" + birthDay
 				+ ", gender=" + gender + ", location=" + location + ", phone_Num=" + phone_Num + ", join_Date="
 				+ join_Date + ", admin=" + admin + ", profile_root=" + profile_root + ", profile_Image=" + profile_Image
-				+ ", modified_Day=" + modified_Day + ", userAvailable=" + userAvailable + ", mbti_root=" + mbti_root
+				+ ", modified_Day=" + modified_Day + ", userAvailable=" + user_Available + ", mbti_root=" + mbti_root
 				+ ", mbti_Path=" + mbti_Path + ", mbti_Id=" + mbti_Id + "]";
 	}
 

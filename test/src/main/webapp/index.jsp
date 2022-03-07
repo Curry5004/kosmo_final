@@ -21,7 +21,7 @@
 	<a href="boardWrite.jsp">게시글 작성</a>
 	<a href="writeAlbum.jsp?party_id=1">앨범 작성</a>
 	<br/>
-	<a href="getUserInfo.do">회원 정보 가져오기</a>
+	<a href="mypage/getUserInfo.do">회원 정보 가져오기</a>
 	
 </body>
 </html>

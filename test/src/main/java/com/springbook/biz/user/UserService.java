@@ -16,4 +16,6 @@ public interface UserService {
 	
 	// 회원 로그아웃
 	public void logout(HttpSession session);
+	
+	
 }

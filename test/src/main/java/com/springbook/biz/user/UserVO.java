@@ -11,7 +11,7 @@ public class UserVO {
 	private String birthDay;
 	private String gender;
 	private String location;
-	private int phone_Num;
+	private String phone_Num;
 	private Date join_Date;
 	private boolean admin;
 	// profile 이미지 업로드용
@@ -23,6 +23,8 @@ public class UserVO {
 	private MultipartFile mbti_root;
 	private String mbti_Path;
 	private String mbti_Id;
+	// mbti 값 받기 용
+	private String MBTI_NAME;
 
 	public String getUser_Id() {
 		return user_Id;
@@ -72,11 +74,11 @@ public class UserVO {
 		this.location = location;
 	}
 
-	public int getPhone_Num() {
+	public String getPhone_Num() {
 		return phone_Num;
 	}
 
-	public void setPhone_Num(int phone_Num) {
+	public void setPhone_Num(String phone_Num) {
 		this.phone_Num = phone_Num;
 	}
 
@@ -152,6 +154,14 @@ public class UserVO {
 
 	public void setMbti_root(MultipartFile mbti_root) {
 		this.mbti_root = mbti_root;
+	}
+
+	public String getMBTI_NAME() {
+		return MBTI_NAME;
+	}
+
+	public void setMBTI_NAME(String mBTI_NAME) {
+		MBTI_NAME = mBTI_NAME;
 	}
 
 	@Override

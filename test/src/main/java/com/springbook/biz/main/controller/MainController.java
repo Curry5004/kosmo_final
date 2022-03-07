@@ -1,6 +1,8 @@
 package com.springbook.biz.main.controller;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -36,4 +38,5 @@ public class MainController {
 		model.addAttribute("MbtiList",mainService.getMbtiList(vo)); //MbtiList model 추가
 		return "registryPage.jsp";
 	}
+	
 }

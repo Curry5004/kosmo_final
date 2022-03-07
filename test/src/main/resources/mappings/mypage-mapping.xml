@@ -5,9 +5,13 @@
 
 
 <select id = "getUserInfo" resultType="user">
-	select * 
-	from user
-	WHERE USER_ID = '${user_Id}'
+	select user_id, NAME, PASSWORD, BIRTHDAY, 
+	GENDER, LOCATION, PHONE_NUM, JOIN_DATE, PROFILE_IMAGE
+	,MODIFIED_DAY, MBTI_NAME
+	from user as u
+	join mbti as m
+	on u.mbti_id=m.mbti_id
+    where USER_ID=#{user_Id};
 </select>
 
 </mapper>

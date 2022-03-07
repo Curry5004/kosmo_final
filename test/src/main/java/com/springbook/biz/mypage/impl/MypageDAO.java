@@ -12,7 +12,6 @@ public class MypageDAO {
 	private SqlSessionTemplate mybatis;
 	
 	public UserVO getUserInfo(UserVO vo){
-		System.out.println("마이바티스 userInfo 진입");
 		return mybatis.selectOne("MypageDAO.getUserInfo", vo);
 	}
 

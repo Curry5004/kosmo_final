@@ -12,20 +12,21 @@ import com.springbook.biz.mypage.MypageService;
 import com.springbook.biz.user.UserVO;
 
 @Controller
+@RequestMapping("/mypage")
 public class MypageController {
 	@Autowired
 	MypageService mypageService;
 	
 	@RequestMapping("/getUserInfo.do")
 	public String getParty(UserVO vo,Model model,HttpServletRequest request){
-		System.out.println(vo.toString());
+		//로그인 된 객체 받아오기.
 		HttpSession session=request.getSession();
-		String user_Id = (String) session.getAttribute("user_Id");
-		vo.setUser_Id(user_Id);
-		System.out.println(vo.toString());
-		UserVO getUserVO = mypageService.getUserInfo(vo);
-		System.out.println(getUserVO.toString());
-		model.addAttribute("user",getUserVO);
+		UserVO vo2 = (UserVO) session.getAttribute("user");
+		
+		//user의 mbti 정보가 id만 있어서 쿼리로 join 한 후 mbti 정보를 가져온다.
+		UserVO vo3 = 
+		model.addAttribute("user",vo2);
+		System.out.println(vo2.toString());
 		return "mypageInfo.jsp";
 	}
 

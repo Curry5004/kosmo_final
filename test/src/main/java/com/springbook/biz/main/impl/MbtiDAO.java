@@ -17,4 +17,5 @@ public class MbtiDAO {
 	public List<MbtiVO> getMbtiList(MbtiVO vo){
 		return mybatis.selectList("MbtiDAO.getMbtiList", vo);
 	}
+
 }

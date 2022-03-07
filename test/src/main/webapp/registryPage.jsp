@@ -63,8 +63,8 @@ function fn_idChk(){
                 <tr>
                     <td id="title">성별</td>
                     <td>
-                        <input type="radio" name="gender" value="male" checked>남
-                        <input type="radio" name="gender" value="female" checked>여
+                        <input type="radio" name="gender" value="남" checked>남
+                        <input type="radio" name="gender" value="여" checked>여
                     </td>
                 </tr>
                     
@@ -118,7 +118,7 @@ function fn_idChk(){
                 </tr>
             </table>
             <br>
-            <input type="submit" value="가입"/>  <input type="button" value="취소">
+            <input type="submit" value="가입"/>
         </form>
     </div>
 </body>

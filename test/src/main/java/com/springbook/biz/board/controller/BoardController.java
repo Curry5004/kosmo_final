@@ -93,7 +93,7 @@ public class BoardController {
 		vo.setArt_img_path(changeName); //VO갱신
 		}
 		boardService.insertBoard(vo);
-		return "boardWrite.jsp";
+		return "index.jsp";
 	}
 	@RequestMapping(value="update.do", method=RequestMethod.POST)
 	public String updateBoard(BoardVO vo, Model model, HttpServletRequest request) {

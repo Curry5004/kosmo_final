@@ -57,8 +57,7 @@ public class PartyController {
 		
 		//VO 필드변경
 		String oldName =root + "\\" + ranFileName;	 //변경전 이름
-		String changeName=oldName.replaceAll("\\\\", "\\\\\\\\"); //DB와 string에서 \를 인식 못하기 때문에 \\로 바꿔줘야함, \\를 인식하기 위해선 \\\\를 적어야함
-		vo.setPARTY_TUMB_PATH(changeName); //VO갱신
+		vo.setPARTY_TUMB_PATH(oldName); //VO갱신
 		}
 		
 		partyService.insertParty(vo); //DB 갱신
@@ -70,7 +69,7 @@ public class PartyController {
 		PartyVO getVO =partyService.getParty(vo);
 		HttpSession session=request.getSession();
 		UserVO userVO=new UserVO();
-		userVO.setUserId("로그인미구현대체");
+		userVO.setUser_Id("로그인미구현대체");
 		session.setAttribute("user", userVO);
 		if(getVO==null){
 			return "error.jsp";

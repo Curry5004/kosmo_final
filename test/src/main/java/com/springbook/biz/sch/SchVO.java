@@ -16,7 +16,7 @@ public class SchVO {
 	private int sch_member_count;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date sch_date;
-	private boolean sch_avliable;
+	private boolean sch_available;
 	private String member_id;
 	private int rate1;
 	private int rate2;
@@ -81,11 +81,11 @@ public class SchVO {
 	public void setSch_date(Date sch_date) {
 		this.sch_date = sch_date;
 	}
-	public boolean isSch_avalible() {
-		return sch_avliable;
+	public boolean isSch_available() {
+		return sch_available;
 	}
-	public void setSch_avalible(boolean sch_avalible) {
-		this.sch_avliable = sch_avalible;
+	public void setSch_available(boolean sch_available) {
+		this.sch_available = sch_available;
 	}
 	public String getMember_id() {
 		return member_id;
@@ -116,8 +116,9 @@ public class SchVO {
 		return "SchVO [sch_id=" + sch_id + ", user_id=" + user_id + ", party_id=" + party_id + ", sch_title="
 				+ sch_title + ", sch_writer=" + sch_writer + ", sch_content=" + sch_content + ", sch_location="
 				+ sch_location + ", sch_note=" + sch_note + ", sch_member_count=" + sch_member_count + ", sch_date="
-				+ sch_date + ", sch_avalible=" + sch_avliable + ", member_id=" + member_id + ", rate1=" + rate1
+				+ sch_date + ", sch_available=" + sch_available + ", member_id=" + member_id + ", rate1=" + rate1
 				+ ", rate2=" + rate2 + ", rate3=" + rate3 + "]";
 	}
+	
 
 }

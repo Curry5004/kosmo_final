@@ -6,9 +6,9 @@
 <insert id ="insertSchDAO" parameterType="schedule">
 	insert into schedule ( PARTY_ID, SCH_TITLE,
 	 SCH_WRITER, SCH_CONTENT, SCH_LOCATION, SCH_NOTE,
-	  SCH_MEMBER_COUNT, SCH_DATE, SCH_AVLILABLE) values
+	  SCH_MEMBER_COUNT, SCH_DATE, SCH_AVAILABLE) values
 	 (#{party_id},
 	#{sch_title},#{sch_writer},#{sch_content},#{sch_location},
-	#{sch_note},#{sch_member_count},#{sch_date},#{sch_avliable})
+	#{sch_note},#{sch_member_count},#{sch_date},#{sch_available})
 </insert>
 </mapper>

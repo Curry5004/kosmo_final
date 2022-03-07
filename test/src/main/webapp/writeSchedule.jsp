@@ -19,7 +19,7 @@
  	
  	<div>위치 : <input type="text" placeholder="장소를 입력해주세요." name="sch_location" id="location"/></div>
  	
- 	<div> <input type="date" name="sch_date"/></div>
+ 	<div> <input type="Date" name="sch_date"/></div>
  		<input type="hidden" name="party_id" value="1"/>
  	 <select id="member_count" name="sch_member_count">
  	 <option value="null">-참가인원수-</option>

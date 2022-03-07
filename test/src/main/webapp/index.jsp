@@ -15,6 +15,5 @@
 	<a href="writeAlbum.jsp?party_id=1">앨범 작성</a>
 	<a href="getAlbumList.do?party_id=1">앨범목록</a>
 	
-	
 </body>
 </html>

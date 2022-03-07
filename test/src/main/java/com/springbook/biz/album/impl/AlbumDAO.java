@@ -33,8 +33,16 @@ public class AlbumDAO {
 	}
 	
 	public void likeUp(AlbumVO vo){
-		System.out.println("작성자 : "+vo.getAlb_writer()+" id: "+vo.getAlb_id()+"파티 "+vo.getParty_id());
+		System.out.println("작성자 : "+vo.getUser_id()+" id: "+vo.getAlb_id()+"파티 "+vo.getParty_id());
 		mybatis.insert("AlbumDAO.likeUp",vo);
+	}
+	
+	public List<AlbumVO> getLikeList(AlbumVO vo){
+		return mybatis.selectList("AlbumDAO.getLikeList", vo);
+	}
+	
+	public void likeDown(AlbumVO vo){
+		mybatis.insert("AlbumDAO.likeDown",vo);
 	}
 	
 }

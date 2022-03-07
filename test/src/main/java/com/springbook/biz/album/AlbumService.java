@@ -13,4 +13,8 @@ public interface AlbumService {
 	public AlbumVO getAlbum(AlbumVO vo);
 	
 	public void likeUp(AlbumVO vo);
+	
+	public void likeDown(AlbumVO vo);
+	
+	public List<AlbumVO> getLikeList(AlbumVO vo);
 }

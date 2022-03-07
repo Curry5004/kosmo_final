@@ -2,7 +2,9 @@ package com.springbook.biz.album.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,14 +17,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.springbook.biz.album.AlbumService;
 import com.springbook.biz.album.AlbumVO;
+import com.springbook.biz.albumComment.AlbumCommentService;
+import com.springbook.biz.albumComment.AlbumCommentVO;
 import com.springbook.biz.board.PageVO;
-import com.springbook.biz.party.PartyVO;
 import com.springbook.biz.user.UserVO;
 
 @Controller
 public class AlbumController {
 	@Autowired
 	AlbumService albumService;
+	
+	@Autowired
+	AlbumCommentService albumcommentService;
 	
 	@RequestMapping("insertAlbum.do")
 	public String insertAlbum(AlbumVO vo,Model model,HttpServletRequest request){
@@ -61,7 +67,7 @@ public class AlbumController {
 		String changeName=oldName.replaceAll("\\\\", "\\\\\\\\"); //DB와 string에서 \를 인식 못하기 때문에 \\로 바꿔줘야함, \\를 인식하기 위해선 \\\\를 적어야함
 		vo.setAlb_img_path(changeName); //VO갱신
 		}
-		vo.setAlb_writer("admin2");
+		vo.setUser_id("admin2");
 		albumService.insertAlbum(vo);
 		return "/getAlbumList.do?party_id="+vo.getParty_id();
 	}
@@ -97,21 +103,57 @@ public class AlbumController {
 	}
 	
 	@RequestMapping("getAlbum.do")
-	public String getAlbum(PartyVO vo,AlbumVO vo2,Model model,HttpSession session){
+	public String getAlbum(AlbumVO vo,AlbumCommentVO vo2,Model model,HttpSession session){
 		UserVO userVO=new UserVO();
 		userVO.setUserId("ADMIN10");
 		session.setAttribute("user", userVO);
-		model.addAttribute("album", albumService.getAlbum(vo2));
+		model.addAttribute("album", albumService.getAlbum(vo));
+		Map<String, AlbumVO> likeList=new HashMap<String, AlbumVO>();
+		
+		for(AlbumVO albumVO:albumService.getLikeList(vo)){
+			likeList.put(albumVO.getUser_id(), albumVO);
+		}
+		System.out.println("맵 테스트 :"+likeList);
+		model.addAttribute("likeList", likeList);
+		System.out.println("앨범좋아요 리스트 : " +albumService.getLikeList(vo).toString());
+		
+		model.addAttribute("commentList", albumcommentService.getAlbumCommentList(vo2));
+		System.out.println("댓글리스트 : "+albumcommentService.getAlbumCommentList(vo2));
 		
 		return "readAlbum.jsp";
 	}
 	
 	@RequestMapping("likeUp.do")
-	public String likeUp(AlbumVO vo,Model model){
+	public String likeUp(AlbumVO vo,Model model,HttpSession session){
 		
-		
+		UserVO userVO=(UserVO)session.getAttribute("user");
+		vo.setUser_id(userVO.getUser_Id());
 		albumService.likeUp(vo);
-		System.out.println(vo.getAlb_id());
 		return "getAlbum.do?alb_id="+vo.getAlb_id();
 	}
+	@RequestMapping("likeDown.do")
+	public String likeDown(AlbumVO vo,Model model,HttpSession session){
+		
+		UserVO userVO=(UserVO)session.getAttribute("user");
+		vo.setUser_id(userVO.getUser_Id());
+		albumService.likeDown(vo);
+		return "getAlbum.do?alb_id="+vo.getAlb_id();
+	}
+	
+	@RequestMapping("writeAlbumComment.do")
+	public String writeAlbumComment(AlbumCommentVO vo,Model model,HttpSession session){
+		UserVO userVO=(UserVO)session.getAttribute("user");
+		vo.setUser_id(userVO.getUser_Id());
+		albumcommentService.writeAlbumComment(vo);
+		return "getAlbum.do?alb_id="+vo.getAlb_id();
+	}
+	
+	@RequestMapping("deleteAlbumComment.do")
+	public String deleteAlbumComment(AlbumCommentVO vo,Model model,HttpSession session){
+		UserVO userVO=(UserVO)session.getAttribute("user");
+		vo.setUser_id(userVO.getUser_Id());
+		albumcommentService.deleteAlbumComment(vo);
+		return "getAlbum.do?alb_id="+vo.getAlb_id();
+	}
+	
 }

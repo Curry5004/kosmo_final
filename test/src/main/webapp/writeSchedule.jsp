@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>½ºÄÉÁì ÀÛ¼º</title>
+<title>ìŠ¤ì¼€ì¥´ ìž‘ì„±</title>
 </head>
 
 
@@ -13,27 +13,27 @@
 
 
  <form action="insertSchedule.do" method="POST" name="sch_form">
- 	<div>Á¤¸ðÀÌ¸§ : <input type="text" placeholder="Á¦¸ñÀ» ÀÛ¼ºÇØÁÖ¼¼¿ä." name="sch_title" id="title"/></div>
+ 	<div>ì •ëª¨ì´ë¦„ : <input type="text" placeholder="ì œëª©ì„ ìž‘ì„±í•´ì£¼ì„¸ìš”." name="sch_title" id="title"/></div>
  	
- 	<div>ÁÖÃÖÀÚ : <input type="text" placeholder="ÁÖÃÖÀÚ ÀÌ¸§À» Àû¾îÁÖ¼¼¿ä." name="sch_writer" id="partyMember"></div>
+ 	<div>ì£¼ìµœìž : <input type="text" placeholder="ì£¼ìµœìž ì´ë¦„ì„ ì ì–´ì£¼ì„¸ìš”." name="sch_writer" id="partyMember"></div>
  	
- 	<div>À§Ä¡ : <input type="text" placeholder="Àå¼Ò¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä." name="sch_location" id="location"/></div>
+ 	<div>ìœ„ì¹˜ : <input type="text" placeholder="ìž¥ì†Œë¥¼ ìž…ë ¥í•´ì£¼ì„¸ìš”." name="sch_location" id="location"/></div>
  	
  	<div> <input type="Date" name="sch_date"/></div>
  		<input type="hidden" name="party_id" value="1"/>
  	 <select id="member_count" name="sch_member_count">
- 	 <option value="null">-Âü°¡ÀÎ¿ø¼ö-</option>
+ 	 <option value="null">-ì°¸ê°€ì¸ì›ìˆ˜-</option>
 	<%for(int i=1; i<=10;i++){ %>
-	<option value="<%=i%>"><%=i +"¸í"%></option>
+	<option value="<%=i%>"><%=i +"ëª…"%></option>
 	<%} %>
 	</select>
 	
 
- <p><textarea cols="50" rows="10" placeholder="³»¿ëÀ» ÀÛ¼ºÇØÁÖ¼¼¿ä." id="content" name="sch_content"></textarea></p>
+ <p><textarea cols="50" rows="10" placeholder="ë‚´ìš©ì„ ìž‘ì„±í•´ì£¼ì„¸ìš”." id="content" name="sch_content"></textarea></p>
  
-<div><input type="text" placeholder="°£´ÜÇÑ ¸Þ¸ð´Â ¿©±â¿¡~!"  name="sch_note"/></div>
+<div><input type="text" placeholder="ê°„ë‹¨í•œ ë©”ëª¨ëŠ” ì—¬ê¸°ì—~!"  name="sch_note"/></div>
 
-<div><input type="submit" value="Á¤¸ð »ý¼ºÇÏ±â" /></div>
+<div><input type="submit" value="ì •ëª¨ ìƒì„±í•˜ê¸°" /></div>
  	</form>
 
 </body>

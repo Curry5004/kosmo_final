@@ -29,8 +29,8 @@
 	</select>
 	
 	<select id="viewUser" resultType="user">
-		SELECT *
-		FROM user
+		SELECT USER_ID, NAME, PASSWORD, BIRTHDAY, GENDER, LOCATION, PHONE_NUM, JOIN_DATE, PROFILE_IMAGE, USER_AVAILABLE, MBTI_PATH 
+		FROM user                                                                                                      
 		WHERE user_Id = #{user_Id} AND password = #{password};
 	</select>
 	

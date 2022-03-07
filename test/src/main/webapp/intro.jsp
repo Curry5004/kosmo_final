@@ -56,12 +56,12 @@
 <script>new Chart(document.getElementById("doughnut-chart"), {
     type: 'doughnut',
     data: { 
-      labels: ['${mbtiList[1].MBTI_NAME}','${mbtiList[2].MBTI_NAME}','${mbtiList[3].MBTI_NAME}','${{mbtiList[4].MBTI_NAME}}'],
+      labels: ['${mbtiList[0].MBTI_NAME}','${mbtiList[1].MBTI_NAME}','${mbtiList[2].MBTI_NAME}','${{mbtiList[3].MBTI_NAME}}'],
       datasets: [
         {
           label: 'MBTI',
           backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-          data: ['${mbtiList[1].COUNT}','${mbtiList[2].COUNT}','${mbtiList[3].COUNT}','${mbtiList[4].COUNT}']
+          data: ['${mbtiList[0].COUNT}','${mbtiList[1].COUNT}','${mbtiList[2].COUNT}','${mbtiList[3].COUNT}']
         }
       ]
     },

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="schDAO">
+
+<insert id ="insertSchDAO" parameterType="schedule">
+	insert into schedule (SCH_ID, PARTY_ID, SCH_TITLE,
+	 SCH_WRITER, SCH_CONTENT, SCH_LOCATION, SCH_NOTE,
+	  SCH_MEMBER_COUNT, SCH_DATE, SCH_AVLILABLE) values
+	 (#{sch_id},#{party_id},
+	#{sch_title},#{sch_writer},#{sch_content},#{sch_location},
+	#{sch_note},#{sch_member_count},#{sch_date},#{sch_avliable})
+</insert>
+</mapper>

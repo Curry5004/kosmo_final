@@ -24,8 +24,7 @@ public class MypageController {
 		UserVO vo2 = (UserVO) session.getAttribute("user");
 		
 		//user의 mbti 정보가 id만 있어서 쿼리로 join 한 후 mbti 정보를 가져온다.
-		UserVO vo3 = 
-		model.addAttribute("user",vo2);
+		
 		System.out.println(vo2.toString());
 		return "mypageInfo.jsp";
 	}

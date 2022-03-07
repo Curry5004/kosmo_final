@@ -7,7 +7,7 @@
 	SELECT * FROM PARTY 
 	WHERE
 		1=1
-	AND PARTY_AVAILABLE = TRUE
+		AND PARTY_AVAILABLE = TRUE
 	<if test="!@org.springframework.util.ObjectUtils@isEmpty(CATEGORY_NAME)">
 		AND CATEGORY_NAME = #{CATEGORY_NAME}
 	</if>
@@ -23,7 +23,7 @@
 	select count(*) from party
 	WHERE
 	 	1=1
-	 AND PARTY_AVAILABLE = TRUE
+		AND PARTY_AVAILABLE = TRUE
 	<if test="!@org.springframework.util.ObjectUtils@isEmpty(CATEGORY_NAME)">
 		AND CATEGORY_NAME = #{CATEGORY_NAME}
 	</if>

@@ -1,13 +1,13 @@
 package com.springbook.biz.party.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -19,9 +19,12 @@ import com.springbook.biz.party.PartyVO;
 public class PartyController {
 	@Autowired
 	private PartyService partyService;
+
 	
 	@RequestMapping(value="/getPartyList.do", method=RequestMethod.GET)
 	public String getPartyList(PartyVO vo, Model model, PageVO page){
+		
+		
 		String category_name=vo.getCATEGORY_NAME();
 		String search_keyword=vo.getSEARCH_KEYWORD();
 		Map<String, Object> map = new HashMap<String, Object>();

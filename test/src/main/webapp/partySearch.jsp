@@ -30,7 +30,6 @@
 			<option value ="외국/언어">자유주제</option>
 		</select>
 		<br />
-		코드
 		<input name="SEARCH_KEYWORD" type="text"></input>
 		<input type="submit"></input>
 	</form>

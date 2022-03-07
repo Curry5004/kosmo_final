@@ -15,6 +15,8 @@ public class PartyDAOMybatis {
 	private SqlSessionTemplate mybatis;
 	
 	public List<PartyVO> getPartyList(Map<String, Object> map){
+		
+		
 		return mybatis.selectList("PartyDAO.getPartyList", map);
 	}
 	public int getPartyCnt(Map<String, Object> map){

@@ -95,7 +95,7 @@ public class BoardController {
 		boardService.insertBoard(vo);
 		return "index.jsp";
 	}
-	@RequestMapping(value="update.do", method=RequestMethod.POST)
+	@RequestMapping(value="updateBoard.do", method=RequestMethod.POST)
 	public String updateBoard(BoardVO vo, Model model, HttpServletRequest request) {
 			if(vo.getArt_img().getSize()!=0){
 			
@@ -132,7 +132,7 @@ public class BoardController {
 		String changeName=oldName.replaceAll("\\\\", "\\\\\\\\"); //DB와 string에서 \를 인식 못하기 때문에 \\로 바꿔줘야함, \\를 인식하기 위해선 \\\\를 적어야함
 		vo.setArt_img_path(changeName); //VO갱신
 		}
-		boardService.insertBoard(vo);
+		boardService.updateBoard(vo);
 		return "boardView.jsp";
 	}
 }

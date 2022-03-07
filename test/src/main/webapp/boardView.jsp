@@ -13,7 +13,7 @@ pageEncoding="UTF-8"%>
 <body>
 <div class="container" style="margin-top:30px">
 	<div class="row">
-		<form method="post" action="insertBoard.do" enctype="multipart/form-data">
+		<form method="post" action="updateBoard.do" enctype="multipart/form-data">
 			
 	      <h1>게시글 보기</h1>
 
@@ -45,9 +45,9 @@ pageEncoding="UTF-8"%>
 				  
 				</div>
 			    <div>
-                <button class="btnUpdate">수정</button>
+                <button class="btnUpdate"><a href="boardUpdate.jsp">수정</a></button>
 				<button class="btnDelete">삭제</button>
-				<button class="btnList">돌아가기</button>
+				<button class="btnList"><a href="boardList.jsp">돌아가기</a></button>
 				</div>
 				</div>
 	    </form>

@@ -18,10 +18,10 @@
 	</c:if>
 	<c:forEach items="${boardList}" var="board">
 		<div style="display:flex;">
-			<div><a href="getBoard.jsp?art_id=${board.art_id}">
+			<div><a href="boardView.jsp?art_id=${board.art_id}">
 				&ensp; <img src="${board.art_img_path}" width=200 height=200 />
 			</a></div>
-			<div><a href="getBoard.jsp?art_id=${board.art_id}">
+			<div><a href="boardView.jsp?art_id=${board.art_id}">
 				&ensp; ${board.art_title}
 			</a></div>
 			<div style="float:right">

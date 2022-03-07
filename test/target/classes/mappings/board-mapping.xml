@@ -19,11 +19,11 @@
 	values('1',#{art_title},'kms',#{art_content}, #{art_img_path})
 </insert>
 
-<update id="update Board" parameterType="board">
-	update board set art_title=#{art_title}, art_content=#{art_content}, art_img_path=#{art_img_path} where party_id='1'
+<update id="updateBoard" parameterType="board">
+	update board set art_title=#{art_title}, art_content=#{art_content} where party_id='1'
 </update>
 
-<delete id="delete Board" parameterType="board">
+<delete id="deleteBoard" parameterType="board">
 	delete board where party_id='1'
 </delete>
 

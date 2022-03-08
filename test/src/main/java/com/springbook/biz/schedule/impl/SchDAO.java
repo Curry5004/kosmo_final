@@ -34,6 +34,7 @@ public class SchDAO {
 	}
 	
 	public List<SchVO> getScheduleDetail(Map<String, Object> map){
+		System.out.println("디테일맵"+map.toString());
 		return mybatis.selectList("schDAO.getScheduleList", map);
 	}
 	

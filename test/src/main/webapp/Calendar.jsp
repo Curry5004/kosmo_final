@@ -197,7 +197,7 @@
 	        	if(i<10){a="0"+i;}
 	        	else{a=i;}
 	        	if(checkList.indexOf(a)!=-1){
-	            days[n].innerHTML = '<a href="index.jsp">'+i+'</a>'; }
+	            days[n].innerHTML = '<a href="calendar2.do?year=${year}&month=${month}&party_id=${party_id}">'+i+'</a>'; }
 	        	else{days[n].innerHTML =i;}
 	            n++;
 	        }

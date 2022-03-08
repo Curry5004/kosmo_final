@@ -92,7 +92,7 @@ public class ScheduleController {
 		
 		
 		model.addAttribute("party_id", request.getParameter("party_id"));
-		model.addAttribute("getMemberName",scheduleService.getMemberName(vo));
+//		model.addAttribute("getMemberName",scheduleService.getMemberName(vo));
 		List<SchVO> getList=scheduleService.getScheduleList(vo);
 		model.addAttribute("SchduleList", getList);
 		List<String> checkList =new ArrayList<>();

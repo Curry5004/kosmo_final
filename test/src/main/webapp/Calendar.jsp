@@ -175,7 +175,7 @@
 	    Calendar.prototype.drawDays = function() {
 	        var startDay = new Date(year, month-1, 1).getDay(),
 //	      下面表示这个月总共有几天
-	            nDays = new Date(year, month - 1, 0).getDate(),
+	            nDays = new Date(year, month , 0).getDate(),
 	    
 	            n = startDay;
 //	      清除原来的样式和日期
@@ -252,11 +252,12 @@
 	    };
 	    
 	     Calendar.prototype.reset = function() {
-	         month = today.getMonth();
+	         month = today.getMonth()+1;
 	         year = today.getFullYear();
 	         day = today.getDate();
 	         this.options = undefined;
 	         this.drawDays();
+	         window.location.href='http://localhost:8081/biz/calendar.do?year='+year+"&month="+month+"&day="+day;
 	     };
 	    
 	    Calendar.prototype.setCookie = function(name, expiredays){

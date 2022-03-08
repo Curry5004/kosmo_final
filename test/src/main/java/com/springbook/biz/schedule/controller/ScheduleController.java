@@ -97,13 +97,8 @@ public class ScheduleController {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd");
 		
 		for(SchVO s:getList){
-			System.out.println("날짜 : "+simpleDateFormat.format(s.getSch_date()));
 			String tmpDate=simpleDateFormat.format(s.getSch_date());
-			
 			checkList.add(tmpDate);
-		}
-		for(String x:checkList){
-			System.out.println(x);
 		}
 		System.out.println(checkList.toString());
 		model.addAttribute("checkList", checkList);

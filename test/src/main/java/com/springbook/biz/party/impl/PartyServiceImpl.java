@@ -50,5 +50,9 @@ public class PartyServiceImpl implements PartyService{
 		return partyDAO.getNewParty(vo);
 	}
 	
+	@Override
+	public PartyVO getRate(PartyVO vo) {
+		return partyDAO.getRate(vo);
+	}
 
 }

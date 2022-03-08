@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,9 +24,9 @@
 <li>${party.PARTY_PRE_MBTI4}</li>
 </ul>
 
-<p> rate1 : ${party.PARTY_RATE1 }</p>
-<p> rate2 : ${party.PARTY_RATE2 }</p>
-<p> rate3 : ${party.PARTY_RATE3 }</p>
+<p> rate1 : <fmt:formatNumber value="${rate.PARTY_RATE1 }" pattern=".0"/></p>
+<p> rate2 : <fmt:formatNumber value="${rate.PARTY_RATE2 }" pattern=".0"/></p>
+<p> rate3 : <fmt:formatNumber value="${rate.PARTY_RATE3 }" pattern=".0"/></p>
 
 <div  style="border: 1px solid black">${party.PARTY_INTRODUCE}</div>
 <c:if test="${memberList[0].USER_ID==sessionScope.user.user_Id}">

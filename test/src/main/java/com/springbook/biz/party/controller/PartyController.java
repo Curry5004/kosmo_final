@@ -105,6 +105,7 @@ public class PartyController {
 		model.addAttribute("party",getVO);
 		List<MemberListVO> list=memberListService.getJoinMemberList(vo2);
 		model.addAttribute("memberList", list);
+		model.addAttribute("rate", partyService.getRate(getVO));
 
 		List<String> idList =new ArrayList<>();
 		for(MemberListVO v:list){

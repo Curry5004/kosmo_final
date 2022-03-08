@@ -22,7 +22,10 @@
 </insert>
 	
 	<select id = "getParty" resultType="party">
-	select *  from Party where party_id =#{PARTY_ID} and PARTY_AVAILABLE = true
+	SELECT PARTY_ID, PARTY_TITLE, PARTY_CREATOR, PARTY_PRE_MBTI1, PARTY_PRE_MBTI2, 
+	PARTY_PRE_MBTI3, PARTY_PRE_MBTI4, CATEGORY_NAME, PARTY_INTRODUCE, PARTY_LOCATION,
+	 PARTY_TUMB_PATH, PARTY_MAXIMUM, PARTY_REG_DATE
+	 FROM PARTY WHERE PARTY_ID =#{PARTY_ID} AND PARTY_AVAILABLE = TRUE
 	
 	</select>
 	
@@ -66,5 +69,10 @@
 	</if>
 </select>
 
+<select id = "getRate" resultType="party">
+		SELECT AVG(RATE1) AS PARTY_RATE1, AVG(RATE2) AS PARTY_RATE2,
+		AVG(RATE1) AS PARTY_RATE3
+		FROM SCHEDULE_MEMBER WHERE PARTY_ID=#{PARTY_ID}
+</select>
 	
 </mapper>

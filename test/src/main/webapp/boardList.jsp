@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ 	<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
@@ -12,9 +12,9 @@
 <header>
 </header>
 <section>
-	<button onclick="location.href='boardWrite.jsp';">게시글 쓰기</button>
+	<button onclick="location.href='boardWrite.jsp?party_id=${party_id}';">게시글 쓰기</button>
 	<c:if test="${empty boardList }">
-		<button onclick="location.href='boardWrite.jsp';">첫 게시물 작성</button>
+		<button onclick="location.href='boardWrite.jsp?party_id=${party_id}';">첫 게시물 작성</button>
 	</c:if>
 	<c:forEach items="${boardList}" var="board">
 		<div style="display:flex;">

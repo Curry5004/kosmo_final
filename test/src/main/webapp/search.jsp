@@ -12,10 +12,10 @@
 </head><body>
 	<c:forEach items="${PartyList}" var="party">
 		<div style="display:flex;">
-			<div><a href="search.jsp?PARTY_ID=${party.PARTY_ID}"> 
+			<div><a href="getParty.do?PARTY_ID=${party.PARTY_ID}"> 
 				&ensp; <img src="${party.PARTY_TUMB_PATH}" width=200 height=200 />
 			</a></div>
-			<div><a href="search.jsp?PARTY_ID=${party.PARTY_ID}">
+			<div><a href="getParty.do?PARTY_ID=${party.PARTY_ID}">
 				&ensp; ${party.PARTY_TITLE}
 			</a></div>
 			<div style="float:right">

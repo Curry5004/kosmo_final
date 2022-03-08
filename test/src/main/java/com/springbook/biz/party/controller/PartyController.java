@@ -89,11 +89,9 @@ public class PartyController {
 		return "index.jsp";
 	}
 	@RequestMapping("/getParty.do")
-	public String getParty(PartyVO vo,Model model,MemberListVO vo2,HttpServletRequest request){
+	public String getParty(PartyVO vo,Model model,MemberListVO vo2,HttpSession session){
 		PartyVO getVO =partyService.getParty(vo);
-		HttpSession session=request.getSession();
-		UserVO userVO=new UserVO();
-		userVO.setUser_Id("ADMIN10");
+		UserVO userVO=(UserVO)session.getAttribute("user");
 		session.setAttribute("user", userVO);
 		if(getVO==null){
 			return "error.jsp";

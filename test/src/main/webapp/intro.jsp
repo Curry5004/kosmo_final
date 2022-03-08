@@ -9,7 +9,7 @@
 <title>소모임 상세글</title>
 </head>
 <body>
-
+<br /><a href="getBoardList.do?party_id=${party.PARTY_ID}">게시글 조회</a><br />
 
 <div>
 	<img src="${party.PARTY_TUMB_PATH}" width=200px  height="200">

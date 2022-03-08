@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.springbook.biz.board.BoardService;
 import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.board.PageVO;
+import com.springbook.biz.user.UserVO;
 
 @Controller
 public class BoardController {
@@ -27,7 +28,7 @@ public class BoardController {
 	public String getBoardList(BoardVO vo, Model model, PageVO page) {
 		
 		
-		 //vo.getPartId();
+		 //vo.getPartyId();
 		int party_id=vo.getParty_id();
 		int count = boardService.getBoardCnt(vo);
 		String pageNo = page.getPageNo();
@@ -52,10 +53,11 @@ public class BoardController {
 		
 		model.addAttribute("boardList", boardService.getBoardList(map));
 		model.addAttribute("pages", pages);
+		model.addAttribute("party_id", party_id);
 		return "boardList.jsp";
 		
 	}
-	@RequestMapping(value="/insertBoard.do", method=RequestMethod.POST)
+	@RequestMapping(value="/insertBoard.do")
 	public String insertBoard(BoardVO vo, Model model, HttpServletRequest request) {
 			if(vo.getArt_img().getSize()!=0){
 			
@@ -92,6 +94,9 @@ public class BoardController {
 		String changeName=oldName.replaceAll("\\\\", "\\\\\\\\"); //DB와 string에서 \를 인식 못하기 때문에 \\로 바꿔줘야함, \\를 인식하기 위해선 \\\\를 적어야함
 		vo.setArt_img_path(changeName); //VO갱신
 		}
+		UserVO userVO=(UserVO)request.getSession().getAttribute("user");
+		vo.setArt_writer(userVO.getUser_Id());
+		System.out.println(userVO.getUser_Id());
 		boardService.insertBoard(vo);
 		return "index.jsp";
 	}

@@ -41,9 +41,12 @@
 				 	이미지 삽입 : 
 					<input type="file" name="art_img" accept=".jpeg, .jpg, .png"/>
 			    </div>
+			    <input type="hidden" value="${sessionScope.user.user_Id }" name="art_writer"/>
+			    <input type="hidden" value="${param.party_id }" name="party_id"/>
 			    <button type="submit" class="btn btn-primary">작성완료</button>
 			  </form>
 		</div>
 	</div>
+	${sessionScope.user.user_Id}로 로그인중
 </body>
 </html>

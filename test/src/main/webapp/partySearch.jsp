@@ -16,8 +16,8 @@
 			<option value ="외국/언어">외국/언어</option>
 			<option value ="문화/공연/축제">문화/공연/축제</option>
 			<option value ="음악/악기">음악/악기</option>
-			<option value ="외국/언어">공예/만들기</option>
-			<option value ="외국/언어">댄스/무용</option>
+			<option value ="공예/만들기">공예/만들기</option>
+			<option value ="댄스/무용">댄스/무용</option>
 			<option value ="봉사활동">봉사활동</option>
 			<option value ="사교/인맥">사교/인맥</option>
 			<option value ="차/오토바이">차/오토바이</option>

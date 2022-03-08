@@ -2,10 +2,10 @@ package com.springbook.biz.album.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.UUID;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -67,7 +67,9 @@ public class AlbumController {
 		String changeName=oldName.replaceAll("\\\\", "\\\\\\\\"); //DB와 string에서 \를 인식 못하기 때문에 \\로 바꿔줘야함, \\를 인식하기 위해선 \\\\를 적어야함
 		vo.setAlb_img_path(changeName); //VO갱신
 		}
-		vo.setAlb_writer("admin02");
+		UserVO userVO=(UserVO)request.getSession().getAttribute("user");
+		vo.setUser_id(userVO.getUser_Id());
+		System.out.println(userVO.getUser_Id());
 		albumService.insertAlbum(vo);
 		return "index.jsp";
 	}
@@ -104,8 +106,7 @@ public class AlbumController {
 	
 	@RequestMapping("getAlbum.do")
 	public String getAlbum(AlbumVO vo,AlbumCommentVO vo2,Model model,HttpSession session){
-		UserVO userVO=new UserVO();
-		userVO.setUser_Id("ADMIN10");
+		UserVO userVO=(UserVO)session.getAttribute("user");
 		session.setAttribute("user", userVO);
 		model.addAttribute("album", albumService.getAlbum(vo));
 		Map<String, AlbumVO> likeList=new HashMap<String, AlbumVO>();

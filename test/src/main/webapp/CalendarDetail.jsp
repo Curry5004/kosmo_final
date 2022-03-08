@@ -37,6 +37,17 @@
 	}
 </script>
 <body>
+
+	<div>
+	<p>제목 : ${SchDetail[0].sch_title}</p>
+	<p>작성자 : ${SchDetail[0].sch_writer} </p>
+	<p>위치 : ${SchDetail[0].sch_location} </p>
+	<p>내용 : ${SchDetail[0].sch_content}</p>
+	<p>메모 : ${SchDetail[0].sch_note}</p>
+	<p>최대인원 : ${SchDetail[0].sch_member_count}</p>
+	<p>날자 : ${SchDetail[0].sch_date}</p>
+	
+	</div>
 	<form action="scheduleReview.do" method="post" name="Reg_form"
 		onsubmit="return check()">
 		<span>평가1</span><br />

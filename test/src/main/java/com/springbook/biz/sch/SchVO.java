@@ -24,6 +24,8 @@ public class SchVO {
 	private String year;
 	private String month;
 	private String day;
+	private String name;
+	
 	@Override
 	public String toString() {
 		return "SchVO [sch_id=" + sch_id + ", user_id=" + user_id + ", party_id=" + party_id + ", sch_title="
@@ -31,8 +33,17 @@ public class SchVO {
 				+ sch_location + ", sch_note=" + sch_note + ", sch_member_count=" + sch_member_count + ", sch_date="
 				+ sch_date + ", sch_available=" + sch_available + ", member_id=" + member_id + ", rate1=" + rate1
 				+ ", rate2=" + rate2 + ", rate3=" + rate3 + ", year=" + year + ", month=" + month + ", day=" + day
-				+ "]";
+				+ ", name=" + name + "]";
 	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public int getSch_id() {
 		return sch_id;
 	}

@@ -5,6 +5,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="en">
   <head>
+  
+    
   	<title>mbti</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,6 +19,7 @@
 
 	</head>
 	<body>
+		<div style="text-align:center">${getMemberName.name}님 환영합니다.</div>
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">

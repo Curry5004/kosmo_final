@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -90,7 +91,10 @@ public class ScheduleController {
 		vo.setMonth(dateList[1]);
 		
 		}
+		
+		
 		model.addAttribute("party_id", request.getParameter("party_id"));
+		model.addAttribute("getMemberName",scheduleService.getMemberName(vo));
 		List<SchVO> getList=scheduleService.getScheduleList(vo);
 		System.out.println(scheduleService.getScheduleList(vo).toString());
 		model.addAttribute("SchduleList", getList);

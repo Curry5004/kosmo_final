@@ -14,7 +14,11 @@
 
 <select id="getScheduleList" resultType="schedule">
 SELECT SCH_ID, PARTY_ID, SCH_TITLE, SCH_WRITER, SCH_CONTENT, SCH_LOCATION, SCH_NOTE, SCH_MEMBER_COUNT, SCH_DATE 
-FROM SCHEDULE WHERE SCH_DATE LIKE ('${year}-${month}%') AND SCH_AVAILABLE=TRUE AND PARTY_ID=#{party_id}
+FROM SCHEDULE WHERE SCH_DATE LIKE ('${year}-${month}%') AND SCH_AVLILABLE=TRUE AND PARTY_ID=#{party_id}
 ORDER BY SCH_DATE ASC
+</select>
+
+<select id="getMemberName" resultType="schedule">
+	select u.name from user u join schedule_member s on u.user_id = s.user_id where s.party_id =${party_id}
 </select>
 </mapper>

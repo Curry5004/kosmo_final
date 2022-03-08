@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.springbook.biz.party.PartyVO;
 import com.springbook.biz.sch.SchVO;
 import com.springbook.biz.sch.ScheduleService;
 
@@ -25,4 +26,12 @@ public class SchServiceImpl implements ScheduleService {
 		return schDAO.getScheduleList(vo);
 		
 	}
+
+	@Override
+	public SchVO getMemberName(SchVO vo) {
+		System.out.println("유저 이름 가져오기 로그");
+		return schDAO.getMemberName(vo);
+	}
+
+	
 }

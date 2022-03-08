@@ -7,16 +7,20 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.springbook.biz.board.BoardService;
 import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.board.PageVO;
+import com.springbook.biz.user.UserVO;
+import com.springbook.biz.user.controller.UserController;
 
 @Controller
 public class BoardController {
@@ -94,8 +98,9 @@ public class BoardController {
 		}
 		boardService.insertBoard(vo);
 		return "index.jsp";
+	
 	}
-	@RequestMapping(value="updateBoard.do", method=RequestMethod.POST)
+	@RequestMapping(value="/updateBoard.do", method=RequestMethod.POST)
 	public String updateBoard(BoardVO vo, Model model, HttpServletRequest request) {
 			if(vo.getArt_img().getSize()!=0){
 			
@@ -124,7 +129,7 @@ public class BoardController {
 				e.printStackTrace();
 			
 			
-			return "/updateBoard.do";
+			return "boardUpdate.jsp";
 			}
 		
 		//VO 필드변경
@@ -134,5 +139,12 @@ public class BoardController {
 		}
 		boardService.updateBoard(vo);
 		return "boardView.jsp";
+	}
+	
+	@RequestMapping("getBoard.do")
+	public void getBoard(BoardVO vo,Model model){
+		
+		model.addAttribute("board");
+
 	}
 }

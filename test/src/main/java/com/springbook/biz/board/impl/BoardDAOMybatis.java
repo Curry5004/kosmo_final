@@ -36,4 +36,9 @@ public class BoardDAOMybatis {
 		System.out. println ("===> Mybatis로 deleteBoard() 기능 처리"); 
 		mybatis.delete("BoardDAO.deleteBoard", vo);
 	}
+	public void getBoard(BoardVO vo) {
+		System.out. println ("===> Mybatis로 deleteBoard() 기능 처리"); 
+		mybatis.delete("BoardDAO.deleteBoard", vo);
+	}
+	
 }

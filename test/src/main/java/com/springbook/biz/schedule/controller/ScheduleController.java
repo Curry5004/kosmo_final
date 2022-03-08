@@ -69,6 +69,7 @@ public class ScheduleController {
 				vo.setMonth(request.getParameter("month"));
 				break;
 			}
+			
 		}else{
 
 			System.out.println("깡통");
@@ -84,11 +85,12 @@ public class ScheduleController {
 		model.addAttribute("month", dateList[1]);
 		model.addAttribute("day", dateList[2]);
 		
+		
 		vo.setYear(dateList[0]);
 		vo.setMonth(dateList[1]);
 		
 		}
-		
+		model.addAttribute("party_id", request.getParameter("party_id"));
 		List<SchVO> getList=scheduleService.getScheduleList(vo);
 		System.out.println(scheduleService.getScheduleList(vo).toString());
 		model.addAttribute("SchduleList", getList);

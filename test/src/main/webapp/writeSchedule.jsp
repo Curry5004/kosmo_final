@@ -34,6 +34,8 @@
 <div><input type="text" placeholder="간단한 메모는 여기에~!"  name="sch_note"/></div>
 
 <div><input type="submit" value="정모 생성하기" /></div>
+
+	<input type="hidden" name="party_id" value="${param.party_id }"/>
  	</form>
 
 </body>

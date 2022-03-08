@@ -22,6 +22,8 @@
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
 					<h2 class="heading-section">MBTI</h2>
+					
+					<a class="btn btn-primary" href="writeSchedule.jsp?party_id=${param.party_id}" role="button">일정 잡기</a>
 				</div>
 			</div>
 			<div class="row">
@@ -129,6 +131,7 @@
 	  var year=${year};
 	    var month=${month};
 	    var day=${day};
+	    var party_id=${party_id};
 		"use strict";
 
 		document.addEventListener('DOMContentLoaded', function(){
@@ -224,7 +227,7 @@
 	        }else{
 	            month = month - 1;
 	        }
-	        window.location.href='http://localhost:8081/biz/calendar.do?year='+year+"&month="+month+"&day="+day;
+	        window.location.href='http://localhost:8081/biz/calendar.do?year='+year+"&month="+month+"&day="+day+"&party_id="+party_id;
 	      
 	        this.drawDays();
 	    };
@@ -235,7 +238,8 @@
 	            year =  year + 1; 
 	        }else{
 	            month = month + 1;
-	        }window.location.href='http://localhost:8081/biz/calendar.do?year='+year+"&month="+month+"&day="+day;
+	        }
+	        window.location.href='http://localhost:8081/biz/calendar.do?year='+year+"&month="+month+"&day="+day+"&party_id="+party_id;
 	      
 	        this.drawDays();
 	        
@@ -257,7 +261,7 @@
 	         day = today.getDate();
 	         this.options = undefined;
 	         this.drawDays();
-	         window.location.href='http://localhost:8081/biz/calendar.do?year='+year+"&month="+month+"&day="+day;
+	         window.location.href='http://localhost:8081/biz/calendar.do?year='+year+"&month="+month+"&day="+day+"&party_id="+party_id;
 	     };
 	    
 	    Calendar.prototype.setCookie = function(name, expiredays){

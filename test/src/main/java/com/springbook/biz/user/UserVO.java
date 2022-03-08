@@ -24,7 +24,7 @@ public class UserVO {
 	private String mbti_Path;
 	private String mbti_Id;
 	// mbti 값 받기 용
-	private String MBTI_NAME;
+	private String mbti_Name;
 
 	public String getUser_Id() {
 		return user_Id;
@@ -156,13 +156,13 @@ public class UserVO {
 	public void setMbti_root(MultipartFile mbti_root) {
 		this.mbti_root = mbti_root;
 	}
-
-	public String getMBTI_NAME() {
-		return MBTI_NAME;
+	
+	public String getMbti_Name() {
+		return mbti_Name;
 	}
 
-	public void setMBTI_NAME(String mBTI_NAME) {
-		MBTI_NAME = mBTI_NAME;
+	public void setMbti_Name(String mbti_Name) {
+		this.mbti_Name = mbti_Name;
 	}
 
 	@Override

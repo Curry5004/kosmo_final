@@ -1,8 +1,8 @@
 package com.springbook.biz.schedule.impl;
 
 import java.util.List;
+import java.util.Map;
 
-import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -24,5 +24,25 @@ public class SchDAO {
 		System.out.println(vo.getMonth());
 		return mybatis.selectList("schDAO.getScheduleList", vo);
 		
+	}
+	
+	public int getSchCnt(SchVO vo) {
+		return mybatis.selectOne("schDAO.getScheduleCnt",vo);
+	}
+	
+	public List<SchVO> getScheduleDetail(Map<String, Object> map){
+		return mybatis.selectList("schDAO.getScheduleList", map);
+	}
+	
+	public void schMemberCntUp(SchVO vo){
+		mybatis.insert("schDAO.cntUp",vo);
+	}
+	
+	public void schMemberCntDown(SchVO vo){
+		mybatis.insert("schDAO.cntDown",vo);
+	}
+	
+	public void deleteSch(SchVO vo) {
+		mybatis.delete("schDAO.deleteSch",vo);
 	}
 }

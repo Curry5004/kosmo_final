@@ -33,7 +33,7 @@ public class BoardController {
 		String pageNo = page.getPageNo();
 		System.out.println(pageNo);
 		int currentPage = 1;
-		int listSize = 3;
+		int listSize = 4;
 		int pageSize = 5;
 		if(pageNo != null) {
 			currentPage = Integer.parseInt(pageNo);

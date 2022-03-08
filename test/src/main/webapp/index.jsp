@@ -16,6 +16,7 @@
 	<a href="writeAlbum.jsp?party_id=1">앨범 작성</a>
 	<a href="getAlbumList.do?party_id=1">앨범목록</a>
 	<a href="calendar.do?party_id=1">스케줄 리스트</a>
-	
+	<a href="calendar2.do?year=2022&month=03&party_id=1">스케줄 상세보</a>
+
 </body>
 </html>

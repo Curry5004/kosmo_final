@@ -6,27 +6,41 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="css/style.css">
 <title>소모임 상세글</title>
+
 </head>
 <body>
+<nav class="nav nav-pills nav-fill">
+  <a class="nav-link active" aria-current="page" href="#">Active</a>
+  <a class="nav-link" href="#">Much longer nav link</a>
+  <a class="nav-link" href="#">Link</a>
+  <a class="nav-link disabled">Disabled</a>
+</nav>
 
-
-<div>
+<div class="container">
 	<img src="${party.PARTY_TUMB_PATH}" width=200px  height="200">
 </div>
 
 <div>${party.CATEGORY_NAME}</div>
-<ul>
+<div>
+<ul class = "mylist" style="list-style : none;">
 <li>${party.PARTY_PRE_MBTI1}</li>
 <li>${party.PARTY_PRE_MBTI2}</li>
 <li>${party.PARTY_PRE_MBTI3}</li>
 <li>${party.PARTY_PRE_MBTI4}</li>
 </ul>
-
-<p> rate1 : ${party.PARTY_RATE1 }</p>
-<p> rate2 : ${party.PARTY_RATE2 }</p>
-<p> rate3 : ${party.PARTY_RATE3 }</p>
-
+</div>
+<ul class="mylist" style="list-style : none;">
+ <li>만족도 : ${party.PARTY_RATE1 }</li>
+ <li>친절도 : ${party.PARTY_RATE2 }</li>
+ <li>분위기 : ${party.PARTY_RATE3 }</li>
+</ul>
 <div  style="border: 1px solid black">${party.PARTY_INTRODUCE}</div>
 <c:if test="${memberList[0].USER_ID==sessionScope.user.user_Id}">
 <a href="deleteParty.do?PARTY_ID=${party.PARTY_ID}"><button>소모임 제거</button></a>
@@ -43,7 +57,7 @@
 <c:if test="${fn:contains(favList, sessionScope.user.user_Id)}">
 <a href="deleteMemberFav.do?PARTY_ID=${party.PARTY_ID}&USER_ID=${user.user_Id}"><button>찜하기 취소</button></a>
 </c:if>
-<ul>
+<ul class="mylist" style="list-style : none;">
 <c:forEach var="member" items="${memberList}">
 <li>이름 : ${member.NAME} , MBTI : ${member.MBTI_NAME} </li>
 </c:forEach>
@@ -56,12 +70,12 @@
 <script>new Chart(document.getElementById("doughnut-chart"), {
     type: 'doughnut',
     data: { 
-      labels: ['${mbtiList[0].MBTI_NAME}','${mbtiList[1].MBTI_NAME}','${mbtiList[2].MBTI_NAME}','${{mbtiList[3].MBTI_NAME}}'],
+      labels: ['${mbtiList[1].MBTI_NAME}','${mbtiList[2].MBTI_NAME}','${mbtiList[3].MBTI_NAME}','${{mbtiList[4].MBTI_NAME}}'],
       datasets: [
         {
           label: 'MBTI',
           backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-          data: ['${mbtiList[0].COUNT}','${mbtiList[1].COUNT}','${mbtiList[2].COUNT}','${mbtiList[3].COUNT}']
+          data: ['${mbtiList[1].COUNT}','${mbtiList[2].COUNT}','${mbtiList[3].COUNT}','${mbtiList[4].COUNT}']
         }
       ]
     },

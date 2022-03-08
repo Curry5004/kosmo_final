@@ -61,19 +61,18 @@ public class ScheduleController {
 		return "CalendarDetail.jsp";	
 	}
 	@RequestMapping("deleteSch.do")
-	public String deleteSch(SchVO vo,Model model, HttpSession session){
-		System.out.println(vo.getSch_id());
+	public String deleteSch(SchVO vo,Model model){
 		scheduleService.deleteSch(vo);
-		return "calendar2.do?sch_id="+vo.getSch_id();
+		return "redirect:calendar2.do?year=2022&month=03&party_id=1";
 	}
 	
 	@RequestMapping("cntUp.do")
-	public String cntUp(SchVO vo,Model model,HttpSession session){
-		
+	public String cntUp(SchVO vo,Model model,HttpSession session, PageVO page){
+		String pageNo = page.getPageNo();
 		UserVO userVO=(UserVO)session.getAttribute("user");
 		vo.setUser_id(userVO.getUser_Id());
 		scheduleService.schMemberCntUp(vo);
-		return "CalendarDetail.jsp?sch_id="+vo.getSch_id();
+		return "redirect:calendar2.do?year=2022&month=03&party_id=1&pageNo="+pageNo;
 	}
 	@RequestMapping("cntDown.do")
 	public String cntDown(SchVO vo,Model model,HttpSession session){

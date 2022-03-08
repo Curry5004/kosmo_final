@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.springbook.biz.sch.SchVO;
 import com.springbook.biz.sch.ScheduleService;
+import com.springbook.biz.user.UserVO;
 
 @Controller
 public class ScheduleController {
@@ -22,11 +23,14 @@ public class ScheduleController {
 	ScheduleService scheduleService;
 	
 	@RequestMapping("insertSchedule.do")
-	public String insertSchedule(SchVO vo,Model model){
-		System.out.println(vo.getSch_date());
-		scheduleService.insertSchedule(vo);
-		
-		return "index.jsp";
+	public String insertSchedule(SchVO vo,Model model,HttpSession session){
+		UserVO userVO=(UserVO)session.getAttribute("user");
+		if(userVO!=null){
+			scheduleService.insertSchedule(vo);
+			return "index.jsp";
+		}else {
+			return "login.do";
+		}
 	}
 	
 	@RequestMapping("calendar.do")
@@ -34,7 +38,6 @@ public class ScheduleController {
 		if(request.getParameter("year")!=null){
 			System.out.println(request.getParameter("year")+" "+request.getParameter("month")+" "+request.getParameter("day"));
 			model.addAttribute("year", request.getParameter("year"));
-//			int month=Integer.parseInt(request.getParameter("month"));
 			model.addAttribute("month", request.getParameter("month"));
 			model.addAttribute("day", request.getParameter("day"));
 			vo.setYear(request.getParameter("year"));
@@ -72,31 +75,22 @@ public class ScheduleController {
 			}
 			
 		}else{
-
-			System.out.println("깡통");
 		LocalDate now = LocalDate.now();
 		String date=now.toString();
 		String[] dateList=date.split("-");
-		
-		
-
-		System.out.println(dateList[1]);
 		
 		model.addAttribute("year", dateList[0]);
 		model.addAttribute("month", dateList[1]);
 		model.addAttribute("day", dateList[2]);
 		
-		
 		vo.setYear(dateList[0]);
 		vo.setMonth(dateList[1]);
-		
 		}
 		
 		
 		model.addAttribute("party_id", request.getParameter("party_id"));
 		model.addAttribute("getMemberName",scheduleService.getMemberName(vo));
 		List<SchVO> getList=scheduleService.getScheduleList(vo);
-		System.out.println(scheduleService.getScheduleList(vo).toString());
 		model.addAttribute("SchduleList", getList);
 		List<String> checkList =new ArrayList<>();
 		
@@ -106,7 +100,6 @@ public class ScheduleController {
 			String tmpDate=simpleDateFormat.format(s.getSch_date());
 			checkList.add(tmpDate);
 		}
-		System.out.println(checkList.toString());
 		model.addAttribute("checkList", checkList);
 		return "Calendar.jsp";
 	}

@@ -21,6 +21,18 @@ public class SchVO {
 	private int rate1;
 	private int rate2;
 	private int rate3;
+	private String year;
+	private String month;
+	private String day;
+	@Override
+	public String toString() {
+		return "SchVO [sch_id=" + sch_id + ", user_id=" + user_id + ", party_id=" + party_id + ", sch_title="
+				+ sch_title + ", sch_writer=" + sch_writer + ", sch_content=" + sch_content + ", sch_location="
+				+ sch_location + ", sch_note=" + sch_note + ", sch_member_count=" + sch_member_count + ", sch_date="
+				+ sch_date + ", sch_available=" + sch_available + ", member_id=" + member_id + ", rate1=" + rate1
+				+ ", rate2=" + rate2 + ", rate3=" + rate3 + ", year=" + year + ", month=" + month + ", day=" + day
+				+ "]";
+	}
 	public int getSch_id() {
 		return sch_id;
 	}
@@ -111,14 +123,23 @@ public class SchVO {
 	public void setRate3(int rate3) {
 		this.rate3 = rate3;
 	}
-	@Override
-	public String toString() {
-		return "SchVO [sch_id=" + sch_id + ", user_id=" + user_id + ", party_id=" + party_id + ", sch_title="
-				+ sch_title + ", sch_writer=" + sch_writer + ", sch_content=" + sch_content + ", sch_location="
-				+ sch_location + ", sch_note=" + sch_note + ", sch_member_count=" + sch_member_count + ", sch_date="
-				+ sch_date + ", sch_available=" + sch_available + ", member_id=" + member_id + ", rate1=" + rate1
-				+ ", rate2=" + rate2 + ", rate3=" + rate3 + "]";
+	public String getYear() {
+		return year;
+	}
+	public void setYear(String year) {
+		this.year = year;
+	}
+	public String getMonth() {
+		return month;
+	}
+	public void setMonth(String month) {
+		this.month = month;
+	}
+	public String getDay() {
+		return day;
+	}
+	public void setDay(String day) {
+		this.day = day;
 	}
 	
-
 }

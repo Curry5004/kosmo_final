@@ -15,6 +15,7 @@
 	<a href="boardWrite.jsp">게시글 작성</a>
 	<a href="writeAlbum.jsp?party_id=1">앨범 작성</a>
 	<a href="getAlbumList.do?party_id=1">앨범목록</a>
+	<a href="calendar.do">스케줄 리스트</a>
 	
 </body>
 </html>

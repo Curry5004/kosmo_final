@@ -1,6 +1,10 @@
 package com.springbook.biz.sch;
 
+import java.util.List;
+
 public interface ScheduleService {
 	
-	void insertSchedule(SchVO vo);
+	public void insertSchedule(SchVO vo);
+	
+	public List<SchVO> getScheduleList(SchVO vo);
 }

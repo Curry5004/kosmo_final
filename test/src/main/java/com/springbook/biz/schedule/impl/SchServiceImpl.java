@@ -1,5 +1,7 @@
 package com.springbook.biz.schedule.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,12 @@ public class SchServiceImpl implements ScheduleService {
 	public void insertSchedule(SchVO vo) {
 		System.out.println(vo.getSch_title());
 		schDAO.insertSchedule(vo);
+		
+	}
+	
+	@Override
+	public List<SchVO> getScheduleList(SchVO vo) {
+		return schDAO.getScheduleList(vo);
 		
 	}
 }

@@ -156,4 +156,13 @@ public class AlbumController {
 		return "getAlbum.do?alb_id="+vo.getAlb_id();
 	}
 	
+	@RequestMapping("modifyAlbumComment.do")
+	public String modifyAlbumComment(AlbumCommentVO vo,Model model,HttpSession session){
+		System.out.println(vo.getAlb_comment_content());
+		UserVO userVO=(UserVO)session.getAttribute("user");
+		vo.setUser_id(userVO.getUser_Id());
+		albumcommentService.modifyAlbumComment(vo);
+		return "getAlbum.do?alb_id="+vo.getAlb_id();
+	}
+	
 }

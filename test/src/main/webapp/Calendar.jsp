@@ -167,7 +167,9 @@
 	            next[0].addEventListener('click', function(){that.nextMonth(); });
 	            reset.addEventListener('click', function(){that.reset(); });
 	        while(daysLen--) {
-	            days[daysLen].addEventListener('click', function(){that.clickDay(this); });
+	        	if(daysLen>=startDay){
+	            days[daysLen].addEventListener('mouseover', function(){that.clickDay(this); });
+	        	}
 	        }
 	    };
 	    
@@ -179,7 +181,7 @@
 	            headMonth[0].innerHTML = monthTag[month-1] +" - " + year;        
 	     };
 	    Calendar.prototype.drawDays = function() {
-	        var startDay = new Date(year, month-1, 1).getDay(),
+	        startDay = new Date(year, month-1, 1).getDay(),
 //	      下面表示这个月总共有几天
 	            nDays = new Date(year, month , 0).getDate(),
 	    

@@ -14,5 +14,9 @@ public class MypageDAO {
 	public UserVO getUserInfo(UserVO vo){
 		return mybatis.selectOne("MypageDAO.getUserInfo", vo);
 	}
+	
+	public void updateUserInfo(UserVO vo){
+		mybatis.update("MypageDAO.updateUserInfo");
+	}
 
 }

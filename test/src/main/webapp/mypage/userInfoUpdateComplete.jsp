@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	회원가입 성공
-	<a href="index.jsp">인덱스로 돌아가기</a>
+	회원정보 갱신성공
+	<a href="../index.jsp">인덱스로 돌아가기</a>
 </body>
 </html>

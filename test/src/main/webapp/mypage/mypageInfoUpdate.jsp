@@ -15,19 +15,20 @@
         <b><font size="6" color="gray">개인정보 변경하기</font></b>
         <br><br><br>
 
-        <form method="post" action="registry.do" name="userInfo" enctype="multipart/form-data">
+        <form method="post" action="UpdateUserInfo.do" name="userInfo" enctype="multipart/form-data">
             <table>
                 <tr>
                     <td id="title">아이디</td>
                     <td>
                         ${user.user_Id}
+                        <input type="hidden" value="${user.user_Id}" name="user_Id"/>
                      </td>
                 </tr>
                         
                 <tr>
                     <td id="title">비밀번호</td>
                     <td>
-                        <input type="password" name="password" maxlength="50" value="${user.password}">
+                        <input type="password" name="password" maxlength="50" value="${user.password}"></input>
                     </td>
                 </tr>
                     
@@ -64,37 +65,7 @@
                         <input type="text" size="50" name="location" placeholder="시, 구 까지만 작성해 주세요 ex)서울특별시 금천구" value="${user.location}"/>
                     </td>
                 </tr>
-                <tr>
-                    <td id="title" width="300" height="300">프로필 사진</td>
-                    <td>
-                    	<img src="${user.profile_Image}"></img>
-                        <input type="file" name="profile_root"/>
-                    </td>
-                </tr>
-                <c:if test="${mbtiModi}">
-                	<tr>
-                    	<td id="title">MBTI Type 3개월이 경과하였습니다.</td>
-                    <td>
-                        <select name="mbti_Id">
-                     		<c:forEach var="temp" items="${MbtiList}">
-								<option value="${temp.MBTI_ID}">${temp.MBTI_NAME}</option>
-							</c:forEach>
-                        </select>
-                    </td>
-                </tr>
-                </c:if>
-                
-                <tr>
-                    <td id="title">
-                    	<a href="https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC" target="_blank">검사하러가기</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td id="title">MBTI 결과지</td>
-                    <td>
-                        <input type="file" name="mbti_root"/>
-                    </td>
-                </tr>
+           
                 <tr>
                     <td id="title">프로필 사진</td>
                     <td>

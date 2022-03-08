@@ -16,4 +16,10 @@ public class MypageServiceimpl implements MypageService{
 		return mypageDAO.getUserInfo(vo);
 	}
 
+	@Override
+	public void updateUserInfo(UserVO vo) {
+		mypageDAO.updateUserInfo(vo);
+		
+	}
+
 }

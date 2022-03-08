@@ -62,7 +62,6 @@ public class ScheduleController {
 	}
 	@RequestMapping("deleteSch.do")
 	public String deleteSch(SchVO vo,Model model, HttpSession session){
-		vo.setSch_id(vo.getSch_id());
 		System.out.println(vo.getSch_id());
 		scheduleService.deleteSch(vo);
 		return "calendar2.do?sch_id="+vo.getSch_id();

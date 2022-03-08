@@ -3,7 +3,9 @@ package com.springbook.biz.schedule.controller;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.springbook.biz.board.PageVO;
 import com.springbook.biz.sch.SchVO;
 import com.springbook.biz.sch.ScheduleService;
 import com.springbook.biz.user.UserVO;
@@ -102,6 +105,76 @@ public class ScheduleController {
 		}
 		model.addAttribute("checkList", checkList);
 		return "Calendar.jsp";
+	}
+	@RequestMapping("calendar2.do") 
+	public String getScheduleDetail(SchVO vo, Model model, PageVO page ) {
+		 //vo.getPartId();
+		int party_id=vo.getParty_id();
+		int count = scheduleService.getSchCnt(vo);
+		String year=vo.getYear();
+		String month=vo.getMonth();
+		String pageNo = page.getPageNo();
+		System.out.println(pageNo);
+		int currentPage = 1;
+		int listSize = 1;
+		int pageSize = 1;
+		if(pageNo != null) {
+			currentPage = Integer.parseInt(pageNo);
+		}
+		int startRow = (currentPage-1) * listSize;
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("party_id", party_id);
+		map.put("startRow", startRow);
+		map.put("listSize", listSize);
+		map.put("year", year);
+		map.put("month", month);
+		map.put("sch_id", vo.getSch_id());
+		
+		
+		PageVO pages = new PageVO(count, currentPage, listSize, pageSize);
+		System.out.println(pages.getTotal());
+		System.out.println(count);
+		System.out.println(vo.getSch_id());
+		
+		
+		model.addAttribute("SchDetail", scheduleService.getScheduleDetail(map));
+		System.out.println(scheduleService.getScheduleDetail(map).toString());
+		model.addAttribute("pages", pages);
+		return "CalendarDetail.jsp";	
+	}
+	@RequestMapping("deleteSch.do")
+	public String deleteSch(SchVO vo,Model model, HttpSession session){
+		System.out.println(vo.getSch_id());
+		scheduleService.deleteSch(vo);
+		return "calendar2.do?sch_id="+vo.getSch_id();
+	}
+	
+	@RequestMapping("cntUp.do")
+	public String cntUp(SchVO vo,Model model,HttpSession session){
+		
+		UserVO userVO=(UserVO)session.getAttribute("user");
+		vo.setUser_id(userVO.getUser_Id());
+		scheduleService.schMemberCntUp(vo);
+		return "CalendarDetail.jsp?sch_id="+vo.getSch_id();
+	}
+	@RequestMapping("cntDown.do")
+	public String cntDown(SchVO vo,Model model,HttpSession session){
+		UserVO userVO=(UserVO)session.getAttribute("user");
+		vo.setUser_id(userVO.getUser_Id());
+		scheduleService.schMemberCntDown(vo);
+		return "CalendarDetail.jsp?sch_id="+vo.getSch_id();
+	}
+	
+	
+	
+	@RequestMapping("scheduleReview.do")
+	public String scheduleReview(SchVO vo,Model model) {
+		// 로그인 AOP 구현하면 좋을듯
+		System.out.println(vo.toString());
+		System.out.println("vo테스트,rate1 : "+vo.getRate1()+" rate2 : "+vo.getRate2()+" rate3 : "+vo.getRate3());
+		scheduleService.scheduleReview(vo);
+		return "registryComplete.jsp";
+		
 	}
 	
 }

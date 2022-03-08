@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="schDAO">
+
+<insert id ="insertSchDAO" parameterType="schedule">
+	insert into schedule ( PARTY_ID, SCH_TITLE,
+	 SCH_WRITER, SCH_CONTENT, SCH_LOCATION, SCH_NOTE,
+	  SCH_MEMBER_COUNT, SCH_DATE) values
+	 (#{party_id},
+	#{sch_title},#{sch_writer},#{sch_content},#{sch_location},
+	#{sch_note},#{sch_member_count},#{sch_date})
+</insert>
+
+<select id="getScheduleList" resultType="schedule">
+SELECT SCH_ID, PARTY_ID, SCH_TITLE, SCH_WRITER, SCH_CONTENT, SCH_LOCATION, SCH_NOTE, SCH_MEMBER_COUNT, SCH_DATE 
+FROM SCHEDULE WHERE SCH_DATE LIKE ('${year}-${month}%') AND SCH_AVLILABLE=TRUE AND PARTY_ID=#{party_id}
+ORDER BY SCH_DATE ASC
+</select>
+
+<select id="getMemberName" resultType="schedule">
+	select u.name from user u join schedule_member s on u.user_id = s.user_id where s.party_id =${party_id}
+</select>
+</mapper>

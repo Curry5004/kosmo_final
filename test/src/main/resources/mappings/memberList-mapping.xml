@@ -4,10 +4,43 @@
 <mapper namespace="memberListDAO">
 
 <select id = "getMemberList" resultType="member">
-	select * from category
+	select u.name, u.user_id,MBTI_NAME from member_list m join user u 
+	join mbti on m.user_id = u.user_id and u.mbti_id=mbti.MBTI_ID where party_id ="${PARTY_ID}"
+	order by reg_date;
 </select>
 
+
 <insert id="insertMemberList" parameterType="member">
-	insert into member_list values ('로그인미구현',${PARTY_ID},false)
+	insert into member_list (USER_ID,PARTY_ID,PARTY_REQUEST) values (#{USER_ID},${PARTY_ID},false) 
 </insert>
+
+<select id="getMbtiList" resultType="member">
+	select m.MBTI_name as MBTI_NAME ,count(m.MBTI_ID) as COUNT from user u join mbti m
+where user_ID in (select user_id from member_list where party_id="${PARTY_ID}") and u.MBTI_ID=m.MBTI_ID
+group by m.MBTI_name with rollup
+order by COUNT desc;
+</select>
+
+<select id="getGenderCount" resultType="member">
+	select GENDER, count(gender) as GENDERCOUNT from member_list m join user u
+where m.user_id=u.USER_ID and PARTY_ID="${PARTY_ID}"
+group by gender;
+</select>
+
+<delete id ="deletePartyMember" parameterType="member">
+	delete from member_list where USER_ID =#{USER_ID} and PARTY_ID=#{PARTY_ID}
+</delete>
+<insert id ="memberFav" parameterType="member">
+ 	insert into member_fav values (#{USER_ID},#{PARTY_ID})
+</insert>
+<select id="getJoinMemberList" resultType="member">
+	select name from member_list m join user u on m.user_id = u.user_id order by reg_date;
+</select>
+
+<select id="getFavList" resultType="member">
+	SELECT USER_ID FROM MEMBER_FAV WHERE PARTY_ID=${PARTY_ID}
+</select>
+<delete id ="deleteMemberFav" parameterType="member">
+	DELETE FROM MEMBER_FAV WHERE USER_ID = #{USER_ID} and PARTY_ID = #{PARTY_ID}
+</delete>
 </mapper>

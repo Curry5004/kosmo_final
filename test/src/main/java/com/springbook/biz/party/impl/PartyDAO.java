@@ -22,7 +22,10 @@ public class PartyDAO {
 		return mybatis.selectOne("PartyDAO.getParty", vo);
 	}
 	public void deleteParty(PartyVO vo){
-	 mybatis.delete("PartyDAO.deleteParty",vo);
+	    mybatis.delete("PartyDAO.deleteParty",vo);
+	}
+	public PartyVO getNewParty(PartyVO vo){
+		return mybatis.selectOne("PartyDAO.getNewParty", vo);
 	}
 	public List<PartyVO> getPartyList(Map<String, Object> map){
 		return mybatis.selectList("PartyDAO.getPartyList", map);

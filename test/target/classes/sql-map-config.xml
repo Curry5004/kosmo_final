@@ -11,7 +11,9 @@
 		<typeAlias alias="mbti" type="com.springbook.biz.main.MbtiVO" />
 		<typeAlias alias="party" type="com.springbook.biz.party.PartyVO" />
 		<typeAlias alias="member" type="com.springbook.biz.memberList.MemberListVO" />
+		<typeAlias alias="schedule" type="com.springbook.biz.sch.SchVO"/>
 		<typeAlias alias="album" type="com.springbook.biz.album.AlbumVO" />
+		<typeAlias alias="albumComment" type="com.springbook.biz.albumComment.AlbumCommentVO" />
 	</typeAliases>
 
 	<!-- Sql Mapper-->
@@ -22,7 +24,9 @@
 		<mapper resource="mappings/party-mapping.xml"></mapper>
 		<mapper resource="mappings/memberList-mapping.xml"></mapper>
 		<mapper resource="mappings/board-mapping.xml" />
+		<mapper resource="mappings/schedule-mapping.xml"></mapper>
 		<mapper resource="mappings/album-mapping.xml" />
+		<mapper resource="mappings/albumComment-mapping.xml" />
 	</mappers>
 	
 </configuration>

@@ -45,5 +45,10 @@ public class PartyServiceImpl implements PartyService{
 		return partyDAO.getPartyCnt(map);
 	}
 	
+	@Override
+	public PartyVO getNewParty(PartyVO vo){
+		return partyDAO.getNewParty(vo);
+	}
+	
 
 }

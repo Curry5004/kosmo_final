@@ -31,6 +31,7 @@ public class UserController {
 	@RequestMapping(value = "/registry.do", method = RequestMethod.POST)
 	public String insertUser(UserVO vo, Model model, HttpServletRequest request) {
 		// 아이디 중복 확인
+		System.out.println("controller 진입 확인");
 		int result = userService.idCheck(vo);
 		try {
 			if (result == 1) {

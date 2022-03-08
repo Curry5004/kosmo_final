@@ -15,4 +15,6 @@ public interface PartyService {
 	
 	int getPartyCnt(Map<String,Object> map);
 	
+	public PartyVO getNewParty(PartyVO vo);
+	
 }

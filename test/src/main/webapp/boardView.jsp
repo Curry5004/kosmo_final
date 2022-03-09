@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib  prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,9 +54,14 @@
 			</div></td>
 		</tr>
 	</table>
-	<button><a href="getBoardList.do?party_id=1">돌아가기</a></button>
+	
 	<button><a href="boardUpdate.jsp">수정</a></button>
 	<button><a href="">삭제</a></button>
+	
+	
+	
+	<button><a href="getBoardList.do?party_id=1">돌아가기</a></button>
+
 </div>
 </section>
 </body>

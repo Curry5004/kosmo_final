@@ -107,7 +107,8 @@ public class ScheduleController {
 		return "Calendar.jsp";
 	}
 	@RequestMapping("calendar2.do") 
-	public String getScheduleDetail(SchVO vo, Model model, PageVO page ) {
+	public String getScheduleDetail(SchVO vo, Model model, PageVO page,HttpServletRequest request ) {
+		System.out.println("인덱스확인"+request.getParameter("index"));
 		 //vo.getPartId();
 		int party_id=vo.getParty_id();
 		int count = scheduleService.getSchCnt(vo);
@@ -136,7 +137,9 @@ public class ScheduleController {
 		System.out.println(count);
 		System.out.println(vo.getSch_id());
 		
-		
+		model.addAttribute("year", year);
+		model.addAttribute("month", month);
+		model.addAttribute("index", request.getParameter("index"));
 		model.addAttribute("SchDetail", scheduleService.getScheduleDetail(map));
 		System.out.println(scheduleService.getScheduleDetail(map).toString());
 		model.addAttribute("pages", pages);

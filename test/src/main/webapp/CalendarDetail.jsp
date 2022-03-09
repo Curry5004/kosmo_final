@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -37,15 +39,21 @@
 	}
 </script>
 <body>
-
+	<c:if test="${index>0}">
+	<a class="btn btn-primary" href="calendar2.do?year=${year}&month=${month}&party_id=${SchDetail[index].party_id}&index=${index-1}" role="button">이전</a><br />
+	</c:if>
+	<c:if test="${index<fn:length(index)}">
+	<a class="btn btn-primary" href="calendar2.do?year=${year}&month=${month}&party_id=${SchDetail[index].party_id}&index=${index+1}" role="button">다음</a><br />
+	</c:if>
+	<a class="btn btn-primary" href="calendar.do?year=${year}&month=${month}&day=1&party_id=${SchDetail[index].party_id}" role="button">달력</a><br />
 	<div>
-	<p>제목 : ${SchDetail[0].sch_title}</p>
-	<p>작성자 : ${SchDetail[0].sch_writer} </p>
-	<p>위치 : ${SchDetail[0].sch_location} </p>
-	<p>내용 : ${SchDetail[0].sch_content}</p>
-	<p>메모 : ${SchDetail[0].sch_note}</p>
-	<p>최대인원 : ${SchDetail[0].sch_member_count}</p>
-	<p>날자 : ${SchDetail[0].sch_date}</p>
+	<p>제목 : ${SchDetail[index].sch_title}</p>
+	<p>작성자 : ${SchDetail[index].sch_writer} </p>
+	<p>위치 : ${SchDetail[index].sch_location} </p>
+	<p>내용 : ${SchDetail[index].sch_content}</p>
+	<p>메모 : ${SchDetail[index].sch_note}</p>
+	<p>최대인원 : ${SchDetail[index].sch_member_count}</p>
+	<p>날짜 : ${SchDetail[index].sch_date}</p>
 	
 	</div>
 	<form action="scheduleReview.do" method="post" name="Reg_form"

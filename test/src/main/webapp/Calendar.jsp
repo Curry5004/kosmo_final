@@ -197,7 +197,7 @@
 	        	if(i<10){a="0"+i;}
 	        	else{a=i;}
 	        	if(checkList.indexOf(a)!=-1){
-	            days[n].innerHTML = '<a href="calendar2.do?year=${year}&month=${month}&party_id=${party_id}">'+i+'</a>'; }
+	            days[n].innerHTML = '<a href="calendar2.do?year=${year}&month=${month}&party_id=${party_id}&index=0">'+i+'</a>'; }
 	        	else{days[n].innerHTML =i;}
 	            n++;
 	        }
@@ -232,7 +232,7 @@
 	        }else{
 	            month = month - 1;
 	        }
-	        window.location.href='http://localhost:8081/biz/calendar.do?year='+year+"&month="+month+"&day="+day+"&party_id="+party_id;
+	        window.location.href='calendar.do?year='+year+"&month="+0+month+"&day="+day+"&party_id="+party_id;
 	      
 	        this.drawDays();
 	    };
@@ -244,7 +244,7 @@
 	        }else{
 	            month = month + 1;
 	        }
-	        window.location.href='http://localhost:8081/biz/calendar.do?year='+year+"&month="+month+"&day="+day+"&party_id="+party_id;
+	        window.location.href='calendar.do?year='+year+"&month="+0+month+"&day="+day+"&party_id="+party_id;
 	      
 	        this.drawDays();
 	        
@@ -266,7 +266,7 @@
 	         day = today.getDate();
 	         this.options = undefined;
 	         this.drawDays();
-	         window.location.href='http://localhost:8081/biz/calendar.do?year='+year+"&month="+month+"&day="+day+"&party_id="+party_id;
+	         window.location.href='http://localhost:8081/biz/calendar.do?year='+year+"&month="+0+month+"&day="+day+"&party_id="+party_id;
 	     };
 	    
 	    Calendar.prototype.setCookie = function(name, expiredays){

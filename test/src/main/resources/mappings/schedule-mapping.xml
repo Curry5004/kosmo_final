@@ -28,7 +28,7 @@ ORDER BY SCH_DATE ASC
 </select>
 
 <insert id="cntUp" parameterType="schedule">
-INSERT INTO SCHEDULE_MEMBER VALUES (#{user_id},#{sch_id},#{party_id})
+INSERT INTO SCHEDULE_MEMBER (USER_ID, SCH_ID, PARTY_ID) VALUES (#{user_id},#{sch_id},#{party_id})
 </insert>
 
 <delete id="cntDown" parameterType="schedule">

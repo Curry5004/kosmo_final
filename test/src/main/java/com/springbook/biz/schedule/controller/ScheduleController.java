@@ -80,6 +80,7 @@ public class ScheduleController {
 		scheduleService.schMemberCntUp(vo);
 		return "redirect:calendar2.do?year=2022&month=03&party_id=1&pageNo="+pageNo;
 	}
+	
 	@RequestMapping("cntDown.do")
 	public String cntDown(SchVO vo,Model model,HttpSession session, PageVO page){
 		String pageNo = page.getPageNo();

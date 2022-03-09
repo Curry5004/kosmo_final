@@ -6,14 +6,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <html>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
@@ -36,6 +34,12 @@
 
 
 <body>
+<header>
+<a class="btn btn-primary" href="getParty.do?PARTY_ID=${album.party_id}" role="button">소개글</a>
+<a class="btn btn-primary" href="getBoardList.do?party_id=${album.party_id}" role="button">게시판</a>
+<a class="btn btn-primary" href="getAlbumList.do?party_id=${album.party_id}" role="button">앨범</a>
+<a class="btn btn-primary" href="index.jsp" role="button">채?팅?</a><br />
+</header>
 	<img src="${album.alb_img_path }" alt="테스트" />
 	<p>작성자 : ${album.user_id }</p>
 	<p>작성일 : ${album.alb_reg_date}</p>
@@ -50,7 +54,7 @@
 			<button>좋아요 취소</button>
 		</a>
 	</c:if>
-
+s
 	<c:forEach var="comment" items="${commentList}" varStatus="i">
 	
 	

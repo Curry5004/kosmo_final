@@ -16,11 +16,8 @@
 SELECT SCH_ID, PARTY_ID, SCH_TITLE, SCH_WRITER, SCH_CONTENT, SCH_LOCATION, SCH_NOTE, SCH_MEMBER_COUNT, SCH_DATE 
 FROM SCHEDULE WHERE SCH_DATE LIKE ('${year}-${month}%') AND SCH_AVAILABLE=TRUE AND PARTY_ID=#{party_id}
 ORDER BY SCH_DATE ASC
-<if test="!@org.springframework.util.ObjectUtils@isEmpty(listSize)">
-<if test="!@org.springframework.util.ObjectUtils@isEmpty(startRow)">
-LIMIT #{listSize} OFFSET #{startRow}
-</if>
-</if>
+
+
 </select>
 
 <select id="getMemberName" resultType="schedule">

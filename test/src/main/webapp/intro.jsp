@@ -6,11 +6,24 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+ 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 <title>소모임 상세글</title>
 </head>
+ 
 <body>
-<br /><a href="getBoardList.do?party_id=${party.PARTY_ID}">게시글 조회</a><br />
+<header>
+<a class="btn btn-primary" href="getParty.do?PARTY_ID=${param.PARTY_ID}" role="button">소개글</a>
+<a class="btn btn-primary" href="getBoardList.do?party_id=${param.PARTY_ID}" role="button">게시판</a>
+<a class="btn btn-primary" href="getAlbumList.do?party_id=${param.PARTY_ID}" role="button">앨범</a>
+<a class="btn btn-primary" href="index.jsp" role="button">채?팅?</a>
+</header>
+
+
 
 <div>
 	<img src="${party.PARTY_TUMB_PATH}" width=200px  height="200">

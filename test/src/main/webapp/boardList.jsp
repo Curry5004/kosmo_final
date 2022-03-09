@@ -5,13 +5,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+	<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>소모임- 게시글 리스트</title>
 </head>
 <body>
 <header>
+<a class="btn btn-primary" href="getParty.do?PARTY_ID=${param.party_id}" role="button">소개글</a>
+<a class="btn btn-primary" href="getBoardList.do?party_id=${param.party_id}" role="button">게시판</a>
+<a class="btn btn-primary" href="getAlbumList.do?party_id=${param.party_id}" role="button">앨범</a>
+<a class="btn btn-primary" href="index.jsp" role="button">채?팅?</a><br />
 </header>
 <section>
+
 	<button onclick="location.href='boardWrite.jsp?party_id=${party_id}';">게시글 쓰기</button>
 	<c:if test="${empty boardList }">
 		<button onclick="location.href='boardWrite.jsp?party_id=${party_id}';">첫 게시물 작성</button>

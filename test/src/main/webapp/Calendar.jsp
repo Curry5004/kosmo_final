@@ -196,7 +196,8 @@
 	        	else{days[n].innerHTML =i;}
 	            n++;
 	        }
-	        
+	       
+	       
 	        for(var j = 0; j < 42; j++) {
 	            if(days[j].innerHTML === ""){
 	                

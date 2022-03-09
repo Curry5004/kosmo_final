@@ -13,15 +13,10 @@
 </insert>
 
 <select id="getScheduleList" resultType="schedule">
-
 SELECT SCH_ID, PARTY_ID, SCH_TITLE, SCH_WRITER, SCH_CONTENT, SCH_LOCATION, SCH_NOTE, SCH_MEMBER_COUNT, SCH_DATE 
 FROM SCHEDULE WHERE SCH_DATE LIKE ('${year}-${month}%') AND SCH_AVAILABLE=TRUE AND PARTY_ID=#{party_id}
 ORDER BY SCH_DATE ASC
-<if test="!@org.springframework.util.ObjectUtils@isEmpty(listSize)">
-<if test="!@org.springframework.util.ObjectUtils@isEmpty(startRow)">
 LIMIT #{listSize} OFFSET #{startRow}
-</if>
-</if>
 </select>
 
 
@@ -42,7 +37,15 @@ DELETE FROM SCHEDULE_MEMBER WHERE USER_ID=#{user_id} AND SCH_ID=#{sch_id}
 
 <delete id= "deleteSch" parameterType="schedule">
 UPDATE SCHEDULE SET SCH_AVAILABLE=FALSE 
-WHERE SCH_ID = ${sch_id} 
-	
+WHERE SCH_ID = #{sch_id} 
 </delete>
+
+<select id="getCurrentMemberCnt" resultType="int">
+SELECT COUNT(*) FROM  SCHEDULE_MEMBER 
+WHERE SCH_ID=#{sch_id}
+</select>
+
+<select id="getCntList" resultType="schedule">
+SELECT USER_ID,PARTY_ID,SCH_ID FROM SCHEDULE_MEMBER WHERE SCH_ID=#{sch_id}
+</select>
 </mapper>

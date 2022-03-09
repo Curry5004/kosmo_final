@@ -3,9 +3,6 @@ package com.springbook.biz.sch;
 import java.util.List;
 import java.util.Map;
 
-import com.springbook.biz.album.AlbumVO;
-import com.springbook.biz.board.BoardVO;
-
 public interface ScheduleService {
 	
 	public void insertSchedule(SchVO vo);
@@ -21,5 +18,9 @@ public interface ScheduleService {
 	public void schMemberCntDown(SchVO vo);
 	
 	public void deleteSch(SchVO vo);
+	
+	public int getCurrentMemberCnt(SchVO vo);
+	
+	public List<SchVO> getCntList(SchVO vo);
 	
 }

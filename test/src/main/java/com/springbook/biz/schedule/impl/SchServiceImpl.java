@@ -52,4 +52,14 @@ public class SchServiceImpl implements ScheduleService {
 		schDAO.deleteSch(vo);
 		
 	}
+
+	@Override
+	public int getCurrentMemberCnt(SchVO vo) {
+		return schDAO.getCurrentMemberCnt(vo);
+	}
+
+	@Override
+	public List<SchVO> getCntList(SchVO vo) {
+		return schDAO.getCntList(vo);
+	}
 }

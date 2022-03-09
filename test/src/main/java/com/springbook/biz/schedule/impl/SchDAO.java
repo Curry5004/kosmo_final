@@ -45,4 +45,12 @@ public class SchDAO {
 	public void deleteSch(SchVO vo) {
 		mybatis.delete("schDAO.deleteSch",vo);
 	}
+	
+	public int getCurrentMemberCnt(SchVO vo) {
+		return mybatis.selectOne("schDAO.getCurrentMemberCnt", vo);
+	}
+	
+	public List<SchVO> getCntList(SchVO vo){
+		return mybatis.selectList("schDAO.getCntList", vo);
+	}
 }

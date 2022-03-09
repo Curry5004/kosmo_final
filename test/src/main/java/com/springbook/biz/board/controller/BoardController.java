@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.springbook.biz.board.BoardService;
 import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.board.PageVO;
+import com.springbook.biz.boardComment.BoardCommentService;
+import com.springbook.biz.boardComment.BoardCommentVO;
 import com.springbook.biz.user.UserVO;
 import com.springbook.biz.user.controller.UserController;
 
@@ -26,6 +28,9 @@ import com.springbook.biz.user.controller.UserController;
 public class BoardController {
 	@Autowired
 	private BoardService boardService;
+	
+	@Autowired
+	private BoardCommentService boardcommentService;
 	
 	@RequestMapping(value="/getBoardList.do", method=RequestMethod.GET)
 	public String getBoardList(BoardVO vo, Model model, PageVO page) {
@@ -141,10 +146,33 @@ public class BoardController {
 		return "boardView.jsp";
 	}
 	
+	
 	@RequestMapping("getBoard.do")
-	public void getBoard(BoardVO vo,Model model){
-		
-		model.addAttribute("board");
+	public String getBoard(BoardVO vo,BoardCommentVO vo2,Model model){
+	
+		model.addAttribute("board", boardService.getBoard(vo));
+		Map<String, BoardVO> likeList=new HashMap<String, BoardVO>();
 
+		
+		model.addAttribute("commentList", boardcommentService.getBoardCommentList(vo2));
+		System.out.println("댓글리스트 : "+boardcommentService.getBoardCommentList(vo2));
+
+		return "boardView.jsp";
 	}
-}
+	
+		@RequestMapping("writeBoardComment.do")
+		public String writeBoardComment(BoardCommentVO vo,Model model){
+			
+			boardcommentService.writeBoardComment(vo);
+			return "getBoard.do?art_id="+vo.getArt_id();
+		}
+
+		@RequestMapping("deleteBoardComment.do")
+		public String deleteBoardComment(BoardCommentVO vo,Model model){
+			
+			boardcommentService.deleteBoardComment(vo);
+			return "getBoard.do?art_id="+vo.getArt_id();
+		}
+	}
+ 
+

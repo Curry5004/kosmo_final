@@ -7,13 +7,13 @@ public interface BoardService {
 	List<BoardVO> getBoardList(Map<String,Object> map);
 	int getBoardCnt(BoardVO vo);
 	
-	void insertBoard(BoardVO vo);
+	public void insertBoard(BoardVO vo);
 	
-	void updateBoard(BoardVO vo);
+	public void updateBoard(BoardVO vo);
 	
-	void deleteBoard(BoardVO vo);
+	public void deleteBoard(BoardVO vo);
 	
-	void getBoard(BoardVO vo);
+	public BoardVO getBoard(BoardVO vo);
 	
 
 }

@@ -53,10 +53,8 @@
 				</button>
 	        </c:if>
 	        </c:if>
-	        <c:if test="${sDetail.sch_member_current_count > 0 }">
 	        <c:if test="${cntList.containsKey(sessionScope.user.user_Id)}">
-	            <button onclick="location.href='cntUp.do?user_id=${sessionScope.user.user_Id}&sch_id=${sch_id}' "> 취소하기 </button>
-	        </c:if>
+	            <button onclick="location.href='cntDown.do?user_id=${sessionScope.user.user_Id}&sch_id=${sch_id}' "> 취소하기 </button>
 	        </c:if>
 	        </td>
 	    </tr> 

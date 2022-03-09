@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="adminDAO">
+
+<select id="getAdminList" resultType="admin">
+	select U.USER_ID, R.request, U.NAME, U.BIRTHDAY, U.GENDER,
+	 U.LOCATION, U.PHONE_NUM, U.JOIN_DATE, U.ADMIN, U.PROFILE_IMAGE, U.MODIFIED_DAY,
+	  U.USER_AVAILABLE, U.MBTI_PATH, U.MBTI_ID from registry r join user u 
+	where u.user_id = r.user_id
+	order by r.request, u.join_date;
+</select>
+</mapper>

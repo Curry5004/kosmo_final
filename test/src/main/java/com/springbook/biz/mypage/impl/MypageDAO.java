@@ -16,7 +16,9 @@ public class MypageDAO {
 	}
 	
 	public void updateUserInfo(UserVO vo){
-		mybatis.update("MypageDAO.updateUserInfo");
+		System.out.println("mybatis 업데이트 진입");
+		mybatis.update("MypageDAO.updateUserInfo", vo);
+		System.out.println("mybatis 처리 완료");
 	}
 
 }

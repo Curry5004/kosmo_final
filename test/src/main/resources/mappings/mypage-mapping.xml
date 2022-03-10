@@ -14,7 +14,7 @@
     where USER_ID=#{user_Id};
 </select>
 
-<update id = "updateUserInfo" >
+<update id = "updateUserInfo">
 	UPDATE USER
 	SET PASSWORD = #{password}, LOCATION=#{location}, PROFILE_IMAGE=#{profile_Image}
 	, MODIFIED_DAY=now()

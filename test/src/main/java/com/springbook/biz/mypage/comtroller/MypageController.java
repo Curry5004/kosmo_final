@@ -154,6 +154,7 @@ public class MypageController {
 		System.out.println("파일 검사 완료.");
 		System.out.println(vo.toString());
 		mypageService.updateUserInfo(vo);
+		System.out.println(vo.toString());
 		System.out.println("업데이트 완료");
 		return "userInfoUpdateComplete.jsp";
 

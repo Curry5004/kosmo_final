@@ -171,7 +171,13 @@ public class BoardController {
 			boardcommentService.deleteBoardComment(vo);
 			return "getBoard.do?art_id="+vo.getArt_id();
 	}
-	
+		@RequestMapping("modifyAlbumComment.do")
+		public String modifyBoardComment(BoardCommentVO vo,Model model){
+		
+			boardcommentService.modifyBoardComment(vo);
+			return "getBoard.do?art_id="+vo.getArt_id();
+		}
+		
 	}
  
 

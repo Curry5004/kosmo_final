@@ -8,7 +8,7 @@ public class BoardVO {
 	private int art_id;
 	private int party_id; 
 	private String art_title; 
-	private String art_writer;
+	private String user_id;
 	private String art_content;
 	private MultipartFile art_img;
 	private String art_img_path;
@@ -16,6 +16,9 @@ public class BoardVO {
 	private Date art_reg_date;
 	private Date art_mod_date;
 	private boolean art_available; 
+	
+	
+	
 	public int getArt_id() {
 		return art_id;
 	}
@@ -34,11 +37,14 @@ public class BoardVO {
 	public void setArt_title(String art_title) {
 		this.art_title = art_title;
 	}
-	public String getArt_writer() {
-		return art_writer;
+	
+	public String getUser_id() {
+			return user_id;
 	}
-	public void setArt_writer(String art_writer) {
-		this.art_writer = art_writer;
+	
+    public void setUser_id(String user_id) {
+			this.user_id = user_id;	
+		
 	}
 	public String getArt_content() {
 		return art_content;

@@ -16,16 +16,17 @@
 </select>
 
 <insert id="insertBoard" parameterType="board">
-	insert into board(party_id, art_title,art_writer,art_content, art_img_path)
-	values('1',#{art_title},'kms',#{art_content}, #{art_img_path})
+	INSERT INTO BOARD(PARTY_ID, ART_ID, USER_ID, ART_CONTENT, ART_TITLE) VALUES
+	(#{party_id}, #{art_id}, #{user_id}, #{art_content},#{art_title})
 </insert>
 
 <update id="updateBoard" parameterType="board">
-	update board set art_title=#{art_title}, art_content=#{art_content}, art_img_path=#{art_img_path} where party_id='1'
+	UPDATE BOARD SET ART_CONTENT=#{art_content}, ART_MOD_DATE=NOW()
+	WHERE ART_ID = #{art_id}
 </update>
 
 <delete id="deleteBoard" parameterType="board">
-	delete board where party_id='1'
+    UPDATE BOARD SET ART_AVAILABLE=FALSE WHERE ART_ID=#{art_id} 
 </delete>
 
  <select id="getBoard" resultType="board">

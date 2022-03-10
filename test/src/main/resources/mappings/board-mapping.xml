@@ -28,7 +28,7 @@
 	delete board where party_id='1'
 </delete>
 
-<select id="getBoard" parameterType="board" resultType="board">
-  select * from BOARD Where party_id= #{party_id} and art_available=true
+ <select id="getBoard" resultType="board">
+  select * from BOARD Where art_id= #{art_id} and art_available=true
 </select>
 </mapper>

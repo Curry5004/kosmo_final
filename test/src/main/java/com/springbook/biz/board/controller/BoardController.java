@@ -28,9 +28,9 @@ import com.springbook.biz.user.controller.UserController;
 public class BoardController {
 	@Autowired
 	private BoardService boardService;
-	
+    
 	@Autowired
-	private BoardCommentService boardcommentService;
+    private BoardCommentService boardcommentService;
 	
 	@RequestMapping(value="/getBoardList.do", method=RequestMethod.GET)
 	public String getBoardList(BoardVO vo, Model model, PageVO page) {
@@ -144,11 +144,10 @@ public class BoardController {
 		}
 		boardService.updateBoard(vo);
 		return "boardView.jsp";
-	}
+	    }
 	
-	
-	@RequestMapping("getBoard.do")
-	public String getBoard(BoardVO vo,BoardCommentVO vo2,Model model){
+		@RequestMapping("/getBoard.do")
+        public String getBoard(BoardVO vo,BoardCommentVO vo2,Model model){
 	
 		model.addAttribute("board", boardService.getBoard(vo));
 		Map<String, BoardVO> likeList=new HashMap<String, BoardVO>();
@@ -160,19 +159,19 @@ public class BoardController {
 		return "boardView.jsp";
 	}
 	
-		@RequestMapping("writeBoardComment.do")
-		public String writeBoardComment(BoardCommentVO vo,Model model){
-			
+		@RequestMapping("/writeBoardComment.do")
+		public String writeBoardComment(BoardCommentVO vo,Model model){			
 			boardcommentService.writeBoardComment(vo);
 			return "getBoard.do?art_id="+vo.getArt_id();
 		}
 
-		@RequestMapping("deleteBoardComment.do")
+		@RequestMapping("/deleteBoardComment.do")
 		public String deleteBoardComment(BoardCommentVO vo,Model model){
 			
 			boardcommentService.deleteBoardComment(vo);
 			return "getBoard.do?art_id="+vo.getArt_id();
-		}
+	}
+	
 	}
  
 

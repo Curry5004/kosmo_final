@@ -12,7 +12,7 @@
 		<typeAlias alias="party" type="com.springbook.biz.party.PartyVO" />
 		<typeAlias alias="member" type="com.springbook.biz.memberList.MemberListVO" />
 		<typeAlias alias="album" type="com.springbook.biz.album.AlbumVO" />
-		<typeAlias alias="boardComment" type="com.springbook.biz.board.BoardCommentVO"/>
+		<typeAlias alias="boardComment" type="com.springbook.biz.boardComment.BoardCommentVO"/>
 	</typeAliases>
 
 	<!-- Sql Mapper 설정 -->

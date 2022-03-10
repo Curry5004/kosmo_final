@@ -41,4 +41,5 @@ public class BoardDAOMybatis {
 		return (BoardVO) mybatis.selectOne("BoardDAO.getBoard", vo);
 	}
 	
+
 }

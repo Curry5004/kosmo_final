@@ -1,6 +1,7 @@
 package com.springbook.biz.boardComment;
 
 import java.util.Date;
+
 public class BoardCommentVO {
 	private int art_comment_id;
 	private int party_id;

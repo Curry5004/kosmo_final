@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib  prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -55,9 +55,21 @@
 		</tr>
 	</table>
 	
+	<c:forEach var="comment" items="${commentList}">
+		<fmt:formatDate var="formatRegDate" value="${comment.art_comment_reg_date}" pattern="yyyy-MM-dd HH:MM:ss"/>
+		 <fmt:formatDate var="formatModDate" value="${comment.art_comment_mod_date}" pattern="yyyy-MM-dd"/>
+		<div style="border: 1px solid black">
+			<p>${comment.art_comment_write}</p>
+			<p>${comment.art_comment_content}</p>
+			<p>${formatRegDate}</p>
+			<form action=""></form>
+			<a href="modifyBoardComment.do?art_comment_id=${comment.art_comment_id}">수정</a>
+			<a href="deleteBoardComment.do?art_comment_id=${comment.art_comment_id}&art_id=${board.art_id}">삭제</a>
+		</div>
+	</c:forEach>
+	
 	<button><a href="boardUpdate.jsp">수정</a></button>
 	<button><a href="">삭제</a></button>
-	
 	
 	
 	<button><a href="getBoardList.do?party_id=1">돌아가기</a></button>

@@ -19,11 +19,13 @@
 	#{PARTY_PRE_MBTI2},#{PARTY_PRE_MBTI3},#{PARTY_PRE_MBTI4}
 	,#{CATEGORY_NAME},#{PARTY_INTRODUCE},#{PARTY_LOCATION},
 	#{PARTY_TUMB_PATH},${PARTY_MAXIMUM})
-
 </insert>
 	
 	<select id = "getParty" resultType="party">
-	select *  from Party where party_id =#{PARTY_ID} and PARTY_AVAILABLE = true
+	SELECT PARTY_ID, PARTY_TITLE, PARTY_CREATOR, PARTY_PRE_MBTI1, PARTY_PRE_MBTI2, 
+	PARTY_PRE_MBTI3, PARTY_PRE_MBTI4, CATEGORY_NAME, PARTY_INTRODUCE, PARTY_LOCATION,
+	 PARTY_TUMB_PATH, PARTY_MAXIMUM, PARTY_REG_DATE
+	 FROM PARTY WHERE PARTY_ID =#{PARTY_ID} AND PARTY_AVAILABLE = TRUE
 	
 	</select>
 	
@@ -37,6 +39,40 @@
 	where party_id = ${PARTY_ID}
 	
 	</delete>
+	
+	<select id ="getPartyList" resultType="party" parameterType="java.util.HashMap">
+	SELECT * FROM PARTY 
+	WHERE
+		1=1
+		AND PARTY_AVAILABLE = TRUE
+	<if test="!@org.springframework.util.ObjectUtils@isEmpty(CATEGORY_NAME)">
+		AND CATEGORY_NAME = #{CATEGORY_NAME}
+	</if>
+	<if test="!@org.springframework.util.ObjectUtils@isEmpty(SEARCH_KEYWORD)">
+		AND PARTY_TITLE LIKE CONCAT('%',#{SEARCH_KEYWORD},'%') 
+	</if>
+	<if test="!@org.springframework.util.ObjectUtils@isEmpty(START_ROW) and !@org.springframework.util.ObjectUtils@isEmpty(LIST_SIZE)">
+		LIMIT #{LIST_SIZE} OFFSET #{START_ROW}
+	</if>
+</select>
 
+<select id = "getPartyCnt" resultType="int" parameterType="java.util.HashMap">
+	select count(*) from party
+	WHERE
+	 	1=1
+		AND PARTY_AVAILABLE = TRUE
+	<if test="!@org.springframework.util.ObjectUtils@isEmpty(CATEGORY_NAME)">
+		AND CATEGORY_NAME = #{CATEGORY_NAME}
+	</if>
+	<if test="!@org.springframework.util.ObjectUtils@isEmpty(SEARCH_KEYWORD)">
+		AND PARTY_TITLE LIKE CONCAT('%',#{SEARCH_KEYWORD},'%')
+	</if>
+</select>
+
+<select id = "getRate" resultType="party">
+		SELECT AVG(RATE1) AS PARTY_RATE1, AVG(RATE2) AS PARTY_RATE2,
+		AVG(RATE1) AS PARTY_RATE3
+		FROM SCHEDULE_MEMBER WHERE PARTY_ID=#{PARTY_ID}
+</select>
 	
 </mapper>

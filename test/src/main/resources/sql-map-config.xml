@@ -16,7 +16,7 @@
 		<typeAlias alias="albumComment" type="com.springbook.biz.albumComment.AlbumCommentVO" />
 	</typeAliases>
 
-	<!-- Sql Mapper 설정 -->
+	<!-- Sql Mapper-->
 	<mappers>
 		<mapper resource="mappings/user-mapping.xml" ></mapper>
 		<mapper resource="mappings/category-mapping.xml"></mapper>

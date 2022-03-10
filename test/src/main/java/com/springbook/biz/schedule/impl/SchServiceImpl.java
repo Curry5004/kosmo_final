@@ -26,7 +26,12 @@ public class SchServiceImpl implements ScheduleService {
 		return schDAO.getScheduleList(vo);
 		
 	}
-
+	@Override
+	public SchVO getMemberName(SchVO vo) {
+		System.out.println("유저 이름 가져오기 로그");
+		return schDAO.getMemberName(vo);
+	}
+	
 	@Override
 	public int getSchCnt(SchVO vo) {
 		return schDAO.getSchCnt(vo);
@@ -61,5 +66,10 @@ public class SchServiceImpl implements ScheduleService {
 	@Override
 	public List<SchVO> getCntList(SchVO vo) {
 		return schDAO.getCntList(vo);
+	}
+	
+	@Override
+	public void scheduleReview(SchVO vo) {
+		schDAO.scheduleReview(vo);
 	}
 }

@@ -16,6 +16,12 @@
 SELECT SCH_ID, PARTY_ID, SCH_TITLE, SCH_WRITER, SCH_CONTENT, SCH_LOCATION, SCH_NOTE, SCH_MEMBER_COUNT, SCH_DATE 
 FROM SCHEDULE WHERE SCH_DATE LIKE ('${year}-${month}%') AND SCH_AVAILABLE=TRUE AND PARTY_ID=#{party_id}
 ORDER BY SCH_DATE ASC
+</select>
+
+<select id="getScheduleList2" resultType="schedule">
+SELECT SCH_ID, PARTY_ID, SCH_TITLE, SCH_WRITER, SCH_CONTENT, SCH_LOCATION, SCH_NOTE, SCH_MEMBER_COUNT, SCH_DATE 
+FROM SCHEDULE WHERE SCH_DATE LIKE ('${year}-${month}%') AND SCH_AVAILABLE=TRUE AND PARTY_ID=#{party_id}
+ORDER BY SCH_DATE ASC
 LIMIT #{listSize} OFFSET #{startRow}
 </select>
 
@@ -48,4 +54,13 @@ WHERE SCH_ID=#{sch_id}
 <select id="getCntList" resultType="schedule">
 SELECT USER_ID,PARTY_ID,SCH_ID FROM SCHEDULE_MEMBER WHERE SCH_ID=#{sch_id}
 </select>
+
+<select id="getMemberName" resultType="schedule">
+	select u.name from user u join schedule_member s on u.user_id = s.user_id where s.party_id =${party_id}
+</select>
+
+<insert id="scheduleReview" parameterType="schedule">
+INSERT INTO SCHEDULE_MEMBER(USER_ID, SCH_ID, PARTY_ID, RATE1, RATE2, RATE3) VALUES
+(#{user_id}, ${sch_id}, ${party_id}, ${rate1}, ${rate2}, ${rate3})
+</insert>
 </mapper>

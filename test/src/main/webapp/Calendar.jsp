@@ -5,6 +5,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="en">
   <head>
+  
+    
   	<title>mbti</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,6 +19,7 @@
 
 	</head>
 	<body>
+		<div style="text-align:center">${getMemberName.name}님 환영합니다.</div>
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
@@ -164,7 +167,9 @@
 	            next[0].addEventListener('click', function(){that.nextMonth(); });
 	            reset.addEventListener('click', function(){that.reset(); });
 	        while(daysLen--) {
-	            days[daysLen].addEventListener('click', function(){that.clickDay(this); });
+	        	if(daysLen>=startDay){
+	            days[daysLen].addEventListener('mouseover', function(){that.clickDay(this); });
+	        	}
 	        }
 	    };
 	    
@@ -176,7 +181,7 @@
 	            headMonth[0].innerHTML = monthTag[month-1] +" - " + year;        
 	     };
 	    Calendar.prototype.drawDays = function() {
-	        var startDay = new Date(year, month-1, 1).getDay(),
+	        startDay = new Date(year, month-1, 1).getDay(),
 //	      下面表示这个月总共有几天
 	            nDays = new Date(year, month , 0).getDate(),
 	    
@@ -192,7 +197,7 @@
 	        	if(i<10){a="0"+i;}
 	        	else{a=i;}
 	        	if(checkList.indexOf(a)!=-1){
-	            days[n].innerHTML = '<a href="index.jsp">'+i+'</a>'; }
+	            days[n].innerHTML = '<a href="calendar2.do?year=${year}&month=${month}&party_id=${party_id}&index=0">'+i+'</a>'; }
 	        	else{days[n].innerHTML =i;}
 	            n++;
 	        }
@@ -228,7 +233,7 @@
 	        }else{
 	            month = month - 1;
 	        }
-	        window.location.href='http://localhost:8081/biz/calendar.do?year='+year+"&month="+month+"&day="+day+"&party_id="+party_id;
+	        window.location.href='calendar.do?year='+year+"&month="+0+month+"&day="+day+"&party_id="+party_id;
 	      
 	        this.drawDays();
 	    };
@@ -240,7 +245,7 @@
 	        }else{
 	            month = month + 1;
 	        }
-	        window.location.href='http://localhost:8081/biz/calendar.do?year='+year+"&month="+month+"&day="+day+"&party_id="+party_id;
+	        window.location.href='calendar.do?year='+year+"&month="+0+month+"&day="+day+"&party_id="+party_id;
 	      
 	        this.drawDays();
 	        
@@ -262,7 +267,7 @@
 	         day = today.getDate();
 	         this.options = undefined;
 	         this.drawDays();
-	         window.location.href='http://localhost:8081/biz/calendar.do?year='+year+"&month="+month+"&day="+day+"&party_id="+party_id;
+	         window.location.href='http://localhost:8081/biz/calendar.do?year='+year+"&month="+0+month+"&day="+day+"&party_id="+party_id;
 	     };
 	    
 	    Calendar.prototype.setCookie = function(name, expiredays){

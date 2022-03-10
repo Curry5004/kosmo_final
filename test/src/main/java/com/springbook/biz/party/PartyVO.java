@@ -23,6 +23,7 @@ public class PartyVO {
 	private double PARTY_RATE3;
 	private Date PARTY_REG_DATE;
 	private boolean PARTY_AVAILABLE;
+	private String SEARCH_KEYWORD;
 	
 	public int getPARTY_ID() {
 		return PARTY_ID;
@@ -131,6 +132,13 @@ public class PartyVO {
 	}
 	public void setPARTY_AVAILABLE(boolean pARTY_AVAILABLE) {
 		PARTY_AVAILABLE = pARTY_AVAILABLE;
+	}
+	
+	public String getSEARCH_KEYWORD() {
+		return SEARCH_KEYWORD;
+	}
+	public void setSEARCH_KEYWORD(String sEARCH_KEYWORD) {
+		SEARCH_KEYWORD = sEARCH_KEYWORD;
 	}
 	@Override
 	public String toString() {

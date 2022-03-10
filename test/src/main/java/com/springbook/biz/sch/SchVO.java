@@ -24,9 +24,9 @@ public class SchVO {
 	private String year;
 	private String month;
 	private String day;
-	//현재 인원 카운트 할 거 추가 
-	private int sch_member_current_count;
-
+	
+	
+	
 	@Override
 	public String toString() {
 		return "SchVO [sch_id=" + sch_id + ", user_id=" + user_id + ", party_id=" + party_id + ", sch_title="
@@ -34,7 +34,7 @@ public class SchVO {
 				+ sch_location + ", sch_note=" + sch_note + ", sch_member_count=" + sch_member_count + ", sch_date="
 				+ sch_date + ", sch_available=" + sch_available + ", member_id=" + member_id + ", rate1=" + rate1
 				+ ", rate2=" + rate2 + ", rate3=" + rate3 + ", year=" + year + ", month=" + month + ", day=" + day
-				+ ", sch_member_current_count=" + sch_member_current_count + "]";
+				+ ", sch_member_current_count=" + sch_member_current_count + ", name=" + name + "]";
 	}
 	public int getSch_id() {
 		return sch_id;
@@ -150,5 +150,15 @@ public class SchVO {
 	public void setSch_member_current_count(int sch_member_current_count) {
 		this.sch_member_current_count = sch_member_current_count;
 	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	private int sch_member_current_count;	//현재 인원 카운트 할 거 추가 
+	private String name;
+	
+	
 	
 }

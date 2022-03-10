@@ -8,7 +8,10 @@
 <title>앨범 작성하기</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 </head>
 
 <script language="javascript">
@@ -25,6 +28,12 @@
 	}
 </script>
 <body>
+<header>
+<a class="btn btn-primary" href="getParty.do?PARTY_ID=${param.party_id}" role="button">소개글</a>
+<a class="btn btn-primary" href="getBoardList.do?party_id=${param.party_id}" role="button">게시판</a>
+<a class="btn btn-primary" href="getAlbumList.do?party_id=${param.party_id}" role="button">앨범</a>
+<a class="btn btn-primary" href="index.jsp" role="button">채?팅?</a><br />
+</header>
 <div class="container" style="margin-top:30px">
 	<div class="row">
 		<form action="insertAlbum.do"  method="POST" enctype="multipart/form-data" name="Reg_form" onsubmit="return check()">

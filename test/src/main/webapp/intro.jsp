@@ -2,13 +2,27 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+ 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 <title>소모임 상세글</title>
 </head>
+ 
 <body>
+<header>
+<a class="btn btn-primary" href="getParty.do?PARTY_ID=${param.PARTY_ID}" role="button">소개글</a>
+<a class="btn btn-primary" href="getBoardList.do?party_id=${param.PARTY_ID}" role="button">게시판</a>
+<a class="btn btn-primary" href="getAlbumList.do?party_id=${param.PARTY_ID}" role="button">앨범</a>
+<a class="btn btn-primary" href="index.jsp" role="button">채?팅?</a>
+</header>
+
 
 
 <div>
@@ -23,9 +37,9 @@
 <li>${party.PARTY_PRE_MBTI4}</li>
 </ul>
 
-<p> rate1 : ${party.PARTY_RATE1 }</p>
-<p> rate2 : ${party.PARTY_RATE2 }</p>
-<p> rate3 : ${party.PARTY_RATE3 }</p>
+<p> rate1 : <fmt:formatNumber value="${rate.PARTY_RATE1 }" pattern=".0"/></p>
+<p> rate2 : <fmt:formatNumber value="${rate.PARTY_RATE2 }" pattern=".0"/></p>
+<p> rate3 : <fmt:formatNumber value="${rate.PARTY_RATE3 }" pattern=".0"/></p>
 
 <div  style="border: 1px solid black">${party.PARTY_INTRODUCE}</div>
 <c:if test="${memberList[0].USER_ID==sessionScope.user.user_Id}">

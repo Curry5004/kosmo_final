@@ -9,18 +9,22 @@ public interface ScheduleService {
 	
 	public List<SchVO> getScheduleList(SchVO vo);
 	
-	public int getSchCnt(SchVO vo);
+	public SchVO getMemberName (SchVO vo);
 	
-	List<SchVO> getScheduleDetail(Map<String,Object> map);
+	public void scheduleReview(SchVO vo); //별점 평가
 	
-	public void schMemberCntUp(SchVO vo);
+	public int getSchCnt(SchVO vo); // 스케쥴 전체갯수 조회
 	
-	public void schMemberCntDown(SchVO vo);
+	public List<SchVO> getScheduleDetail(Map<String,Object> map); // 스케쥴 상세보기
 	
-	public void deleteSch(SchVO vo);
+	public void schMemberCntUp(SchVO vo); // 스케줄 가입
 	
-	public int getCurrentMemberCnt(SchVO vo);
+	public void schMemberCntDown(SchVO vo); //스케줄 탈퇴
 	
-	public List<SchVO> getCntList(SchVO vo);
+	public void deleteSch(SchVO vo); // 일정 삭제하기
+	
+	public int getCurrentMemberCnt(SchVO vo); // 일정 현재인원
+	
+	public List<SchVO> getCntList(SchVO vo); // 가입한 사람 목록 가져오기
 	
 }

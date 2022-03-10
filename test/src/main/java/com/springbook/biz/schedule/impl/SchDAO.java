@@ -15,15 +15,20 @@ public class SchDAO {
 	SqlSessionTemplate mybatis;
 	
 	public void insertSchedule(SchVO vo){
-		System.out.println(vo.getParty_id());
 		mybatis.insert("schDAO.insertSchDAO",vo);
 	}
 	
 	public List<SchVO> getScheduleList(SchVO vo) {
-		System.out.println(vo.getYear());
-		System.out.println(vo.getMonth());
 		return mybatis.selectList("schDAO.getScheduleList", vo);
-		
+	}
+	
+	public SchVO getMemberName(SchVO vo){
+		return mybatis.selectOne("schDAO.getMemberName",vo);
+	}
+	
+	public void scheduleReview(SchVO vo) {
+		System.out.println(vo.toString());
+		mybatis.insert("schDAO.scheduleReview",vo);
 	}
 	
 	public int getSchCnt(SchVO vo) {
@@ -31,7 +36,7 @@ public class SchDAO {
 	}
 	
 	public List<SchVO> getScheduleDetail(Map<String, Object> map){
-		return mybatis.selectList("schDAO.getScheduleList", map);
+		return mybatis.selectList("schDAO.getScheduleList2", map);
 	}
 	
 	public void schMemberCntUp(SchVO vo){

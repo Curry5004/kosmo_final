@@ -15,7 +15,7 @@ public class AlbumDAO {
 	private SqlSessionTemplate mybatis;
 	
 	public void insertAlbum(AlbumVO vo){
-		mybatis.insert("AlbumDAO.insertAlbum",vo);
+	mybatis.insert("AlbumDAO.insertAlbum",vo);
 	}
 	
 	public int getAlbumCnt(AlbumVO vo){
@@ -44,5 +44,4 @@ public class AlbumDAO {
 	public void likeDown(AlbumVO vo){
 		mybatis.insert("AlbumDAO.likeDown",vo);
 	}
-	
 }

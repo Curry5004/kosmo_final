@@ -18,11 +18,14 @@ public class MemberListController {
 	
 	@RequestMapping("/joinParty.do")
 	public String joinParty(MemberListVO vo, Model model,HttpSession session){
-		UserVO user=(UserVO)session.getAttribute("user");
-		System.out.println("유저아이디: "+user.getUser_Id());
-		vo.setUSER_ID(user.getUser_Id());
-		memberListService.joinParty(vo);
-		return "index.jsp";
+		UserVO userVO=(UserVO)session.getAttribute("user");
+		if(userVO!=null){
+			System.out.println("유저아이디: "+userVO.getUser_Id());
+			vo.setUSER_ID(userVO.getUser_Id());
+			memberListService.joinParty(vo);
+			return "index.jsp";
+		}else
+			return "login.do";
 	}
 	@RequestMapping("/deletePartyMember.do")
 		public String deletePartyMember(MemberListVO vo, Model model,HttpSession session){
@@ -34,9 +37,14 @@ public class MemberListController {
 			return "getParty.do?PARTY_ID="+vo.getPARTY_ID();
 	}
 	@RequestMapping("/memberFav.do")
-		public String  memeberFav(MemberListVO vo,Model model){
-			memberListService.memberFav(vo);
-			return "getParty.do?PARTY_ID="+vo.getPARTY_ID();
+		public String  memeberFav(MemberListVO vo,Model model,HttpSession session){
+			UserVO userVO=(UserVO)session.getAttribute("user");
+			if(userVO!=null){
+				memberListService.memberFav(vo);
+				return "getParty.do?PARTY_ID="+vo.getPARTY_ID();
+			}else {
+				return "login.do";
+			}
 	}
 	@RequestMapping("/deleteMemberFav.do")
 	public String deleteMemberFav(MemberListVO vo, Model model,HttpSession session){

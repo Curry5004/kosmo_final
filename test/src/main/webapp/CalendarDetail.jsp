@@ -40,9 +40,9 @@
 </script>
 <body>
 	<c:if test="${index>0}">
-	<a class="btn btn-primary" href="calendar2.do?year=${year}&month=${month}&party_id=${SchDetail[index].party_id}&index=${index-1}" role="button">이전</a><br />
+	<a class="btn btn-primary" href="calendar2.do?year=${year}&month=${month}&party_id=${SchDetail[index].party_id}&index=${index-1}" role="button">이전</a>
 	</c:if>
-	<c:if test="${index<fn:length(index)}">
+	<c:if test="${index<fn:length(SchDetail)-1}">
 	<a class="btn btn-primary" href="calendar2.do?year=${year}&month=${month}&party_id=${SchDetail[index].party_id}&index=${index+1}" role="button">다음</a><br />
 	</c:if>
 	<a class="btn btn-primary" href="calendar.do?year=${year}&month=${month}&day=1&party_id=${SchDetail[index].party_id}" role="button">달력</a><br />

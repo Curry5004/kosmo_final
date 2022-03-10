@@ -110,7 +110,8 @@
                 </tr>
             </table>
             <br>
-            <input type="submit" value="가입"/>  <input type="button" value="취소">
+            <span style="color:red">회원내용을 변경하면 다시 로그인 하셔야합니다.</span>
+            <input type="submit" value="변경하기"/>
         </form>
     </div>
 </body>

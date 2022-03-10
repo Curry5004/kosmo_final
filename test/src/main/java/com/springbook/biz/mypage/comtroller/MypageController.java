@@ -46,10 +46,10 @@ public class MypageController {
 		Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		String today = sdf.format(date);
-						
+		System.out.println(today);
 		Date date2 = vo2.getModified_Day();
 		String modi = sdf.format(date2);
-						
+		System.out.println(modi);
 		int tYear= Integer.parseInt(today.substring(0,4)); 
 		int tMonth = Integer.parseInt(today.substring(4,6));
 		int mYear = Integer.parseInt(modi.substring(0,4)); 
@@ -59,6 +59,7 @@ public class MypageController {
 		if (month>=3){
 			mbtiModi = true;
 		}		
+		System.out.println(mbtiModi);
 		model.addAttribute("mbtiModi", mbtiModi);	
 		return "mypageInfoUpdate.jsp";
 	}
@@ -151,11 +152,8 @@ public class MypageController {
 		}  else{
 			vo.setProfile_Image(vo2.getProfile_Image());
 		}
-		System.out.println("파일 검사 완료.");
-		System.out.println(vo.toString());
+		
 		mypageService.updateUserInfo(vo);
-		System.out.println(vo.toString());
-		System.out.println("업데이트 완료");
 		return "userInfoUpdateComplete.jsp";
 
 	}

@@ -65,6 +65,42 @@
                         <input type="text" size="50" name="location" placeholder="시, 구 까지만 작성해 주세요 ex)서울특별시 금천구" value="${user.location}"/>
                     </td>
                 </tr>
+                <c:if test="${mbtiModi}">
+                	<tr>
+                    	<td id="title">MBTI Type 3개월이 경과하였습니다.</td>
+                    <td>
+                        <select name="mbti_Id">
+                     		<c:forEach var="temp" items="${MbtiList}">
+								<option value="${temp.MBTI_ID}">${temp.MBTI_NAME}</option>
+							</c:forEach>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="title">
+                    	<a href="https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC" target="_blank">검사하러가기</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="title">MBTI 결과지</td>
+                    <td>
+                        <input type="file" name="mbti_root"/>
+                    </td>
+                </tr>
+                </c:if>
+                <!-- 3개월 경과안돼었을떄 나오는 부분.  -->
+                <c:if test="${!mbtiModi}">
+                	<tr>
+                    	<td id="title">3개월이 경과되지않았습니다.</td>
+                    	<td id="title">변경일자 = ${user.modified_Day}</td>  
+                </tr>
+                <tr>
+                    <td>
+                        <input type="hidden"  size="50" name="mbti_Id" value="${user.mbti_Id}"/>
+                        <input type="hidden" name="mbti_root" value="${user.mbti_root}"/>
+                    </td>
+                </tr>
+                </c:if>
            
                 <tr>
                     <td id="title">프로필 사진</td>

@@ -17,7 +17,7 @@
 <update id = "updateUserInfo">
 	UPDATE USER
 	SET PASSWORD = #{password}, LOCATION=#{location}, PROFILE_IMAGE=#{profile_Image}
-	, MODIFIED_DAY=now()
+	, MODIFIED_DAY=now(), MBTI_PATH=#{mbti_Path}, MBTI_ID=#{mbti_Id} 
 	WHERE user_Id = #{user_Id};
 </update>
 

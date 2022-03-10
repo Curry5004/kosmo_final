@@ -90,14 +90,15 @@
                 </c:if>
                 <!-- 3개월 경과안돼었을떄 나오는 부분.  -->
                 <c:if test="${!mbtiModi}">
-                	<tr>
+                <tr>
                     	<td id="title">3개월이 경과되지않았습니다.</td>
                     	<td id="title">변경일자 = ${user.modified_Day}</td>  
                 </tr>
                 <tr>
                     <td>
-                        <input type="hidden"  size="50" name="mbti_Id" value="${user.mbti_Id}"/>
-                        <input type="hidden" name="mbti_root" value="${user.mbti_root}"/>
+                    
+                        
+                     
                     </td>
                 </tr>
                 </c:if>
@@ -111,6 +112,7 @@
             </table>
             <br>
             <span style="color:red">회원내용을 변경하면 다시 로그인 하셔야합니다.</span>
+            <br>
             <input type="submit" value="변경하기"/>
         </form>
     </div>

@@ -8,6 +8,7 @@
 </head>
 <body>
 	회원정보 갱신성공
+	다시 로그인 해주세요.
 	<a href="../index.jsp">인덱스로 돌아가기</a>
 </body>
 </html>

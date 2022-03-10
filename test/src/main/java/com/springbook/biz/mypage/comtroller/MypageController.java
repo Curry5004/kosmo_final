@@ -20,15 +20,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.springbook.biz.main.MainService;
 import com.springbook.biz.main.MbtiVO;
 import com.springbook.biz.mypage.MypageService;
+import com.springbook.biz.user.UserService;
 import com.springbook.biz.user.UserVO;
 
 @Controller
 @RequestMapping("/mypage")
 public class MypageController {
 	@Autowired
-	MypageService mypageService;
+	private MypageService mypageService;
 	@Autowired
 	private MainService mainService;
+	@Autowired
+	private UserService userService;
 	
 	@RequestMapping("/getUserInfo.do")
 	public String getUserInfo(UserVO vo,Model model,HttpSession session){
@@ -39,7 +42,9 @@ public class MypageController {
 	}
 	@RequestMapping("/UpdateUserInfoForm.do")
 	public String getUserInfo2(MbtiVO vo,Model model,HttpSession session){
+		
 		UserVO vo2 = (UserVO) session.getAttribute("user");
+		System.out.println(vo2.toString());
 		model.addAttribute("user", mypageService.getUserInfo(vo2));
 		model.addAttribute("MbtiList",mainService.getMbtiList(vo));
 		//3개월 날짜 계산
@@ -61,53 +66,62 @@ public class MypageController {
 		}		
 		System.out.println(mbtiModi);
 		model.addAttribute("mbtiModi", mbtiModi);	
+		System.out.println(vo2.toString());
 		return "mypageInfoUpdate.jsp";
 	}
 	@RequestMapping("/UpdateUserInfo.do")
 	public String updateUserInfo(UserVO vo,Model model,HttpServletRequest request){
+		System.out.println("컨트롤러 진입");
 		HttpSession session = request.getSession();
 		UserVO vo2 = (UserVO) session.getAttribute("user");
-		if (vo.getMbti_root().getSize() != 0) {
-			System.out.println("mbti 사진 업로드 시작");
-			// 저장할 경로 가져오기
-			String path = request.getSession().getServletContext().getRealPath("resources"); // 프로젝트내																						// 실제경로
-			String root = path + "\\uploadFiles"; // 저장할 위치
+		//MBTI 변경한지 3개월 안됐을때 걸러내는 IF 문
+		if(vo.getMbti_Id()!=null){
+			if (vo.getMbti_root().getSize() != 0) {
+				System.out.println("mbti 사진 업로드 시작");
+				// 저장할 경로 가져오기
+				String path = request.getSession().getServletContext().getRealPath("resources"); // 프로젝트내																						// 실제경로
+				String root = path + "\\uploadFiles"; // 저장할 위치
 
-			File file = new File(root); // 경로생성용 파일 생성
+				File file = new File(root); // 경로생성용 파일 생성
 
-			// 만약 uploadFiles 폴더가 없으면 생성해라 라는뜻
-			if (!file.exists())
-				file.mkdirs();
+				// 만약 uploadFiles 폴더가 없으면 생성해라 라는뜻
+				if (!file.exists())
+					file.mkdirs();
 
-			// 업로드할 폴더 설정
-			String originFileName = vo.getMbti_root().getOriginalFilename(); // 원래
-																				// 파일이름
-			String ext = originFileName.substring(originFileName.lastIndexOf("."));
-			String ranFileName = UUID.randomUUID().toString() + ext; // 랜덤변수가
-																		// 붙은
-																		// 파일이름
+				// 업로드할 폴더 설정
+				String originFileName = vo.getMbti_root().getOriginalFilename(); // 원래
+																					// 파일이름
+				String ext = originFileName.substring(originFileName.lastIndexOf("."));
+				String ranFileName = UUID.randomUUID().toString() + ext; // 랜덤변수가
+																			// 붙은
+																			// 파일이름
 
-			File changeFile = new File(root + "\\" + ranFileName); // 파일생성
+				File changeFile = new File(root + "\\" + ranFileName); // 파일생성
 
-			// 파일업로드
-			try {
-				vo.getMbti_root().transferTo(changeFile); // 파일 업로드
-			} catch (IllegalStateException | IOException e) {
-				e.printStackTrace();
+				// 파일업로드
+				try {
+					vo.getMbti_root().transferTo(changeFile); // 파일 업로드
+				} catch (IllegalStateException | IOException e) {
+					e.printStackTrace();
 
-				System.out.println("mbti 이미지 에러 ");
-				return "index.jsp";
+					System.out.println("mbti 이미지 에러 ");
+					return "index.jsp";
+				}
+
+				// VO 필드변경
+				String oldName = root + "\\" + ranFileName; // 변경전 이름
+				String changeName = oldName.replaceAll("\\\\", "\\\\\\\\"); 
+				
+				vo.setMbti_Path(changeName); // VO갱신
+				System.out.println("mbti 이미지 삽입완료 ");
+			} else{
+				vo.setMbti_Path(vo2.getMbti_Path());
 			}
-
-			// VO 필드변경
-			String oldName = root + "\\" + ranFileName; // 변경전 이름
-			String changeName = oldName.replaceAll("\\\\", "\\\\\\\\"); 
-			
-			vo.setMbti_Path(changeName); // VO갱신
-			System.out.println("mbti 이미지 삽입완료 ");
-		} else{
+		} else {
+			vo.setMbti_Id(vo2.getMbti_Id());
 			vo.setMbti_Path(vo2.getMbti_Path());
 		}
+		
 
 		if (vo.getProfile_root().getSize() != 0) {
 
@@ -153,7 +167,10 @@ public class MypageController {
 			vo.setProfile_Image(vo2.getProfile_Image());
 		}
 		
+		System.out.println("업데이트는 되나?");
 		mypageService.updateUserInfo(vo);
+		System.out.println("업데이트 까진 완료.");
+		userService.logout(session);
 		return "userInfoUpdateComplete.jsp";
 
 	}

@@ -32,6 +32,11 @@ public class AlbumController {
 	
 	@RequestMapping("insertAlbum.do")
 	public String insertAlbum(AlbumVO vo,Model model,HttpServletRequest request){
+		//user id 넣는 객체가 없어서 그런지 계속 뻑남. 그래서 추가함.
+		HttpSession session = request.getSession();
+		UserVO vo2 = (UserVO) session.getAttribute("user");
+		vo.setUser_id(vo2.getUser_Id());
+		// 여기까지.
 			if(vo.getAlb_img().getSize()!=0){
 			
 			

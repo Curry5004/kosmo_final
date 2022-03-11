@@ -119,20 +119,7 @@ public class UserController {
 
 					// VO 필드변경
 					String oldName = root + "\\" + ranFileName; // 변경전 이름
-					String changeName = oldName.replaceAll("\\\\", "\\\\\\\\"); // DB와
-																				// string에서
-																				// \를
-																				// 인식
-																				// 못하기
-																				// 때문에
-																				// \\로
-																				// 바꿔줘야함,
-																				// \\를
-																				// 인식하기
-																				// 위해선
-																				// \\\\를
-																				// 적어야함
-					vo.setProfile_Image(changeName); // VO갱신
+					String changeName = oldName.replaceAll("\\\\", "\\\\\\\\"); 					vo.setProfile_Image(changeName); // VO갱신
 					// System.out.println("프로필 이미지 갱신완료");
 				}
 

@@ -83,6 +83,7 @@ public class AlbumController {
 																			// \\\\를
 																			// 적어야함
 				vo.setAlb_img_path(changeName); // VO갱신
+
 			}
 			UserVO userVO = (UserVO) request.getSession().getAttribute("user");
 			vo.setUser_id(userVO.getUser_Id());

@@ -31,8 +31,8 @@ public class UserServiceImpl implements UserService {
 		boolean result = userDAO.loginCheck(vo);
 		if (result) { // true일 경우 세션에 등록
 			UserVO vo2 = viewUser(vo);
-			System.out.println(vo2.toString());
-
+			
+			
 			session.setAttribute("user", vo2);
 		}
 		return result;

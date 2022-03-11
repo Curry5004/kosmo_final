@@ -17,7 +17,7 @@
 	<c:if test="${sessionScope.user.user_Id==null}">
 	<h1>로그인 X 상태</h1>
 	</c:if>
-	
+
 	로그인<br />
 	<a href="registry_form.do">회원가입</a> <br />
 	<a href="login.do">로그인</a>	<br />
@@ -41,6 +41,7 @@
 	<a href="writeSchedule.jsp">스케쥴 생성</a><br />
 	<a href="calendar.do?party_id=1">스케줄 리스트</a><br />
 	<a href="calendar2.do?year=2022&month=03&party_id=1&pageNo=1">스케줄 상세보기</a>
+
 
 </body>
 </html>

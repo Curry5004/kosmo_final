@@ -43,6 +43,7 @@
 
 <body>
 	${sessionScope.user.user_Id}님이 로그인 중입니다. 
+
 	<form action="insertParty.do" method="POST"
 		enctype="multipart/form-data" name="Reg_form"
 		onsubmit="return check()">

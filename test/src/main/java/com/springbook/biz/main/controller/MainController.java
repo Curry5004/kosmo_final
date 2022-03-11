@@ -2,6 +2,7 @@ package com.springbook.biz.main.controller;
 
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,4 +30,5 @@ public class MainController {
 		model.addAttribute("MbtiList",mainService.getMbtiList(vo)); //MbtiList model 추가
 		return "registryPage.jsp";
 	}
+	
 }

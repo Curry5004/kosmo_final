@@ -31,6 +31,8 @@ public class ScheduleController {
 		int count = scheduleService.getSchCnt(vo);
 		String year=vo.getYear();
 		String month=vo.getMonth();
+		String day=vo.getDay();
+		System.out.println("day 테스트"+ day);
 		String pageNo = page.getPageNo();
 		int currentPage = 1;
 		int listSize = 1;
@@ -48,6 +50,7 @@ public class ScheduleController {
 		map.put("listSize", listSize);
 		map.put("year", year);
 		map.put("month", month);
+		map.put("day",day);
 		map.put("sch_id", vo.getSch_id());	 
 		
 		PageVO pages = new PageVO(count, currentPage, listSize, pageSize);
@@ -55,10 +58,10 @@ public class ScheduleController {
 		
 		
 		Map<String, Object> cntList = new HashMap<String, Object>();
-		cntList.put("sch_id", mapResult.get(startRow).getSch_id());
+		cntList.put("sch_id", mapResult.get(0).getSch_id());
 		
 		//현재 멤버 카운트 저장 
-		int sch_member_current_count = scheduleService.getCurrentMemberCnt(mapResult.get(startRow).getSch_id());
+		int sch_member_current_count = scheduleService.getCurrentMemberCnt(mapResult.get(0).getSch_id());
 //		cntList.put("sch_member_current_count", sch_member_current_count);
 		
 		model.addAttribute("SchDetail",mapResult);
@@ -74,8 +77,12 @@ public class ScheduleController {
 	}
 	@RequestMapping("deleteSch.do")
 	public String deleteSch(SchVO vo,Model model){
+		String year=vo.getYear();
+		String month=vo.getMonth();
+		String day=vo.getDay();
+		int party_id=vo.getParty_id();
 		scheduleService.deleteSch(vo);
-		return "redirect:calendar2.do?year=2022&month=03&party_id=1";
+		return "redirect:calendar.do?year="+year+"&month="+month+"&day="+day+"&party_id="+party_id;
 	}
 	
 	@RequestMapping("cntUp.do")
@@ -104,6 +111,7 @@ public class ScheduleController {
 	
 	@RequestMapping("insertSchedule.do")
 	public String insertSchedule(SchVO vo,Model model,HttpSession session){
+		System.out.println("파티확인"+vo.getParty_id());
 		UserVO userVO=(UserVO)session.getAttribute("user");
 		if(userVO!=null){
 			scheduleService.insertSchedule(vo);

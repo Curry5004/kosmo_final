@@ -38,11 +38,11 @@
   <c:if test="${pages.hasBoard()}">	
 			<td>
 				<c:if test="${pages.startPage > pages.pageSize}">
-				<a href="calendar2.do?&year=2022&month=03&party_id=1&pageNo=${pages.startPage - pages.pageSize}&sch_id=${sDetail.sch_id}">&#9664;</a>
+				<a href="calendar2.do?year=${param.year}&month=${param.month}&day=${param.day}&party_id=1&pageNo=${pages.startPage - pages.pageSize}&sch_id=${sDetail.sch_id}">&#9664;</a>
 				</c:if>
 				${sDetail.sch_title }
 				<c:if test="${pages.endPage < pages.totalPages }" >
-				<a href="calendar2.do?year=2022&month=03&party_id=1&pageNo=${pages.startPage + pages.pageSize }&sch_id=${sDetail.sch_id}">	&#9658;</a>
+				<a href="calendar2.do?year=${param.year}&month=${param.month}&day=${param.day}&party_id=1&pageNo=${pages.startPage + pages.pageSize }&sch_id=${sDetail.sch_id}">	&#9658;</a>
 				</c:if>
 			</td>
 	</c:if>
@@ -65,32 +65,41 @@
 	            참가인원:  ${current_count} / ${sDetail.sch_member_count }
 	        </td>
 	    </tr>
-	    <tr >
+	     <tr >
 	        <td style="display:flex;">
-	        <c:if test="${empty cntList}">
+	    <c:choose>
+	    <c:when test="${empty cntList}">
+	   
 	        	<button onclick="location.href='cntUp.do?user_id=${sessionScope.user.user_Id}&party_id=${sDetail.party_id}&sch_id=${sDetail.sch_id}'">	
-					참가하기
+					참가하기1
 				</button>
-	        </c:if>
+	        </c:when>
 	       
+	       	<c:when test="${not empty cntList}">
 	        <c:forEach items="${cntList}" var="cnt"> 
-	        <c:if test="${sDetail.sch_member_current_count < sDetail.sch_member_count }">
-	        <c:if test="${cnt.user_id != sessionScope.user.user_Id}">    
+	        
+	        <c:choose>
+	        <c:when test="${cnt.user_id != sessionScope.user.user_Id}">
+	       		<c:if test="${sDetail.sch_member_current_count < sDetail.sch_member_count }">    
 	            <button onclick="location.href='cntUp.do?user_id=${sessionScope.user.user_Id}&party_id=${sDetail.party_id}&sch_id=${sDetail.sch_id}'">	
-					참가하기
+					참가하기2 
 				</button>
-			</c:if>	
-	      	</c:if>  
+				</c:if>
+	      	</c:when>
+	      
 	       
 	       
 	    
-	      <c:if test="${cnt.user_id == sessionScope.user.user_Id}">  
+	      <c:when test="${cnt.user_id == sessionScope.user.user_Id}">  
 	            <button onclick="location.href='cntDown.do?user_id=${sessionScope.user.user_Id}&sch_id=${sDetail.sch_id}' "> 취소하기 </button>
-	      </c:if> 
+	      </c:when>
+	       </c:choose>
 	      </c:forEach> 
-	     
+	       </c:when>
+	        </c:choose>
 	        </td>
-	    </tr> 
+	    </tr>
+	    
 	    <tr>
 	        <td >
 	            <button onclick="location.href='deleteSch.do?&sch_id=${sDetail.sch_id}';">정모삭제하기    </button>

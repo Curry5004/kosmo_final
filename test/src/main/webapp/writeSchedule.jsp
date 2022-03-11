@@ -20,7 +20,6 @@
  	<div>위치 : <input type="text" placeholder="장소를 입력해주세요." name="sch_location" id="location"/></div>
  	
  	<div> <input type="Date" name="sch_date"/></div>
- 		<input type="hidden" name="party_id" value="1"/>
  	 <select id="member_count" name="sch_member_count">
  	 <option value="null">-참가인원수-</option>
 	<%for(int i=1; i<=10;i++){ %>
@@ -36,7 +35,7 @@
 <div><input type="submit" value="정모 생성하기" /></div>
 
 	<input type="hidden" name="party_id" value="${param.party_id }"/>
- 	</form>
 
+ 	</form>
 </body>
 </html>

@@ -67,36 +67,38 @@
 	    </tr>
 	     <tr >
 	        <td style="display:flex;">
+	        <c:set var="condition" value="false"/>
 	    <c:choose>
 	    <c:when test="${empty cntList}">
 	   
 	        	<button onclick="location.href='cntUp.do?user_id=${sessionScope.user.user_Id}&party_id=${sDetail.party_id}&sch_id=${sDetail.sch_id}'">	
-					참가하기1
+					참가하기
 				</button>
 	        </c:when>
 	       
-	       	<c:when test="${not empty cntList}">
-	        <c:forEach items="${cntList}" var="cnt"> 
+	       	
+		       	<c:when test="${not empty cntList}">
+		       	
+			        <c:forEach items="${cntList}" var="cnt" varStatus="status"> 
+			     		<c:if test="${cnt.user_id == sessionScope.user.user_Id}">  
+				      		<c:set var="condition" value="true"/>
+				      		<c:set var="user_id" value="${cnt.user_id}"/>
+			            </c:if>
+			      </c:forEach> 
+			      <c:if test="${condition eq false}">
+			      <c:if test="${current_count < sDetail.sch_member_count }"> 
+				       <button onclick="location.href='cntUp.do?user_id=${sessionScope.user.user_Id}&party_id=${sDetail.party_id}&sch_id=${sDetail.sch_id}'">	
+						참가하기 
+						</button>
+					</c:if>
+					</c:if>
+				<c:if test="${condition eq true }">
+				<button onclick="location.href='cntDown.do?user_id=${sessionScope.user.user_Id}&sch_id=${sDetail.sch_id}' "> 취소하기 </button>
+	      		</c:if>
+		       </c:when>
+	      </c:choose>
 	        
-	        <c:choose>
-	        <c:when test="${cnt.user_id != sessionScope.user.user_Id}">
-	       		<c:if test="${sDetail.sch_member_current_count < sDetail.sch_member_count }">    
-	            <button onclick="location.href='cntUp.do?user_id=${sessionScope.user.user_Id}&party_id=${sDetail.party_id}&sch_id=${sDetail.sch_id}'">	
-					참가하기2 
-				</button>
-				</c:if>
-	      	</c:when>
-	      
 	       
-	       
-	    
-	      <c:when test="${cnt.user_id == sessionScope.user.user_Id}">  
-	            <button onclick="location.href='cntDown.do?user_id=${sessionScope.user.user_Id}&sch_id=${sDetail.sch_id}' "> 취소하기 </button>
-	      </c:when>
-	       </c:choose>
-	      </c:forEach> 
-	       </c:when>
-	        </c:choose>
 	        </td>
 	    </tr>
 	    

@@ -78,4 +78,9 @@ public class SchServiceImpl implements ScheduleService {
 		// TODO Auto-generated method stub
 		return schDAO.getCntList(cntList);
 	}
+	
+	@Override
+	public SchVO getNewSchedule(SchVO vo) {
+		return schDAO.getNewSchedule(vo);
+	}
 }

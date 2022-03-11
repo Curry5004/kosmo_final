@@ -76,6 +76,7 @@ public class ScheduleController {
 		model.addAttribute("SchDetail",mapResult);
 		model.addAttribute("pages", pages);
 		model.addAttribute("cntList", scheduleService.getCntList(cntList));
+		System.out.println(scheduleService.getCntList(cntList).toString());
 		model.addAttribute("current_count",sch_member_current_count );
 		
 		return "CalendarDetail.jsp";	
@@ -111,6 +112,9 @@ public class ScheduleController {
 		UserVO userVO=(UserVO)session.getAttribute("user");
 		if(userVO!=null){
 			scheduleService.insertSchedule(vo);
+			//sch_id를 구해와서 vo에 때려박아줘야한다
+			vo.setSch_id(scheduleService.getNewSchedule(vo).getSch_id());
+			scheduleService.schMemberCntUp(vo);
 			return "index.jsp";
 		}else {
 			return "login.do";

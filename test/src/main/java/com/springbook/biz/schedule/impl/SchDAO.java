@@ -58,4 +58,8 @@ public class SchDAO {
 	public List<SchVO> getCntList(Map<String, Object> cntList){
 		return mybatis.selectList("schDAO.getCntList", cntList);
 	}
+	
+	public SchVO getNewSchedule(SchVO vo){
+		return mybatis.selectOne("schDAO.getNewSchedule", vo);
+	}
 }

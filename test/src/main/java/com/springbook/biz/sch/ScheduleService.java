@@ -27,4 +27,5 @@ public interface ScheduleService {
 	
 	public List<SchVO> getCntList(Map<String,Object> cntList); // 가입한 사람 목록 가져오기
 	
+	public SchVO getNewSchedule(SchVO vo);
 }

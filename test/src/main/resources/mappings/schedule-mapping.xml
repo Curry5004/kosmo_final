@@ -64,4 +64,9 @@ SELECT USER_ID,PARTY_ID,SCH_ID FROM SCHEDULE_MEMBER WHERE SCH_ID=#{sch_id}
 UPDATE SCHEDULE_MEMBER SET RATE1=${rate1}, RATE2=${rate2}, RATE3=${rate3}
 WHERE USER_ID=#{user_id} AND SCH_ID=#{sch_id} AND PARTY_ID =#{party_id}
 </update>
+
+<select id="getNewSchedule" resultType="schedule">
+SELECT SCH_ID FROM SCHEDULE ORDER BY SCH_ID DESC LIMIT 1
+</select>
+
 </mapper>

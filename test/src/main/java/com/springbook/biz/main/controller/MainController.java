@@ -42,12 +42,15 @@ public class MainController {
 	@RequestMapping("home.do")
 	public String homePage(Model model,HttpSession session){
 		UserVO userVO=(UserVO)session.getAttribute("user");
-		System.out.println(userVO.toString());
-		Map<String,Object> map=new HashMap<>();
-		map.put("mbti_id", userVO.getMbti_Id());
-		System.out.println(map.toString());
-		model.addAttribute("bestList", mainService.searchBestParty(map));
-		System.out.println(mainService.searchBestParty(map).toString());
+		if(userVO!=null){
+			System.out.println(userVO.toString());
+			Map<String,Object> map=new HashMap<>();
+			map.put("mbti_id", userVO.getMbti_Id());
+			System.out.println(map.toString());
+			model.addAttribute("bestList", mainService.searchBestParty(map));
+			System.out.println(mainService.searchBestParty(map).toString());
+		}
 		return "home.jsp";
+		
 	}
 }

@@ -17,6 +17,9 @@
 	<c:if test="${sessionScope.user.user_Id==null}">
 	<h1>로그인 X 상태</h1>
 	</c:if>
+	
+	
+	<a href="home.do">메인으로 이동</a>
 
 	로그인<br />
 	<a href="registry_form.do">회원가입</a> <br />

@@ -3,6 +3,11 @@ package com.springbook.biz.main.controller;
 
 
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,11 +17,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.springbook.biz.main.CategoryVO;
 import com.springbook.biz.main.MainService;
 import com.springbook.biz.main.MbtiVO;
+import com.springbook.biz.party.PartyVO;
+import com.springbook.biz.user.UserVO;
 
 @Controller
 public class MainController {
 	@Autowired
-	private MainService mainService;
+	MainService mainService;
+	
 
 	@RequestMapping("/writeParty.do")
 	public String writeParty(MbtiVO vo,CategoryVO vo2,Model model){
@@ -31,4 +39,15 @@ public class MainController {
 		return "registryPage.jsp";
 	}
 	
+	@RequestMapping("home.do")
+	public String homePage(Model model,HttpSession session){
+		UserVO userVO=(UserVO)session.getAttribute("user");
+		System.out.println(userVO.toString());
+		Map<String,Object> map=new HashMap<>();
+		map.put("mbti_id", userVO.getMbti_Id());
+		System.out.println(map.toString());
+		model.addAttribute("bestList", mainService.searchBestParty(map));
+		System.out.println(mainService.searchBestParty(map).toString());
+		return "home.jsp";
+	}
 }

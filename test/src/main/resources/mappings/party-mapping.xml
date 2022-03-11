@@ -74,5 +74,14 @@
 		AVG(RATE1) AS PARTY_RATE3
 		FROM SCHEDULE_MEMBER WHERE PARTY_ID=#{PARTY_ID}
 </select>
+
+<select id="searchBestParty" resultType="party">
+	select  p.PARTY_ID, p.PARTY_TITLE, PARTY_PRE_MBTI1, PARTY_PRE_MBTI2, PARTY_PRE_MBTI3, PARTY_PRE_MBTI4, u.MBTI_ID, mbti_name, P.PARTY_TUMB_PATH
+ from party p join member_list m join user u join mbti on p.party_id=m.PARTY_ID and m.USER_ID=u.USER_ID and u.mbti_id=mbti.mbti_id
+ where (select count(party_id) from member_list where party_id=p.party_id) >1 AND MBTI.MBTI_ID=#{mbti_id}
+ order by ((select count(u1.mbti_id) from party p1 join member_list m1 join user u1 on p1.party_id=m1.PARTY_ID and m1.USER_ID=u1.USER_ID 
+where p1.party_id=p.party_id group by u1.MBTI_ID having u1.mbti_id=u.mbti_id))
+/(select count(party_id) from member_list where party_id=p.party_id) DESC;
+</select>
 	
 </mapper>

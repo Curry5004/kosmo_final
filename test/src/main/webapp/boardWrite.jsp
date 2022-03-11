@@ -6,13 +6,13 @@
 <title>소모임-게시글 작성하기</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 </head>
 <body>
 <div class="container" style="margin-top:30px">
 	<div class="row">
 		<form method="post" action="insertBoard.do" enctype="multipart/form-data">
-			
+		 <input type="hidden" name = "party_id" value="${param.party_id}">
+
 	      <h1>게시글 작성하기</h1>
 				<div class="form-group">
 	<div style="float:center">

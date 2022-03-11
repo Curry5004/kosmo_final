@@ -16,20 +16,21 @@
 </select>
 
 <insert id="insertBoard" parameterType="board">
-	INSERT INTO BOARD(PARTY_ID, art_title, art_writer, ART_CONTENT, ART_IMG_PATH) VALUES
-	("1",#{art_title},  #{art_writer}, #{art_content}, #{art_img_path})
+	INSERT INTO BOARD(PARTY_ID, art_title, art_writer, ART_CONTENT, ART_IMG_PATH, ART_REG_DATE, ART_MOD_DATE) 
+	VALUES(#{party_id},#{art_title}, #{art_writer}, #{art_content}, #{art_img_path}, now(), now())
 </insert>
 
 <update id="updateBoard" parameterType="board">
-	UPDATE BOARD SET ART_TITLE=#{art_title}, ART_CONTENT=#{art_content}, ART_MOD_DATE=NOW()
-	WHERE ART_ID = #{art_id}
+	UPDATE BOARD SET ART_TITLE=#{art_title}, ART_CONTENT=#{art_content},ART_IMG_PATH=#{art_img_path}, ART_MOD_DATE=NOW()
+
 </update>
 
 <delete id="deleteBoard" parameterType="board">
-    UPDATE BOARD SET ART_AVAILABLE=FALSE WHERE ART_ID=#{art_id} 
+    UPDATE BOARD SET ART_AVAILABLE=FALSE  where PARTY_ID = #{party_id}
 </delete>
 
  <select id="getBoard" resultType="board">
-  select * from BOARD Where art_id= #{art_id} and art_available=true
+
+
 </select>
 </mapper>

@@ -107,6 +107,7 @@ public class BoardController {
 		UserVO vo2 = (UserVO) session.getAttribute("user");
 	    //dao에 들어갈 vo 객체에 user_Id 저장해주기.
 		vo.setArt_writer(vo2.getUser_Id());
+		System.out.println("컨트롤러 진입");
 		boardService.insertBoard(vo);
 		return "index.jsp";
 	
@@ -154,44 +155,25 @@ public class BoardController {
 		UserVO vo2 = (UserVO) session.getAttribute("user");
 	    //dao에 들어갈 vo 객체에 user_Id 저장해주기.
 		vo.setArt_writer(vo2.getUser_Id());
+		System.out.println("컨트롤러 진입");
 		boardService.updateBoard(vo);
 		return "boardView.jsp";
 	    }
 	
-		@RequestMapping("/getBoard.do")
-        public String getBoard(BoardVO vo,BoardCommentVO vo2,Model model,HttpSession session){
-			UserVO userVO=new UserVO();
-			userVO.setUser_Id("");
-			session.setAttribute("user", userVO);
-		model.addAttribute("board", boardService.getBoard(vo));
-		model.addAttribute("commentList", boardcommentService.getBoardCommentList(vo2));
-		System.out.println("댓글리스트 : "+boardcommentService.getBoardCommentList(vo2));
-
+		@RequestMapping(value= "/getBoard.do", method=RequestMethod.GET)
+        public String getBoard(BoardVO vo,Model model,HttpServletRequest request){
+		
+		HttpSession session = request.getSession();
+		
+		UserVO vo2= (UserVO) session.getAttribute("user");
+		vo.setArt_writer(vo2.getUser_Id());
+		System.out.println("컨트롤러 진입");
+		boardService.getBoard(vo);
 		return "boardView.jsp";
 	}
 	
-		@RequestMapping("/writeBoardComment.do")
-		public String writeBoardComment(BoardCommentVO vo,Model model,HttpSession session){	
-			UserVO userVO=(UserVO)session.getAttribute("user");
-			vo.setUser_id(userVO.getUser_Id());
-			boardcommentService.writeBoardComment(vo);
-			return "getBoard.do?art_id="+vo.getArt_id();
-		}
-
-		@RequestMapping("/deleteBoardComment.do")
-		public String deleteBoardComment(BoardCommentVO vo,Model model,HttpSession session){
-			UserVO userVO=(UserVO)session.getAttribute("user");
-			vo.setUser_id(userVO.getUser_Id());
-			boardcommentService.deleteBoardComment(vo);
-			return "getBoard.do?art_id="+vo.getArt_id();
-	}
-		@RequestMapping("modifyAlbumComment.do")
-		public String modifyBoardComment(BoardCommentVO vo,Model model,HttpSession session){
-			UserVO userVO=(UserVO)session.getAttribute("user");
-			vo.setUser_id(userVO.getUser_Id());
-			boardcommentService.modifyBoardComment(vo);
-			return "getBoard.do?art_id="+vo.getArt_id();
-		}
+		
+		
 		
 	}
  

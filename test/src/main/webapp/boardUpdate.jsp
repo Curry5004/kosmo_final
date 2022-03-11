@@ -1,8 +1,7 @@
 
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <html>
 <head>
 <title>소모임-게시글 수정하기</title>
@@ -14,7 +13,7 @@ pageEncoding="UTF-8"%>
 <div class="container" style="margin-top:30px">
 	<div class="row">
 		<form method="post" action="updateBoard.do" enctype="multipart/form-data">
-			
+		<input type="hidden" name = "party_id" value="${param.party_id}">	
 	      <h1>게시글 수정하기</h1>
 
 <div class="form-group">
@@ -47,9 +46,9 @@ pageEncoding="UTF-8"%>
 				 	이미지 삽입 : 
 					<input type="file" name="art_img" accept=".jpeg, .jpg, .png"/>
 			    </div>
-               <div>
+         
                        <button type="submit" class="btn btn-primary">수정</button>
-                </div>
+               
 	  </form>
 		</div>
 	</div>

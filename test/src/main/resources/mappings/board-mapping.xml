@@ -16,8 +16,8 @@
 </select>
 
 <insert id="insertBoard" parameterType="board">
-	INSERT INTO BOARD(PARTY_ID, art_title, art_writer, ART_CONTENT, ART_IMG_PATH) 
-	VALUES(#{party_id},#{art_title}, #{art_writer}, #{art_content}, #{art_img_path})
+	INSERT INTO BOARD(PARTY_ID, art_title, art_writer, ART_CONTENT, ART_IMG_PATH, ART_REG_DATE, ART_MOD_DATE) 
+	VALUES(#{party_id},#{art_title}, #{art_writer}, #{art_content}, #{art_img_path}, now(), now())
 </insert>
 
 <update id="updateBoard" parameterType="board">

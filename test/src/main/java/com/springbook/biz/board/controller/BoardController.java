@@ -107,6 +107,7 @@ public class BoardController {
 		UserVO vo2 = (UserVO) session.getAttribute("user");
 	    //dao에 들어갈 vo 객체에 user_Id 저장해주기.
 		vo.setArt_writer(vo2.getUser_Id());
+		System.out.println("컨트롤러 진입");
 		boardService.insertBoard(vo);
 		return "index.jsp";
 	

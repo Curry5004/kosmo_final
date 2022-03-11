@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>인덱스</h1>
-	<a href="getBoardList.do?party_id=1">게시글 조회</a>
+	<a href="getBoardList.do?party_id=2">게시글 조회</a>
 	<a href="registry_form.do">회원가입</a>
 	<a href="writeParty.do">소모임 작성</a>	
 	<a href="login.do">로그인</a>	

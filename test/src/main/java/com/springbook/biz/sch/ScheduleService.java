@@ -9,8 +9,6 @@ public interface ScheduleService {
 	
 	public List<SchVO> getScheduleList(SchVO vo);
 	
-	public SchVO getMemberName (SchVO vo);
-	
 	public void scheduleReview(SchVO vo); //별점 평가
 	
 	public int getSchCnt(SchVO vo); // 스케쥴 전체갯수 조회

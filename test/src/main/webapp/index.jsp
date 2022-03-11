@@ -20,6 +20,7 @@
 
 	로그인<br />
 	<a href="registry_form.do">회원가입</a> <br />
+	<a href="mypage/getUserInfo.do">회원 정보 가져오기</a></br>
 	<a href="login.do">로그인</a>	<br />
 	<a href="logout.do">로그아웃</a>	<br />
 	<hr />

@@ -22,9 +22,6 @@ public class SchDAO {
 		return mybatis.selectList("schDAO.getScheduleList", vo);
 	}
 	
-	public SchVO getMemberName(SchVO vo){
-		return mybatis.selectOne("schDAO.getMemberName",vo);
-	}
 	
 	public void scheduleReview(SchVO vo) {
 		System.out.println(vo.toString());

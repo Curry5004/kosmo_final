@@ -16,6 +16,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.springbook.biz.board.PageVO;
+import com.springbook.biz.memberList.MemberListService;
+import com.springbook.biz.memberList.MemberListVO;
 import com.springbook.biz.sch.SchVO;
 import com.springbook.biz.sch.ScheduleService;
 import com.springbook.biz.user.UserVO;
@@ -25,14 +27,16 @@ public class ScheduleController {
 	@Autowired
 	ScheduleService scheduleService;
 	
+	@Autowired
+	MemberListService memberListService;
+	
 	@RequestMapping("calendar2.do") 
-	public String getScheduleDetail(SchVO vo, Model model, PageVO page,HttpSession session ) {	
+	public String getScheduleDetail(SchVO vo, Model model, PageVO page, MemberListVO memberListVO,HttpSession session ) {	
 		int party_id=vo.getParty_id();
 		int count = scheduleService.getSchCnt(vo);
 		String year=vo.getYear();
 		String month=vo.getMonth();
 		String day=vo.getDay();
-		System.out.println("day 테스트"+ day);
 		String pageNo = page.getPageNo();
 		int currentPage = 1;
 		int listSize = 1;
@@ -56,23 +60,23 @@ public class ScheduleController {
 		PageVO pages = new PageVO(count, currentPage, listSize, pageSize);
 		List<SchVO> mapResult = scheduleService.getScheduleDetail(map);
 		
+		// 필요한거 -> 방장 가져오기, 
+		memberListVO.setPARTY_ID(party_id);
+		List<MemberListVO> list=memberListService.getJoinMemberList(memberListVO);
+		MemberListVO leader =list.get(0);
+		model.addAttribute("leader", leader);
 		
 		Map<String, Object> cntList = new HashMap<String, Object>();
 		cntList.put("sch_id", mapResult.get(0).getSch_id());
 		
 		//현재 멤버 카운트 저장 
 		int sch_member_current_count = scheduleService.getCurrentMemberCnt(mapResult.get(0).getSch_id());
-//		cntList.put("sch_member_current_count", sch_member_current_count);
 		
 		model.addAttribute("SchDetail",mapResult);
 		model.addAttribute("pages", pages);
 		model.addAttribute("cntList", scheduleService.getCntList(cntList));
 		model.addAttribute("current_count",sch_member_current_count );
 		
-		System.out.println("SchDetail: " + mapResult.toString());
-		System.out.println("cntList: " + cntList.toString());
-		System.out.println("cntList쿼리까지돌렸을 때 " + scheduleService.getCntList(cntList));
-		System.out.println("pages" + pages);		
 		return "CalendarDetail.jsp";	
 	}
 	@RequestMapping("deleteSch.do")
@@ -89,29 +93,20 @@ public class ScheduleController {
 	public String cntUp(SchVO vo,Model model,HttpSession session, PageVO page, HttpServletRequest request){
 		UserVO userVO=(UserVO)session.getAttribute("user");
 		vo.setUser_id(userVO.getUser_Id());
-//		String pageNo = request.getParameter("pageNo");
-//		System.out.println("페이지넘버" +pageNo);
 		scheduleService.schMemberCntUp(vo);
-//		return "redirect:calendar2.do?year=2022&month=03&party_id=1&pageNo="+pageNo;
 		return "index.jsp";
-		
-//		(#{user_id},#{sch_id},#{party_id})
-//		</insert>
 	}
 	
 	@RequestMapping("cntDown.do")
 	public String cntDown(SchVO vo,Model model,HttpSession session, PageVO page){
-//		String pageNo = page.getPageNo();
 		UserVO userVO=(UserVO)session.getAttribute("user");
 		vo.setUser_id(userVO.getUser_Id());
 		scheduleService.schMemberCntDown(vo);
-//		return "redirect:calendar2.do?year=2022&month=03&party_id=1&pageNo="+pageNo;
 		return "index.jsp";
 	}
 	
 	@RequestMapping("insertSchedule.do")
 	public String insertSchedule(SchVO vo,Model model,HttpSession session){
-		System.out.println("파티확인"+vo.getParty_id());
 		UserVO userVO=(UserVO)session.getAttribute("user");
 		if(userVO!=null){
 			scheduleService.insertSchedule(vo);
@@ -199,8 +194,6 @@ public class ScheduleController {
 	@RequestMapping("scheduleReview.do")
 	public String scheduleReview(SchVO vo,Model model) {
 		// 로그인 AOP 구현하면 좋을듯
-		System.out.println(vo.toString());
-		System.out.println("vo테스트,rate1 : "+vo.getRate1()+" rate2 : "+vo.getRate2()+" rate3 : "+vo.getRate3());
 		scheduleService.scheduleReview(vo);
 		return "registryComplete.jsp";
 		

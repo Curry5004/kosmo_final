@@ -38,11 +38,11 @@
   <c:if test="${pages.hasBoard()}">	
 			<td>
 				<c:if test="${pages.startPage > pages.pageSize}">
-				<a href="calendar2.do?year=${param.year}&month=${param.month}&day=${param.day}&party_id=${param.party_id }&pageNo=${pages.startPage - pages.pageSize}&sch_id=${sDetail.sch_id}">&#9664;</a>
+				<a href="calendar2.do?year=${param.year}&month=${param.month}&day=${param.day}&party_id=${param.party_id }&pageNo=${pages.startPage - pages.pageSize}">&#9664;</a>
 				</c:if>
 				${sDetail.sch_title }
 				<c:if test="${pages.endPage < pages.totalPages }" >
-				<a href="calendar2.do?year=${param.year}&month=${param.month}&day=${param.day}&party_id=${param.party_id }&pageNo=${pages.startPage + pages.pageSize }&sch_id=${sDetail.sch_id}">	&#9658;</a>
+				<a href="calendar2.do?year=${param.year}&month=${param.month}&day=${param.day}&party_id=${param.party_id }&pageNo=${pages.startPage + pages.pageSize}">	&#9658;</a>
 				</c:if>
 			</td>
 	</c:if>
@@ -102,7 +102,9 @@
 	    
 	    <tr>
 	        <td >
+	        	<c:if test="${sDetail.sch_writer==sessionScope.user.user_Id||leader.USER_ID==sessionScope.user.user_Id}">
 	            <button onclick="location.href='deleteSch.do?&sch_id=${sDetail.sch_id}&year=${param.year}&month=${param.month}&day=${param.day}&party_id=${param.party_id}';">정모삭제하기    </button>
+	            </c:if>
 	        </td>
 	    </tr>
 	    <tr>
@@ -116,8 +118,10 @@
 	           <hr /> 
 	           ${sDetail.sch_note}
 	        </td>
-	    </tr>
-	    <tr>
+	    </tr> 
+	    <c:forEach items="${cntList}" var="cnt"> 
+	    <c:if test="${cnt.user_id == sessionScope.user.user_Id}">  
+	      <tr>
 	    	<td>
 		    	<form action="scheduleReview.do" method="post" name="Reg_form" onsubmit="return check()">
 				<span>평가1</span><br />
@@ -145,6 +149,8 @@
 					</form>
 	    	</td>
 	    </tr>
+	    </c:if>
+	    </c:forEach>
 	</table> 
 	</c:forEach>
 </section>

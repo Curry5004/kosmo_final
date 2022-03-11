@@ -15,7 +15,7 @@
  <form action="insertSchedule.do" method="POST" name="sch_form">
  	<div>정모이름 : <input type="text" placeholder="제목을 작성해주세요." name="sch_title" id="title"/></div>
  	
- 	<div>주최자 : <input type="text" placeholder="주최자 이름을 적어주세요." name="sch_writer" id="partyMember"></div>
+ 	<input type="hidden" name="sch_writer" value=${sessionScope.user.user_Id }>
  	
  	<div>위치 : <input type="text" placeholder="장소를 입력해주세요." name="sch_location" id="location"/></div>
  	

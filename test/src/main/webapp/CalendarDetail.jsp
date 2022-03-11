@@ -38,11 +38,11 @@
   <c:if test="${pages.hasBoard()}">	
 			<td>
 				<c:if test="${pages.startPage > pages.pageSize}">
-				<a href="calendar2.do?year=${param.year}&month=${param.month}&day=${param.day}&party_id=1&pageNo=${pages.startPage - pages.pageSize}&sch_id=${sDetail.sch_id}">&#9664;</a>
+				<a href="calendar2.do?year=${param.year}&month=${param.month}&day=${param.day}&party_id=${param.party_id }&pageNo=${pages.startPage - pages.pageSize}&sch_id=${sDetail.sch_id}">&#9664;</a>
 				</c:if>
 				${sDetail.sch_title }
 				<c:if test="${pages.endPage < pages.totalPages }" >
-				<a href="calendar2.do?year=${param.year}&month=${param.month}&day=${param.day}&party_id=1&pageNo=${pages.startPage + pages.pageSize }&sch_id=${sDetail.sch_id}">	&#9658;</a>
+				<a href="calendar2.do?year=${param.year}&month=${param.month}&day=${param.day}&party_id=${param.party_id }&pageNo=${pages.startPage + pages.pageSize }&sch_id=${sDetail.sch_id}">	&#9658;</a>
 				</c:if>
 			</td>
 	</c:if>
@@ -102,7 +102,7 @@
 	    
 	    <tr>
 	        <td >
-	            <button onclick="location.href='deleteSch.do?&sch_id=${sDetail.sch_id}';">정모삭제하기    </button>
+	            <button onclick="location.href='deleteSch.do?&sch_id=${sDetail.sch_id}&year=${param.year}&month=${param.month}&day=${param.day}&party_id=${param.party_id}';">정모삭제하기    </button>
 	        </td>
 	    </tr>
 	    <tr>

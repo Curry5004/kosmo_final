@@ -8,7 +8,7 @@ public class BoardVO {
 	private int art_id;
 	private int party_id; 
 	private String art_title; 
-	private String user_id;
+	private String art_writer;
 	private String art_content;
 	private MultipartFile art_img;
 	private String art_img_path;
@@ -19,7 +19,7 @@ public class BoardVO {
 	
 	@Override
 	public String toString() {
-		return "BoardVO [art_id=" + art_id + ", party_id=" + party_id + ", art_title=" + art_title+ ", user_id=" + user_id + ", art_content=" + art_content + 
+		return "BoardVO [art_id=" + art_id + ", party_id=" + party_id + ", art_title=" + art_title+ ", user_id="  + ", art_content=" + art_content + 
 				",art_img=" + art_img + ",art_img_path=" + art_img_path + ", art_view_cnt="+ art_view_cnt + ",art_reg_date=" + art_reg_date + ", art_mod_date=" + art_mod_date + ",art_available=" + art_available + "]";
 	}
 	
@@ -43,14 +43,17 @@ public class BoardVO {
 		this.art_title = art_title;
 	}
 	
-	public String getUser_id() {
-			return user_id;
-	}
 	
-    public void setUser_id(String user_id) {
-			this.user_id = user_id;	
-		
+	public String getArt_writer() {
+		return art_writer;
 	}
+
+
+	public void setArt_writer(String art_writer) {
+		this.art_writer = art_writer;
+	}
+
+
 	public String getArt_content() {
 		return art_content;
 	}

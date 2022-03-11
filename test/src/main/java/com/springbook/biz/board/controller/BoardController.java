@@ -101,9 +101,14 @@ public class BoardController {
 		String changeName=oldName.replaceAll("\\\\", "\\\\\\\\"); //DB와 string에서 \를 인식 못하기 때문에 \\로 바꿔줘야함, \\를 인식하기 위해선 \\\\를 적어야함
 		vo.setArt_img_path(changeName); //VO갱신
 		}
-	    vo.setUser_id("");
+		//1번. 세션을 불러온다 (or 매게변수에 Session을 바로받아서 진행할 수 있다.
+		HttpSession session = request.getSession();
+		//2번  로그인된 vo2 객체 가져오기.
+		UserVO vo2 = (UserVO) session.getAttribute("user");
+	    //dao에 들어갈 vo 객체에 user_Id 저장해주기.
+		vo.setArt_writer(vo2.getUser_Id());
 		boardService.insertBoard(vo);
-		return "getBoardList.do?party_id="+vo.getParty_id();
+		return "index.jsp";
 	
 	}
 	@RequestMapping(value="/updateBoard.do", method=RequestMethod.POST)
@@ -143,7 +148,12 @@ public class BoardController {
 		String changeName=oldName.replaceAll("\\\\", "\\\\\\\\"); //DB와 string에서 \를 인식 못하기 때문에 \\로 바꿔줘야함, \\를 인식하기 위해선 \\\\를 적어야함
 		vo.setArt_img_path(changeName); //VO갱신
 		}
-	    vo.setUser_id("admin2");
+		//1번. 세션을 불러온다 (or 매게변수에 Session을 바로받아서 진행할 수 있다.
+		HttpSession session = request.getSession();
+		//2번  로그인된 vo2 객체 가져오기.
+		UserVO vo2 = (UserVO) session.getAttribute("user");
+	    //dao에 들어갈 vo 객체에 user_Id 저장해주기.
+		vo.setArt_writer(vo2.getUser_Id());
 		boardService.updateBoard(vo);
 		return "boardView.jsp";
 	    }

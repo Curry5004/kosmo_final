@@ -123,6 +123,8 @@ public class ScheduleController {
 	
 	@RequestMapping("calendar.do")
 	public String getScheduleList(SchVO vo,Model model,HttpServletRequest request){
+		UserVO userVO=(UserVO)request.getSession().getAttribute("user");
+		vo.setUser_id(userVO.getUser_Id());
 		if(request.getParameter("year")!=null){
 			model.addAttribute("year", request.getParameter("year"));
 			model.addAttribute("month", request.getParameter("month"));
@@ -176,7 +178,7 @@ public class ScheduleController {
 		
 		
 		model.addAttribute("party_id", request.getParameter("party_id"));
-//		model.addAttribute("getMemberName",scheduleService.getMemberName(vo));
+		model.addAttribute("getMemberName",scheduleService.getMemberName(vo));
 		List<SchVO> getList=scheduleService.getScheduleList(vo);
 		model.addAttribute("SchduleList", getList);
 		List<String> checkList =new ArrayList<>();

@@ -56,7 +56,8 @@ SELECT USER_ID,PARTY_ID,SCH_ID FROM SCHEDULE_MEMBER WHERE SCH_ID=#{sch_id}
 </select>
 
 <select id="getMemberName" resultType="schedule">
-	select u.name from user u join schedule_member s on u.user_id = s.user_id where s.party_id =${party_id}
+	 SELECT DISTINCT U.NAME FROM USER U JOIN SCHEDULE_MEMBER S ON U.USER_ID = S.USER_ID
+	WHERE S.PARTY_ID =${party_id} AND U.USER_ID=#{user_id}
 </select>
 
 <update id="scheduleReview" parameterType="schedule">

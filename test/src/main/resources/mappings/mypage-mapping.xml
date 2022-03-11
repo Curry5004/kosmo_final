@@ -21,12 +21,26 @@
 	WHERE user_Id = #{user_Id};
 </update>
 
-<select id ="getPartyMemberList" resultType="board">
-	select 
+<select id ="getPartyMemberList" resultType="party">
+	SELECT * 
+	FROM PARTY 
+	WHERE ART_AVAILABLE = TRUE AND PARTY_ID = #{party_id} 
+	ORDER BY ART_ID DESC 
+	LIMIT #{listSize} OFFSET #{startRow}
 </select>
 
-<select id ="getPartyFavList" resultType="board">
-
+<select id ="getPartyFavList" resultType="party">
+	SELECT * FROM PARTY 
+	WHERE ART_AVAILABLE = TRUE AND PARTY_ID = #{party_id}
+	ORDER BY ART_ID DESC 
+	LIMIT #{listSize} OFFSET #{startRow}
 </select>
 
+<select id ="getPartyCreatorList" resultType="party">
+	SELECT * FROM PARTY 
+	WHERE ART_AVAILABLE = TRUE AND PARTY_ID = #{party_id}
+	ORDER BY ART_ID DESC 
+	LIMIT #{listSize} OFFSET #{startRow}
+</select>
+	
 </mapper>

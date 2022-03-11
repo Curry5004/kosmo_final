@@ -55,10 +55,11 @@ public class ScheduleController {
 		map.put("year", year);
 		map.put("month", month);
 		map.put("day",day);
-		map.put("sch_id", vo.getSch_id());	 
+		map.put("sch_id", vo.getSch_id());
 		
 		PageVO pages = new PageVO(count, currentPage, listSize, pageSize);
 		List<SchVO> mapResult = scheduleService.getScheduleDetail(map);
+		
 		
 		// 필요한거 -> 방장 가져오기, 
 		memberListVO.setPARTY_ID(party_id);

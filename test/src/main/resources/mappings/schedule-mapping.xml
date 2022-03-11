@@ -6,10 +6,10 @@
 <insert id ="insertSchDAO" parameterType="schedule">
 	insert into schedule ( PARTY_ID, SCH_TITLE,
 	 SCH_WRITER, SCH_CONTENT, SCH_LOCATION, SCH_NOTE,
-	  SCH_MEMBER_COUNT, SCH_DATE) values
+	  SCH_MEMBER_COUNT, SCH_DATE ,USER_ID) values
 	 (#{party_id},
 	#{sch_title},#{sch_writer},#{sch_content},#{sch_location},
-	#{sch_note},#{sch_member_count},#{sch_date})
+	#{sch_note},#{sch_member_count},#{sch_date},#{user_id})
 </insert>
 
 <select id="getScheduleList" resultType="schedule">
@@ -19,7 +19,7 @@ ORDER BY SCH_DATE ASC
 </select>
 
 <select id="getScheduleList2" resultType="schedule">
-SELECT SCH_ID, PARTY_ID, SCH_TITLE, SCH_WRITER, SCH_CONTENT, SCH_LOCATION, SCH_NOTE, SCH_MEMBER_COUNT, SCH_DATE 
+SELECT SCH_ID, PARTY_ID, USER_ID, SCH_TITLE, SCH_WRITER, SCH_CONTENT, SCH_LOCATION, SCH_NOTE, SCH_MEMBER_COUNT, SCH_DATE 
 FROM SCHEDULE WHERE SCH_DATE LIKE ('${year}-${month}-${day}%') AND SCH_AVAILABLE=TRUE AND PARTY_ID=#{party_id}
 ORDER BY SCH_ID ASC
 LIMIT #{listSize} OFFSET #{startRow}

@@ -22,35 +22,52 @@
 </update>
 
 <select id ="getPartyMemberList" resultType="party">
-	SELECT PARTY_ID, PARTY_TUMB_PATH
-	FROM PARTY p JOIN MEMBER_LIST m on p.USER_ID=m.USER_ID
-	WHERE ART_AVAILABLE = TRUE AND PARTY_ID = #{party_id} 
-	ORDER BY ART_ID DESC 
-	LIMIT #{listSize} OFFSET #{startRow}
-	
-	SELECT p.PARTY_ID, p.PARTY_TUMB_PATH, m.USER_ID
+
+	SELECT p.PARTY_ID, p.PARTY_TUMB_PATH
 	FROM PARTY p
 	INNER JOIN MEMBER_LIST m on p.PARTY_ID=m.PARTY_ID
-	HERE ART_AVAILABLE = TRUE AND PARTY_ID = #{party_id} ;
+	WHERE PARTY_REQUEST = TRUE AND USER_ID = #{user_Id} 
+	LIMIT #{listSize} OFFSET #{startRow};
 	
-	select u.name, u.user_id,MBTI_NAME 
-	from member_list m join user u 	join mbti on m.user_id = u.user_id and u.mbti_id=mbti.MBTI_ID 
-	where party_id ="${PARTY_ID}"
-	order by reg_date;
 </select>
+
+<select id ="getPartyMemberListCnt" resultType="int">
+
+	SELECT COUNT(*)
+	FROM PARTY p
+	INNER JOIN MEMBER_LIST m on p.PARTY_ID=m.PARTY_ID
+	WHERE PARTY_REQUEST = TRUE AND USER_ID = #{user_Id} ;
+	
+</select>
+
 
 <select id ="getPartyFavList" resultType="party">
-	SELECT * FROM PARTY 
-	WHERE ART_AVAILABLE = TRUE AND PARTY_ID = #{party_id}
-	ORDER BY ART_ID DESC 
-	LIMIT #{listSize} OFFSET #{startRow}
+	SELECT p.PARTY_ID, p.PARTY_TUMB_PATH
+	FROM PARTY p
+	INNER JOIN MEMBER_FAV m on p.PARTY_ID=m.PARTY_ID
+	WHERE USER_ID = #{user_Id} 
+	LIMIT #{listSize} OFFSET #{startRow};
 </select>
 
+<select id ="getPartyFavListCnt" resultType="int">
+	SELECT COUNT(*)
+	FROM PARTY p
+	INNER JOIN MEMBER_FAV m on p.PARTY_ID=m.PARTY_ID
+	WHERE USER_ID = #{user_Id} ;
+</select>
+
+
 <select id ="getPartyCreatorList" resultType="party">
-	SELECT * FROM PARTY 
-	WHERE ART_AVAILABLE = TRUE AND PARTY_ID = #{party_id}
-	ORDER BY ART_ID DESC 
-	LIMIT #{listSize} OFFSET #{startRow}
+	SELECT PARTY_ID, PARTY_TUMB_PATH
+	FROM PARTY 
+	WHERE PARTY_CREATOR = #{user_Id}
+	LIMIT #{listSize} OFFSET #{startRow};
+</select>
+
+<select id ="getPartyCreatorListCnt" resultType="int">
+	SELECT COUNT(*)
+	FROM PARTY 
+	WHERE PARTY_CREATOR = #{user_Id};
 </select>
 	
 </mapper>

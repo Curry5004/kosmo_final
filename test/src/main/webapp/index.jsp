@@ -19,9 +19,13 @@
 	<a href="writeSchedule.jsp">스케쥴 생성</a>
 	<a href="boardWrite.jsp">게시글 작성</a>
 	<a href="writeAlbum.jsp?party_id=1">앨범 작성</a>
+	
 	<a href="partySearch.jsp">소모임 검색 예시</a>
 	<a href="getAlbumList.do?party_id=1">앨범목록</a>
 	<a href="calendar.do?party_id=1">스케줄 리스트</a>
+	
+	<br/>
+	<a href="mypage/getUserInfo.do">회원 정보 가져오기</a>
 
 </body>
 </html>

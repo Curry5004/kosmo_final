@@ -20,7 +20,6 @@ public class MainServicImpl implements MainService {
 	public List<MbtiVO> getMbtiList(MbtiVO vo) {
 		return mbtiDAO.getMbtiList(vo);
 	}
-
 	public List<CategoryVO> getCategoryList(CategoryVO vo) {
 		return categoryDAO.getCategoryList(vo);
 	}

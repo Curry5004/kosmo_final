@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MypageDAO">
+
+
+<select id = "getUserInfo" resultType="user">
+	select user_id, NAME, PASSWORD, BIRTHDAY, 
+	GENDER, LOCATION, PHONE_NUM, JOIN_DATE, PROFILE_IMAGE
+	,MODIFIED_DAY, MBTI_NAME
+	from user as u
+	join mbti as m
+	on u.mbti_id=m.mbti_id
+    where USER_ID=#{user_Id};
+</select>
+
+<update id = "updateUserInfo">
+	UPDATE USER
+	SET PASSWORD = #{password}, LOCATION=#{location}, PROFILE_IMAGE=#{profile_Image}
+	, MODIFIED_DAY=now(), MBTI_PATH=#{mbti_Path}, MBTI_ID=#{mbti_Id} 
+	WHERE user_Id = #{user_Id};
+</update>
+
+</mapper>

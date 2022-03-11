@@ -16,7 +16,7 @@
 		<typeAlias alias="albumComment" type="com.springbook.biz.albumComment.AlbumCommentVO" />
 	</typeAliases>
 
-	<!-- Sql Mapper-->
+	<!-- Sql Mapper 설정 -->
 	<mappers>
 		<mapper resource="mappings/user-mapping.xml" ></mapper>
 		<mapper resource="mappings/category-mapping.xml"></mapper>
@@ -27,6 +27,7 @@
 		<mapper resource="mappings/schedule-mapping.xml"></mapper>
 		<mapper resource="mappings/album-mapping.xml" />
 		<mapper resource="mappings/albumComment-mapping.xml" />
+		<mapper resource="mappings/mypage-mapping.xml" />		
 	</mappers>
 	
 </configuration>

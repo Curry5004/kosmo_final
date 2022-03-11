@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 
 <!DOCTYPE html>
@@ -62,21 +62,21 @@
 	    </tr>
 	    <tr>
 	        <td>
-	            참가인원:  ${sDetail.sch_member_current_count} / ${sDetail.sch_member_count }
+	            참가인원:  ${current_count} / ${sDetail.sch_member_count }
 	        </td>
 	    </tr>
 	    <tr >
 	        <td style="display:flex;">
 	        <c:if test="${sDetail.sch_member_current_count < sDetail.sch_member_count }">
-	        <c:if test="${!cntList.containsKey(sessionScope.user.user_Id)}">
+	       <%--  <c:if test="${!cntList.containsKey('user_id')}"> --%>
 	            <button onclick="location.href='cntUp.do?user_id=${sessionScope.user.user_Id}&party_id=${sDetail.party_id}&sch_id=${sDetail.sch_id}'">
 	            	참가하기 
 				</button>
+	      <%--   </c:if> --%>
 	        </c:if>
-	        </c:if>
-	        <c:if test="${cntList.containsKey(sessionScope.user.user_Id)}">
+	     <%--   <c:if test="${cntList.containsKey('user_id')}"> --%>
 	            <button onclick="location.href='cntDown.do?user_id=${sessionScope.user.user_Id}&sch_id=${sDetail.sch_id}' "> 취소하기 </button>
-	        </c:if>
+	       <%--  </c:if> --%>
 	        </td>
 	    </tr> 
 	    <tr>

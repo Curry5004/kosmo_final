@@ -51,11 +51,11 @@ public class SchDAO {
 		mybatis.delete("schDAO.deleteSch",vo);
 	}
 	
-	public int getCurrentMemberCnt(SchVO vo) {
-		return mybatis.selectOne("schDAO.getCurrentMemberCnt", vo);
+	public int getCurrentMemberCnt(int sch_id) {
+		return mybatis.selectOne("schDAO.getCurrentMemberCnt", sch_id);
 	}
 	
-	public List<SchVO> getCntList(SchVO vo){
-		return mybatis.selectList("schDAO.getCntList", vo);
+	public List<SchVO> getCntList(Map<String, Object> cntList){
+		return mybatis.selectList("schDAO.getCntList", cntList);
 	}
 }

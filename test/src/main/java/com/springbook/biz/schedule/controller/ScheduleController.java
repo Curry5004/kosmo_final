@@ -26,15 +26,12 @@ public class ScheduleController {
 	ScheduleService scheduleService;
 	
 	@RequestMapping("calendar2.do") 
-	public String getScheduleDetail(SchVO vo, Model model, PageVO page ) {
-		 //vo.getPartId();
+	public String getScheduleDetail(SchVO vo, Model model, PageVO page,HttpSession session ) {	
 		int party_id=vo.getParty_id();
 		int count = scheduleService.getSchCnt(vo);
-		int sch_member_current_count = scheduleService.getCurrentMemberCnt(vo);
 		String year=vo.getYear();
 		String month=vo.getMonth();
 		String pageNo = page.getPageNo();
-		System.out.println(pageNo);
 		int currentPage = 1;
 		int listSize = 1;
 		int pageSize = 1;
@@ -42,28 +39,37 @@ public class ScheduleController {
 			currentPage = Integer.parseInt(pageNo);
 		}
 		int startRow = (currentPage-1) * listSize;
+		UserVO userVO = (UserVO) session.getAttribute("user");
+		vo.setUser_id(userVO.getUser_Id());
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("party_id", party_id);
 		map.put("startRow", startRow);
 		map.put("listSize", listSize);
 		map.put("year", year);
 		map.put("month", month);
-		map.put("sch_id", vo.getSch_id());	
-		map.put("sch_member_current_count", sch_member_current_count);
+		map.put("sch_id", vo.getSch_id());	 
 		
 		PageVO pages = new PageVO(count, currentPage, listSize, pageSize);
-		System.out.println(pages.getTotal());
-		System.out.println(count);
-		System.out.println(vo.getSch_id());
+		List<SchVO> mapResult = scheduleService.getScheduleDetail(map);
 		
-		Map<String, SchVO> cntList=new HashMap<String, SchVO>();
-		for(SchVO schVO : scheduleService.getCntList(vo)){
-			cntList.put(schVO.getUser_id(), schVO);
-		}
 		
-		model.addAttribute("cntList", cntList);
-		model.addAttribute("SchDetail", scheduleService.getScheduleDetail(map));
+		Map<String, Object> cntList = new HashMap<String, Object>();
+		cntList.put("sch_id", mapResult.get(startRow).getSch_id());
+		cntList.put("user_id", vo.getUser_id());
+		
+		//현재 멤버 카운트 저장 
+		int sch_member_current_count = scheduleService.getCurrentMemberCnt(mapResult.get(startRow).getSch_id());
+		cntList.put("sch_member_current_count", sch_member_current_count);
+		
+		model.addAttribute("SchDetail",mapResult);
 		model.addAttribute("pages", pages);
+		model.addAttribute("cntList", scheduleService.getCntList(cntList));
+		model.addAttribute("current_count",sch_member_current_count );
+		
+		System.out.println("SchDetail: " + mapResult.toString());
+		System.out.println("cntList: " + cntList.toString());
+		
 		return "CalendarDetail.jsp";	
 	}
 	@RequestMapping("deleteSch.do")

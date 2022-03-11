@@ -23,8 +23,8 @@ public interface ScheduleService {
 	
 	public void deleteSch(SchVO vo); // 일정 삭제하기
 	
-	public int getCurrentMemberCnt(SchVO vo); // 일정 현재인원
+	public int getCurrentMemberCnt(int sch_id ); // 일정 현재인원
 	
-	public List<SchVO> getCntList(SchVO vo); // 가입한 사람 목록 가져오기
+	public List<SchVO> getCntList(Map<String,Object> cntList); // 가입한 사람 목록 가져오기
 	
 }

@@ -59,17 +59,23 @@ public class SchServiceImpl implements ScheduleService {
 	}
 
 	@Override
-	public int getCurrentMemberCnt(SchVO vo) {
-		return schDAO.getCurrentMemberCnt(vo);
+	public int getCurrentMemberCnt(int sch_id) {
+		return schDAO.getCurrentMemberCnt(sch_id);
 	}
 
-	@Override
-	public List<SchVO> getCntList(SchVO vo) {
-		return schDAO.getCntList(vo);
-	}
-	
+//	@Override
+//	public List<SchVO> getCntList(SchVO vo) {
+//		return schDAO.getCntList(vo);
+//	}
+//	
 	@Override
 	public void scheduleReview(SchVO vo) {
 		schDAO.scheduleReview(vo);
+	}
+
+	@Override
+	public List<SchVO> getCntList(Map<String, Object> cntList) {
+		// TODO Auto-generated method stub
+		return schDAO.getCntList(cntList);
 	}
 }

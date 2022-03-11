@@ -91,13 +91,13 @@
 	        </td>
 	    </tr>
 	    
-	    <tr>
+	   <%--  <tr>
 	        <td >
 	        	<c:if test="${sDetail.user_id==sessionScope.user.user_Id||leader.USER_ID==sessionScope.user.user_Id}">
 	            <button onclick="location.href='deleteSch.do?&sch_id=${sDetail.sch_id}&year=${param.year}&month=${param.month}&day=${param.day}&party_id=${param.party_id}';">정모삭제하기    </button>
 	            </c:if>
 	        </td>
-	    </tr>
+	    </tr> --%>
 	    <tr>
 	        <td colspan="2">
 	            ${sDetail.sch_content}

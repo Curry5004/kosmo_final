@@ -302,12 +302,12 @@ public class ScheduleController {
 		model.addAttribute("party_title", getVO.getPARTY_TITLE());
 		
 		
-		// 필요한거 -> 방장 가져오기, 
-//		memberListVO.setPARTY_ID(party_id);
-		memberListVO.setUSER_ID(userVO.getUser_Id());
-		List<MemberListVO> list=memberListService.getJoinMemberList2(memberListVO);
-		MemberListVO leader =list.get(0);
-		model.addAttribute("leader", leader);
+//		// 필요한거 -> 방장 가져오기, 
+////		memberListVO.setPARTY_ID(party_id);
+//		memberListVO.setUSER_ID(userVO.getUser_Id());
+//		List<MemberListVO> list=memberListService.getJoinMemberList2(memberListVO);
+//		MemberListVO leader =list.get(0);
+//		model.addAttribute("leader", leader);
 		
 		Map<String, Object> cntList = new HashMap<String, Object>();
 		cntList.put("sch_id", mapResult.get(0).getSch_id());

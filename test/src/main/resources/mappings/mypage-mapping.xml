@@ -22,11 +22,21 @@
 </update>
 
 <select id ="getPartyMemberList" resultType="party">
-	SELECT * 
-	FROM PARTY 
+	SELECT PARTY_ID, PARTY_TUMB_PATH
+	FROM PARTY p JOIN MEMBER_LIST m on p.USER_ID=m.USER_ID
 	WHERE ART_AVAILABLE = TRUE AND PARTY_ID = #{party_id} 
 	ORDER BY ART_ID DESC 
 	LIMIT #{listSize} OFFSET #{startRow}
+	
+	SELECT p.PARTY_ID, p.PARTY_TUMB_PATH, m.USER_ID
+	FROM PARTY p
+	INNER JOIN MEMBER_LIST m on p.PARTY_ID=m.PARTY_ID
+	HERE ART_AVAILABLE = TRUE AND PARTY_ID = #{party_id} ;
+	
+	select u.name, u.user_id,MBTI_NAME 
+	from member_list m join user u 	join mbti on m.user_id = u.user_id and u.mbti_id=mbti.MBTI_ID 
+	where party_id ="${PARTY_ID}"
+	order by reg_date;
 </select>
 
 <select id ="getPartyFavList" resultType="party">

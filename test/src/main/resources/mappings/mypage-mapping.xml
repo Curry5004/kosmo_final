@@ -21,4 +21,12 @@
 	WHERE user_Id = #{user_Id};
 </update>
 
+<select id ="getPartyMemberList" resultType="board">
+	select 
+</select>
+
+<select id ="getPartyFavList" resultType="board">
+
+</select>
+
 </mapper>

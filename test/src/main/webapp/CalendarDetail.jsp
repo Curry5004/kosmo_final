@@ -67,21 +67,33 @@
 	    </tr>
 	    <tr >
 	        <td style="display:flex;">
-	        <c:if test="${sDetail.sch_member_current_count < sDetail.sch_member_count }">
-	       <%--  <c:if test="${!cntList.containsKey('user_id')}"> --%>
-	            <button onclick="location.href='cntUp.do?user_id=${sessionScope.user.user_Id}&party_id=${sDetail.party_id}&sch_id=${sDetail.sch_id}'">
-	            	참가하기 
+	        <c:if test="${empty cntList}">
+	        	<button onclick="location.href='cntUp.do?user_id=${sessionScope.user.user_Id}&party_id=${sDetail.party_id}&sch_id=${sDetail.sch_id}'">	
+					참가하기
 				</button>
-	      <%--   </c:if> --%>
 	        </c:if>
-	     <%--   <c:if test="${cntList.containsKey('user_id')}"> --%>
+	       
+	        <c:forEach items="${cntList}" var="cnt"> 
+	        <c:if test="${sDetail.sch_member_current_count < sDetail.sch_member_count }">
+	        <c:if test="${cnt.user_id != sessionScope.user.user_Id}">    
+	            <button onclick="location.href='cntUp.do?user_id=${sessionScope.user.user_Id}&party_id=${sDetail.party_id}&sch_id=${sDetail.sch_id}'">	
+					참가하기
+				</button>
+			</c:if>	
+	      	</c:if>  
+	       
+	       
+	    
+	      <c:if test="${cnt.user_id == sessionScope.user.user_Id}">  
 	            <button onclick="location.href='cntDown.do?user_id=${sessionScope.user.user_Id}&sch_id=${sDetail.sch_id}' "> 취소하기 </button>
-	       <%--  </c:if> --%>
+	      </c:if> 
+	      </c:forEach> 
+	     
 	        </td>
 	    </tr> 
 	    <tr>
 	        <td >
-	            <button onclick="location.href='deleteSch.do?&sch_id=${sDetail.sch_id}';">정모삭제하기 </button>
+	            <button onclick="location.href='deleteSch.do?&sch_id=${sDetail.sch_id}';">정모삭제하기    </button>
 	        </td>
 	    </tr>
 	    <tr>

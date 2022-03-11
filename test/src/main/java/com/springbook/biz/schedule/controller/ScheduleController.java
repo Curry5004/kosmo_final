@@ -40,7 +40,7 @@ public class ScheduleController {
 		}
 		int startRow = (currentPage-1) * listSize;
 		UserVO userVO = (UserVO) session.getAttribute("user");
-		vo.setUser_id(userVO.getUser_Id());
+		session.setAttribute("user", userVO);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("party_id", party_id);
@@ -56,11 +56,10 @@ public class ScheduleController {
 		
 		Map<String, Object> cntList = new HashMap<String, Object>();
 		cntList.put("sch_id", mapResult.get(startRow).getSch_id());
-		cntList.put("user_id", vo.getUser_id());
 		
 		//현재 멤버 카운트 저장 
 		int sch_member_current_count = scheduleService.getCurrentMemberCnt(mapResult.get(startRow).getSch_id());
-		cntList.put("sch_member_current_count", sch_member_current_count);
+//		cntList.put("sch_member_current_count", sch_member_current_count);
 		
 		model.addAttribute("SchDetail",mapResult);
 		model.addAttribute("pages", pages);
@@ -69,7 +68,8 @@ public class ScheduleController {
 		
 		System.out.println("SchDetail: " + mapResult.toString());
 		System.out.println("cntList: " + cntList.toString());
-		
+		System.out.println("cntList쿼리까지돌렸을 때 " + scheduleService.getCntList(cntList));
+		System.out.println("pages" + pages);		
 		return "CalendarDetail.jsp";	
 	}
 	@RequestMapping("deleteSch.do")
@@ -79,21 +79,27 @@ public class ScheduleController {
 	}
 	
 	@RequestMapping("cntUp.do")
-	public String cntUp(SchVO vo,Model model,HttpSession session, PageVO page){
-		String pageNo = page.getPageNo();
+	public String cntUp(SchVO vo,Model model,HttpSession session, PageVO page, HttpServletRequest request){
 		UserVO userVO=(UserVO)session.getAttribute("user");
 		vo.setUser_id(userVO.getUser_Id());
+//		String pageNo = request.getParameter("pageNo");
+//		System.out.println("페이지넘버" +pageNo);
 		scheduleService.schMemberCntUp(vo);
-		return "redirect:calendar2.do?year=2022&month=03&party_id=1&pageNo="+pageNo;
+//		return "redirect:calendar2.do?year=2022&month=03&party_id=1&pageNo="+pageNo;
+		return "index.jsp";
+		
+//		(#{user_id},#{sch_id},#{party_id})
+//		</insert>
 	}
 	
 	@RequestMapping("cntDown.do")
 	public String cntDown(SchVO vo,Model model,HttpSession session, PageVO page){
-		String pageNo = page.getPageNo();
+//		String pageNo = page.getPageNo();
 		UserVO userVO=(UserVO)session.getAttribute("user");
 		vo.setUser_id(userVO.getUser_Id());
 		scheduleService.schMemberCntDown(vo);
-		return "redirect:calendar2.do?year=2022&month=03&party_id=1&pageNo="+pageNo;
+//		return "redirect:calendar2.do?year=2022&month=03&party_id=1&pageNo="+pageNo;
+		return "index.jsp";
 	}
 	
 	@RequestMapping("insertSchedule.do")

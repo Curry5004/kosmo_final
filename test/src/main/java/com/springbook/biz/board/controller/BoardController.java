@@ -24,7 +24,7 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
-	@RequestMapping(value="/getBoardList.do", method=RequestMethod.GET)
+	@RequestMapping(value="/getBoardList.do")
 	public String getBoardList(BoardVO vo, Model model, PageVO page) {
 		
 		

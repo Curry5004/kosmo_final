@@ -104,9 +104,10 @@ public class AlbumController {
 	
 	@RequestMapping("getAlbum.do")
 	public String getAlbum(AlbumVO vo,AlbumCommentVO vo2,Model model,HttpSession session){
-		UserVO userVO=new UserVO();
-		userVO.setUser_Id("ADMIN10");
-		session.setAttribute("user", userVO);
+//		UserVO userVO=new UserVO();
+//		userVO.setUser_Id("ADMIN10");
+//		session.setAttribute("user", userVO);
+		
 		model.addAttribute("album", albumService.getAlbum(vo));
 		Map<String, AlbumVO> likeList=new HashMap<String, AlbumVO>();
 		

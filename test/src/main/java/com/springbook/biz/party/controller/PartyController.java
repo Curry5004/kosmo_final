@@ -91,10 +91,11 @@ public class PartyController {
 	@RequestMapping("/getParty.do")
 	public String getParty(PartyVO vo,Model model,MemberListVO vo2,HttpServletRequest request){
 		PartyVO getVO =partyService.getParty(vo);
-		HttpSession session=request.getSession();
-		UserVO userVO=new UserVO();
-		userVO.setUser_Id("ADMIN10");
-		session.setAttribute("user", userVO);
+		//로그인 기능 구현 완료로 아래 USER 삽입 코드는 주석처리
+//		HttpSession session=request.getSession();
+//		UserVO userVO=new UserVO();
+//		userVO.setUser_Id("ADMIN10");
+//		session.setAttribute("user", userVO);
 		if(getVO==null){
 			return "error.jsp";
 			}

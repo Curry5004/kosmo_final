@@ -19,6 +19,7 @@ public class MemberListController {
 	@RequestMapping("/joinParty.do")
 	public String joinParty(MemberListVO vo, Model model,HttpSession session){
 		UserVO user=(UserVO)session.getAttribute("user");
+		System.out.println(user.toString());
 		System.out.println("유저아이디: "+user.getUser_Id());
 		vo.setUSER_ID(user.getUser_Id());
 		memberListService.joinParty(vo);

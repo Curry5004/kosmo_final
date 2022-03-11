@@ -17,6 +17,11 @@ public class BoardVO {
 	private Date art_mod_date;
 	private boolean art_available; 
 	
+	@Override
+	public String toString() {
+		return "BoardVO [art_id=" + art_id + ", party_id=" + party_id + ", art_title=" + art_title+ ", user_id=" + user_id + ", art_content=" + art_content + 
+				",art_img=" + art_img + ",art_img_path=" + art_img_path + ", art_view_cnt="+ art_view_cnt + ",art_reg_date=" + art_reg_date + ", art_mod_date=" + art_mod_date + ",art_available=" + art_available + "]";
+	}
 	
 	
 	public int getArt_id() {

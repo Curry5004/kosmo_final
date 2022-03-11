@@ -16,12 +16,12 @@
 </select>
 
 <insert id="insertBoard" parameterType="board">
-	INSERT INTO BOARD(PARTY_ID, ART_ID, USER_ID, ART_CONTENT, ART_TITLE) VALUES
-	(#{party_id}, #{art_id}, #{user_id}, #{art_content},#{art_title})
+	INSERT INTO BOARD(PARTY_ID, ART_ID, USER_ID, ART_CONTENT) VALUES
+	(#{party_id}, #{art_id}, #{user_id}, #{art_content})
 </insert>
 
 <update id="updateBoard" parameterType="board">
-	UPDATE BOARD SET ART_CONTENT=#{art_content}, ART_MOD_DATE=NOW()
+	UPDATE BOARD SET ART_TITLE=#{art_title}, ART_CONTENT=#{art_content}, ART_MOD_DATE=NOW()
 	WHERE ART_ID = #{art_id}
 </update>
 

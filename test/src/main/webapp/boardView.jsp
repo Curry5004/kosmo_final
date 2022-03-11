@@ -42,7 +42,7 @@
 		</tr>
 		<tr>
 			<td>
-				작성자:${board.art_writer}
+				작성자:${board.user_id}
 			
 			</td>
 		</tr>

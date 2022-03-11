@@ -101,8 +101,9 @@ public class BoardController {
 		String changeName=oldName.replaceAll("\\\\", "\\\\\\\\"); //DB와 string에서 \를 인식 못하기 때문에 \\로 바꿔줘야함, \\를 인식하기 위해선 \\\\를 적어야함
 		vo.setArt_img_path(changeName); //VO갱신
 		}
+	    vo.setUser_id("");
 		boardService.insertBoard(vo);
-		return "index.jsp";
+		return "getBoardList.do?party_id="+vo.getParty_id();
 	
 	}
 	@RequestMapping(value="/updateBoard.do", method=RequestMethod.POST)
@@ -142,17 +143,17 @@ public class BoardController {
 		String changeName=oldName.replaceAll("\\\\", "\\\\\\\\"); //DB와 string에서 \를 인식 못하기 때문에 \\로 바꿔줘야함, \\를 인식하기 위해선 \\\\를 적어야함
 		vo.setArt_img_path(changeName); //VO갱신
 		}
+	    vo.setUser_id("admin2");
 		boardService.updateBoard(vo);
 		return "boardView.jsp";
 	    }
 	
 		@RequestMapping("/getBoard.do")
-        public String getBoard(BoardVO vo,BoardCommentVO vo2,Model model){
-	
+        public String getBoard(BoardVO vo,BoardCommentVO vo2,Model model,HttpSession session){
+			UserVO userVO=new UserVO();
+			userVO.setUser_Id("");
+			session.setAttribute("user", userVO);
 		model.addAttribute("board", boardService.getBoard(vo));
-		Map<String, BoardVO> likeList=new HashMap<String, BoardVO>();
-
-		
 		model.addAttribute("commentList", boardcommentService.getBoardCommentList(vo2));
 		System.out.println("댓글리스트 : "+boardcommentService.getBoardCommentList(vo2));
 
@@ -160,20 +161,24 @@ public class BoardController {
 	}
 	
 		@RequestMapping("/writeBoardComment.do")
-		public String writeBoardComment(BoardCommentVO vo,Model model){			
+		public String writeBoardComment(BoardCommentVO vo,Model model,HttpSession session){	
+			UserVO userVO=(UserVO)session.getAttribute("user");
+			vo.setUser_id(userVO.getUser_Id());
 			boardcommentService.writeBoardComment(vo);
 			return "getBoard.do?art_id="+vo.getArt_id();
 		}
 
 		@RequestMapping("/deleteBoardComment.do")
-		public String deleteBoardComment(BoardCommentVO vo,Model model){
-			
+		public String deleteBoardComment(BoardCommentVO vo,Model model,HttpSession session){
+			UserVO userVO=(UserVO)session.getAttribute("user");
+			vo.setUser_id(userVO.getUser_Id());
 			boardcommentService.deleteBoardComment(vo);
 			return "getBoard.do?art_id="+vo.getArt_id();
 	}
 		@RequestMapping("modifyAlbumComment.do")
-		public String modifyBoardComment(BoardCommentVO vo,Model model){
-		
+		public String modifyBoardComment(BoardCommentVO vo,Model model,HttpSession session){
+			UserVO userVO=(UserVO)session.getAttribute("user");
+			vo.setUser_id(userVO.getUser_Id());
 			boardcommentService.modifyBoardComment(vo);
 			return "getBoard.do?art_id="+vo.getArt_id();
 		}

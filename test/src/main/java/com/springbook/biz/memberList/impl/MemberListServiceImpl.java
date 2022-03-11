@@ -36,6 +36,9 @@ public class MemberListServiceImpl implements MemberListService {
 	public List<MemberListVO> getJoinMemberList(MemberListVO vo) {
 		return memberListDAO.getJoinMemberList(vo);
 	}
+	public List<MemberListVO> getJoinMemberList2(MemberListVO vo) {
+		return memberListDAO.getJoinMemberList2(vo);
+	}
 
 	public List<MemberListVO> getFavList(MemberListVO vo) {
 		return memberListDAO.getFavList(vo);

@@ -9,7 +9,27 @@
 <meta charset="UTF-8">
 <title>게시글 상세페이지 -모달창 활용할 jsp </title>
 </head>
+<script language="javascript">
+	function check() {
+		var checked_rate1 = document.querySelector('input[name = "rate1"]:checked');
+		var checked_rate2 = document.querySelector('input[name = "rate2"]:checked');
+		var checked_rate3 = document.querySelector('input[name = "rate3"]:checked');
 
+		if(checked_rate1 == null){
+		alert('평가1 미체크');
+		return false;
+		}
+		else if(checked_rate2 == null){
+		alert('평가2 미체크');
+		return false;
+		}
+		else if(checked_rate3 == null){
+		alert('평가3 미체크');
+		return false;
+		}
+		
+	}
+</script>
 <body>
 <header>
 </header>
@@ -18,11 +38,11 @@
   <c:if test="${pages.hasBoard()}">	
 			<td>
 				<c:if test="${pages.startPage > pages.pageSize}">
-				<a href="calendar2.do?year=${param.year}&month=${param.month}&day=${param.day}&party_id=${param.party_id }&pageNo=${pages.startPage - pages.pageSize}">&#9664;</a>
+				<a href="calendar4.do?year=${param.year}&month=${param.month}&day=${param.day}&pageNo=${pages.startPage - pages.pageSize}">&#9664;</a>
 				</c:if>
 				${sDetail.sch_title }
 				<c:if test="${pages.endPage < pages.totalPages }" >
-				<a href="calendar2.do?year=${param.year}&month=${param.month}&day=${param.day}&party_id=${param.party_id }&pageNo=${pages.startPage + pages.pageSize}">	&#9658;</a>
+				<a href="calendar4.do?year=${param.year}&month=${param.month}&day=${param.day}&pageNo=${pages.startPage + pages.pageSize}">	&#9658;</a>
 				</c:if>
 			</td>
 	</c:if>
@@ -30,6 +50,9 @@
 	    <tr>
 	        <td rowspan="5" >
 	        	맵!!!!
+	        </td>
+	        <td>
+	           파티이름 : ${party_title}
 	        </td>
 	        <td>
 	            주최자: ${sDetail.sch_writer} 
@@ -87,7 +110,38 @@
 	           ${sDetail.sch_note}
 	        </td>
 	    </tr> 
-	    
+	    <c:forEach items="${cntList}" var="cnt"> 
+	    <c:if test="${cnt.user_id == sessionScope.user.user_Id}">  
+	      <tr>
+	    	<td>
+		    	<form action="scheduleReview.do" method="post" name="Reg_form" onsubmit="return check()">
+				<span>평가1</span><br />
+				<input type="radio" name="rate1" value="1"/>
+				<input type="radio" name="rate1" value="2"/>
+				<input type="radio" name="rate1" value="3"/>
+				<input type="radio" name="rate1" value="4"/>
+				<input type="radio" name="rate1" value="5"/><br />
+				<span>평가2</span><br />
+				<input type="radio" name="rate2" value="1"/>
+				<input type="radio" name="rate2" value="2"/>
+				<input type="radio" name="rate2" value="3"/>
+				<input type="radio" name="rate2" value="4"/>
+				<input type="radio" name="rate2" value="5"/><br />
+				<span>평가3</span><br />
+				<input type="radio" name="rate3" value="1"/>
+				<input type="radio" name="rate3" value="2"/>
+				<input type="radio" name="rate3" value="3"/>
+				<input type="radio" name="rate3" value="4"/>
+				<input type="radio" name="rate3" value="5"/><br />
+				<input type="hidden" name="party_id" value="${sDetail.party_id }"/>
+				<input type="hidden" name="sch_id" value="${sDetail.sch_id }"/>
+				<input type="hidden" name="user_id" value="${sessionScope.user.user_Id }"/>
+				<input class="btn btn-primary" type="submit" value="작성">
+					</form>
+	    	</td>
+	    </tr>
+	    </c:if>
+	    </c:forEach>
 	</table> 
 	</c:forEach>
 </section>

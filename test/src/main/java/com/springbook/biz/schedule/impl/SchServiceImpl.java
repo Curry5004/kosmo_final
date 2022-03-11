@@ -24,17 +24,31 @@ public class SchServiceImpl implements ScheduleService {
 	@Override
 	public List<SchVO> getScheduleList(SchVO vo) {
 		return schDAO.getScheduleList(vo);
-		
+	}
+	
+	@Override
+	public List<SchVO> getScheduleList2(SchVO vo) {
+		return schDAO.getScheduleList2(vo);
 	}
 	
 	@Override
 	public int getSchCnt(SchVO vo) {
 		return schDAO.getSchCnt(vo);
 	}
+	
+	@Override
+	public int getSchCnt2(SchVO vo) {
+		return schDAO.getSchCnt2(vo);
+	}
 
 	@Override
 	public List<SchVO> getScheduleDetail(Map<String, Object> map) {
 		return schDAO.getScheduleDetail(map);
+	}
+	
+	@Override
+	public List<SchVO> getScheduleDetail2(Map<String, Object> map) {
+		return schDAO.getScheduleDetail2(map);
 	}
 
 	@Override

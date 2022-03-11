@@ -9,11 +9,17 @@ public interface ScheduleService {
 	
 	public List<SchVO> getScheduleList(SchVO vo);
 	
+	public List<SchVO> getScheduleList2(SchVO vo);
+	
 	public void scheduleReview(SchVO vo); //별점 평가
 	
 	public int getSchCnt(SchVO vo); // 스케쥴 전체갯수 조회
 	
+	public int getSchCnt2(SchVO vo); // 마이페이지 스케쥴 전체갯수 조회
+	
 	public List<SchVO> getScheduleDetail(Map<String,Object> map); // 스케쥴 상세보기
+	
+	public List<SchVO> getScheduleDetail2(Map<String,Object> map); // 스케쥴 상세보기
 	
 	public void schMemberCntUp(SchVO vo); // 스케줄 가입
 	

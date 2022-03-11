@@ -33,6 +33,9 @@ public class MemberListDAO {
 	public List<MemberListVO> getJoinMemberList(MemberListVO vo){
 		return  mybatis.selectList("memberListDAO.getMemberList",vo);
 	}
+	public List<MemberListVO> getJoinMemberList2(MemberListVO vo){
+		return  mybatis.selectList("memberListDAO.getMemberList2",vo);
+	}
 	public List<MemberListVO> getFavList(MemberListVO vo){
 		return mybatis.selectList("memberListDAO.getFavList",vo);
 	}

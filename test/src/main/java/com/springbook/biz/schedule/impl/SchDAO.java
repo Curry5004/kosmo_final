@@ -22,6 +22,10 @@ public class SchDAO {
 		return mybatis.selectList("schDAO.getScheduleList", vo);
 	}
 	
+	public List<SchVO> getScheduleList2(SchVO vo) {
+		return mybatis.selectList("schDAO.getScheduleList3", vo);
+	}
+	
 	
 	public void scheduleReview(SchVO vo) {
 		System.out.println(vo.toString());
@@ -32,8 +36,16 @@ public class SchDAO {
 		return mybatis.selectOne("schDAO.getScheduleCnt",vo);
 	}
 	
+	public int getSchCnt2(SchVO vo) {
+		return mybatis.selectOne("schDAO.getScheduleCnt2",vo);
+	}
+	
 	public List<SchVO> getScheduleDetail(Map<String, Object> map){
 		return mybatis.selectList("schDAO.getScheduleList2", map);
+	}
+	
+	public List<SchVO> getScheduleDetail2(Map<String, Object> map){
+		return mybatis.selectList("schDAO.getScheduleList4", map);
 	}
 	
 	public void schMemberCntUp(SchVO vo){

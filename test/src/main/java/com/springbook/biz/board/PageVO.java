@@ -1,6 +1,11 @@
 package com.springbook.biz.board;
 
 public class PageVO {
+	@Override
+	public String toString() {
+		return "PageVO [total=" + total + ", currentPage=" + currentPage + ", pageNo=" + pageNo + ", totalPages="
+				+ totalPages + ", startPage=" + startPage + ", endPage=" + endPage + ", pageSize=" + pageSize + "]";
+	}
 	private int total; //전체 게시글 수 
 	private int currentPage;
 	private String pageNo;

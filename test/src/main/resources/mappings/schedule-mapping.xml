@@ -18,6 +18,7 @@ FROM SCHEDULE WHERE SCH_DATE LIKE ('${year}-${month}%') AND SCH_AVAILABLE=TRUE A
 ORDER BY SCH_DATE ASC
 </select>
 
+
 <select id="getScheduleList2" resultType="schedule">
 SELECT SCH_ID, PARTY_ID, USER_ID, SCH_TITLE, SCH_WRITER, SCH_CONTENT, SCH_LOCATION, SCH_NOTE, SCH_MEMBER_COUNT, SCH_DATE 
 FROM SCHEDULE WHERE SCH_DATE LIKE ('${year}-${month}-${day}%') AND SCH_AVAILABLE=TRUE AND PARTY_ID=#{party_id}
@@ -25,11 +26,33 @@ ORDER BY SCH_ID ASC
 LIMIT #{listSize} OFFSET #{startRow}
 </select>
 
+<select id="getScheduleList3" resultType="schedule">
+SELECT SCH_ID, PARTY_ID, SCH_TITLE, SCH_WRITER, SCH_CONTENT, SCH_LOCATION, SCH_NOTE, SCH_MEMBER_COUNT, SCH_DATE 
+FROM SCHEDULE 
+WHERE SCH_DATE LIKE ('${year}-${month}%') AND PARTY_ID IN (SELECT PARTY_ID FROM MEMBER_LIST WHERE USER_ID=#{user_id})
+</select>
+
+<select id="getScheduleList4" resultType="schedule">
+ SELECT SCH_ID, PARTY_ID, USER_ID, SCH_TITLE, SCH_WRITER, SCH_CONTENT, SCH_LOCATION, SCH_NOTE, SCH_MEMBER_COUNT, SCH_DATE 
+FROM SCHEDULE
+WHERE SCH_DATE LIKE ('${year}-${month}-${day}%') AND PARTY_ID IN (SELECT PARTY_ID FROM MEMBER_LIST WHERE USER_ID=#{user_id})
+ORDER BY SCH_ID ASC
+LIMIT #{listSize} OFFSET #{startRow}
+</select>
+
+
 
 <select id="getScheduleCnt" resultType="int">
 SELECT COUNT(*) FROM  SCHEDULE 
 WHERE SCH_DATE LIKE ('${year}-${month}-${day}%')
 AND SCH_AVAILABLE=TRUE AND PARTY_ID=#{party_id}
+ORDER BY SCH_DATE ASC
+</select>
+
+<select id="getScheduleCnt2" resultType="int">
+SELECT COUNT(*) FROM  SCHEDULE 
+WHERE SCH_DATE LIKE ('${year}-${month}-${day}%')
+AND SCH_AVAILABLE=TRUE AND PARTY_ID IN (SELECT PARTY_ID FROM MEMBER_LIST WHERE USER_ID=#{user_id})
 ORDER BY SCH_DATE ASC
 </select>
 

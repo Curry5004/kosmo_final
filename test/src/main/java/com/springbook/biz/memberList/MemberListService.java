@@ -17,6 +17,8 @@ public interface MemberListService {
 	
 	public List<MemberListVO> getJoinMemberList(MemberListVO vo);
 	
+	public List<MemberListVO> getJoinMemberList2(MemberListVO vo);
+	
 	public List<MemberListVO> getFavList(MemberListVO vo);
 	
 	

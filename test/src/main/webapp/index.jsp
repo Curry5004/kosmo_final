@@ -20,7 +20,7 @@
 
 	로그인<br />
 	<a href="registry_form.do">회원가입</a> <br />
-	<a href="mypage/getUserInfo.do">회원 정보 가져오기</a></br>
+	<a href="mypage/getUserInfo.do">회원 정보 가져오기</a><br />
 	<a href="login.do">로그인</a>	<br />
 	<a href="logout.do">로그아웃</a>	<br />
 	<hr />
@@ -42,6 +42,9 @@
 	<a href="writeSchedule.jsp">스케쥴 생성</a><br />
 	<a href="calendar.do?party_id=1">스케줄 리스트</a><br />
 	<a href="calendar2.do?year=2022&month=03&party_id=1&pageNo=1">스케줄 상세보기</a>
+	
+	마이페이지<br />
+	<a href="calendar3.do?user_id=${sessionScope.user.user_Id }">마이페이지 일정</a>
 
 
 </body>

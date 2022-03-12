@@ -30,7 +30,8 @@ public class MypageDAO {
 	}
 
 	public int getPartyMemberListCnt(UserVO vo) {
-		return mybatis.selectOne("BoardDAO.getPartyMemberListCnt", vo);
+		System.out.println("마이바티스 진입 완료");
+		return mybatis.selectOne("MypageDAO.getPartyMemberListCnt", vo);
 	}
 
 //	public List<PartyVO> getPartyFavList(Map<String, Object> map) {

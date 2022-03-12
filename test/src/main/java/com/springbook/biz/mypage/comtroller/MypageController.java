@@ -6,7 +6,9 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,12 +18,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.springbook.biz.board.BoardVO;
+import com.springbook.biz.board.PageVO;
 import com.springbook.biz.main.MainService;
 import com.springbook.biz.main.MbtiVO;
 import com.springbook.biz.mypage.MypageService;
 import com.springbook.biz.user.UserService;
 import com.springbook.biz.user.UserVO;
+import com.springbook.biz.user.controller.UserController;
 
 @Controller
 @RequestMapping("/mypage")
@@ -32,6 +38,8 @@ public class MypageController {
 	private MainService mainService;
 	@Autowired
 	private UserService userService;
+	
+
 	
 	@RequestMapping("/getUserInfo.do")
 	public String getUserInfo(UserVO vo,Model model,HttpSession session){
@@ -173,5 +181,40 @@ public class MypageController {
 		userService.logout(session);
 		return "userInfoUpdateComplete.jsp";
 
+	}
+	@RequestMapping("/getBoardList.do")
+	public String getBoardList(BoardVO vo, Model model, PageVO page, HttpServletRequest request) {
+		
+		
+		 //vo.getPartId();
+		System.out.println("보드리스트 진입 완료");
+		HttpSession session = request.getSession();
+		UserVO vo2 =(UserVO) session.getAttribute("user");
+		String user_Id=vo2.getUser_Id();
+		int count = mypageService.getPartyMemberListCnt(vo2);
+		String pageNo = page.getPageNo();
+		System.out.println(pageNo);
+		int currentPage = 1;
+		int listSize = 3;
+		int pageSize = 5;
+		if(pageNo != null) {
+			currentPage = Integer.parseInt(pageNo);
+		}
+		int startRow = (currentPage-1) * listSize;
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("user_Id", user_Id);
+		map.put("startRow", startRow);
+		map.put("listSize", listSize);
+		
+		
+		PageVO pages = new PageVO(count, currentPage, listSize, pageSize);
+		System.out.println(pages.getTotal());
+		System.out.println(count);
+		
+		
+		model.addAttribute("boardList", mypageService.getPartyMemberList(map));
+		model.addAttribute("pages", pages);
+		return "partyList.jsp";
+		
 	}
 }

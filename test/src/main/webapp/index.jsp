@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>인덱스</h1>
-	<h1>${sessionScope.user_Id}</h1>
+	<h1>${sessionScope.user.user_Id}</h1>
 	<a href="getBoardList.do?party_id=1">게시글 조회</a>
 	<a href="registry_form.do">회원가입</a>
 	<a href="writeParty.do">소모임 작성</a>	
@@ -26,6 +26,7 @@
 	
 	<br/>
 	<a href="mypage/getUserInfo.do">회원 정보 가져오기</a>
+	<a href="mypage/getBoardList.do">가입된 소모임 목록 가져오기</a>
 
 </body>
 </html>

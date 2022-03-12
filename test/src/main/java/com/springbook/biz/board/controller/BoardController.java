@@ -141,7 +141,7 @@ public class BoardController {
 				e.printStackTrace();
 			
 			
-			return "boardUpdate.jsp";
+			return "updateBoard.do";
 			}
 		
 		//VO 필드변경
@@ -157,11 +157,12 @@ public class BoardController {
 		vo.setArt_writer(vo2.getUser_Id());
 		System.out.println("컨트롤러 진입");
 		boardService.updateBoard(vo);
+		
 		return "boardView.jsp";
 	    }
 	
 		@RequestMapping(value= "/getBoard.do", method=RequestMethod.GET)
-        public String getBoard(BoardVO vo,Model model,HttpServletRequest request){
+        public String getBoard(BoardVO vo,BoardCommentVO vo4,Model model,HttpServletRequest request){
 		
 		HttpSession session = request.getSession();
 		
@@ -172,13 +173,50 @@ public class BoardController {
 	    System.out.println(vo3.toString());
 	    
 	    model.addAttribute("board", vo3);
+	    model.addAttribute("commentList", boardcommentService.getBoardCommentList(vo4));
+		System.out.println("댓글리스트 : "+boardcommentService.getBoardCommentList(vo4));
+	    
+	    
+	    
+	    
+	    
+	    
 		return "boardView.jsp";
 		
-	}
+	    }
+		@RequestMapping("writeBoardComment.do")
+		public String writeBoardComment(BoardCommentVO vo,Model model,HttpServletRequest request){
+			HttpSession session = request.getSession();
+			
+			UserVO vo2= (UserVO) session.getAttribute("user");
+			vo.setArt_comment_writer(vo2.getUser_Id());
+			boardcommentService.writeBoardComment(vo);
+			return "getBoard.do?art_id="+vo.getArt_id();
+		}
+
+		@RequestMapping("deleteBoardComment.do")
+		public String deleteBoardComment(BoardCommentVO vo,Model model,HttpServletRequest request){
+			HttpSession session = request.getSession();
+			
+			UserVO vo2= (UserVO) session.getAttribute("user");
+			vo.setArt_comment_writer(vo2.getUser_Id());
+			boardcommentService.deleteBoardComment(vo);
+			return "getBoard.do?art_id="+vo.getArt_id();
+		}
 	
-		
-		
+		@RequestMapping("/delete.Board.do")
+		 public String deleteBoard(BoardVO vo, Model model,HttpServletRequest request){
+			//1번. 세션을 불러온다 (or 매게변수에 Session을 바로받아서 진행할 수 있다.
+			HttpSession session = request.getSession();
+			//2번  로그인된 vo2 객체 가져오기.
+			UserVO vo2 = (UserVO) session.getAttribute("user");
+		    //dao에 들어갈 vo 객체에 user_Id 저장해주기.
+			vo.setArt_writer(vo2.getUser_Id());
+			System.out.println("컨트롤러 진입");
+		    boardService.deleteBoard(vo);
+		    
+			return "index.jsp";
 		
 	}
  
-
+}

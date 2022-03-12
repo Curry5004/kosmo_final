@@ -21,12 +21,18 @@
 </insert>
 
 <update id="updateBoard" parameterType="board">
-	UPDATE BOARD SET ART_TITLE=#{art_title}, ART_CONTENT=#{art_content},ART_IMG_PATH=#{art_img_path}, ART_MOD_DATE=NOW()
+	UPDATE BOARD SET 
+	ART_TITLE=#{art_title}
+	, ART_WRITER=#{art_writer}
+	,ART_CONTENT=#{art_content}
+	,ART_IMG_PATH=#{art_img_path}
+	, ART_MOD_DATE=NOW()
+	where ART_ID=#{art_id}
 
 </update>
 
 <delete id="deleteBoard" parameterType="board">
-    UPDATE BOARD SET ART_AVAILABLE=FALSE  where PARTY_ID = #{party_id}
+    UPDATE BOARD SET ART_AVAILABLE=FALSE  where ART_ID = #{art_id}
 </delete>
 
  <select id="getBoard" resultType="board">

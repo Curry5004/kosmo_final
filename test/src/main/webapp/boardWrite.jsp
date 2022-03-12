@@ -15,19 +15,7 @@
 
 	      <h1>게시글 작성하기</h1>
 				<div class="form-group">
-	<div style="float:center">
-		 <fmt:formatDate var="formatRegDate" value="${board.art_reg_date}" pattern="yyyy-MM-dd"/>
-		 <fmt:formatDate var="formatModDate" value="${board.art_mod_date}" pattern="yyyy-MM-dd"/>
-				&ensp; 작성자: ${board.art_writer}
-				&ensp; 조회수: ${board.art_view_cnt }
-		 <c:if test="${empty formatModDate }">
-				&ensp; 작성일: ${formatRegDate}
-		</c:if>
-		<c:if test="${not empty formatModDate}">
-				&ensp; 작성일: ${formatRegDate}
-				&ensp; 수정일: ${formatModDate}
-		</c:if>
-			</div>
+	
 				  <label for="usr">제목:</label>
 				  <input type="text" class="form-control" id="title" name = "art_title">
 				  

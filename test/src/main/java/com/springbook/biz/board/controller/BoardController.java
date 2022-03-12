@@ -155,7 +155,7 @@ public class BoardController {
 				e.printStackTrace();
 			
 			
-			return "updateBoard.do";
+			return "index.jsp";
 			}
 		
 		//VO 필드변경

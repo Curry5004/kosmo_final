@@ -9,7 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-${pageName }
+<h1>${pageName }</h1>
+</br>
 	<%int i = 0;%>
 	<c:forEach items="${boardList}" var="board">
 			<div style="display:inline-block;">

@@ -34,15 +34,13 @@ public class MypageDAO {
 		return mybatis.selectOne("MypageDAO.getPartyMemberListCnt", vo);
 	}
 
-//	public List<PartyVO> getPartyFavList(Map<String, Object> map) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	public int getPartyFavListCnt(PartyVO vo) {
-//		// TODO Auto-generated method stub
-//		return 0;
-//	}
+	public List<PartyVO> getPartyFavList(Map<String, Object> map) {
+		return  mybatis.selectList("MypageDAO.getPartyFavList", map);
+	}
+
+	public int getPartyFavListCnt(UserVO vo) {
+		return mybatis.selectOne("MypageDAO.getPartyFavListCnt", vo);
+	}
 //
 //	public List<PartyVO> getPartyCreatorList(Map<String, Object> map) {
 //		// TODO Auto-generated method stub

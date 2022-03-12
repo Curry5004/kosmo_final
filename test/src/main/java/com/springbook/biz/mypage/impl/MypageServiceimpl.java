@@ -36,6 +36,16 @@ public class MypageServiceimpl implements MypageService{
 		return mypageDAO.getPartyMemberListCnt(vo);
 	}
 
+	@Override
+	public List<PartyVO> getPartyFavList(Map<String, Object> map) {
+		return  mypageDAO.getPartyFavList(map);
+		}
+
+	@Override
+	public int getPartyFavListCnt(UserVO vo) {
+		return mypageDAO.getPartyFavListCnt(vo);
+		}
+
 //	@Override
 //	public List<PartyVO> getPartyFavList(Map<String, Object> map) {
 //		// TODO Auto-generated method stub

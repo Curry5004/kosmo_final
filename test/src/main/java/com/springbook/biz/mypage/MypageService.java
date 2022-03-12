@@ -18,9 +18,9 @@ public interface MypageService {
 	public List<PartyVO> getPartyMemberList(Map<String,Object> map);
 	public int getPartyMemberListCnt(UserVO vo);
 
-//	//찜한 소모임 리스트 뽑아오기.
-//	public List<PartyVO> getPartyFavList(Map<String,Object> map);
-//	public int getPartyFavListCnt(PartyVO vo);
+	//찜한 소모임 리스트 뽑아오기.
+	public List<PartyVO> getPartyFavList(Map<String,Object> map);
+	public int getPartyFavListCnt(UserVO vo);
 //		
 //	//만든 소모임 리스트 뽑아오기.
 //	public List<PartyVO> getPartyCreatorList(Map<String,Object> map);

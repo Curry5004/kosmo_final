@@ -218,4 +218,40 @@ public class MypageController {
 		return "partyList.jsp";
 		
 	}
+	@RequestMapping("/getPartyFavList.do")
+	public String getPartyFavList(BoardVO vo, Model model, PageVO page, HttpServletRequest request) {
+		
+		
+		 //vo.getPartId();
+		System.out.println("보드리스트 진입 완료");
+		HttpSession session = request.getSession();
+		UserVO vo2 =(UserVO) session.getAttribute("user");
+		String user_Id=vo2.getUser_Id();
+		int count = mypageService.getPartyFavListCnt(vo2);
+		String pageNo = page.getPageNo();
+		System.out.println(pageNo);
+		int currentPage = 1;
+		int listSize = 6;
+		int pageSize = 5;
+		if(pageNo != null) {
+			currentPage = Integer.parseInt(pageNo);
+		}
+		int startRow = (currentPage-1) * listSize;
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("user_Id", user_Id);
+		map.put("startRow", startRow);
+		map.put("listSize", listSize);
+		
+		
+		PageVO pages = new PageVO(count, currentPage, listSize, pageSize);
+		System.out.println(pages.getTotal());
+		System.out.println(count);
+		
+		
+		model.addAttribute("boardList", mypageService.getPartyFavList(map));
+		model.addAttribute("pages", pages);
+		model.addAttribute("pageName", "찜한 소모임 목록");
+		return "partyList.jsp";
+		
+	}
 }

@@ -161,7 +161,7 @@ public class BoardController {
 		return "boardView.jsp";
 	    }
 	
-		@RequestMapping(value= "/getBoard.do", method=RequestMethod.GET)
+		@RequestMapping("/getBoard.do")
         public String getBoard(BoardVO vo,BoardCommentVO vo4,Model model,HttpServletRequest request){
 		
 		HttpSession session = request.getSession();
@@ -170,7 +170,6 @@ public class BoardController {
 		vo.setArt_writer(vo2.getUser_Id());
 		System.out.println("컨트롤러 진입");
 	    BoardVO vo3= boardService.getBoard(vo);
-	    System.out.println(vo3.toString());
 	    
 	    model.addAttribute("board", vo3);
 	    model.addAttribute("commentList", boardcommentService.getBoardCommentList(vo4));
@@ -195,14 +194,24 @@ public class BoardController {
 		}
 
 		@RequestMapping("deleteBoardComment.do")
-		public String deleteBoardComment(BoardCommentVO vo,Model model,HttpServletRequest request){
-			HttpSession session = request.getSession();
+		public String deleteBoardComment(BoardCommentVO vo,Model model,HttpSession session){
+			
 			
 			UserVO vo2= (UserVO) session.getAttribute("user");
 			vo.setArt_comment_writer(vo2.getUser_Id());
 			boardcommentService.deleteBoardComment(vo);
 			return "getBoard.do?art_id="+vo.getArt_id();
 		}
+		@RequestMapping("modifyBoardComment.do")
+		public String modifyBoardComment(BoardCommentVO vo,Model model,HttpServletRequest request){
+			HttpSession session = request.getSession();
+			
+			UserVO vo2= (UserVO) session.getAttribute("user");
+			vo.setArt_comment_writer(vo2.getUser_Id());
+			boardcommentService.modifyBoardComment(vo);
+			return "getBoard.do?art_id="+vo.getArt_id();
+		}
+	
 	
 		@RequestMapping("/delete.Board.do")
 		 public String deleteBoard(BoardVO vo, Model model,HttpServletRequest request){

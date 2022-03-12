@@ -4,15 +4,15 @@
 <mapper namespace="BoardCommentDAO">
 
 <select id="getBoardCommentList" resultType="boardComment">
-	SELECT ART_COMMENT_ID, PARTY_ID, ART_ID,ART_COMMENT_WRITE,
+	SELECT ART_COMMENT_ID, PARTY_ID, ART_ID,ART_COMMENT_WRITER,
 	ART_COMMENT_CONTENT,ART_COMMENT_REG_DATE,ART_COMMENT_MOD_DATE
 	FROM BOARD_COMMENT
 	WHERE ART_COMMENT_AVAILABLE=TRUE AND ART_ID=#{art_id}
 </select>
 
 <insert id="writeBoardComment" parameterType="boardComment">
-	INSERT INTO BOARD_COMMENT(PARTY_ID, ART_ID,ART_COMMENT_WRITE, ART_COMMENT_CONTENT) VALUES
-	(#{party_id}, #{art_id}, #{art_comment_write}, #{art_comment_content})
+	INSERT INTO BOARD_COMMENT(PARTY_ID, ART_ID,ART_COMMENT_WRITER, ART_COMMENT_CONTENT) VALUES
+	(#{party_id}, #{art_id}, #{art_comment_writer}, #{art_comment_content})
 </insert>
 
 <delete id="deleteBoardComment" parameterType="boardComment">

@@ -182,8 +182,8 @@ public class MypageController {
 		return "userInfoUpdateComplete.jsp";
 
 	}
-	@RequestMapping("/getBoardList.do")
-	public String getBoardList(BoardVO vo, Model model, PageVO page, HttpServletRequest request) {
+	@RequestMapping("/getPartyList.do")
+	public String getPartyList(BoardVO vo, Model model, PageVO page, HttpServletRequest request) {
 		
 		
 		 //vo.getPartId();

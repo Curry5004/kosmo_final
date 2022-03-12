@@ -26,7 +26,7 @@
 	
 	<br/>
 	<a href="mypage/getUserInfo.do">회원 정보 가져오기</a>
-	<a href="mypage/getBoardList.do">가입된 소모임 목록 가져오기</a>
+	<a href="mypage/getPartyList.do">가입된 소모임 목록 가져오기</a>
 
 </body>
 </html>

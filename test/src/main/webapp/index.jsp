@@ -25,9 +25,9 @@
 	<a href="calendar.do?party_id=1">스케줄 리스트</a>
 	
 	<br/>
-	<a href="mypage/getUserInfo.do">회원 정보 가져오기</a>
-	<a href="mypage/getPartyList.do">가입된 소모임 목록 가져오기</a>
-	<a href="mypage/getPartyFavList.do">찜한 소모임 목록 가져오기</a>
+	<a href="mypage/getUserInfo.do">회원 정보 가져오기</a></br>
+	<a href="mypage/getPartyList.do">가입된 소모임 목록 가져오기</a></br>
+	<a href="mypage/getPartyFavList.do">찜한 소모임 목록 가져오기</a></br>
 	<a href="mypage/getPartyCreatorList.do">내가 생성한 소모임 목록 가져오기</a>
 
 </body>

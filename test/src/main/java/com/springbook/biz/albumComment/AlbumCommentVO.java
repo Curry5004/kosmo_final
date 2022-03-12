@@ -7,15 +7,10 @@ public class AlbumCommentVO {
 	private int party_id;
 	private int alb_id;
 	private String user_id;
+	private String user_name;
 	private String alb_comment_content;
 	private Date alb_comment_reg_date;
 	private Date alb_comment_mod_date;
-	@Override
-	public String toString() {
-		return "AlbumCommentVO [alb_comment_id=" + alb_comment_id + ", party_id=" + party_id + ", alb_id=" + alb_id
-				+ ", user_id=" + user_id + ", alb_comment_content=" + alb_comment_content + ", alb_comment_reg_date="
-				+ alb_comment_reg_date + ", alb_comment_mod_date=" + alb_comment_mod_date + "]";
-	}
 	public int getAlb_comment_id() {
 		return alb_comment_id;
 	}
@@ -40,6 +35,12 @@ public class AlbumCommentVO {
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
+	public String getUser_name() {
+		return user_name;
+	}
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
 	public String getAlb_comment_content() {
 		return alb_comment_content;
 	}
@@ -58,8 +59,13 @@ public class AlbumCommentVO {
 	public void setAlb_comment_mod_date(Date alb_comment_mod_date) {
 		this.alb_comment_mod_date = alb_comment_mod_date;
 	}
-	
-	
+	@Override
+	public String toString() {
+		return "AlbumCommentVO [alb_comment_id=" + alb_comment_id + ", party_id=" + party_id + ", alb_id=" + alb_id
+				+ ", user_id=" + user_id + ", user_name=" + user_name + ", alb_comment_content=" + alb_comment_content
+				+ ", alb_comment_reg_date=" + alb_comment_reg_date + ", alb_comment_mod_date=" + alb_comment_mod_date
+				+ "]";
+	}
 	
 
 }

@@ -69,24 +69,13 @@ public class AlbumController {
 
 				// VO 필드변경
 				String oldName = root + "\\" + ranFileName; // 변경전 이름
-				String changeName = oldName.replaceAll("\\\\", "\\\\\\\\"); // DB와
-																			// string에서
-																			// \를
-																			// 인식
-																			// 못하기
-																			// 때문에
-																			// \\로
-																			// 바꿔줘야함,
-																			// \\를
-																			// 인식하기
-																			// 위해선
-																			// \\\\를
-																			// 적어야함
+				String changeName = oldName.replaceAll("\\\\", "\\\\\\\\"); 
 				vo.setAlb_img_path(changeName); // VO갱신
 
 			}
 			UserVO userVO = (UserVO) request.getSession().getAttribute("user");
 			vo.setUser_id(userVO.getUser_Id());
+			vo.setAlb_writer(userVO.getName());
 			System.out.println(userVO.getUser_Id());
 			albumService.insertAlbum(vo);
 			return "index.jsp";
@@ -170,6 +159,7 @@ public class AlbumController {
 		UserVO userVO = (UserVO) session.getAttribute("user");
 		if (userVO != null) {
 			vo.setUser_id(userVO.getUser_Id());
+			vo.setUser_name(userVO.getName());
 			albumcommentService.writeAlbumComment(vo);
 			return "getAlbum.do?alb_id=" + vo.getAlb_id();
 		} else {

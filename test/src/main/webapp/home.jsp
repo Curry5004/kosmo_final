@@ -25,6 +25,11 @@
 <body>
 	<h1>대충 Nav가 올자리</h1><hr />
 	<c:choose>
+	
+	<c:when test="${sessionScope.user.user_Id==null}">
+	<h3>이런! 로그인을 안하셨군요</h3>
+	</c:when>
+	
 	<c:when test="${not empty bestList}">
 	<h1>당신과 같은 MBTI가 많은 모임!</h1>
 	<div>
@@ -40,7 +45,7 @@
 	</div>
 	</c:when>
 	<c:when test="${empty bestList}">
-	<h3>로그인을 안하셨군요</h3>
+	<h3>추천 모임이 없습니다</h3>
 	</c:when>
 	</c:choose>
 </body>

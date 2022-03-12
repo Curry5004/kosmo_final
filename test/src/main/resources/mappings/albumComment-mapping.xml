@@ -4,15 +4,15 @@
 <mapper namespace="AlbumCommentDAO">
 
 <select id="getAlbumCommentList" resultType="albumComment">
-	SELECT ALB_COMMENT_ID, PARTY_ID, ALB_ID,USER_ID,
+	SELECT ALB_COMMENT_ID, PARTY_ID, ALB_ID, USER_ID, USER_NAME, 
 	ALB_COMMENT_CONTENT,ALB_COMMENT_REG_DATE,ALB_COMMENT_MOD_DATE
 	FROM ALBUM_COMMENT
 	WHERE ALB_COMMENT_AVAILABLE=TRUE AND ALB_ID=#{alb_id}
 </select>
 
 <insert id="writeAlbumComment" parameterType="albumComment">
-	INSERT INTO ALBUM_COMMENT(PARTY_ID, ALB_ID, USER_ID, ALB_COMMENT_CONTENT) VALUES
-	(#{party_id}, #{alb_id}, #{user_id}, #{alb_comment_content})
+	INSERT INTO ALBUM_COMMENT(PARTY_ID, ALB_ID, USER_ID, USER_NAME, ALB_COMMENT_CONTENT) VALUES
+	(#{party_id}, #{alb_id}, #{user_id}, #{user_name}, #{alb_comment_content})
 </insert>
 
 <delete id="deleteAlbumComment" parameterType="albumComment">

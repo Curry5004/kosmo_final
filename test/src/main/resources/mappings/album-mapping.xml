@@ -6,9 +6,8 @@
 
 
 <insert id="insertAlbum" parameterType="album">
-	INSERT INTO ALBUM(PARTY_ID,USER_ID,ALB_IMG_PATH,
-	ALB_REG_DATE) 
-	VALUES(${party_id},#{user_id},#{alb_img_path},#{alb_reg_date})
+	INSERT INTO ALBUM(PARTY_ID,USER_ID,ALB_WRITER,ALB_IMG_PATH) 
+	VALUES(${party_id},#{user_id},#{alb_writer},#{alb_img_path})
 </insert>
 
 <select id="getAlbumCnt" resultType="int">
@@ -26,7 +25,7 @@
 </select>
 
 <select id="getAlbum" resultType="album">
-	SELECT A.ALB_ID, A.PARTY_ID, A.USER_ID, ALB_IMG_PATH,ALB_REG_DATE,ALB_AVAILABLE, COUNT(L.USER_ID) as likeCnt FROM ALBUM a left outer join like_list l
+	SELECT A.ALB_ID, A.PARTY_ID, A.USER_ID, A.ALB_WRITER, ALB_IMG_PATH,ALB_REG_DATE,ALB_AVAILABLE, COUNT(L.USER_ID) as likeCnt FROM ALBUM a left outer join like_list l
 	on a.alb_id=l.ALBUM_ID
 	WHERE ALB_AVAILABLE=TRUE AND a.ALB_ID=#{alb_id}
 </select>

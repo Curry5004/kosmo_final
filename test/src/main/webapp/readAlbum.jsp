@@ -42,8 +42,9 @@
 <a class="btn btn-primary" href="index.jsp" role="button">채?팅?</a><br />
 </header>
 	<img src="${album.alb_img_path }" alt="테스트" />
-	<p>작성자 : ${album.user_id }</p>
-	<p>작성일 : ${album.alb_reg_date}</p>
+	<p>작성자 : ${album.alb_writer }</p>
+	<fmt:formatDate var="RegDate"	value="${album.alb_reg_date}" pattern="yyyy-MM-dd HH:mm:ss" />
+	<p>작성일 : ${RegDate}</p>
 	<p>좋아요 : ${album.likeCnt}</p>
 	<c:if test="${!likeList.containsKey(sessionScope.user.user_Id)}">
 		<a href="likeUp.do?alb_id=${album.alb_id}&alb_writer=${sessionScope.user.user_Id}&party_id=${album.party_id}">
@@ -64,7 +65,7 @@ s
 		<fmt:formatDate var="formatRegDate"	value="${comment.alb_comment_reg_date}" pattern="yyyy-MM-dd HH:mm:ss" />
 		<fmt:formatDate var="formatModDate"	value="${comment.alb_comment_mod_date}" pattern="yyyy-MM-dd hh:mm:ss" />
 		<div style="border: 1px solid black">
-			<p>${comment.user_id}</p>
+			<p>${comment.user_name}</p>
 			<p>${comment.alb_comment_content}</p>
 			<c:if test="${empty formatModDate }">
 				&ensp; ${formatRegDate}

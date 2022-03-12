@@ -155,7 +155,7 @@ public class BoardController {
 				e.printStackTrace();
 			
 			
-			return "index.jsp";
+			return "updateBoard.do?art_id="+vo.getArt_id();
 			}
 		
 		//VO 필드변경
@@ -172,7 +172,7 @@ public class BoardController {
 		System.out.println("컨트롤러 진입");
 		boardService.updateBoard(vo);
 		
-		return "boardView.jsp";
+		return "getBoard.do?art_id="+vo.getArt_id();
 	    }
 	
 		@RequestMapping("/getBoard.do")

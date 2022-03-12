@@ -13,7 +13,7 @@
 <div class="container" style="margin-top:30px">
 	<div class="row">
 		<form method="post" action="updateBoard.do" enctype="multipart/form-data">
-		<input type="hidden" name = "party_id" value="${param.party_id}">	
+		<input type="hidden" name = "art_id" value="${param.art_id}">	
 	      <h1>게시글 수정하기</h1>
 
 <div class="form-group">

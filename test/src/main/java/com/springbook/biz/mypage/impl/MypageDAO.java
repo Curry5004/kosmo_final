@@ -41,15 +41,13 @@ public class MypageDAO {
 	public int getPartyFavListCnt(UserVO vo) {
 		return mybatis.selectOne("MypageDAO.getPartyFavListCnt", vo);
 	}
-//
-//	public List<PartyVO> getPartyCreatorList(Map<String, Object> map) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	public int getPartyCreatorListCnt(PartyVO vo) {
-//		// TODO Auto-generated method stub
-//		return 0;
-//	}
+
+	public List<PartyVO> getPartyCreatorList(Map<String, Object> map) {
+		return  mybatis.selectList("MypageDAO.getPartyCreatorList", map);
+	}
+
+	public int getPartyCreatorListCnt(UserVO vo) {
+		return mybatis.selectOne("MypageDAO.getPartyCreatorListCnt", vo);
+	}
 
 }

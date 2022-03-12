@@ -46,5 +46,10 @@ public class BoardServiceImpl implements BoardService {
 	 return BoardDAO.getBoard(vo);
 		
 	}
+	@Override
+	public void modifyBoard(BoardVO vo) {
+		BoardDAO.modifyBoard(vo);
+		
+	}
 	
 }

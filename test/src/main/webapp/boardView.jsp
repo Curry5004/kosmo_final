@@ -68,8 +68,8 @@
 			</div></td>
 		</tr>
 	</table>
-	<button><a href="boardUpdate.jsp">수정</a></button>
-	<button><a href="deleteBoard.do?party_id=1">삭제</a></button>
+	<button><a href="modifyBoard.do?art_id=${board.art_id}">수정</a></button>
+	<button><a href="deleteBoard.do?art_id=${board.art_id}">삭제</a></button>
 <c:forEach var="comment" items="${commentList}" varStatus="i" >
 		<fmt:formatDate var="formatRegDate" value="${comment.art_comment_reg_date}" pattern="yyyy-MM-dd HH:MM:ss"/>
 		 <fmt:formatDate var="formatModDate" value="${comment.art_comment_mod_date}" pattern="yyyy-MM-dd HH:MM:ss"/>

@@ -19,14 +19,14 @@
 <div class="form-group">
 
 				  <label for="usr">제목:</label>
-				  <input type="text" class="form-control" id="title" name = "art_title">
+				  <input type="text" class="form-control" id="title" name = "art_title" value="${board.art_title}" >
 				  
 				</div>
 		
 			    <div class="form-group">
 				  <label for="comment">내용:</label>
 				   
-				  <textarea class="form-control" rows="5" id="contents" name = "art_content"></textarea>
+				  <textarea class="form-control" rows="5" id="contents" name = "art_content" >${board.art_content}</textarea>
 				  
 				</div>
 				 <div class="form-group">  

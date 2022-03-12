@@ -112,7 +112,21 @@ public class BoardController {
 		return "index.jsp";
 	
 	}
-	@RequestMapping(value="/updateBoard.do", method=RequestMethod.POST)
+	@RequestMapping("modifyBoard.do")
+	public String modifyBoard(BoardVO vo,Model model){
+		
+		boardService.getBoard(vo); // -> boardDAO에서 리턴받은 VO다 
+		//return BoardDAO.getBoard(vo(BoardVO) mybatis.selectOne("BoardDAO.getBoard", vo););
+		//return 
+		
+		
+		model.addAttribute("board",boardService.getBoard(vo));
+		// 보내야할거 
+		
+		return "boardUpdate.jsp";
+	}
+
+	@RequestMapping("/updateBoard.do")
 	public String updateBoard(BoardVO vo, Model model, HttpServletRequest request) {
 			if(vo.getArt_img().getSize()!=0){
 			
@@ -169,9 +183,8 @@ public class BoardController {
 		UserVO vo2= (UserVO) session.getAttribute("user");
 		vo.setArt_writer(vo2.getUser_Id());
 		System.out.println("컨트롤러 진입");
-	    BoardVO vo3= boardService.getBoard(vo);
 	    
-	    model.addAttribute("board", vo3);
+	    model.addAttribute("board", boardService.getBoard(vo));
 	    model.addAttribute("commentList", boardcommentService.getBoardCommentList(vo4));
 		System.out.println("댓글리스트 : "+boardcommentService.getBoardCommentList(vo4));
 	    
@@ -213,7 +226,7 @@ public class BoardController {
 		}
 	
 	
-		@RequestMapping("/delete.Board.do")
+		@RequestMapping("/deleteBoard.do")
 		 public String deleteBoard(BoardVO vo, Model model,HttpServletRequest request){
 			//1번. 세션을 불러온다 (or 매게변수에 Session을 바로받아서 진행할 수 있다.
 			HttpSession session = request.getSession();
@@ -224,8 +237,9 @@ public class BoardController {
 			System.out.println("컨트롤러 진입");
 		    boardService.deleteBoard(vo);
 		    
-			return "index.jsp";
+			return "getBoardList.do?party_id=1";
 		
 	}
+		
  
 }

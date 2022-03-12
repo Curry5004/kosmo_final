@@ -13,6 +13,8 @@ public interface BoardService {
 	
 	void deleteBoard(BoardVO vo);
 	
+	void modifyBoard(BoardVO vo);
+	
 	public BoardVO getBoard(BoardVO vo);
 
 

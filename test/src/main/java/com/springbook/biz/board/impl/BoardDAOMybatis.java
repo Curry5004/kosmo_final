@@ -40,6 +40,9 @@ public class BoardDAOMybatis {
 		System.out. println ("===> Mybatis로 getBoard() 기능 처리"); 
 		return (BoardVO) mybatis.selectOne("BoardDAO.getBoard", vo);
 	}
-	
+	public void modifyBoard(BoardVO vo) {
+		System.out. println ("===> Mybatis로 modifyBoard() 기능 처리"); 
+		mybatis.selectOne("BoardDAO.modifyBoard", vo);
+	}
 
 }

@@ -14,6 +14,7 @@
 		<typeAlias alias="schedule" type="com.springbook.biz.sch.SchVO"/>
 		<typeAlias alias="album" type="com.springbook.biz.album.AlbumVO" />
 		<typeAlias alias="albumComment" type="com.springbook.biz.albumComment.AlbumCommentVO" />
+		<typeAlias alias="boardComment" type="com.springbook.biz.boardComment.BoardCommentVO"/>
 	</typeAliases>
 
 	<!-- Sql Mapper 설정 -->
@@ -23,11 +24,12 @@
 		<mapper resource="mappings/mbti-mapping.xml"></mapper>
 		<mapper resource="mappings/party-mapping.xml"></mapper>
 		<mapper resource="mappings/memberList-mapping.xml"></mapper>
-		<mapper resource="mappings/board-mapping.xml" />
+		<mapper resource="mappings/board-mapping.xml"></mapper>
 		<mapper resource="mappings/schedule-mapping.xml"></mapper>
 		<mapper resource="mappings/album-mapping.xml" />
 		<mapper resource="mappings/albumComment-mapping.xml" />
 		<mapper resource="mappings/mypage-mapping.xml" />		
+		<mapper resource="mappings/boardComment-mapping.xml"></mapper>
 	</mappers>
 	
 </configuration>

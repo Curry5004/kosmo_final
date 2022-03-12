@@ -14,8 +14,29 @@
 	SELECT COUNT(*) FROM BOARD 
 	WHERE ART_AVAILABLE = TRUE AND PARTY_ID = #{party_id}
 </select>
+
 <insert id="insertBoard" parameterType="board">
-	insert into board(party_id, art_title,art_writer,art_content, art_img_path)
-	values(#{party_id},#{art_title},#{art_writer},#{art_content}, #{art_img_path})
+	INSERT INTO BOARD(PARTY_ID, art_title, art_writer, ART_CONTENT, ART_IMG_PATH) 
+	VALUES(#{party_id},#{art_title}, #{art_writer}, #{art_content}, #{art_img_path})
 </insert>
+
+<update id="updateBoard" parameterType="board">
+	UPDATE BOARD SET 
+	ART_TITLE=#{art_title}
+	,ART_CONTENT=#{art_content}
+	,ART_IMG_PATH=#{art_img_path}
+	, ART_MOD_DATE=NOW()
+	WHERE ART_ID=#{art_id}
+
+</update>
+
+<delete id="deleteBoard" parameterType="board">
+    UPDATE BOARD SET ART_AVAILABLE=FALSE  WHERE ART_ID = #{art_id}
+</delete>
+
+ <select id="getBoard" resultType="board">
+   SELECT * FROM BOARD 
+   WHERE ART_AVAILABLE = TRUE AND ART_ID = #{art_id}
+
+</select>
 </mapper>

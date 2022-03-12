@@ -16,6 +16,14 @@ public class BoardVO {
 	private Date art_reg_date;
 	private Date art_mod_date;
 	private boolean art_available; 
+	
+	@Override
+	public String toString() {
+		return "BoardVO [art_id=" + art_id + ", party_id=" + party_id + ", art_title=" + art_title+ ", user_id="  + ", art_content=" + art_content + 
+				",art_img=" + art_img + ",art_img_path=" + art_img_path + ", art_view_cnt="+ art_view_cnt + ",art_reg_date=" + art_reg_date + ", art_mod_date=" + art_mod_date + ",art_available=" + art_available + "]";
+	}
+	
+	
 	public int getArt_id() {
 		return art_id;
 	}
@@ -34,12 +42,18 @@ public class BoardVO {
 	public void setArt_title(String art_title) {
 		this.art_title = art_title;
 	}
+	
+	
 	public String getArt_writer() {
 		return art_writer;
 	}
+
+
 	public void setArt_writer(String art_writer) {
 		this.art_writer = art_writer;
 	}
+
+
 	public String getArt_content() {
 		return art_content;
 	}

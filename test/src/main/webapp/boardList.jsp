@@ -23,18 +23,17 @@
 </header>
 <section>
 
-	<button onclick="location.href='boardWrite.jsp?party_id=${party_id}';">게시글 쓰기</button>
+	<button><a href="boardWrite.jsp?party_id=${param.party_id}">게시글 쓰기 </a></button>
 	<c:if test="${empty boardList }">
-		<button onclick="location.href='boardWrite.jsp?party_id=${party_id}';">첫 게시물 작성</button>
+		<button><a href="boardWrite.jsp">첫 게시물 작성</button>
 	</c:if>
 	<c:forEach items="${boardList}" var="board">
 		<div style="display:flex;">
-			<div><a href="getBoard.jsp?art_id=${board.art_id}">
+			<div><a href="getBoard.do?art_id=${board.art_id}">
 				&ensp; <img src="${board.art_img_path}" width=200 height=200 />
 			</a></div>
-			<div><a href="getBoard.jsp?art_id=${board.art_id}">
-				&ensp; ${board.art_title}
-			</a></div>
+			<div><a href="getBoard.do?art_id=${board.art_id}">
+				&ensp;${board.art_title}</a></div>
 			<div style="float:right">
 		 <fmt:formatDate var="formatRegDate" value="${board.art_reg_date}" pattern="yyyy-MM-dd"/>
 		 <fmt:formatDate var="formatModDate" value="${board.art_mod_date}" pattern="yyyy-MM-dd"/>

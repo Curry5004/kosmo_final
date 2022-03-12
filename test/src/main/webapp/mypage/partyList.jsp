@@ -9,15 +9,21 @@
 <title>Insert title here</title>
 </head>
 <body>
+${pageName }
+	<%int i = 0;%>
 	<c:forEach items="${boardList}" var="board">
-			<div style="display:flex; display:inline-block">
+			<div style="display:inline-block;">
 				<div><a href="../getParty.do?PARTY_ID=${board.PARTY_ID}">
 					&ensp; <img src="${board.PARTY_TUMB_PATH}" width=200 height=200 />
 				</a></div>
 				<div><a href="../getParty.do?PARTY_ID=${board.PARTY_ID}">
 					&ensp; ${board.PARTY_ID}파티 번호
 				</a></div>
+				<% i++; %>
 			</div>
+		<% if (i%3==0) {%>
+			</br>
+		<%} %>
 	</c:forEach> 
 	<c:if test="${pages.hasBoard()}">
 	<div>

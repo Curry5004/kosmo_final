@@ -195,7 +195,7 @@ public class MypageController {
 		String pageNo = page.getPageNo();
 		System.out.println(pageNo);
 		int currentPage = 1;
-		int listSize = 3;
+		int listSize = 6;
 		int pageSize = 5;
 		if(pageNo != null) {
 			currentPage = Integer.parseInt(pageNo);
@@ -214,6 +214,7 @@ public class MypageController {
 		
 		model.addAttribute("boardList", mypageService.getPartyMemberList(map));
 		model.addAttribute("pages", pages);
+		model.addAttribute("pageName", "가입한 소모임 목록");
 		return "partyList.jsp";
 		
 	}

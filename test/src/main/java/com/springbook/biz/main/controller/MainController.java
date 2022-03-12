@@ -43,12 +43,9 @@ public class MainController {
 	public String homePage(Model model,HttpSession session){
 		UserVO userVO=(UserVO)session.getAttribute("user");
 		if(userVO!=null){
-			System.out.println(userVO.toString());
 			Map<String,Object> map=new HashMap<>();
 			map.put("mbti_id", userVO.getMbti_Id());
-			System.out.println(map.toString());
 			model.addAttribute("bestList", mainService.searchBestParty(map));
-			System.out.println(mainService.searchBestParty(map).toString());
 		}
 		return "home.jsp";
 		

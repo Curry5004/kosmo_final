@@ -168,8 +168,12 @@ public class BoardController {
 		UserVO vo2= (UserVO) session.getAttribute("user");
 		vo.setArt_writer(vo2.getUser_Id());
 		System.out.println("컨트롤러 진입");
-		boardService.getBoard(vo);
+	    BoardVO vo3= boardService.getBoard(vo);
+	    System.out.println(vo3.toString());
+	    
+	    model.addAttribute("board", vo3);
 		return "boardView.jsp";
+		
 	}
 	
 		

@@ -20,16 +20,17 @@
 
 <h2>게시판 보기</h2>
 <br><br><br>
-	<form method="post" action="getBoard.do" role="form" >
+	
+	<input type="hidden" name = "party_id" value="${param.party_id}">
 	<table border="1">
 	
 		<tr>
-		      <th class="active">제목</th>
-			<td>${board.art_title}</td>
+		     
+			<td>제목:${board.art_title}</td>
 		</tr>
 		<tr>
 			<td>
-				${board.art_writer}
+				작성자:${board.art_writer}
 			
 			</td>
 		</tr>
@@ -42,7 +43,7 @@
 		</tr>
 	</table>
 
-	</form>
+
 	
 	<button><a href="boardUpdate.jsp">수정</a></button>
 	<button><a href="deleteBoard.do?party_id=${param.party_id}">삭제</a></button>

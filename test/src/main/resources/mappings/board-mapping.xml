@@ -30,7 +30,8 @@
 </delete>
 
  <select id="getBoard" resultType="board">
-
+   SELECT * FROM BOARD 
+   WHERE ART_AVAILABLE = TRUE AND ART_ID = #{art_id}
 
 </select>
 </mapper>

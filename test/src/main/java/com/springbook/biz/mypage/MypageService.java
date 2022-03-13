@@ -25,5 +25,6 @@ public interface MypageService {
 	//만든 소모임 리스트 뽑아오기.
 	public List<PartyVO> getPartyCreatorList(Map<String,Object> map);
 	public int getPartyCreatorListCnt(UserVO vo);
+	
 
 }

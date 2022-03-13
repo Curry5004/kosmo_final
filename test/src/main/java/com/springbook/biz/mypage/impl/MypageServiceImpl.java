@@ -57,4 +57,6 @@ public class MypageServiceImpl implements MypageService{
 		return mypageDAO.getPartyCreatorListCnt(vo);
 	}
 
+
+
 }

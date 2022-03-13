@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.springbook.biz.memberList.MemberListVO;
 import com.springbook.biz.party.PartyVO;
+import com.springbook.biz.user.UserVO;
 
 @Repository
 public class PartyDAO {
@@ -50,5 +51,14 @@ public class PartyDAO {
 		return mybatis.selectOne("PartyDAO.getPartyUserListCnt", vo);
 	}
 	//여기까지
+	//소모임 가입 허가
+	public void confirmMember(UserVO vo){
+		System.out.println("컨펌 진행");
+		mybatis.update("PartyDAO.confirmMember", vo);
+	}
+	//소모임 가입 ㄴㄴ
+	public void deleteReg(UserVO vo){
+		mybatis.update("PartyDAO.deleteReg",vo);
+	}
 }
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             

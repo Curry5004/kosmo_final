@@ -185,5 +185,19 @@ public class PartyController {
 		System.out.println("페이징까지 진입 완료");
 		return "partyMemberList.jsp";
 	}
+	
+	@RequestMapping(value="/confirmMember.do", method=RequestMethod.GET)
+	public String confirmMember(UserVO vo,PartyVO vo2,HttpServletRequest request) {
+		System.out.println("컨펌 들어감");
+		partyService.confirmMember(vo);
+		System.out.println(vo2.getPARTY_ID());
+		return "getPartyUserList.do?PARTY_ID="+vo2.getPARTY_ID();	
+	}
+	@RequestMapping(value="/deleteReg.do", method=RequestMethod.GET)
+	public String deleteUser(UserVO vo,PartyVO vo2,HttpServletRequest request) {
+		System.out.println("삭제 진입");
+		partyService.deleteReg(vo);
+		return "getPartyUserList.do?PARTY_ID="+vo2.getPARTY_ID();		
+	}
 }
                                                                                                                                                                                                 

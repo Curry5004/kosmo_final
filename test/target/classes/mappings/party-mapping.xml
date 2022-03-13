@@ -103,5 +103,16 @@ where p1.party_id=p.party_id group by u1.MBTI_ID having u1.mbti_id=u.mbti_id))
 	ORDER BY REG_DATE DESC ;
 	
 </select>
+
+<update id = "confirmMember">
+	UPDATE MEMBER_LIST
+	SET PARTY_REQUEST = TRUE
+	WHERE user_Id = #{user_Id};
+</update>
+	
+<delete id="deleteReg">
+	DELETE FROM MEMBER_LIST
+	WHERE user_Id = #{user_Id};
+</delete>
 	
 </mapper>

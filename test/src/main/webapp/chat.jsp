@@ -11,31 +11,101 @@
 <title>Insert title here</title>
 </head>
 
-<script language="javascript">
-	function check() {
-		var f = document.Reg_form;
-		if (f.comment.value == "") {
-			alert("내용을 입력해주세요");
-			f.comment.focus();
-			return false;
-		}
-	}
+
+
+<script>
+	
 </script>
 
-<body>
+<body onload="time()">
 <a class="btn btn-primary" href="getParty.do?PARTY_ID=${param.party_id}" role="button">소개글</a>
 <a class="btn btn-primary" href="getBoardList.do?party_id=${param.party_id}" role="button">게시판</a>
 <a class="btn btn-primary" href="getAlbumList.do?party_id=${param.party_id}" role="button">앨범</a>
 <a class="btn btn-primary" href="index.jsp" role="button">채?팅?</a><br />
 <br />
+<span id="Datespan"></span>
 <hr />
 <br />
 
+
+
 <div>
-<form action="insertChat.do" name="red_date">
+<!-- <form action="insertChat.do" name="Reg_form" id="form">
 <textarea name="content" cols="30" rows="3" id="comment"></textarea>
 <button type="submit" class="btn btn-primary">작성완료</button>
+</form> -->
+
+<h1>FETCH 테스트</h1>
+<form class="form" id="myForm">
+	<textarea name="content" cols="30" rows="3" id="comment"></textarea>
+	<button type="submit">작성완료</button>
 </form>
 </div>
 </body>
+
+<script language="javascript">
+	
+	const myForm = document.getElementById('myForm');
+	
+	myForm.addEventListener('submit',function(e){
+		e.preventDefault();
+		
+		const formData = new FormData(this); 
+		
+		fetch('insertChat2.do',{
+			method: 'post',
+			body: formData
+		}).then(function(response){
+			return response.text();
+		}).then(function(text){
+			console.log(text);
+		}).then(function(error){
+			console.error(error);
+		})
+		
+		
+		
+	})
+	
+	
+	
+	
+	
+	
+	
+	function time() {
+		var currentDate = new Date();
+		var DateSpan = document.getElementById("Datespan");
+		var msg = currentDate.getHours()+" : "+currentDate.getMinutes()+" : "+currentDate.getSeconds();
+		DateSpan.innerHTML = msg;
+	}
+	
+
+	function check() {
+
+		var f = document.Reg_form;
+
+		if (f.content.value == "") {
+			alert("내용을 입력해주세요");
+			f.content.focus();
+			return false;
+		}
+	}
+	function name1() {
+		fetch("insertChat2.do", {
+			  method: "POST",
+			  headers: {
+			    "Content-Type": "application/json",
+			  },
+			  body: new FormData(document.getElementById("form")),
+			}).then(function(res){
+				  return res.json();
+			})
+			.then(function(json){
+			  console.log(json);
+			});
+	}
+	
+</script>
+
 </html>

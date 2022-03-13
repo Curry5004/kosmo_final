@@ -28,7 +28,7 @@
   	<td>${board.mbti_id}</td>
   	<td><img src="${board.mbti_path}" width="50px"  height="25px"></td>
   	<td>${board.request}</td>
-  	<td><button>수락</button><button>거절</button><button>강퇴</button></td>
+  	<td><a href="adminPage.jsp?user_id=${user_id}">수락</a><button>거절</button><button>강퇴</button></td>
   	</c:forEach>
   </table>
 

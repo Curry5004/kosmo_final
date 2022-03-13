@@ -10,4 +10,8 @@
 	where u.user_id = r.user_id
 	order by r.request, u.join_date;
 </select>
+
+	<update id="UpdateAdminPage" parameterType="admin">
+		update registry set request = true where user_id=#{user_id};
+	</update>
 </mapper>

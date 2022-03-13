@@ -17,5 +17,10 @@ public class AdminServiceImpl implements AdminService {
 	public List<AdminVO> getAdminList(AdminVO vo) {
 		return adminDAO.getAdminList(vo);
 	}
+
+	@Override
+	public void UpdateAdminPage(AdminVO vo) {
+		   adminDAO.UpdateAdminPage(vo);
+	}
 	
 }

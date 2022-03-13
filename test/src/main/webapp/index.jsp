@@ -18,5 +18,6 @@
 	<a href="calendar.do?party_id=1">스케줄 리스트</a>
 	<a href="getAdminPage.do">AdminPageList</a>
 
+
 </body>
 </html>

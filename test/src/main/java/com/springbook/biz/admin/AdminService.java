@@ -5,4 +5,6 @@ import java.util.List;
 
 public interface AdminService {
 	public List<AdminVO> getAdminList(AdminVO vo);
+	
+	public void UpdateAdminPage(AdminVO vo);
 }

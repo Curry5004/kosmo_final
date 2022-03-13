@@ -16,4 +16,7 @@ public class AdminDAO {
 	public List<AdminVO> getAdminList(AdminVO vo){
 		return mybatis.selectList("adminDAO.getAdminList",vo);
 	}
+	public void  UpdateAdminPage(AdminVO vo){
+		  mybatis.update("adminDAO.UpdateAdminPage",vo);
+	}
 }

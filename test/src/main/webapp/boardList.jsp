@@ -12,9 +12,9 @@
 <header>
 </header>
 <section>
-	<button><a href="boardWrite.jsp?party_id=${param.party_id}">게시글 쓰기 </a></button>
+	<a href="boardWrite.jsp?party_id=${param.party_id}">게시글 쓰기 </a>
 	<c:if test="${empty boardList }">
-		<button><a href="boardWrite.jsp">첫 게시물 작성</button>
+		<a href="boardWrite.jsp">첫 게시물 작성</a>
 	</c:if>
 	<c:forEach items="${boardList}" var="board">
 		<div style="display:flex;">

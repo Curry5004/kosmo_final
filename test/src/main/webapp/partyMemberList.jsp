@@ -37,7 +37,7 @@
 	</table>
 	
 
-	<c:if test="${pages.hasBoard()}">
+	<c:if test="${pages.hasParty()}">
 	<div>
 		<tr>
 			<td colspan="4">

@@ -3,6 +3,7 @@ package com.springbook.biz.board.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -21,6 +22,8 @@ import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.board.PageVO;
 import com.springbook.biz.boardComment.BoardCommentService;
 import com.springbook.biz.boardComment.BoardCommentVO;
+import com.springbook.biz.memberList.MemberListService;
+import com.springbook.biz.memberList.MemberListVO;
 import com.springbook.biz.user.UserVO;
 import com.springbook.biz.user.controller.UserController;
 
@@ -31,6 +34,9 @@ public class BoardController {
     
 	@Autowired
     private BoardCommentService boardcommentService;
+	
+	@Autowired
+	MemberListService memberListService;
 	
 	@RequestMapping(value="/getBoardList.do")
 	public String getBoardList(BoardVO vo, Model model, PageVO page) {
@@ -65,7 +71,7 @@ public class BoardController {
 		return "boardList.jsp";
 		
 	}
-	@RequestMapping(value="/insertBoard.do")
+	@RequestMapping("/insertBoard.do")
 	public String insertBoard(BoardVO vo, Model model, HttpServletRequest request) {
 			if(vo.getArt_img().getSize()!=0){
 			
@@ -108,6 +114,7 @@ public class BoardController {
 		UserVO vo2 = (UserVO) session.getAttribute("user");
 	    //dao에 들어갈 vo 객체에 user_Id 저장해주기.
 		vo.setArt_writer(vo2.getUser_Id());
+		vo.setArt_user_name(vo2.getName());
 		System.out.println("컨트롤러 진입");
 		boardService.insertBoard(vo);
 		return "index.jsp";
@@ -137,7 +144,7 @@ public class BoardController {
 			String root = path + "\\uploadFiles" ; // 저장할 위치
 			
 			File file = new File(root); //경로생성용 파일 생성
-			
+		    
 			// 만약 uploadFiles 폴더가 없으면 생성해라 라는뜻
 			if(!file.exists()) file.mkdirs();
 			
@@ -145,7 +152,7 @@ public class BoardController {
 			String originFileName = vo.getArt_img().getOriginalFilename(); // 원래 파일이름
 			String ext = originFileName.substring(originFileName.lastIndexOf(".")); 
 			String ranFileName = UUID.randomUUID().toString() + ext; //랜덤변수가 붙은 파일이름
-			
+		
 			File changeFile = new File(root + "\\" + ranFileName); //파일생성 
 			
 			
@@ -170,6 +177,7 @@ public class BoardController {
 		UserVO vo2 = (UserVO) session.getAttribute("user");
 	    //dao에 들어갈 vo 객체에 user_Id 저장해주기.
 		vo.setArt_writer(vo2.getUser_Id());
+		vo.setArt_user_name(vo2.getName());
 		System.out.println("컨트롤러 진입");
 		boardService.updateBoard(vo);
 		
@@ -177,17 +185,27 @@ public class BoardController {
 	    }
 	
 		@RequestMapping("/getBoard.do")
-        public String getBoard(BoardVO vo,BoardCommentVO vo4,Model model,HttpServletRequest request){
+        public String getBoard(BoardVO vo,BoardCommentVO vo4,Model model,HttpServletRequest request,MemberListVO memberListVO){
 		
 		HttpSession session = request.getSession();
 		
 		UserVO vo2= (UserVO) session.getAttribute("user");
 		vo.setArt_writer(vo2.getUser_Id());
-		System.out.println("컨트롤러 진입");
-	    
-	    model.addAttribute("board", boardService.getBoard(vo));
+		vo.setArt_user_name(vo2.getName());
+		//조회수
+		boardService.updateBoardCnt(vo.getArt_id());
+		// 필요한거 -> 방장 가져오기, 
+		
+		BoardVO getVO=boardService.getBoard(vo);
+		
+		memberListVO.setPARTY_ID(getVO.getParty_id());
+		List<MemberListVO> list=memberListService.getJoinMemberList(memberListVO);
+		MemberListVO leader =list.get(0);
+		model.addAttribute("leader", leader);
+	    model.addAttribute("board",getVO );
 	    model.addAttribute("commentList", boardcommentService.getBoardCommentList(vo4));
 		System.out.println("댓글리스트 : "+boardcommentService.getBoardCommentList(vo4));
+		System.out.println("컨트롤러 진입"+boardService.getBoard(vo).toString());
 	    
 	    
 	    
@@ -202,7 +220,8 @@ public class BoardController {
 			HttpSession session = request.getSession();
 			
 			UserVO vo2= (UserVO) session.getAttribute("user");
-			vo.setArt_comment_writer(vo2.getUser_Id());
+			vo.setArt_comment_writer(vo2.getUser_Id());	
+			vo.setArt_comment_user_name(vo2.getName());
 			boardcommentService.writeBoardComment(vo);
 			return "getBoard.do?art_id="+vo.getArt_id();
 		}
@@ -213,6 +232,7 @@ public class BoardController {
 			
 			UserVO vo2= (UserVO) session.getAttribute("user");
 			vo.setArt_comment_writer(vo2.getUser_Id());
+//			vo.setArt_comment_user_name(vo2.getName());
 			boardcommentService.deleteBoardComment(vo);
 			return "getBoard.do?art_id="+vo.getArt_id();
 		}
@@ -222,6 +242,7 @@ public class BoardController {
 			
 			UserVO vo2= (UserVO) session.getAttribute("user");
 			vo.setArt_comment_writer(vo2.getUser_Id());
+//			vo.setArt_comment_user_name(vo2.getName());
 			boardcommentService.modifyBoardComment(vo);
 			return "getBoard.do?art_id="+vo.getArt_id();
 		}
@@ -236,9 +257,10 @@ public class BoardController {
 		    //dao에 들어갈 vo 객체에 user_Id 저장해주기.
 			vo.setArt_writer(vo2.getUser_Id());
 			System.out.println("컨트롤러 진입");
+			int party_id=vo.getParty_id();
 		    boardService.deleteBoard(vo);
 		    
-			return "getBoardList.do?party_id=1";
+			return "redirect:getBoardList.do?party_id="+party_id;
 		
 	}
 		

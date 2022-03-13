@@ -37,7 +37,7 @@
 			<div style="float:right">
 		 <fmt:formatDate var="formatRegDate" value="${board.art_reg_date}" pattern="yyyy-MM-dd"/>
 		 <fmt:formatDate var="formatModDate" value="${board.art_mod_date}" pattern="yyyy-MM-dd"/>
-				&ensp; 작성자: ${board.art_writer}
+				&ensp; 작성자: ${board.art_user_name}
 				&ensp; 조회수: ${board.art_view_cnt }
 		 <c:if test="${empty formatModDate }">
 				&ensp; 작성일: ${formatRegDate}

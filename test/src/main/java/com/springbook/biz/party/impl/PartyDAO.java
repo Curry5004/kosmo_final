@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.springbook.biz.memberList.MemberListVO;
 import com.springbook.biz.party.PartyVO;
 
 @Repository
@@ -39,5 +40,15 @@ public class PartyDAO {
 	public List<PartyVO> searchBestParty(Map<String,Object> map){
 		return mybatis.selectList("PartyDAO.searchBestParty", map);
 	}
+	
+	//소모임 가입 현황자 리스트 보기
+	public List<MemberListVO> getPartyUserList(Map<String,Object> map){
+		System.out.println("마이바티스는 진입 함함?");
+		return mybatis.selectList("PartyDAO.getPartyUserList", map);
+	}
+	public int getPartyUserListCnt(PartyVO vo){
+		return mybatis.selectOne("PartyDAO.getPartyUserListCnt", vo);
+	}
+	//여기까지
 }
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             

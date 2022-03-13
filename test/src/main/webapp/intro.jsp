@@ -22,6 +22,12 @@
 <a class="btn btn-primary" href="getAlbumList.do?party_id=${param.PARTY_ID}" role="button">앨범</a>
 <a class="btn btn-primary" href="calendar.do?party_id=${param.PARTY_ID}" role="button">일정</a>
 <a class="btn btn-primary" href="index.jsp" role="button">채?팅?</a>
+<c:if test="${party.PARTY_CREATOR eq user.user_Id}">
+<a class="btn btn-primary" href="getPartyUserList.do?party_id=${param.PARTY_ID}" role="button">회원관리</a>
+방장왔습니다. ${party.PARTY_CREATOR}
+<br/>
+파티번호 ${param.PARTY_ID}
+</c:if>
 </header>
 
 

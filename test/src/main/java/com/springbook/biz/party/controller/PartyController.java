@@ -159,6 +159,31 @@ public class PartyController {
 		model.addAttribute("PartyList", partyService.getPartyList(map));	
 		model.addAttribute("pages", pages);		
 		return "search.jsp";
-	}	
+	}
+	
+	@RequestMapping(value="/getPartyUserList.do", method=RequestMethod.GET)
+	public String getPartyUserList(PartyVO vo, Model model, PageVO page){
+		System.err.println("getPartyUserList 컨트롤러 진입.");
+		System.out.println(vo.toString());
+		int count = partyService.getPartyUserListCnt(vo);
+		String pageNo = page.getPageNo();
+		int currentPage = 1;
+		int listSize = 3;
+		int pageSize = 5;
+		if(pageNo != null){
+			currentPage = Integer.parseInt(pageNo);
+		}
+		int startRow = (currentPage-1) * listSize;
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("PARTY_ID", vo.getPARTY_ID());
+		map.put("startRow", startRow);
+		map.put("listSize", listSize);
+		
+		PageVO pages = new PageVO(count, currentPage, listSize, pageSize);		
+		model.addAttribute("memberList", partyService.getPartyUserList(map));	
+		model.addAttribute("pages", pages);	
+		System.out.println("페이징까지 진입 완료");
+		return "partyMemberList.jsp";
+	}
 }
                                                                                                                                                                                                 

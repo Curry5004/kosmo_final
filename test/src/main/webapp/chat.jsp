@@ -37,7 +37,7 @@
 
 <h1>FETCH 테스트</h1>
 <form class="form" id="myForm">
-	<textarea name="content" cols="30" rows="3" id="comment"></textarea>
+	<textarea name="content" cols="30" rows="3" id="content"></textarea>
 	<button type="submit">작성완료</button>
 </form>
 </div>
@@ -59,30 +59,23 @@
 			return response.text();
 		}).then(function(text){
 			console.log(text);
-		}).then(function(error){
+			return text;
+		}).then(function(){
+			document.getElementById('content').value = "";
+		})
+		.then(function(error){
 			console.error(error);
 		})
-		
-		
-		
 	})
-	
-	
-	
-	
-	
-	
 	
 	function time() {
 		var currentDate = new Date();
 		var DateSpan = document.getElementById("Datespan");
-		var msg = currentDate.getHours()+" : "+currentDate.getMinutes()+" : "+currentDate.getSeconds();
+		var msg ="비동기 테스트용 시간 - "+ currentDate.getHours()+" : "+currentDate.getMinutes()+" : "+currentDate.getSeconds();
 		DateSpan.innerHTML = msg;
 	}
 	
-
 	function check() {
-
 		var f = document.Reg_form;
 
 		if (f.content.value == "") {
@@ -91,6 +84,7 @@
 			return false;
 		}
 	}
+	
 	function name1() {
 		fetch("insertChat2.do", {
 			  method: "POST",

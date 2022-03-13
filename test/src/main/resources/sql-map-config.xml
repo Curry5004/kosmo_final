@@ -17,6 +17,7 @@
 		<typeAlias alias="boardComment" type="com.springbook.biz.boardComment.BoardCommentVO"/>
 		<typeAlias alias="reportBoard" type="com.springbook.biz.report.ReportBoardVO" />
 		<typeAlias alias="qna" type="com.springbook.biz.report.QnaVO" />
+		<typeAlias alias="chat" type="com.springbook.biz.chat.ChatVO" />
 	</typeAliases>
 
 	<!-- Sql Mapper 설정 -->
@@ -34,6 +35,7 @@
 		<mapper resource="mappings/boardComment-mapping.xml"></mapper>
 		<mapper resource="mappings/admin-mapping.xml"></mapper>
 		<mapper resource="mappings/report-mapping.xml" />
+		<mapper resource="mappings/chat-mapping.xml" />
 	</mappers>
 	
 </configuration>

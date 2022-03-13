@@ -74,7 +74,7 @@ CREATE TABLE `BOARD` (
 	`ART_REG_DATE`	DATETIME	DEFAULT NOW(),
 	`ART_MOD_DATE`	DATETIME	NULL,
 	`ART_AVAILABLE`	BOOLEAN	default true,
-	'ART_USER_NAME' VARCHAR(255)  NOT NULL,
+	`ART_USER_NAME` VARCHAR(255)  ,
     PRIMARY KEY(`ART_ID`,`PARTY_ID`)
 );
 
@@ -526,10 +526,6 @@ VALUES(1,'테스트용 게시글입니다','관리자','테스트용 내용입�
 
 select g.PARTY_TITLE,b.ART_TITLE,b.ART_WRITER,b.ART_CONTENT,b.ART_IMG_PATH,
 b.ART_REG_DATE from board b join `PARTY` g on b.PARTY_id=g.PARTY_id;
-
-INSERT INTO board_comment (PARTY_ID,ART_ID,ART_COMMENT_WRITER,ART_COMMENT_CONTENT,
-ART_COMMENT_REG_DATE) 
-VALUES (1,1,'관리자','테스트용 댓글입니다',now());
 
 
 

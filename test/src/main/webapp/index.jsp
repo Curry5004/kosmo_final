@@ -57,8 +57,8 @@
 	<br/>
 	<br/>
 
-	<a href="admin/getAdminMemberList.do">어드민)회원정보가져오기</a>
-	<a href="Nav.jsp">네비에깅션 이</a>
+	<a href="admin/getAdminMemberList.do">어드민)회원정보가져오기</a> <br/>
+	<a href="Nav.jsp">네비게이션 이동</a>
 
 </body>
 </html>

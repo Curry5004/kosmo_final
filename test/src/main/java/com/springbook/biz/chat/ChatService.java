@@ -1,5 +1,7 @@
 package com.springbook.biz.chat;
 
-public class ChatService {
+public interface ChatService {
 
+	public void insertChat(ChatVO vo);
+	
 }

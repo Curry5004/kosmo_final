@@ -34,7 +34,7 @@
 <br />
 
 <div>
-<form action="writeChat.do" name="red_date">
+<form action="insertChat.do" name="red_date">
 <textarea name="content" cols="30" rows="3" id="comment"></textarea>
 <button type="submit" class="btn btn-primary">작성완료</button>
 </form>

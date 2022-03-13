@@ -215,6 +215,7 @@ public class MypageController {
 		model.addAttribute("boardList", mypageService.getPartyMemberList(map));
 		model.addAttribute("pages", pages);
 		model.addAttribute("pageName", "가입한 소모임 목록");
+		model.addAttribute("pageType", 1);
 		return "partyList.jsp";
 		
 	}
@@ -251,6 +252,7 @@ public class MypageController {
 		model.addAttribute("boardList", mypageService.getPartyFavList(map));
 		model.addAttribute("pages", pages);
 		model.addAttribute("pageName", "찜한 소모임 목록");
+		model.addAttribute("pageType", 2);
 		return "partyList.jsp";
 		
 	}
@@ -287,6 +289,7 @@ public class MypageController {
 		model.addAttribute("boardList", mypageService.getPartyCreatorList(map));
 		model.addAttribute("pages", pages);
 		model.addAttribute("pageName", "내가 생성한 소모임 목록");
+		model.addAttribute("pageType", 3);
 		return "partyList.jsp";
 		
 	}

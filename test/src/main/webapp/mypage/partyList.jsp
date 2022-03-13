@@ -28,21 +28,57 @@
 	</c:forEach> 
 	<c:if test="${pages.hasBoard()}">
 	<div>
-		<tr>
-			<td colspan="4">
-				<c:if test ="${pages.startPage > pages.pageSize}">
-				<a href="getPartyList.do?pageNo=${pages.startPage - pages.pageSize }">[이전]</a>
+		<c:if test="${pageType eq 1}">
+			<tr>
+				<td colspan="4">
+					<c:if test ="${pages.startPage > pages.pageSize}">
+					<a href="getPartyList.do?pageNo=${pages.startPage - pages.pageSize }">[이전]</a>
+					</c:if>
+				<c:forEach var="pNo" 
+						begin="${pages.startPage}"
+						end="${pages.endPage}">
+				<a href="getPartyList.do?pageNo=${pNo}">[${pNo}]</a>
+				</c:forEach>
+				<c:if test="${pages.endPage < pages.totalPages }" >
+				<a href="getPartyList.do?pageNo=${pages.startPage + pages.pageSize }"> [다음]</a>
 				</c:if>
-			<c:forEach var="pNo" 
-					begin="${pages.startPage}"
-					end="${pages.endPage}">
-			<a href="getPartyList.do?pageNo=${pNo}">[${pNo}]</a>
-			</c:forEach>
-			<c:if test="${pages.endPage < pages.totalPages }" >
-			<a href="getPartyList?pageNo=${pages.startPage + pages.pageSize }"> [다음]</a>
-			</c:if>
-			</td>
-		</tr>
+				</td>
+			</tr>
+		</c:if>
+		<c:if test="${pageType eq 2}">
+			<tr>
+				<td colspan="4">
+					<c:if test ="${pages.startPage > pages.pageSize}">
+					<a href="getPartyFavList.do?pageNo=${pages.startPage - pages.pageSize }">[이전]</a>
+					</c:if>
+				<c:forEach var="pNo" 
+						begin="${pages.startPage}"
+						end="${pages.endPage}">
+				<a href="getPartyFavList.do?pageNo=${pNo}">[${pNo}]</a>
+				</c:forEach>
+				<c:if test="${pages.endPage < pages.totalPages }" >
+				<a href="getPartyFavList.do?pageNo=${pages.startPage + pages.pageSize }"> [다음]</a>
+				</c:if>
+				</td>
+			</tr>
+		</c:if>
+		<c:if test="${pageType eq 3}">
+			<tr>
+				<td colspan="4">
+					<c:if test ="${pages.startPage > pages.pageSize}">
+					<a href="getPartyCreatorList.do?pageNo=${pages.startPage - pages.pageSize }">[이전]</a>
+					</c:if>
+				<c:forEach var="pNo" 
+						begin="${pages.startPage}"
+						end="${pages.endPage}">
+				<a href="getPartyCreatorList.do?pageNo=${pNo}">[${pNo}]</a>
+				</c:forEach>
+				<c:if test="${pages.endPage < pages.totalPages }" >
+				<a href="getPartyCreatorList.do?pageNo=${pages.startPage + pages.pageSize }"> [다음]</a>
+				</c:if>
+				</td>
+			</tr>
+		</c:if>
 	</div>
 	</c:if>
 </body>

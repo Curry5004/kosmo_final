@@ -52,15 +52,15 @@
 		<tr>
 			<td colspan="4">
 				<c:if test ="${pages.startPage > pages.pageSize}">
-				<a href="getPartyList.do?pageNo=${pages.startPage - pages.pageSize }">[이전]</a>
+				<a href="getAdminMemberList.do?pageNo=${pages.startPage - pages.pageSize }">[이전]</a>
 				</c:if>
 			<c:forEach var="pNo" 
 					begin="${pages.startPage}"
 					end="${pages.endPage}">
-			<a href="getPartyList.do?pageNo=${pNo}">[${pNo}]</a>
+			<a href="getAdminMemberList.do?pageNo=${pNo}">[${pNo}]</a>
 			</c:forEach>
 			<c:if test="${pages.endPage < pages.totalPages }" >
-			<a href="getPartyList?pageNo=${pages.startPage + pages.pageSize }"> [다음]</a>
+			<a href="getAdminMemberList.do?pageNo=${pages.startPage + pages.pageSize }"> [다음]</a>
 			</c:if>
 			</td>
 		</tr>

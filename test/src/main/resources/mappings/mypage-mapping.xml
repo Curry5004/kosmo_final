@@ -26,7 +26,7 @@
 	SELECT p.PARTY_ID, p.PARTY_TUMB_PATH
 	FROM PARTY p
 	INNER JOIN MEMBER_LIST m on p.PARTY_ID=m.PARTY_ID
-	WHERE PARTY_REQUEST = TRUE AND USER_ID = #{user_Id} 
+	WHERE  USER_ID = #{user_Id} 
 	LIMIT #{listSize} OFFSET #{startRow};
 	
 </select>
@@ -36,7 +36,7 @@
 	SELECT COUNT(*)
 	FROM PARTY p
 	INNER JOIN MEMBER_LIST m on p.PARTY_ID=m.PARTY_ID
-	WHERE PARTY_REQUEST = TRUE AND USER_ID = #{user_Id} ;
+	WHERE  USER_ID = #{user_Id} ;
 	
 </select>
 

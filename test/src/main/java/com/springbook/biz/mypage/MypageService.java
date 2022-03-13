@@ -28,5 +28,6 @@ public interface MypageService {
 	
 	//마이페이지 인덱스에서 찜한소모임, 가입된 소모임 리스트
 	public MypageVO getMypage(Map <String, Object> map)throws Exception;
+	
 
 }

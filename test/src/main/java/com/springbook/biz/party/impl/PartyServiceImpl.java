@@ -6,8 +6,10 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.springbook.biz.memberList.MemberListVO;
 import com.springbook.biz.party.PartyService;
 import com.springbook.biz.party.PartyVO;
+import com.springbook.biz.user.UserVO;
 
 @Service("partyService")
 public class PartyServiceImpl implements PartyService{
@@ -53,6 +55,26 @@ public class PartyServiceImpl implements PartyService{
 	@Override
 	public PartyVO getRate(PartyVO vo) {
 		return partyDAO.getRate(vo);
+	}
+
+	@Override
+	public List<MemberListVO> getPartyUserList(Map<String, Object> map) {
+		return partyDAO.getPartyUserList(map);
+	}
+
+	@Override
+	public int getPartyUserListCnt(PartyVO vo) {
+		return partyDAO.getPartyUserListCnt(vo);
+	}
+
+	@Override
+	public void confirmMember(UserVO vo) {
+		partyDAO.confirmMember(vo);
+	}
+
+	@Override
+	public void deleteReg(UserVO vo) {
+		partyDAO.deleteReg(vo);
 	}
 
 }

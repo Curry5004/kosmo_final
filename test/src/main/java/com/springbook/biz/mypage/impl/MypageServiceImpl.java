@@ -65,5 +65,5 @@ public class MypageServiceImpl implements MypageService{
 		result.setMyPartyList(mypageDAO.getMyParty(map));
 		return result;
 	}
-
+ 
 }

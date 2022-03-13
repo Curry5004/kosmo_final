@@ -306,7 +306,7 @@ public class MypageController {
 		model.addAttribute("mypageVO", mypageService.getMypage(map)); // mypage.jsp로 전달할 객체를 model 에 추가 함
 		model.addAttribute("profile_image", userVO.getProfile_Image());
 		model.addAttribute("user_id", userVO.getUser_Id());
-		
+		 
 		
 		return "mypage.jsp";
 	}

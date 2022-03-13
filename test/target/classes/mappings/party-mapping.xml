@@ -85,5 +85,35 @@
 where p1.party_id=p.party_id group by u1.MBTI_ID having u1.mbti_id=u.mbti_id))
 /(select count(party_id) from member_list where party_id=p.party_id) DESC;
 </select>
+
+<select id ="getPartyUserList" resultType="member">
+	SELECT ml.USER_ID, PARTY_REQUEST, MBTI_NAME
+	FROM member_list ml
+	JOIN USER u ON u.USER_ID=ml.USER_ID 	
+	JOIN MBTI mb ON u.MBTI_ID=mb.MBTI_ID 
+    WHERE PARTY_ID=#{PARTY_ID}
+	ORDER BY REG_DATE DESC
+	LIMIT #{listSize} OFFSET #{startRow};
+</select>
+
+<select id ="getPartyUserListCnt" resultType="int">
+
+	SELECT COUNT(*)
+	FROM member_list
+	WHERE PARTY_ID=#{PARTY_ID}
+	ORDER BY REG_DATE DESC ;
+	
+</select>
+
+<update id = "confirmMember">
+	UPDATE MEMBER_LIST
+	SET PARTY_REQUEST = TRUE
+	WHERE user_Id = #{user_Id};
+</update>
+	
+<delete id="deleteReg">
+	DELETE FROM MEMBER_LIST
+	WHERE user_Id = #{user_Id};
+</delete>
 	
 </mapper>

@@ -29,6 +29,11 @@ public class AdminServiceImpl implements AdminService{
 	public void confirmMember(UserVO vo) {
 		adminDAO.confirmMember(vo);
 		
+	}
+	@Override
+	public void deleteUser(UserVO vo) {
+		adminDAO.deleteReg(vo);
+		adminDAO.deleteUser(vo);
 	};
 
 }

@@ -11,5 +11,7 @@ public interface AdminService {
 	public int getAdminMemberListCnt();
 	//회원 수락하기
 	public void confirmMember(UserVO vo);
-
+	//registry, user 테이블에서 회원 제거하기.
+	public void deleteUser(UserVO vo);
+	
 }

@@ -23,7 +23,15 @@ public class AdminDAO {
 		return mybatis.selectOne("AdminDAO.getAdminMemberListCnt");
 	}
 	public void confirmMember(UserVO vo) {
-		mybatis.selectOne("AdminDAO.confirmMember", vo);
+		mybatis.update("AdminDAO.confirmMember", vo);
+	}
+	
+	public void deleteReg(UserVO vo){
+		mybatis.delete("AdminDAO.deleteReg", vo);
+	}
+	
+	public void deleteUser(UserVO vo){
+		mybatis.delete("AdminDAO.deleteUser", vo);
 	}
 
 }

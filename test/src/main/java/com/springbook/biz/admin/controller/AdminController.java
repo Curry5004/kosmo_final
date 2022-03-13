@@ -64,5 +64,12 @@ public class AdminController {
 		adminSevice.confirmMember(vo);
 		return "getAdminMemberList.do";	
 	}
+	@RequestMapping(value="/deleteUser.do", method=RequestMethod.GET)
+	public String deleteUser(UserVO vo,HttpServletRequest request) {
+		System.out.println("진입은 됨?");
+		System.out.println("테스트"+vo.toString());
+		adminSevice.deleteUser(vo);
+		return "getAdminMemberList.do";	
+	}
 	
 }

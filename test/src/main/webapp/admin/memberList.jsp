@@ -36,13 +36,14 @@
 	 		<td>${member.name }</td>
 	 		<td>${member.mbti_Name }</td>
 	 		<td>
-	 			<a href="${member.mbti_Path }" target="_blank">
+	 			<a href="img\TEST.jpg" target="_blank">
 					결과지 보기
 				</a>
 			</td>
 			<td>${member.request }</td>
 			<td>
 				<a href="confirmMember.do?user_Id=${member.user_Id }">정식맴버</a>
+				<a href="deleteUser.do?user_Id=${member.user_Id }">맴버제거하기</a>
 			</td>
 		 </tr>
 		</c:forEach> 

@@ -23,6 +23,16 @@
 		SET REQUEST = TRUE
 		WHERE user_Id = #{user_Id};
 	</update>
+	
+	<delete id="deleteReg">
+		DELETE FROM REGISTRY
+		WHERE user_Id = #{user_Id};
+	</delete>
+	
+	<delete id="deleteUser">
+		DELETE FROM USER
+		WHERE user_Id = #{user_Id};
+	</delete>
    
 
 </mapper>

@@ -160,11 +160,11 @@ public class PartyController {
 		model.addAttribute("pages", pages);		
 		return "search.jsp";
 	}
-	
+	// 소모임 맴버리스트 추출.
 	@RequestMapping(value="/getPartyUserList.do", method=RequestMethod.GET)
 	public String getPartyUserList(PartyVO vo, Model model, PageVO page){
 		System.err.println("getPartyUserList 컨트롤러 진입.");
-		System.out.println(vo.toString());
+		System.out.println("파티아이디"+vo.getPARTY_ID());
 		int count = partyService.getPartyUserListCnt(vo);
 		String pageNo = page.getPageNo();
 		int currentPage = 1;

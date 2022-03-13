@@ -91,7 +91,7 @@ where p1.party_id=p.party_id group by u1.MBTI_ID having u1.mbti_id=u.mbti_id))
 	JOIN USER u ON u.USER_ID=ml.USER_ID 	
 	JOIN MBTI mb ON u.MBTI_ID=mb.MBTI_ID 
     WHERE PARTY_ID=#{PARTY_ID}
-	ORDER BY REG_DATE DESC;
+	ORDER BY REG_DATE DESC
 	LIMIT #{listSize} OFFSET #{startRow};
 </select>
 

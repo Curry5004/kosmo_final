@@ -23,12 +23,12 @@
 	 		<td>${member.MBTI_NAME }</td>
 	 		<td>${member.PARTY_REQUEST }</td>
 			<td>
-			<c:if test="${member.request eq false}">
-				<a href="confirmMember.do?user_Id=${member.user_Id }">정식맴버</a>
-				<a href="deleteUser.do?user_Id=${member.user_Id }">거절하기</a>
+			<c:if test="${member.PARTY_REQUEST eq false}">
+				<a href="confirmMember.do?user_Id=${member.USER_ID }">정식맴버</a>
+				<a href="deleteUser.do?user_Id=${member.USER_ID }">거절하기</a>
 			</c:if>
-			<c:if test="${member.request eq true}">
-				<a href="deleteUser.do?user_Id=${member.user_Id }">강제 회원탈퇴</a>
+			<c:if test="${member.PARTY_REQUEST eq true}">
+				<a href="deleteUser.do?user_Id=${member.USER_ID }">강제 회원탈퇴</a>
 			</c:if>
 			</td>
 			
@@ -36,7 +36,7 @@
 		</c:forEach> 
 	</table>
 	
-<!-- 
+
 	<c:if test="${pages.hasBoard()}">
 	<div>
 		<tr>
@@ -56,6 +56,5 @@
 		</tr>
 	</div>
 	</c:if>
-	 -->
 </body>
 </html>

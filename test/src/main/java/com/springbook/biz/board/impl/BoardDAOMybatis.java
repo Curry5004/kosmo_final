@@ -44,5 +44,9 @@ public class BoardDAOMybatis {
 		System.out. println ("===> Mybatis로 modifyBoard() 기능 처리"); 
 		mybatis.selectOne("BoardDAO.modifyBoard", vo);
 	}
+	public void updateBoardCnt(int art_id) {
+		System.out. println ("===> Mybatis로 updateBoardCnt() 기능 처리"); 
+		mybatis.update("BoardDAO.updateBoardCnt", art_id);
+	}
 
 }

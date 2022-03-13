@@ -15,9 +15,10 @@
 	WHERE ART_AVAILABLE = TRUE AND PARTY_ID = #{party_id}
 </select>
 
+
 <insert id="insertBoard" parameterType="board">
-	INSERT INTO BOARD(PARTY_ID, art_title, art_writer, ART_CONTENT, ART_IMG_PATH) 
-	VALUES(#{party_id},#{art_title}, #{art_writer}, #{art_content}, #{art_img_path})
+	INSERT INTO BOARD(PARTY_ID, art_title, art_writer, ART_CONTENT, ART_IMG_PATH ,USER_ID) 
+	VALUES(#{party_id},#{art_title}, #{art_writer}, #{art_content}, #{art_img_path}, #{user_id})
 </insert>
 
 <update id="updateBoard" parameterType="board">
@@ -37,6 +38,9 @@
  <select id="getBoard" resultType="board">
    SELECT * FROM BOARD 
    WHERE ART_AVAILABLE = TRUE AND ART_ID = #{art_id}
-
 </select>
+<update id="updateBoardCnt" parameterType="board">
+UPDATE BOARD SET ART_VIEW_CNT = (ART_VIEW_CNT + 1) WHERE ART_ID = #{art_id}
+</update>
+
 </mapper>

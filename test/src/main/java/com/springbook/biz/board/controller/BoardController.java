@@ -107,7 +107,8 @@ public class BoardController {
 		//2번  로그인된 vo2 객체 가져오기.
 		UserVO vo2 = (UserVO) session.getAttribute("user");
 	    //dao에 들어갈 vo 객체에 user_Id 저장해주기.
-		vo.setArt_writer(vo2.getUser_Id());
+		vo.setArt_writer(vo2.getName());
+		vo.setUser_id(vo2.getUser_Id());
 		System.out.println("컨트롤러 진입");
 		boardService.insertBoard(vo);
 		return "index.jsp";
@@ -169,7 +170,8 @@ public class BoardController {
 		//2번  로그인된 vo2 객체 가져오기.
 		UserVO vo2 = (UserVO) session.getAttribute("user");
 	    //dao에 들어갈 vo 객체에 user_Id 저장해주기.
-		vo.setArt_writer(vo2.getUser_Id());
+		vo.setArt_writer(vo2.getName());
+		vo.setUser_id(vo2.getUser_Id());
 		System.out.println("컨트롤러 진입");
 		boardService.updateBoard(vo);
 		
@@ -182,12 +184,15 @@ public class BoardController {
 		HttpSession session = request.getSession();
 		
 		UserVO vo2= (UserVO) session.getAttribute("user");
-		vo.setArt_writer(vo2.getUser_Id());
-		System.out.println("컨트롤러 진입");
+		vo.setArt_writer(vo2.getName());
+		vo.setUser_id(vo2.getUser_Id());
+		System.out.println("컨트롤러 진입"+boardService.getBoard(vo).toString());
+		boardService.updateBoardCnt(vo.getArt_id());
 	    
 	    model.addAttribute("board", boardService.getBoard(vo));
 	    model.addAttribute("commentList", boardcommentService.getBoardCommentList(vo4));
 		System.out.println("댓글리스트 : "+boardcommentService.getBoardCommentList(vo4));
+		System.out.println("컨트롤러 진입"+boardService.getBoard(vo).toString());
 	    
 	    
 	    

@@ -51,5 +51,10 @@ public class BoardServiceImpl implements BoardService {
 		BoardDAO.modifyBoard(vo);
 		
 	}
+	@Override
+	public void updateBoardCnt(int art_id) {
+		BoardDAO.updateBoardCnt(art_id);
+		
+	}
 	
 }

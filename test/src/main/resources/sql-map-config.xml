@@ -14,6 +14,8 @@
 		<typeAlias alias="schedule" type="com.springbook.biz.sch.SchVO"/>
 		<typeAlias alias="album" type="com.springbook.biz.album.AlbumVO" />
 		<typeAlias alias="albumComment" type="com.springbook.biz.albumComment.AlbumCommentVO" />
+		<typeAlias alias="reportBoard" type="com.springbook.biz.report.ReportBoardVO" />
+		<typeAlias alias="qna" type="com.springbook.biz.report.QnaVO" />
 	</typeAliases>
 
 	<!-- Sql Mapper-->
@@ -27,6 +29,8 @@
 		<mapper resource="mappings/schedule-mapping.xml"></mapper>
 		<mapper resource="mappings/album-mapping.xml" />
 		<mapper resource="mappings/albumComment-mapping.xml" />
+		<mapper resource="mappings/mypage-mapping.xml" />
+		<mapper resource="mappings/report-mapping.xml" />
 	</mappers>
 	
 </configuration>

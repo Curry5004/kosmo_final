@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.springbook.biz.common.Consts;
 import com.springbook.biz.user.UserService;
 import com.springbook.biz.user.UserVO;
 import com.springbook.biz.user.impl.UserDAO;
@@ -172,7 +173,8 @@ public class UserController {
 		ModelAndView mav = new ModelAndView();
 		if (result == true) { // 로그인 성공
 			// main.jsp로 이동
-			mav.setViewName("index.jsp");
+			session.setAttribute(Consts.SESSION_KEY_USER, userService.viewUser(vo));
+			mav.setViewName("Nav.jsp");
 		} else { // 로그인 실패
 			// login.jsp로 이동
 			mav.setViewName("login.jsp");

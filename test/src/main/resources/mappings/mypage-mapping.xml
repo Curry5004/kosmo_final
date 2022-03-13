@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MypageDAO">	
+
+	<select id="getFavParty" parameterType="Map" resultType="party">
+	select * from party p1
+	left join member_fav mf1 on p1.PARTY_ID = mf1.PARTY_ID
+	where mf1.USER_ID = #{USER_ID}
+	LIMIT 5
+	</select>
+	
+	<select id="getMyParty" parameterType="Map" resultType="party">
+	select * from party p1
+	left join member_list ml1 on p1.PARTY_ID = ml1.PARTY_ID
+	where ml1.USER_ID = #{USER_ID}
+	LIMIT 5
+	</select>
+	
+</mapper>

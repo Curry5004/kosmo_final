@@ -66,7 +66,7 @@ public class PartyController {
 				e.printStackTrace();
 			
 			
-			return "/wirteParty.do";
+			return "/writeParty.do";
 			}
 		
 		//VO 필드변경
@@ -91,10 +91,10 @@ public class PartyController {
 	@RequestMapping("/getParty.do")
 	public String getParty(PartyVO vo,Model model,MemberListVO vo2,HttpServletRequest request){
 		PartyVO getVO =partyService.getParty(vo);
-		HttpSession session=request.getSession();
-		UserVO userVO=new UserVO();
-		userVO.setUser_Id("ADMIN10");
-		session.setAttribute("user", userVO);
+//		HttpSession session=request.getSession();
+//		UserVO userVO=new UserVO();
+//		userVO.setUser_Id("ADMIN10");
+//		session.setAttribute("user", userVO);
 		if(getVO==null){
 			return "error.jsp";
 			}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ReportDAO">	
+
+	<select id="getReportBoard" parameterType="Map" resultType="reportBoard">
+		SELECT * FROM Report_Board
+		WHERE
+		 	1=1
+		<if test="!@org.springframework.util.ObjectUtils@isEmpty(REP_CATEGORY_NAME)">
+			AND REP_CATEGORY_NAME = #{REP_CATEGORY_NAME}
+		</if>
+		<if test="!@org.springframework.util.ObjectUtils@isEmpty(REP_BOA_WRITER)">
+			AND REP_BOA_WRITER = #{REP_BOA_WRITER}
+		</if>
+		<if test="!@org.springframework.util.ObjectUtils@isEmpty(START_ROW) and !@org.springframework.util.ObjectUtils@isEmpty(LIST_SIZE)">
+			LIMIT #{LIST_SIZE} OFFSET #{START_ROW}
+		</if>
+	</select>
+	
+	<select id = "getReportBoardCnt" resultType="int" parameterType="java.util.HashMap">
+		SELECT COUNT(*) FROM Report_Board
+		WHERE
+		 	1=1
+		<if test="!@org.springframework.util.ObjectUtils@isEmpty(REP_CATEGORY_NAME)">
+			AND REP_CATEGORY_NAME = #{REP_CATEGORY_NAME}
+		</if>
+		<if test="!@org.springframework.util.ObjectUtils@isEmpty(REP_BOA_WRITER)">
+			AND REP_BOA_WRITER = #{REP_BOA_WRITER}
+		</if>
+	</select>
+	
+	
+		<select id="getQnaList" parameterType="Map" resultType="qna">
+			SELECT * FROM qna
+		</select>
+	
+	
+</mapper>

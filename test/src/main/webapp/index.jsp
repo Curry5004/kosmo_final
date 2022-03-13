@@ -7,6 +7,7 @@
 <title>index</title>
 </head>
 <body>
+
 	<h1>인덱스</h1>
 	<h1>${sessionScope.user_Id}</h1>
 	<a href="getBoardList.do?party_id=1">게시글 조회</a>
@@ -22,6 +23,7 @@
 	<a href="partySearch.jsp">소모임 검색 예시</a>
 	<a href="getAlbumList.do?party_id=1">앨범목록</a>
 	<a href="calendar.do?party_id=1">스케줄 리스트</a>
+	<a href="Nav.jsp">네비에깅션 이</a>
 
 </body>
 </html>

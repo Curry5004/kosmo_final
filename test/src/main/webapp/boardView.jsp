@@ -76,7 +76,7 @@
 		<fmt:formatDate var="formatRegDate" value="${comment.art_comment_reg_date}" pattern="yyyy-MM-dd HH:MM:ss"/>
 		 <fmt:formatDate var="formatModDate" value="${comment.art_comment_mod_date}" pattern="yyyy-MM-dd HH:MM:ss"/>
 		<div style="border: 1px solid black">
-			<p>${comment.art_comment_writer}</p>
+			<p>${comment.art_comment_user_name}</p>
 			<p>${comment.art_comment_content}</p>
 			<c:if test="${empty formatModDate }">
 				&ensp; ${formatRegDate}

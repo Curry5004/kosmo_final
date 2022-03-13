@@ -37,7 +37,7 @@
 
  <select id="getBoard" resultType="board">
    SELECT * FROM BOARD 
-   WHERE ART_AVAILABLE = TRUE AND ART_ID = #{art_id}
+   WHERE ART_AVAILABLE = TRUE AND ART_ID = #{art_id} 
 </select>
 <update id="updateBoardCnt" parameterType="board">
 UPDATE BOARD SET ART_VIEW_CNT = (ART_VIEW_CNT + 1) WHERE ART_ID = #{art_id}

@@ -3,6 +3,7 @@ package com.springbook.biz.board.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -21,6 +22,8 @@ import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.board.PageVO;
 import com.springbook.biz.boardComment.BoardCommentService;
 import com.springbook.biz.boardComment.BoardCommentVO;
+import com.springbook.biz.memberList.MemberListService;
+import com.springbook.biz.memberList.MemberListVO;
 import com.springbook.biz.user.UserVO;
 import com.springbook.biz.user.controller.UserController;
 
@@ -31,6 +34,9 @@ public class BoardController {
     
 	@Autowired
     private BoardCommentService boardcommentService;
+	
+	@Autowired
+	MemberListService memberListService;
 	
 	@RequestMapping(value="/getBoardList.do")
 	public String getBoardList(BoardVO vo, Model model, PageVO page) {
@@ -179,18 +185,24 @@ public class BoardController {
 	    }
 	
 		@RequestMapping("/getBoard.do")
-        public String getBoard(BoardVO vo,BoardCommentVO vo4,Model model,HttpServletRequest request){
+        public String getBoard(BoardVO vo,BoardCommentVO vo4,Model model,HttpServletRequest request,MemberListVO memberListVO){
 		
 		HttpSession session = request.getSession();
 		
 		UserVO vo2= (UserVO) session.getAttribute("user");
 		vo.setArt_writer(vo2.getUser_Id());
 		vo.setArt_user_name(vo2.getName());
-		System.out.println("컨트롤러 진입"+boardService.getBoard(vo).toString());
 		//조회수
 		boardService.updateBoardCnt(vo.getArt_id());
-	    
-	    model.addAttribute("board", boardService.getBoard(vo));
+		// 필요한거 -> 방장 가져오기, 
+		
+		BoardVO getVO=boardService.getBoard(vo);
+		
+		memberListVO.setPARTY_ID(getVO.getParty_id());
+		List<MemberListVO> list=memberListService.getJoinMemberList(memberListVO);
+		MemberListVO leader =list.get(0);
+		model.addAttribute("leader", leader);
+	    model.addAttribute("board",getVO );
 	    model.addAttribute("commentList", boardcommentService.getBoardCommentList(vo4));
 		System.out.println("댓글리스트 : "+boardcommentService.getBoardCommentList(vo4));
 		System.out.println("컨트롤러 진입"+boardService.getBoard(vo).toString());
@@ -208,7 +220,8 @@ public class BoardController {
 			HttpSession session = request.getSession();
 			
 			UserVO vo2= (UserVO) session.getAttribute("user");
-			vo.setArt_comment_writer(vo2.getUser_Id());
+			vo.setArt_comment_writer(vo2.getUser_Id());	
+			vo.setArt_comment_user_name(vo2.getName());
 			boardcommentService.writeBoardComment(vo);
 			return "getBoard.do?art_id="+vo.getArt_id();
 		}
@@ -219,6 +232,7 @@ public class BoardController {
 			
 			UserVO vo2= (UserVO) session.getAttribute("user");
 			vo.setArt_comment_writer(vo2.getUser_Id());
+//			vo.setArt_comment_user_name(vo2.getName());
 			boardcommentService.deleteBoardComment(vo);
 			return "getBoard.do?art_id="+vo.getArt_id();
 		}
@@ -228,6 +242,7 @@ public class BoardController {
 			
 			UserVO vo2= (UserVO) session.getAttribute("user");
 			vo.setArt_comment_writer(vo2.getUser_Id());
+//			vo.setArt_comment_user_name(vo2.getName());
 			boardcommentService.modifyBoardComment(vo);
 			return "getBoard.do?art_id="+vo.getArt_id();
 		}

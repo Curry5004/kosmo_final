@@ -1,4 +1,4 @@
-package com.springbook.biz.mypage.comtroller;
+package com.springbook.biz.mypage.controller;
 
 
 

@@ -12,7 +12,7 @@ import com.springbook.biz.party.PartyVO;
 import com.springbook.biz.user.UserVO;
 
 @Service("mypageService")
-public class MypageServiceimpl implements MypageService{
+public class MypageServiceImpl implements MypageService{
 	@Autowired
 	private MypageDAO mypageDAO;
 	

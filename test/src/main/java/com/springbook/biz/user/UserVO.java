@@ -25,6 +25,8 @@ public class UserVO {
 	private String mbti_Id;
 	// mbti 값 받기 용
 	private String mbti_Name;
+	// admin 회원관리 값 받기 용
+	private boolean request;
 
 	public String getUser_Id() {
 		return user_Id;
@@ -163,6 +165,14 @@ public class UserVO {
 
 	public void setMbti_Name(String mbti_Name) {
 		this.mbti_Name = mbti_Name;
+	}
+
+	public boolean getRequest() {
+		return request;
+	}
+
+	public void setRequest(boolean request) {
+		this.request = request;
 	}
 
 	@Override

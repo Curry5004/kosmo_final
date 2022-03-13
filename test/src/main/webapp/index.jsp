@@ -54,6 +54,10 @@
 	<a href="mypage/getPartyList.do">가입된 소모임 목록 가져오기</a></br>
 	<a href="mypage/getPartyFavList.do">찜한 소모임 목록 가져오기</a></br>
 	<a href="mypage/getPartyCreatorList.do">내가 생성한 소모임 목록 가져오기</a>
+	<br/>
+	<br/>
+
+	<a href="admin/getAdminMemberList.do">어드민)회원정보가져오기</a>
 
 </body>
 </html>

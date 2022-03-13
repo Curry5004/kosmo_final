@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AdminDAO">
+
+   <select id ="getAdminMemberList" resultType="user">
+		SELECT u.USER_ID, NAME, MBTI_NAME, MBTI_PATH, REQUEST
+		FROM USER u
+		INNER JOIN REGISTRY r ON u.USER_ID=r.USER_ID
+		INNER JOIN MBTI m ON u.MBTI_ID = m.MBTI_ID
+		LIMIT #{listSize} OFFSET #{startRow};
+   </select>
+
+	<select id ="getAdminMemberListCnt" resultType="int">
+		SELECT COUNT(*)
+ 		FROM USER u
+		INNER JOIN REGISTRY r ON u.USER_ID=r.USER_ID
+		INNER JOIN MBTI m ON u.MBTI_ID = m.MBTI_ID;
+	</select>
+   
+
+</mapper>

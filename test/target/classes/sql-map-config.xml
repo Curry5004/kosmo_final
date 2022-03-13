@@ -30,6 +30,7 @@
 		<mapper resource="mappings/albumComment-mapping.xml" />
 		<mapper resource="mappings/mypage-mapping.xml" />		
 		<mapper resource="mappings/boardComment-mapping.xml"></mapper>
+		<mapper resource="mappings/admin-mapping.xml"></mapper>
 	</mappers>
 	
 </configuration>

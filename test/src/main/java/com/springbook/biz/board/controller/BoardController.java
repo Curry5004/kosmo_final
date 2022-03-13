@@ -187,6 +187,7 @@ public class BoardController {
 		vo.setArt_writer(vo2.getUser_Id());
 		vo.setArt_user_name(vo2.getName());
 		System.out.println("컨트롤러 진입"+boardService.getBoard(vo).toString());
+		//조회수
 		boardService.updateBoardCnt(vo.getArt_id());
 	    
 	    model.addAttribute("board", boardService.getBoard(vo));

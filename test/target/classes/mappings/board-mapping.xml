@@ -17,8 +17,8 @@
 
 
 <insert id="insertBoard" parameterType="board">
-	INSERT INTO BOARD(PARTY_ID, art_title, art_writer, ART_CONTENT, ART_IMG_PATH ,USER_ID) 
-	VALUES(#{party_id},#{art_title}, #{art_writer}, #{art_content}, #{art_img_path}, #{user_id})
+	INSERT INTO BOARD(PARTY_ID, art_title, art_writer, ART_CONTENT, ART_IMG_PATH ,ART_USER_NAME) 
+	VALUES(#{party_id},#{art_title}, #{art_writer}, #{art_content}, #{art_img_path}, #{art_user_name})
 </insert>
 
 <update id="updateBoard" parameterType="board">

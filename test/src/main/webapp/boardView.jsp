@@ -56,7 +56,7 @@
 		</tr>
 		<tr>
 			<td>
-				작성자:${board.art_writer}
+				작성자:${board.art_user_name}
 			
 			</td>
 		</tr>
@@ -68,9 +68,9 @@
 			</div></td>
 		</tr>
 	</table>
-	<c:if test="${board.user_id==sessionScope.user.user_Id||leader.USER_ID==sessionScope.user.user_Id}">
+	<c:if test="${board.art_writer==sessionScope.user.user_Id||leader.USER_ID==sessionScope.user.user_Id}">
 	<button><a href="modifyBoard.do?art_id=${board.art_id}">수정</a></button>
-	<button><a href="deleteBoard.do?art_id=${board.art_id}">삭제</a></button>
+	<button><a href="deleteBoard.do?art_id=${board.art_id}&party_id=${board.party_id}">삭제</a></button>
 	</c:if>
 <c:forEach var="comment" items="${commentList}" varStatus="i" >
 		<fmt:formatDate var="formatRegDate" value="${comment.art_comment_reg_date}" pattern="yyyy-MM-dd HH:MM:ss"/>

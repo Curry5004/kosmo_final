@@ -65,7 +65,7 @@ public class BoardController {
 		return "boardList.jsp";
 		
 	}
-	@RequestMapping(value="/insertBoard.do")
+	@RequestMapping("/insertBoard.do")
 	public String insertBoard(BoardVO vo, Model model, HttpServletRequest request) {
 			if(vo.getArt_img().getSize()!=0){
 			
@@ -107,8 +107,8 @@ public class BoardController {
 		//2번  로그인된 vo2 객체 가져오기.
 		UserVO vo2 = (UserVO) session.getAttribute("user");
 	    //dao에 들어갈 vo 객체에 user_Id 저장해주기.
-		vo.setArt_writer(vo2.getName());
-		vo.setUser_id(vo2.getUser_Id());
+		vo.setArt_writer(vo2.getUser_Id());
+		vo.setArt_user_name(vo2.getName());
 		System.out.println("컨트롤러 진입");
 		boardService.insertBoard(vo);
 		return "index.jsp";
@@ -138,7 +138,7 @@ public class BoardController {
 			String root = path + "\\uploadFiles" ; // 저장할 위치
 			
 			File file = new File(root); //경로생성용 파일 생성
-			
+		    
 			// 만약 uploadFiles 폴더가 없으면 생성해라 라는뜻
 			if(!file.exists()) file.mkdirs();
 			
@@ -146,7 +146,7 @@ public class BoardController {
 			String originFileName = vo.getArt_img().getOriginalFilename(); // 원래 파일이름
 			String ext = originFileName.substring(originFileName.lastIndexOf(".")); 
 			String ranFileName = UUID.randomUUID().toString() + ext; //랜덤변수가 붙은 파일이름
-			
+		
 			File changeFile = new File(root + "\\" + ranFileName); //파일생성 
 			
 			
@@ -170,8 +170,8 @@ public class BoardController {
 		//2번  로그인된 vo2 객체 가져오기.
 		UserVO vo2 = (UserVO) session.getAttribute("user");
 	    //dao에 들어갈 vo 객체에 user_Id 저장해주기.
-		vo.setArt_writer(vo2.getName());
-		vo.setUser_id(vo2.getUser_Id());
+		vo.setArt_writer(vo2.getUser_Id());
+		vo.setArt_user_name(vo2.getName());
 		System.out.println("컨트롤러 진입");
 		boardService.updateBoard(vo);
 		
@@ -184,8 +184,8 @@ public class BoardController {
 		HttpSession session = request.getSession();
 		
 		UserVO vo2= (UserVO) session.getAttribute("user");
-		vo.setArt_writer(vo2.getName());
-		vo.setUser_id(vo2.getUser_Id());
+		vo.setArt_writer(vo2.getUser_Id());
+		vo.setArt_user_name(vo2.getName());
 		System.out.println("컨트롤러 진입"+boardService.getBoard(vo).toString());
 		boardService.updateBoardCnt(vo.getArt_id());
 	    
@@ -241,9 +241,10 @@ public class BoardController {
 		    //dao에 들어갈 vo 객체에 user_Id 저장해주기.
 			vo.setArt_writer(vo2.getUser_Id());
 			System.out.println("컨트롤러 진입");
+			int party_id=vo.getParty_id();
 		    boardService.deleteBoard(vo);
 		    
-			return "getBoardList.do?party_id=1";
+			return "redirect:getBoardList.do?party_id="+party_id;
 		
 	}
 		

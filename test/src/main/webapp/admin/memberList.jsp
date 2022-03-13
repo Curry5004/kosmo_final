@@ -21,16 +21,7 @@
 			<th>관리</th>
 		</tr>
 		<c:forEach items="${memberList}" var="member">
-	<!-- 
-			<div style="display:inline-block;">
-				<div><a href="../getParty.do?PARTY_ID=${board.PARTY_ID}">
-					&ensp; <img src="${board.PARTY_TUMB_PATH}" width=200 height=200 />
-				</a></div>
-				<div><a href="../getParty.do?PARTY_ID=${board.PARTY_ID}">
-					&ensp; ${board.PARTY_ID}파티 번호
-				</a></div>
-			</div>
-	 -->
+
 	 	<tr>
 	 		<td>${member.user_Id }</td>
 	 		<td>${member.name }</td>
@@ -42,9 +33,15 @@
 			</td>
 			<td>${member.request }</td>
 			<td>
+			<c:if test="${member.request eq false}">
 				<a href="confirmMember.do?user_Id=${member.user_Id }">정식맴버</a>
-				<a href="deleteUser.do?user_Id=${member.user_Id }">맴버제거하기</a>
+				<a href="deleteUser.do?user_Id=${member.user_Id }">거절하기</a>
+			</c:if>
+			<c:if test="${member.request eq true}">
+				<a href="deleteUser.do?user_Id=${member.user_Id }">강제 회원탈퇴</a>
+			</c:if>
 			</td>
+			
 		 </tr>
 		</c:forEach> 
 	</table>

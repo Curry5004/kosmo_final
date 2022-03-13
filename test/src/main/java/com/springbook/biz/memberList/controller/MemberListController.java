@@ -22,7 +22,7 @@ public class MemberListController {
 		if(userVO!=null){
 			System.out.println("유저아이디: "+userVO.getUser_Id());
 			vo.setUSER_ID(userVO.getUser_Id());
-			memberListService.joinParty(vo);
+			memberListService.joinParty(vo); 
 			return "index.jsp";
 		}else
 			return "login.do";

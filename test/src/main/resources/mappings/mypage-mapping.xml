@@ -21,4 +21,53 @@
 	WHERE user_Id = #{user_Id};
 </update>
 
+<select id ="getPartyMemberList" resultType="party">
+
+	SELECT p.PARTY_ID, p.PARTY_TUMB_PATH
+	FROM PARTY p
+	INNER JOIN MEMBER_LIST m on p.PARTY_ID=m.PARTY_ID
+	WHERE PARTY_REQUEST = TRUE AND USER_ID = #{user_Id} 
+	LIMIT #{listSize} OFFSET #{startRow};
+	
+</select>
+
+<select id ="getPartyMemberListCnt" resultType="int">
+
+	SELECT COUNT(*)
+	FROM PARTY p
+	INNER JOIN MEMBER_LIST m on p.PARTY_ID=m.PARTY_ID
+	WHERE PARTY_REQUEST = TRUE AND USER_ID = #{user_Id} ;
+	
+</select>
+
+
+<select id ="getPartyFavList" resultType="party">
+	SELECT p.PARTY_ID, p.PARTY_TUMB_PATH
+	FROM PARTY p
+	INNER JOIN MEMBER_FAV m on p.PARTY_ID=m.PARTY_ID
+	WHERE USER_ID = #{user_Id} 
+	LIMIT #{listSize} OFFSET #{startRow};
+</select>
+
+<select id ="getPartyFavListCnt" resultType="int">
+	SELECT COUNT(*)
+	FROM PARTY p
+	INNER JOIN MEMBER_FAV m on p.PARTY_ID=m.PARTY_ID
+	WHERE USER_ID = #{user_Id} ;
+</select>
+
+
+<select id ="getPartyCreatorList" resultType="party">
+	SELECT PARTY_ID, PARTY_TUMB_PATH
+	FROM PARTY 
+	WHERE PARTY_AVAILABLE = TRUE AND PARTY_CREATOR = #{user_Id}
+	LIMIT #{listSize} OFFSET #{startRow};
+</select>
+
+<select id ="getPartyCreatorListCnt" resultType="int">
+	SELECT COUNT(*)
+	FROM PARTY 
+	WHERE PARTY_AVAILABLE = TRUE AND PARTY_CREATOR = #{user_Id};
+</select>
+	
 </mapper>

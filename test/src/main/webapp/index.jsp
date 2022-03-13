@@ -15,7 +15,7 @@
 	<h1>${sessionScope.user.user_Id}로 로그인중</h1>
 	</c:if>
 	<c:if test="${sessionScope.user.user_Id==null}">
-	<h1>로그인 X 상태</h1>
+	<h1>로그인 X 상태</h1> 
 	</c:if>
 	
 	
@@ -49,6 +49,11 @@
 	마이페이지<br />
 	<a href="calendar3.do?user_id=${sessionScope.user.user_Id }">마이페이지 일정</a>
 
+	<br/>
+	<a href="mypage/getUserInfo.do">회원 정보 가져오기</a></br>
+	<a href="mypage/getPartyList.do">가입된 소모임 목록 가져오기</a></br>
+	<a href="mypage/getPartyFavList.do">찜한 소모임 목록 가져오기</a></br>
+	<a href="mypage/getPartyCreatorList.do">내가 생성한 소모임 목록 가져오기</a>
 
 </body>
 </html>

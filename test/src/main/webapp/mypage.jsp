@@ -2,8 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
-<%@ page import="com.springbook.biz.common.Consts" %>
-<%@ page import="com.springbook.biz.user.UserVO" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,27 +18,30 @@
             display: none;
         }
 		.button {
-		
-		  background-color: blue;
-		
-		  border: none;
-		
-		  color: white;
-		
-		  padding: 15px 30px;
-		
-		  text-align: center;
-		
+		  background-color: blue;		
+		  border: none;		
+		  color: white;		
+		  padding: 15px 30px;		
+		  text-align: center;		
 		  text-decoration: none;
-		
-		  display: inline-block;
-		
-		  font-size: 16px;
-		
-		  margin: 4px 2px;
-		
-		  cursor: pointer;
-		
+		  display: inline-block;		
+		  font-size: 16px;		
+		  margin: 4px 2px;		
+		  cursor: pointer;		
+		}
+		ul {
+			
+			width: 200px;
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}
+		li a {
+			display: block;
+			color: black;
+			padding: 8px
+			font-weight: bold;
+			text-decoration-line: none;
 		}
 
     </style>
@@ -86,42 +87,57 @@
                 </div>
             </div>
         </ul>
-		<form action="getPartyList.do" method="get">
-	        <!-- <input name="SEARCH_KEYWORD" type="text"></input> -->
-			<button type="button" onclick="location.href='partySearch.jsp' ">모임찾기</button>
-		</form>
           </div>
         </div>
       </nav>
-      ${sessionScope.user.user_Id }
-     <%
-     UserVO userVO = (UserVO)request.getSession().getAttribute("user");     
-     %>
-     <!-- 로그인 전 화면 -->
-     <%if (userVO == null) {%>
-    
-     <ul>
-     
-     	<li><a href="login.do">로그인</a>	</li>
-     	<li><a href="registry_form.do">회원가입</a></li>
-     </ul>
-     <%}else if (userVO.isAdmin()==true) {%>
-     	<ul>
-     		<li><img src="${profile_image}" width=80 height=80 /></li>
-	     	<li><a href="<%= request.getContextPath() %>/logout.do">로그아웃</a></li>
-	     	<li><a href="<%= request.getContextPath() %>/writeParty.do">방개설</a></li>
-	     	<li><a href="mypage/mypage.do">마이페이지</a></li>
-	     	<li><a href="#">관리자모드</a></li>
-	     </ul>    
-     
-     <!-- 로그인 후 화면 -->
-     <%}else if (userVO != null) {%>
-     	<ul>
-     		<li><img src="${profile_image}" width=80 height=80 /></li>
-	     	<li><a href="<%= request.getContextPath() %>/logout.do">로그아웃</a></li>
-	     	<li><a href="<%= request.getContextPath() %>/writeParty.do">방개설</a></li>
-	     	<li><a href="mypage/mypage.do">마이페이지</a></li>
-	     </ul>
-	 <%}; %>
+      <ul>
+     	<li><a href="#">1.개인정보 관리</a></li>
+     	<li><a href="#">2.내가 가입한 소모임</a></li>
+     	<li><a href="#">3.내가 찜한 소모임</a></li>
+     	<li><a href="#">4.스케쥴러</a></li>
+     	<li><a href="#">5.생성한 소모임 관리</a></li>
+     	<li><a href="<%= request.getContextPath() %>/report.do">6.고객센터</a></li>
+	  </ul>
+	  <div>
+	 	 <img src="${profile_image}" width=80 height=80 >${user_id}님이 로그인 중입니다.</img>
+	  </div>
+	  <h3>내가 가입한 목록</h3>
+	  <div id="myPartyList" style="display: flex;">
+	  	<c:forEach items="${mypageVO.myPartyList}" var="party">
+			<div style="display: blcok;">
+				<div><a href="search.jsp?PARTY_ID=${party.PARTY_ID}">&ensp; <img src="${party.PARTY_TUMB_PATH}" width=200 height=200 /></a></div>
+				<div><a href="search.jsp?PARTY_ID=${party.PARTY_ID}">&ensp; ${party.PARTY_TITLE}</a></div>
+				<div style="float:right">
+			 		<fmt:formatDate var="formatRegDate" value="${party.PARTY_REG_DATE}" pattern="yyyy-MM-dd"/>
+					&ensp; 작성자: ${party.PARTY_CREATOR}
+					&ensp; 카테고리: ${party.CATEGORY_NAME}
+					&ensp; 작성일: ${formatRegDate}
+				</div>
+			</div>
+			<hr />
+		</c:forEach>
+		<div style="display:block;"><a href="#">더보기</a></div>
+	  </div>
+	  <h3>내가 찜한 목록</h3>
+	  <div id="favPartyList"  style="display: flex;">
+	  	<c:forEach items="${mypageVO.favPartyList}" var="party">
+			<div style="display:block;">
+				<div><a href="search.jsp?PARTY_ID=${party.PARTY_ID}">&ensp; <img src="${party.PARTY_TUMB_PATH}" width=200 height=200 /></a></div>
+				<div><a href="search.jsp?PARTY_ID=${party.PARTY_ID}">&ensp; ${party.PARTY_TITLE}</a></div>
+				<div style="float:right">
+			 		<fmt:formatDate var="formatRegDate" value="${party.PARTY_REG_DATE}" pattern="yyyy-MM-dd"/>
+					&ensp; 작성자: ${party.PARTY_CREATOR}
+					&ensp; 카테고리: ${party.CATEGORY_NAME}
+					&ensp; 작성일: ${formatRegDate}				
+				</div>
+			</div>
+			<hr />
+		</c:forEach>
+		<div style="display:block;"><a href="#">더보기</a></div>
+	  </div>
+	  <div style="display: flex;">
+	  	
+	  </div>
+
 </body>
 </html>

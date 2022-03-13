@@ -24,7 +24,7 @@ public class PartyDAO {
 	public void deleteParty(PartyVO vo){
 	    mybatis.delete("PartyDAO.deleteParty",vo);
 	}
-	public PartyVO getNewParty(PartyVO vo){
+	public PartyVO getNewParty(PartyVO vo){ 
 		return mybatis.selectOne("PartyDAO.getNewParty", vo);
 	}
 	public List<PartyVO> getPartyList(Map<String, Object> map){

@@ -29,7 +29,8 @@
 	</select>
 	
 	<select id="viewUser" resultType="user">
-		SELECT USER_ID, NAME, BIRTHDAY, GENDER, LOCATION, PHONE_NUM, JOIN_DATE, PROFILE_IMAGE,MODIFIED_DAY,USER_AVAILABLE, MBTI_ID, mbti_Path
+		SELECT USER_ID, NAME, BIRTHDAY, GENDER,
+		 LOCATION, PHONE_NUM, JOIN_DATE, PROFILE_IMAGE,MODIFIED_DAY,USER_AVAILABLE, MBTI_ID, mbti_Path, ADMIN
 		FROM user                                                                                                      
 		WHERE user_Id = #{user_Id} AND password = #{password};
 	</select>

@@ -69,5 +69,22 @@
 	FROM PARTY 
 	WHERE PARTY_AVAILABLE = TRUE AND PARTY_CREATOR = #{user_Id};
 </select>
+
+
+
+
+<select id="getFavParty" parameterType="Map" resultType="party">
+	select * from party p1
+	left join member_fav mf1 on p1.PARTY_ID = mf1.PARTY_ID
+	where mf1.USER_ID = #{USER_ID}
+	LIMIT 5
+</select>
+	
+<select id="getMyParty" parameterType="Map" resultType="party">
+	select * from party p1
+	left join member_list ml1 on p1.PARTY_ID = ml1.PARTY_ID
+	where ml1.USER_ID = #{USER_ID}
+	LIMIT 5
+</select>
 	
 </mapper>

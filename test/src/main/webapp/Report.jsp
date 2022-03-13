@@ -2,14 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
-<%@ page import="com.springbook.biz.common.Consts" %>
-<%@ page import="com.springbook.biz.user.UserVO" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
 	<!-- #BOOTSTRAP 5.1.3 합쳐지고 최소화된 최신 CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<!-- #BOOTSTRAP 5.1.3 합쳐지고 최소화된 최신 CSS -->
@@ -19,28 +16,31 @@
         #modal.modal-open {
             display: none;
         }
-		.button {
-		
-		  background-color: blue;
-		
-		  border: none;
-		
-		  color: white;
-		
-		  padding: 15px 30px;
-		
-		  text-align: center;
-		
-		  text-decoration: none;
-		
-		  display: inline-block;
-		
-		  font-size: 16px;
-		
-		  margin: 4px 2px;
-		
-		  cursor: pointer;
-		
+		.button {		
+		  background-color: blue;		
+		  border: none;		
+		  color: white;		
+		  padding: 15px 30px;		
+		  text-align: center;		
+		  text-decoration: none;		
+		  display: inline-block;		
+		  font-size: 16px;		
+		  margin: 4px 2px;		
+		  cursor: pointer;		
+		}
+		ul {
+			
+			width: 200px;
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}
+		li a {
+			display: block;
+			color: black;
+			padding: 8px
+			font-weight: bold;
+			text-decoration-line: none;
 		}
 
     </style>
@@ -86,42 +86,80 @@
                 </div>
             </div>
         </ul>
-		<form action="getPartyList.do" method="get">
-	        <!-- <input name="SEARCH_KEYWORD" type="text"></input> -->
-			<button type="button" onclick="location.href='partySearch.jsp' ">모임찾기</button>
-		</form>
           </div>
         </div>
       </nav>
-      ${sessionScope.user.user_Id }
-     <%
-     UserVO userVO = (UserVO)request.getSession().getAttribute("user");     
-     %>
-     <!-- 로그인 전 화면 -->
-     <%if (userVO == null) {%>
-    
-     <ul>
-     
-     	<li><a href="login.do">로그인</a>	</li>
-     	<li><a href="registry_form.do">회원가입</a></li>
-     </ul>
-     <%}else if (userVO.isAdmin()==true) {%>
-     	<ul>
-     		<li><img src="${profile_image}" width=80 height=80 /></li>
-	     	<li><a href="<%= request.getContextPath() %>/logout.do">로그아웃</a></li>
-	     	<li><a href="<%= request.getContextPath() %>/writeParty.do">방개설</a></li>
-	     	<li><a href="mypage/mypage.do">마이페이지</a></li>
-	     	<li><a href="#">관리자모드</a></li>
-	     </ul>    
-     
-     <!-- 로그인 후 화면 -->
-     <%}else if (userVO != null) {%>
-     	<ul>
-     		<li><img src="${profile_image}" width=80 height=80 /></li>
-	     	<li><a href="<%= request.getContextPath() %>/logout.do">로그아웃</a></li>
-	     	<li><a href="<%= request.getContextPath() %>/writeParty.do">방개설</a></li>
-	     	<li><a href="mypage/mypage.do">마이페이지</a></li>
-	     </ul>
-	 <%}; %>
+      <ul>
+     	<li><a href="#">1.개인정보 관리</a></li>
+     	<li><a href="#">2.내가 가입한 소모임</a></li>
+     	<li><a href="#">3.내가 찜한 소모임</a></li>
+     	<li><a href="#">4.스케쥴러</a></li>
+     	<li><a href="#">5.생성한 소모임 관리</a></li>
+     	<li><a href="<%= request.getContextPath() %>/report.do">6.고객센터</a></li>
+	  </ul>
+	  <div>
+	 	 <img src="${profile_image}" width=80 height=80 >${user_id}님이 로그인 중입니다.</img>
+	  </div>
+	  
+	  
+	  <h3>고객센터</h3>
+	  <div id="myReportList" style="display: flex;">
+	  <div style="display:flex;"><a href="#">문의하기</a></div>
+	  <div style="display:flex; width: 100%;">
+	  	<table style="width: 100%;">
+		  	<colgroup>
+		  		<col width="50%"/>
+		  		<col width="30%"/>
+		  		<col width="20%"/>
+		  	</colgroup>
+	  	<thead>
+		  	<tr>
+		  		<th>제목</th>
+		  		<th>분류</th>
+		  		<th>답변여부</th>
+		  	</tr>
+	  	</thead>
+	  	<tbody>
+		  	<c:forEach items="${reportVO.reportList}" var="report">
+			  	<a href="search.jsp?REP_BOA_ID=${report.REP_BOA_ID}">
+					<tr>
+						<td>${report.REP_TITLE}</td>
+						<td>${report.REP_CATEGORY_NAME}</td>
+						<td>${report.COMMENT_YN}</td>
+					</tr>
+				</a>
+			</c:forEach>
+	  	</tbody>
+	  	</table>
+	  </div>
+	  
+
+	   
+	  <h3>QNA</h3>
+	  <div id="qnaList" style="display: flex;">
+	  <div style="display:flex; width: 100%;">
+	  	<table style="width: 100%;">
+		  	<colgroup>
+		  		<col width="50%"/>
+		  		<col width="50%"/>
+		  	</colgroup>
+	  	<thead>
+		  	<tr>
+		  		<th>자주 묻는 질문</th>
+		  		<th>답변</th>
+		  	</tr>
+	  	</thead>
+	  	<tbody>
+		  	<c:forEach items="${reportVO.qnaList}" var="qna">
+			  	<a href="search.jsp?QNA_ID=${qna.getQNA_ID()}">
+					<tr>
+						<td>${qna.getQuestion()}</td>
+						<td>${qna.getAnswer()}</td>
+					</tr>
+				</a>
+			</c:forEach>
+	  	</tbody>
+	  	</table>
+	  </div>
 </body>
 </html>

@@ -15,6 +15,8 @@
 		<typeAlias alias="album" type="com.springbook.biz.album.AlbumVO" />
 		<typeAlias alias="albumComment" type="com.springbook.biz.albumComment.AlbumCommentVO" />
 		<typeAlias alias="boardComment" type="com.springbook.biz.boardComment.BoardCommentVO"/>
+		<typeAlias alias="reportBoard" type="com.springbook.biz.report.ReportBoardVO" />
+		<typeAlias alias="qna" type="com.springbook.biz.report.QnaVO" />
 	</typeAliases>
 
 	<!-- Sql Mapper 설정 -->
@@ -31,6 +33,7 @@
 		<mapper resource="mappings/mypage-mapping.xml" />		
 		<mapper resource="mappings/boardComment-mapping.xml"></mapper>
 		<mapper resource="mappings/admin-mapping.xml"></mapper>
+		<mapper resource="mappings/report-mapping.xml" />
 	</mappers>
 	
 </configuration>

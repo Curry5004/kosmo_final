@@ -49,5 +49,13 @@ public class MypageDAO {
 	public int getPartyCreatorListCnt(UserVO vo) {
 		return mybatis.selectOne("MypageDAO.getPartyCreatorListCnt", vo);
 	}
+	// 인덱스 페이지에서 리스트 뽑아오는 로직.
+	public List<PartyVO> getFavParty(Map<String, Object> map)throws Exception{
+		return mybatis.selectList("MypageDAO.getFavParty", map);
+	}
+	public List<PartyVO> getMyParty(Map<String, Object> map)throws Exception{
+		return mybatis.selectList("MypageDAO.getMyParty", map);
+	}
+	
 
 }

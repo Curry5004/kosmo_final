@@ -9,6 +9,8 @@
 <body>
 	<form action="getPartyList.do" method="get">
 		<select name="CATEGORY_NAME">
+			<option value ="" selected>선택</option>
+			
 			<option value ="인문학/책/글">인문학/책/글</option>
 			<option value ="아웃도어/여행">아웃도어/여행</option>
 			<option value ="운동/스포츠">운동/스포츠</option>

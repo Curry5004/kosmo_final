@@ -24,6 +24,11 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public int getAdminMemberListCnt() {
 		return adminDAO.getAdminMemberListCnt();
+	}
+	@Override
+	public void confirmMember(UserVO vo) {
+		adminDAO.confirmMember(vo);
+		
 	};
 
 }

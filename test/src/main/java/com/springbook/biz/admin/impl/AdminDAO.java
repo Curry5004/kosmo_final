@@ -22,5 +22,8 @@ public class AdminDAO {
 	public int getAdminMemberListCnt() {
 		return mybatis.selectOne("AdminDAO.getAdminMemberListCnt");
 	}
+	public void confirmMember(UserVO vo) {
+		mybatis.selectOne("AdminDAO.confirmMember", vo);
+	}
 
 }

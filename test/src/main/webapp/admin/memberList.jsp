@@ -41,6 +41,9 @@
 				</a>
 			</td>
 			<td>${member.request }</td>
+			<td>
+				<a href="confirmMember.do?user_Id=${member.user_Id }">정식맴버</a>
+			</td>
 		 </tr>
 		</c:forEach> 
 	</table>

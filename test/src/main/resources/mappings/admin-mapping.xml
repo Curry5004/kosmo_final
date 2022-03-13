@@ -17,6 +17,12 @@
 		INNER JOIN REGISTRY r ON u.USER_ID=r.USER_ID
 		INNER JOIN MBTI m ON u.MBTI_ID = m.MBTI_ID;
 	</select>
+	
+	<update id = "confirmMember">
+		UPDATE REGISTRY
+		SET REQUEST = TRUE
+		WHERE user_Id = #{user_Id};
+	</update>
    
 
 </mapper>

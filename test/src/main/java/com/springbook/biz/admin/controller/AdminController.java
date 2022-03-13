@@ -12,10 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.springbook.biz.admin.AdminService;
 import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.board.PageVO;
+import com.springbook.biz.user.UserVO;
 
 @Controller
 @RequestMapping("/admin")
@@ -24,7 +26,7 @@ public class AdminController {
 	private AdminService adminSevice;
 	
 	@RequestMapping("/getAdminMemberList.do")
-	public String getAdminMemberList(BoardVO vo, Model model, PageVO page, HttpServletRequest request) {
+	public String getAdminMemberList(Model model, PageVO page) {
 		
 		
 		 //vo.getPartId();
@@ -52,8 +54,15 @@ public class AdminController {
 		model.addAttribute("memberList", adminSevice.getAdminMemberList(map));
 		model.addAttribute("pages", pages);
 		model.addAttribute("pageName", "Admin) 회원관리.");
-		return "memberList.jsp";
-		
+		return "memberList.jsp";	
+	}
+	
+	@RequestMapping(value="/confirmMember.do", method=RequestMethod.GET)
+	public String confirmMember(UserVO vo,HttpServletRequest request) {
+		System.out.println("진입은 됨?");
+		System.out.println("테스트"+vo.toString());
+		adminSevice.confirmMember(vo);
+		return "getAdminMemberList.do";	
 	}
 	
 }

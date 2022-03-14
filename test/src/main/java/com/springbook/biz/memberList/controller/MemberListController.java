@@ -3,6 +3,7 @@ package com.springbook.biz.memberList.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +23,8 @@ public class MemberListController {
 		if(userVO!=null){
 			System.out.println("유저아이디: "+userVO.getUser_Id());
 			vo.setUSER_ID(userVO.getUser_Id());
-			memberListService.joinParty(vo); 
-			return "index.jsp";
+			memberListService.joinParty(vo);
+			return "home.do";
 		}else
 			return "login.do";
 	}

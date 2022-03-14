@@ -120,7 +120,7 @@ public class ScheduleController {
 			//sch_id를 구해와서 vo에 때려박아줘야한다
 			vo.setSch_id(scheduleService.getNewSchedule(vo).getSch_id());
 			scheduleService.schMemberCntUp(vo);
-			return "index.jsp";
+			return "home.do";
 		}else {
 			return "login.do";
 		}

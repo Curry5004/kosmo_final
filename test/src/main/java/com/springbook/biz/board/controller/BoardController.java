@@ -117,7 +117,7 @@ public class BoardController {
 		vo.setArt_user_name(vo2.getName());
 		System.out.println("컨트롤러 진입");
 		boardService.insertBoard(vo);
-		return "index.jsp";
+		return "home.do";
 	
 	}
 	@RequestMapping("modifyBoard.do")

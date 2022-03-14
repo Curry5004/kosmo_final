@@ -571,3 +571,12 @@ insert into member_list (USER_ID,PARTY_ID,PARTY_REQUEST) values
 ('admin13',1,true),
 ('admin14',1,true);
 
+
+INSERT INTO USER (USER_ID,NAME,PASSWORD,BIRTHDAY,GENDER,LOCATION,
+PHONE_NUM,JOIN_DATE,ADMIN,PROFILE_IMAGE,MODIFIED_DAY,USER_AVAILABLE,
+MBTI_PATH,MBTI_ID)
+VALUES
+('admin','관리자','admin123',now(),'남자','Korea',01012345678,now(),true,null,null,true,null,14);
+
+INSERT INTO REGISTRY (USER_ID, REQUEST)
+VALUES ("admin", TRUE);

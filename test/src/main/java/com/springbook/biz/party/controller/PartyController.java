@@ -67,7 +67,7 @@ public class PartyController {
 					e.printStackTrace();
 				
 				
-				return "/wirteParty.do";
+				return "/wirteParty.do-";
 			}
 			
 			//VO 필드변경
@@ -86,7 +86,7 @@ public class PartyController {
 			
 			memberListService.joinParty(vo2);
 			
-			return "index.jsp";
+			return "home.do";
 		}else {
 			return "login.do"; 
 		}
@@ -163,8 +163,8 @@ public class PartyController {
 	// 소모임 맴버리스트 추출.
 	@RequestMapping(value="/getPartyUserList.do", method=RequestMethod.GET)
 	public String getPartyUserList(PartyVO vo, Model model, PageVO page){
-		System.err.println("getPartyUserList 컨트롤러 진입.");
-		System.out.println("파티아이디"+vo.getPARTY_ID());
+//		System.err.println("getPartyUserList 컨트롤러 진입.");
+//		System.out.println("파티아이디"+vo.getPARTY_ID());
 		int count = partyService.getPartyUserListCnt(vo);
 		String pageNo = page.getPageNo();
 		int currentPage = 1;
@@ -182,20 +182,20 @@ public class PartyController {
 		PageVO pages = new PageVO(count, currentPage, listSize, pageSize);		
 		model.addAttribute("memberList", partyService.getPartyUserList(map));	
 		model.addAttribute("pages", pages);	
-		System.out.println("페이징까지 진입 완료");
+//		System.out.println("페이징까지 진입 완료");
 		return "partyMemberList.jsp";
 	}
 	
 	@RequestMapping(value="/confirmMember.do", method=RequestMethod.GET)
 	public String confirmMember(UserVO vo,PartyVO vo2,HttpServletRequest request) {
-		System.out.println("컨펌 들어감");
+//		System.out.println("컨펌 들어감");
 		partyService.confirmMember(vo);
-		System.out.println(vo2.getPARTY_ID());
+//		System.out.println(vo2.getPARTY_ID());
 		return "getPartyUserList.do?PARTY_ID="+vo2.getPARTY_ID();	
 	}
 	@RequestMapping(value="/deleteReg.do", method=RequestMethod.GET)
 	public String deleteUser(UserVO vo,PartyVO vo2,HttpServletRequest request) {
-		System.out.println("삭제 진입");
+//		System.out.println("삭제 진입");
 		partyService.deleteReg(vo);
 		return "getPartyUserList.do?PARTY_ID="+vo2.getPARTY_ID();		
 	}

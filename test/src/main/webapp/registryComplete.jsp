@@ -8,6 +8,6 @@
 </head>
 <body>
 	회원가입 성공
-	<a href="index.jsp">인덱스로 돌아가기</a>
+	<a href="home.do">인덱스로 돌아가기</a>
 </body>
 </html>

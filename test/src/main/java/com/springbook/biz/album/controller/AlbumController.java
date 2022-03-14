@@ -78,7 +78,7 @@ public class AlbumController {
 			vo.setAlb_writer(userVO.getName());
 			System.out.println(userVO.getUser_Id());
 			albumService.insertAlbum(vo);
-			return "index.jsp";
+			return "home.do";
 		} else {
 			return "login.do";
 		}

@@ -161,7 +161,7 @@ public class UserController {
 		if (result == true) { // 로그인 성공
 			// main.jsp로 이동
 			//session.setAttribute(Consts.SESSION_KEY_USER, userService.viewUser(vo));
-			mav.setViewName("Nav.jsp");
+			mav.setViewName("home.do");
 		} else { // 로그인 실패
 			// login.jsp로 이동
 			mav.setViewName("login.jsp");
@@ -174,7 +174,7 @@ public class UserController {
 	public ModelAndView logout(HttpSession session) {
 		userService.logout(session);
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("index.jsp");
+		mav.setViewName("home.do");
 		// mav.addObject("msg", "logout");
 		System.out.println("로그아웃 완료");
 		return mav;

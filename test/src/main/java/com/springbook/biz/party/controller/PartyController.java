@@ -67,7 +67,7 @@ public class PartyController {
 					e.printStackTrace();
 				
 				
-				return "/wirteParty.do-";
+				return "/wirteParty.do";
 			}
 			
 			//VO 필드변경

@@ -62,8 +62,7 @@
 			return text;
 		}).then(function(){
 			document.getElementById('content').value = "";
-		})
-		.then(function(error){
+		}).catch(function(error){
 			console.error(error);
 		})
 	})

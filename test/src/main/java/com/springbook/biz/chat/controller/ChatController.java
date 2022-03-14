@@ -31,7 +31,8 @@ public class ChatController {
 	}
 	
 	@RequestMapping("insertChat2.do")
-	public @ResponseBody ChatVO insertChat2(ChatVO vo, Model model,HttpSession session){
+	@ResponseBody
+	public void insertChat2(ChatVO vo, Model model,HttpSession session){
 		UserVO userVO= (UserVO)session.getAttribute("user"); // 로그인세션에서 유저 가져오기
 		vo.setUser_id(userVO.getUser_Id());
 		vo.setUser_name(userVO.getName());
@@ -40,6 +41,5 @@ public class ChatController {
 		
 		chatService.insertChat(vo);
 		
-		return vo;
 	}
 }

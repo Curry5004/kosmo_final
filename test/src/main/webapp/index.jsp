@@ -62,6 +62,7 @@
 	<a href="getModal.do">네비게이션 테스트</a>
 	<a href="navbar.jsp">검색창 테스트</a>
 	<a href="ClendarDetail.jsp">캘린더 디테일</a>
+	<a href="getParty.do?party_id=1">intro</a>
 
 </body>
 </html>

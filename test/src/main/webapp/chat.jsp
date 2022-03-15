@@ -6,6 +6,12 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 	<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<!-- 
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" type="text/javascript"> </script> -->
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.4.0/dist/sockjs.min.js" type="text/javascript" ></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js" type="text/javascript"></script>
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
@@ -14,6 +20,27 @@
 
 
 <script>
+var ws = new WebSocket("ws://localhost:8080/replyEcho?bno=1234");
+
+ws.onopen = function () {
+	console.log('Info: connection opend.');
+	setTimeout( function(){ connect(); }, 1000); // 1초마다 재연결	
+};
+
+ws.onmessage = function (event) {
+	console.log(event.data+'\n');
+};
+
+ws.onclose = function (event) { console.log('Info: connection closed.'); };
+ws.onerror = function (err) { console.log('Error: error.'); };
+
+$('#btnSend').on('click', function(evt) {
+	evt.preventDefault();
+	if (socket.readyState !== 1) return;
+	
+	    let msg = $('input#msg').val();
+	    socket.send(msg);
+	});
 	
 </script>
 
@@ -99,6 +126,10 @@
 			});
 	}
 	
+</script>
+
+<script>
+
 </script>
 
 </html>

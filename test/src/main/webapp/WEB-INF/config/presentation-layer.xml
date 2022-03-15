@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc 
-		http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
-		http://www.springframework.org/schema/beans 
-		http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context 
-		http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.1.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
 	<context:component-scan base-package="com.springbook.biz">
 	</context:component-scan>
@@ -21,4 +21,14 @@
 		<property name="defaultEncoding" value="UTF-8" />
 	</bean>
 
+	 <!-- websocket handler -->
+    <bean id="replyEchochoHandler" class="com.springbook.biz.chat.handler.ReplyEchoHandler" />
+
+    <websocket:handlers>
+         <websocket:mapping handler="replyEchochoHandler" path="/replyEcho" />
+        <websocket:handshake-interceptors>
+            <bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+        </websocket:handshake-interceptors>
+    </websocket:handlers>
+    
 </beans>

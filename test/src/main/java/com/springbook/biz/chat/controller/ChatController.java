@@ -1,5 +1,7 @@
 package com.springbook.biz.chat.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,18 +20,6 @@ public class ChatController {
 	@Autowired
 	ChatService chatService;
 	
-	@RequestMapping("insertChat.do")
-	public String insertChat(ChatVO vo, Model model,HttpSession session){
-		UserVO userVO= (UserVO)session.getAttribute("user"); // 로그인세션에서 유저 가져오기
-		vo.setUser_id(userVO.getUser_Id());
-		vo.setUser_name(userVO.getName());
-		
-		vo.setParty_id(1); // 임의의 파티값 1
-		
-		chatService.insertChat(vo);
-		return "chat.jsp";
-	}
-	
 	@RequestMapping("insertChat2.do")
 	@ResponseBody
 	public void insertChat2(ChatVO vo, Model model,HttpSession session){
@@ -40,6 +30,13 @@ public class ChatController {
 		vo.setParty_id(1); // 임의의 파티값 1
 		
 		chatService.insertChat(vo);
-		
 	}
+	
+//	@RequestMapping("getChatList.do")
+//	@ResponseBody
+//	public List<ChatVO> getChatList(ChatVO vo){
+//		chatService
+//		
+//		return List<ChatVO>;
+//	}
 }

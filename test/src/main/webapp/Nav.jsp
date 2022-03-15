@@ -75,9 +75,6 @@
         </li>
          <%}else if (userVO.isAdmin()==true) {%>
          
-         <li>
-         <img src="${profile_image}" width=80 height=80 />
-         </li>
         <li>
         	<a class="nav-link" href="<%= request.getContextPath() %>/logout.do">로그아웃</a>
         </li>
@@ -91,9 +88,6 @@
         	<a class="nav-link" href="#">관리자모드</a>
         </li>
           <%}else if (userVO != null) {%>
-          <li>
-          	<img src="${profile_image}" width=80 height=80 />
-          </li>
           <li>
           	<a class="nav-link" href="<%= request.getContextPath() %>/logout.do">로그아웃</a>
           </li>

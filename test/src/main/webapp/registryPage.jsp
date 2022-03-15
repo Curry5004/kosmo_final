@@ -34,10 +34,10 @@ function fn_idChk(){
   var count = 0; /* 문자 중복을 막기 위한 인증번호 */
    
  $(document).ready(function() {
-
+ var number = Math.floor(Math.random() * 100000) + 100000;
     $("#send").click(function() {
        
-       var number = Math.floor(Math.random() * 100000) + 100000;
+      
           if(number>100000){
              number = number - 10000;
           }
@@ -103,6 +103,32 @@ function fn_idChk(){
        }
     });
   });
+  
+  
+ function fn_phoneChk(){
+	 var userNum = $("#userNum").val();
+	 console.log(userNum);
+	 var sysNum = $("#text").val(); 
+	 console.log(sysNum);
+	 var f = document.phoneCheck;
+	 if(userNum == null || userNum == ""){
+		 console.log("에러문 출력");
+         alert("휴대폰으로 발송된 인증번호를 입력해주세요");
+         f.to.focus();
+         return false;
+      }     
+      else{     
+         if(userNum.trim() == sysNum.trim()){
+        	 alert("회원가입성공");
+          }
+          else {
+        	  console.log("에러문 출력");
+             alert("번호가 일치하지 않습니다.");
+             f.to.focus();
+             return false;
+          }          
+      }
+	}
   </script>
 
 <body>
@@ -111,7 +137,7 @@ function fn_idChk(){
 		<br> <br>
 
 		<form method="post" action="registry.do" name="userInfo"
-			enctype="multipart/form-data">
+			enctype="multipart/form-data" onsubmit="return fn_phoneChk()">
 			<table>
 				<tr>
 					<td id="title">아이디</td>
@@ -148,16 +174,18 @@ function fn_idChk(){
 
 				<tr>
 
-					<form action="#" method="post">
+					<form action="#" method="post" name="phoneCheck">
 						<td id="title">휴대전화</td>
 						<td>
 						<input type="input" id="to" name="phone_Num"   />
-						<<input type="button" id="send" value="전송" /><br />
+						<input type="button" id="send" value="전송" /><br />
 						인증번호: <input type="text" id="userNum" /> 
 						<input type="button" value="확인" id="enterBtn" /> 
 							<!--인증번호를 히든으로 저장--> 
 							<input type="hidden" name="text" id="text" /></td>
 					</form>
+					
+					
 
 				</tr>
 				<tr>
@@ -187,7 +215,7 @@ function fn_idChk(){
 					<td><input type="file" name="profile_root" /></td>
 				</tr>
 			</table>
-			<br> <input type="submit" value="가입" />
+			<br> <input type="submit" value="가입"/>
 		</form>
 	</div>
 </body>

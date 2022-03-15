@@ -12,42 +12,54 @@
 function fn_idChk(){
 	
 	var user_id = $("#user_Id").val();
+	if(user_id==""||user_id==null){
+		alert("id를 입력해주세요.");
+	}else {
 	console.log(user_id);
 	$.ajax({
-		url : "idCheck2.do",
+		url : "idCheck.do",
 		type : "POST",
 		dataType : "json",
 		data : {"user_Id" : $("#user_Id").val()},
 		success : function(data){
 			if(data == 1){
-				alert("중복된 전화번호입니다.");
-			}else if(data == 0){
-				$("#idChk").attr("value", "Y");
-				alert("사용가능한 전화번호입니다.");
-			}
-		}
-	})
-}
-
-function fn_numChk(){
-	
-	var user_id = $("#to").val();
-	console.log(user_id);
-	$.ajax({
-		url : "numCheck2.do",
-		type : "POST",
-		dataType : "json",
-		data : {"user_Id" : $("#to").val()},
-		success : function(data){
-			if(data == 1){
+				$("#idChk").attr("value", "N");
 				alert("중복된 아이디입니다.");
 			}else if(data == 0){
-				$("#numChk").attr("value", "Y");
+				$("#idChk").attr("value", "Y");
 				alert("사용가능한 아이디입니다.");
 			}
 		}
 	})
+	}
 }
+
+
+function fn_numChk(){
+	
+	var to = $("#to").val();
+	if(to==""||to==null){
+		alert("전화번호를 입력해주세요.");
+	}else {
+	console.log(to);
+	$.ajax({
+		url : "numCheck.do",
+		type : "POST",
+		dataType : "json",
+		data : {"phone_Num" : $("#to").val()},
+		success : function(data){
+			if(data == 1){
+				$("#numChk").attr("value", "N");
+				alert("중복된 전화번호입니다.");
+			}else if(data == 0){
+				$("#numChk").attr("value", "Y");
+				alert("사용가능한 전화번호입니다.");
+			}
+		}
+	})
+	}
+}
+
 
 
 </script>
@@ -69,7 +81,7 @@ function fn_numChk(){
        var to = $("#to").val();
        
        if(to == "" || to == null){
-          alert("빈칸이나 공백을 채워주세요");
+          alert("전화번호를 입력해주세요.");
        }
        
        else {
@@ -91,7 +103,7 @@ function fn_numChk(){
                    
                    //alert(count);
                    },
-                   error(){
+                   	error(){
                       
                    }
                    
@@ -117,9 +129,11 @@ function fn_numChk(){
        }     
        else{     
           if(userNum.trim() == sysNum.trim()){
+        	  $("#enterBtn").attr("value", "Y");
               alert("성공");
            }
            else {
+        	   $("#enterBtn").attr("value", "N");
               alert("실패");
            }          
        }
@@ -129,28 +143,23 @@ function fn_numChk(){
   
  function fn_phoneChk(){
 	 var userNum = $("#userNum").val();
-	 console.log(userNum);
 	 var sysNum = $("#text").val(); 
-	 console.log(sysNum);
-	 var f = document.phoneCheck;
-	 if(userNum == null || userNum == ""){
-		 console.log("에러문 출력");
-         alert("휴대폰으로 발송된 인증번호를 입력해주세요");
-         f.to.focus();
-         return false;
-      }     
-      else{     
-         if(userNum.trim() == sysNum.trim()){
-        	 alert("회원가입성공");
-          }
-          else {
-        	  console.log("에러문 출력");
-             alert("번호가 일치하지 않습니다.");
-             f.to.focus();
-             return false;
-          }          
-      }
+	 
+	 if(userNum == null ||  userNum == ""){
+		 alert("인증번호를 입력해주세요.");
+		 return false;
+	 }else{
+		 if($("#enterBtn").val() == "Y"&& $("#idChk").val() == "Y" && $("#numChk").val() == "Y"){
+			 alert("회원가입에 성공하였습니다.");
+		 }else{
+			 $("#enterBtn").attr("value", "N");
+			 alert("회원가입에 필수적으로 기입해야 할 사항이 누락되었습니다. 확인 바랍니다. "); 
+			 return false;
+		 }
+	 }
+	 
 	}
+ 
   </script>
 
 <body>
@@ -164,20 +173,20 @@ function fn_numChk(){
 				<tr>
 					<td id="title">아이디</td>
 					<td><input type="text" name="user_Id" id="user_Id"
-						maxlength="50">
+						maxlength="50" required>
 						<button class="idChk" type="button" id="idChk"
 							onclick="fn_idChk();" value="N">중복확인</button></td>
 				</tr>
 
 				<tr>
 					<td id="title">비밀번호</td>
-					<td><input type="password" name="password" maxlength="50">
+					<td><input type="password" name="password" maxlength="50" required>
 					</td>
 				</tr>
 
 				<tr>
 					<td id="title">이름</td>
-					<td><input type="text" name="name" maxlength="50"></td>
+					<td><input type="text" name="name" maxlength="50" required></td>
 				</tr>
 
 				<tr>
@@ -200,11 +209,12 @@ function fn_numChk(){
 						<td id="title">휴대전화</td>
 						<td>
 						<input type="text" id="to" name="phone_Num" required />
-						<input type="button" id="send" value="전송" /><br />
-						인증번호: <input type="text" id="userNum" required/> 
 						<button class="numChk" type="button" id="numChk"
-							onclick="fn_numChk();" value="N" >중복확인</button>
-						<input type="button" value="확인" id="enterBtn" /> 
+							onclick="fn_numChk();" value="N" required>중복확인</button>
+						<button class="send" type="button" id="send" required>전송</button><br />
+						인증번호: <input type="text" id="userNum" required/> 
+						
+						<button type="button" id="enterBtn" value="N" required> 확인 </button>
 							<!--인증번호를 히든으로 저장--> 
 							<input type="hidden" name="text" id="text" /></td>
 					</form>

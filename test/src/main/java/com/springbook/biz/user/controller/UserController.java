@@ -139,7 +139,7 @@ public class UserController {
 
 	// ajax http-> 자바로 변환 하는 어노테이션
 	@ResponseBody
-	@RequestMapping(value = "/idCheck2.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/idCheck.do", method = RequestMethod.POST)
 	public int idCheck(UserVO vo) {
 		// System.out.println("아이디 체크 시작");
 		int result = userService.idCheck(vo);
@@ -148,7 +148,7 @@ public class UserController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/numCheck2.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/numCheck.do", method = RequestMethod.POST)
 	public int numCheck(UserVO vo) {
 		// System.out.println("아이디 체크 시작");
 		int result = userService.numCheck(vo);

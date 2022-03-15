@@ -23,6 +23,12 @@ public class UserServiceImpl implements UserService {
 		int result = userDAO.idCheck(vo);
 		return result;
 	}
+	
+	@Override
+	public int numCheck(UserVO vo) {
+		int result = userDAO.numCheck(vo);
+		return result;
+	}
 
 	// 회원 로그인 체크
 	@Override
@@ -52,4 +58,6 @@ public class UserServiceImpl implements UserService {
 		// 세션 정보를 초기화 시킴
 		session.invalidate();
 	}
+
+
 }

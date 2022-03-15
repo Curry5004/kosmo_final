@@ -22,6 +22,11 @@
 		WHERE USER_ID = #{user_Id}
 	</select>
 	
+	<select id="numCheck" resultType="int">
+		SELECT COUNT(*) FROM USER
+		WHERE PHONE_NUM = #{phone_Num}
+	</select>
+	
 	
 	<select id="loginCheck" resultType="String">
 		SELECT user_Id FROM user

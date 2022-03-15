@@ -14,20 +14,42 @@ function fn_idChk(){
 	var user_id = $("#user_Id").val();
 	console.log(user_id);
 	$.ajax({
-		url : "idCheck.do",
+		url : "idCheck2.do",
 		type : "POST",
 		dataType : "json",
 		data : {"user_Id" : $("#user_Id").val()},
 		success : function(data){
 			if(data == 1){
-				alert("중복된 아이디입니다.");
+				alert("중복된 전화번호입니다.");
 			}else if(data == 0){
 				$("#idChk").attr("value", "Y");
+				alert("사용가능한 전화번호입니다.");
+			}
+		}
+	})
+}
+
+function fn_numChk(){
+	
+	var user_id = $("#to").val();
+	console.log(user_id);
+	$.ajax({
+		url : "numCheck2.do",
+		type : "POST",
+		dataType : "json",
+		data : {"user_Id" : $("#to").val()},
+		success : function(data){
+			if(data == 1){
+				alert("중복된 아이디입니다.");
+			}else if(data == 0){
+				$("#numChk").attr("value", "Y");
 				alert("사용가능한 아이디입니다.");
 			}
 		}
 	})
 }
+
+
 </script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
  <script>
@@ -177,9 +199,11 @@ function fn_idChk(){
 					<form action="#" method="post" name="phoneCheck">
 						<td id="title">휴대전화</td>
 						<td>
-						<input type="input" id="to" name="phone_Num"   />
+						<input type="text" id="to" name="phone_Num" required />
 						<input type="button" id="send" value="전송" /><br />
-						인증번호: <input type="text" id="userNum" /> 
+						인증번호: <input type="text" id="userNum" required/> 
+						<button class="numChk" type="button" id="numChk"
+							onclick="fn_numChk();" value="N" >중복확인</button>
 						<input type="button" value="확인" id="enterBtn" /> 
 							<!--인증번호를 히든으로 저장--> 
 							<input type="hidden" name="text" id="text" /></td>

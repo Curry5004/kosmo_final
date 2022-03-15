@@ -24,6 +24,13 @@ public class UserDAO {
 		int result = mybatis.selectOne("UserDAO.idCheck", vo);
 		return result;
 	}
+	
+	//전화번호 중복 체크
+	public int numCheck(UserVO vo){
+//		System.out.println("Mybatis idCheck");
+		int result = mybatis.selectOne("UserDAO.numCheck", vo);
+		return result;
+	}
 	// 회원 로그인체크
 	public boolean loginCheck(UserVO vo) {
 //		System.out.println("userDao 진입");

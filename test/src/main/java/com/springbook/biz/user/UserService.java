@@ -8,6 +8,9 @@ public interface UserService {
 	//아이디 중복 체크
 	public int idCheck(UserVO vo);
 	
+	//전화번호 중복 체크
+	public int numCheck(UserVO vo);
+		
 	// 회원 로그인 체크
 	public boolean loginCheck(UserVO vo, HttpSession session);
 	

@@ -24,8 +24,9 @@ public class PhoneController {
 
 	       set.put("to", (String)request.getParameter("to")); // 받는 사람
 	       set.put("from", "01066901414"); // 발신번호
+	       set.put("title", "");
 	       set.put("text", "안녕하세요 인증번호는 ["+(String)request.getParameter("text")+"]입니다"); // 문자내용
-	       set.put("type", "lms"); // 문자 타입
+	       set.put("type", "sms"); // 문자 타입
 
 	       JSONObject result = coolsms.send(set); // 보내기&전송결과받기
 

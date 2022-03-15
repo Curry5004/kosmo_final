@@ -67,7 +67,7 @@ function fn_idChk(){
                    alert("해당 휴대폰으로 인증번호를 발송했습니다");
                    count++;
                    
-                   alert(count);
+                   //alert(count);
                    },
                    error(){
                       
@@ -85,7 +85,7 @@ function fn_idChk(){
          }   
     })
     $("#enterBtn").click(function() {   /* 내가 작성한 번호와 인증번호를 비교한다 */
-       alert($("#text").val());
+       //alert($("#text").val());
        var userNum = $("#userNum").val();
        
        var sysNum = $("#text").val();         

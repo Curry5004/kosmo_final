@@ -25,7 +25,7 @@ public class PhoneController {
 	       set.put("to", (String)request.getParameter("to")); // 받는 사람
 	       set.put("from", "01066901414"); // 발신번호
 	       set.put("title", "");
-	       set.put("text", "안녕하세요 인증번호는 ["+(String)request.getParameter("text")+"]입니다"); // 문자내용
+	       set.put("text", "안녕하세요 인증번호는 ["+(String)request.getParameter("text")+"]입니다."); // 문자내용
 	       set.put("type", "sms"); // 문자 타입
 
 	       JSONObject result = coolsms.send(set); // 보내기&전송결과받기
@@ -33,16 +33,16 @@ public class PhoneController {
 	       if ((boolean)result.get("status") == true) {
 	         // 메시지 보내기 성공 및 전송결과 출력
 	         System.out.println("성공");
-	         System.out.println(result.get("group_id")); // 그룹아이디
-	         System.out.println(result.get("result_code")); // 결과코드
-	         System.out.println(result.get("result_message")); // 결과 메시지
-	         System.out.println(result.get("success_count")); // 메시지아이디
-	         System.out.println(result.get("error_count")); // 여러개 보낼시 오류난 메시지 수
+	         System.out.println("groupid=" + result.get("group_id")); // 그룹아이디
+	         System.out.println("결과코드="+ result.get("result_code")); // 결과코드
+	         System.out.println("결과메시지= " + result.get("result_message")); // 결과 메시지
+	         System.out.println("메시지아이디="+result.get("success_count")); // 메시지아이디
+	         System.out.println("오류메시지 수= " +result.get("error_count")); // 여러개 보낼시 오류난 메시지 수
 	       } else {
 	         // 메시지 보내기 실패
 	         System.out.println("실패");
-	         System.out.println(result.get("code")); // REST API 에러코드
-	         System.out.println(result.get("message")); // 에러메시지
+	         System.out.println("rest API 에러코드 = " + result.get("code")); // REST API 에러코드
+	         System.out.println("에러메시지=" + result.get("message")); // 에러메시지
 	       }
 	     
 	       return "registry_form.do";

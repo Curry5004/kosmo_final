@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 
@@ -19,9 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.springbook.biz.common.Consts;
 import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.board.PageVO;
 import com.springbook.biz.main.MainService;
@@ -29,7 +26,6 @@ import com.springbook.biz.main.MbtiVO;
 import com.springbook.biz.mypage.MypageService;
 import com.springbook.biz.user.UserService;
 import com.springbook.biz.user.UserVO;
-import com.springbook.biz.user.controller.UserController;
 
 @Controller
 @RequestMapping("/mypage")

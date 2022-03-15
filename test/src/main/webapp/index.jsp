@@ -60,6 +60,8 @@
 	<a href="admin/getAdminMemberList.do">어드민)회원정보가져오기</a> <br/>
 	<a href="Nav.jsp">네비게이션 이동</a>
 	<a href="getModal.do">네비게이션 테스트</a>
+	<a href="navbar.jsp">검색창 테스트</a>
+	<a href="ClendarDetail.jsp">캘린더 디테일</a>
 
 </body>
 </html>

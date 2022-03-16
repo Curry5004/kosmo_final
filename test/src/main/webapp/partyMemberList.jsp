@@ -8,8 +8,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+ 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <body>
-	<table border="1">
+<jsp:include page="Nav.jsp"/>
+	<div class="container pt-5">
+		<div class="row">
+	<table class="table table-hover">
 		<tr>
 			<th>아이디</th>
 			<th>MBTI</th>
@@ -35,26 +40,30 @@
 		 </tr>
 		</c:forEach> 
 	</table>
+	</div>
+	</div>
 	
+	
+	<div class="container row" style="float: none; margin:100 auto;">
+	 <div class="col-md-3" style="float: none; margin:0 auto;">
 
-	<c:if test="${pages.hasParty()}">
-	<div>
-		<tr>
-			<td colspan="4">
-				<c:if test ="${pages.startPage > pages.pageSize}">
-				<a href="getPartyUserList.do?pageNo=${pages.startPage - pages.pageSize }&PARTY_ID=${param.PARTY_ID}">[이전]</a>
-				</c:if>
-			<c:forEach var="pNo" 
+<c:if test="${pages.hasParty()}">
+<ul class="pagination">
+<c:if test ="${pages.startPage > pages.pageSize}">
+  <li class="page-item"><a class="page-link" href="getPartyUserList.do?pageNo=${pages.startPage - pages.pageSize }&PARTY_ID=${param.PARTY_ID}">이전</a></li>
+ </c:if>
+ <c:forEach var="pNo" 
 					begin="${pages.startPage}"
 					end="${pages.endPage}">
-			<a href="getPartyUserList.do?pageNo=${pNo}&PARTY_ID=${param.PARTY_ID}">[${pNo}]</a>
-			</c:forEach>
-			<c:if test="${pages.endPage < pages.totalPages }" >
-			<a href="getPartyUserList.do?pageNo=${pages.startPage + pages.pageSize }&PARTY_ID=${param.PARTY_ID}"> [다음]</a>
-			</c:if>
-			</td>
-		</tr>
-	</div>
-	</c:if>
+  <li class="page-item"><a class="page-link" href="getPartyUserList.do?pageNo=${pNo}&PARTY_ID=${param.PARTY_ID}">${pNo}</a></li>
+  </c:forEach>
+<c:if test="${pages.endPage < pages.totalPages }" >
+  <li class="page-item"><a class="page-link" href="getPartyUserList.do?pageNo=${pages.startPage + pages.pageSize }&PARTY_ID=${param.PARTY_ID}">다음</a></li>
+</c:if>
+</ul>
+</c:if>
+</div>
+</div>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

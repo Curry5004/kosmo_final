@@ -63,6 +63,7 @@
 	<a href="navbar.jsp">검색창 테스트</a>
 	<a href="ClendarDetail.jsp">캘린더 디테일</a>
 	<a href="getParty.do?party_id=1">intro</a>
+	<a href="partyMemberList.jsp">파티멤버리스트</a>
 
 </body>
 </html>

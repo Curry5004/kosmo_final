@@ -1,7 +1,9 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
@@ -17,11 +19,11 @@
     
     <!-- Style CSS -->
     <link rel="stylesheet" href="resource/css_footer/style.css">
-
-    <title>Footer 09</title>
-  </head>
-  <body>
-    <div class="content d-flex align-items-center bg-light">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+ <div class="content d-flex align-items-center bg-light">
       <h2 class="w-100 text-center"></h2>
     </div>
     
@@ -67,5 +69,5 @@
     <script src="js_footer/jquery-3.3.1.min.js"></script>
     <script src="js_footer/popper.min.js"></script>
     <script src="js_footer/bootstrap.min.js"></script>
-  </body>
+</body>
 </html>

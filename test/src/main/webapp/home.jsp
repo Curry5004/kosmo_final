@@ -124,12 +124,14 @@
 			</div>
 		</section>
 
-	
+	<div class="container pt-5">
+	<div class="row">
+	<div class="col">
 	<c:choose>
 	<c:when test="${sessionScope.user.user_Id==null}">
 	<h3>이런! 로그인을 안하셨군요</h3>
 	</c:when>
-	
+
 	<c:when test="${not empty bestList}">
 	<h1>당신과 같은 MBTI가 많은 모임!</h1>
 	<div>
@@ -148,8 +150,9 @@
 	<h3>추천 모임이 없습니다</h3>
 	</c:when>
 	</c:choose>
-
-
+	</div>
+	</div>
+</div>
 
 		
 		
@@ -176,5 +179,7 @@
   <script src="main/https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="main/js/google-map.js"></script>
   <script src="main/js/main.js"></script>
+  
+  <jsp:include page="footer.jsp"/>
 </body>
 </html>

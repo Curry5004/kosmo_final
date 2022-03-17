@@ -139,13 +139,14 @@ public class UserController {
 
 	// ajax http-> 자바로 변환 하는 어노테이션
 	@ResponseBody
-	@RequestMapping(value = "/idCheck.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/idCheck2.do", method = RequestMethod.POST)
 	public int idCheck(UserVO vo) {
-		// System.out.println("아이디 체크 시작");
+//		 System.out.println("아이디 체크 시작2");
 		int result = userService.idCheck(vo);
 		// System.out.println("아이디 체크 완료");
 		return result;
 	}
+	
 
 	// 로그인 화면
 	@RequestMapping("/login.do")

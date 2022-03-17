@@ -30,6 +30,7 @@
 		}
 	}
 </script>
+<jsp:include page="Nav.jsp"/>
 <body>
 
 <h2>게시판 보기</h2>

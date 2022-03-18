@@ -8,6 +8,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,18 +48,35 @@ public class MainController {
 	}
 	
 	@RequestMapping("home.do")
-	public String homePage(Model model,HttpSession session, ModelMap model2 ,@RequestParam String code, @RequestParam String state)throws IOException {
+	public String homePage(Model model,HttpSession session, ModelMap model2 ,@RequestParam String code, @RequestParam String state, UserVO vo)throws IOException, ParseException {
 	
 		/* 네아로 인증이 성공적으로 완료되면 code 파라미터가 전달되며 이를 통해 access token을 발급 */
 		OAuth2AccessToken oauthToken = naverLoginBO.getAccessToken(session, code, state);
 		String apiResult = naverLoginBO.getUserProfile(oauthToken);
-		
-		System.out.println("getAccessToken:" + oauthToken );
-		System.out.println("Naver login success");
-		session.setAttribute("naver_user", apiResult);
 		model.addAttribute("result", apiResult);
+		
+//		naver 정보 vo에 저장하고 session user 에 담기 
+		JSONParser jsonParser = new JSONParser();
+		JSONObject jsonObj = (JSONObject) jsonParser.parse(apiResult);
+		JSONObject resource = (JSONObject) jsonObj.get("resource"); 
+		String phone_Num = (String) resource.get("mobile"); 
+		String user_Id = (String) resource.get("name"); 
+		String birthDay = (String) resource.get("birthday");
+		String birthyear = (String) resource.get("birthyear"); 
+		vo.setPhone_Num(phone_Num);
+		vo.setUser_Id(user_Id);
+		vo.setBirthDay(birthyear + "-" + birthDay);
+		
+		
+		
+		
+		
+		
+		
+
+		
 		    
-		System.out.println("apiResult = " + apiResult);
+		
 		
 		UserVO userVO=(UserVO)session.getAttribute("user");
 		if(userVO!=null){

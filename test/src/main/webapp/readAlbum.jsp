@@ -75,6 +75,7 @@ s
 			</c:if>
 			<c:if test="${sessionScope.user.user_Id==comment.user_id}">
 				<a href="#" data-toggle="modal" data-target="#${i.index}">수정</a>
+				<a href="deleteAlbumComment.do?alb_comment_id=${comment.alb_comment_id}&alb_id=${album.alb_id}">삭제</a>
 
 				<div class="modal fade" id="${i.index}" data-backdrop="static"
 					data-keyboard="false">

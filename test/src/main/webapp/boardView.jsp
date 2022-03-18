@@ -30,13 +30,14 @@
 		}
 	}
 </script>
+<jsp:include page="Nav.jsp"/>
 <body>
 
 <h2>게시판 보기</h2>
 <br><br><br>
 	
 	<input type="hidden" name = "party_id" value="${param.party_id}">
-	<div style="float:center">
+	<div class="col text-right">
 		 <fmt:formatDate var="formatRegDate" value="${board.art_reg_date}" pattern="yyyy-MM-dd"/>
 		 <fmt:formatDate var="formatModDate" value="${board.art_mod_date}" pattern="yyyy-MM-dd"/>
 				&ensp; 조회수: ${board.art_view_cnt }
@@ -47,46 +48,59 @@
 				&ensp; 작성일: ${formatRegDate}
 				&ensp; 수정일: ${formatModDate}
 		</c:if>
-			</div>
+	</div>
 	<table border="1">
 	
 		<tr>
 		     
 			<td>제목:${board.art_title}</td>
-		</tr>
-		<tr>
+		
+	
 			<td>
+			<div class="col text-right">
 				작성자:${board.art_user_name}
-			
+			</div>
 			</td>
 		</tr>
 		<tr>
-			<td><div style="height: 300px; margin: 10px; display: inline-block">
+			<td>
 			
-			<a><img src="${board.art_img_path}" width=200 height=200 /> </a>${board.art_content }
+			<div style="height: 300px; margin: 10px; display: inline-block">
+			<div class="card-body"><img src="images/bg.jpg" width=200 height=200 />
+			</div>
+			${board.art_content }
+			</div>
+			</td>
 			
-			</div></td>
 		</tr>
 	</table>
 	<c:if test="${board.art_writer==sessionScope.user.user_Id||leader.USER_ID==sessionScope.user.user_Id}">
-	<button><a href="modifyBoard.do?art_id=${board.art_id}">수정</a></button>
-	<button><a href="deleteBoard.do?art_id=${board.art_id}&party_id=${board.party_id}">삭제</a></button>
+	
+    <div class="col text-right">
+    <button class="btn btn-success" onclick ="location.href='modifyBoard.do?art_id=${board.art_id}';">수정하기</button>
+    <button class="btn btn-danger" onclick ="location.href='deleteBoard.do?art_id=${board.art_id}&party_id=${board.party_id}';">삭제하기</button>
+	</div>
 	</c:if>
 <c:forEach var="comment" items="${commentList}" varStatus="i" >
 		<fmt:formatDate var="formatRegDate" value="${comment.art_comment_reg_date}" pattern="yyyy-MM-dd HH:MM:ss"/>
 		 <fmt:formatDate var="formatModDate" value="${comment.art_comment_mod_date}" pattern="yyyy-MM-dd HH:MM:ss"/>
 		<div style="border: 1px solid black">
-			<p>${comment.art_comment_user_name}</p>
+		
 			<p>${comment.art_comment_content}</p>
+			 <div class="col text-right">
+			${comment.art_comment_user_name}
 			<c:if test="${empty formatModDate }">
 				&ensp; ${formatRegDate}
 			</c:if>
 			<c:if test="${not empty formatModDate}">
 					&ensp;  ${formatModDate} (수정됨)
 			</c:if>
+			</div>
 			<c:if test="${sessionScope.user.user_Id==comment.art_comment_writer}">
+            <div class="col text-right">
 			<a href="#" data-toggle="modal" data-target="#${i.index}">수정</a>
-			
+			 <a href="deleteBoardComment.do?art_comment_id=${comment.art_comment_id}&art_id=${board.art_id}">삭제</a>
+			</div>
 			<div class="modal fade" id="${i.index}" data-backdrop="static"
 					data-keyboard="false">
 					<div class="modal-dialog modal-xl modal-dialog-centered">
@@ -94,37 +108,39 @@
 
 							<!-- Modal Header -->
 							<div class="modal-header">
-								<h4 class="modal-title">모달테스트입니다</h4><br />
+								<h4 class="modal-title">댓글수정</h4><br />
 								<div>
 								
 								</div>
+						
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
+							
 							</div>
 
 							<!-- Modal body -->
 							<div class="modal-body">
 								<form action="modifyBoardComment.do?art_comment_id=${comment.art_comment_id}" method="POST">
-								
 								<textarea name="art_comment_content" cols="30" rows="10">${comment.art_comment_content}</textarea>
 								<input type="hidden" name="party_id" value="${board.party_id}" /> 
 								<input type="hidden" name="art_id" value="${board.art_id}" /> <br />
+								 <div class="col text-right">
 								 <input class="btn btn-primary" type="submit" value="수정">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal"> 취소 </button>
+									</div>
 								</form>
 							</div>
 
 							<!-- Modal footer -->
 							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary"
-									data-dismiss="modal"> 취소 </button>
+								
 							</div>
 
 						</div>
 					</div>
 				</div>
 			
-			
-			
-			<a href="deleteBoardComment.do?art_comment_id=${comment.art_comment_id}&art_id=${board.art_id}">삭제</a>
+ 
 		</c:if>
 		</div>
 		
@@ -135,14 +151,15 @@
 			<textarea name="art_comment_content" cols="30" rows="3" id="comment"></textarea>
 			<input type="hidden" name="party_id" value="${board.party_id}" /> 
 			<input type="hidden" name="art_id" value="${board.art_id}" /> 
-			<input type="submit" value="댓글 등록" />
+			<div class="col text-right">
+			<input class="btn btn-primary btn-sm" type="submit" value="댓글 등록" />
+			</div>
 		</form>
 	</div>
 	
-		
-	<button><a href="getBoardList.do?party_id=1">돌아가기</a></button>
-
-</div>
+		 <div class="col text-center">
+	<button class="btn btn-primary btn-lg" onclick ="location.href='getBoardList.do?party_id=1';">돌아가기</button>
+       </div>
 
 </body>
 </html>

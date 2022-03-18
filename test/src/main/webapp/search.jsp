@@ -8,56 +8,62 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
-    <title>Insert title here</title>
-</head><body>
-	<c:forEach items="${PartyList}" var="party">
-		<div style="display:flex;">
-			<div><a href="getParty.do?PARTY_ID=${party.PARTY_ID}"> 
-				&ensp; <img src="${party.PARTY_TUMB_PATH}" width=200 height=200 />
-			</a></div>
-			<div><a href="getParty.do?PARTY_ID=${party.PARTY_ID}">
-				&ensp; ${party.PARTY_TITLE}
-			</a></div>
-			<div style="float:right">
-		 <fmt:formatDate var="formatRegDate" value="${party.PARTY_REG_DATE}" pattern="yyyy-MM-dd"/>
-				&ensp; 작성자: ${party.PARTY_CREATOR}
-				&ensp; 카테고리: ${party.CATEGORY_NAME}
-				&ensp; 작성일: ${formatRegDate}
-	
+    <title>검색결과</title>
+</head>
+
+<body>
+<jsp:include page="Nav.jsp"/>
+
+		
+<c:forEach items="${PartyList}" var="party">
+	<div class="container pt-5">
+		<div class="row">
+			<div class="col">
+  				<div class="card" style="width:500px">
+  					<a href="getParty.do?PARTY_ID=${party.PARTY_ID}"> 
+    				<img class="card-img-top" src="resource/img/f11.jpg" alt="Card image" style="width:100%">
+    				</a>
+   						 <div class="card-body">
+   						 	<a href="getParty.do?PARTY_ID=${party.PARTY_ID}">
+     						 <h4 class="card-title">${party.PARTY_TITLE}</h4>
+     						 </a>
+     						  <fmt:formatDate var="formatRegDate" value="${party.PARTY_REG_DATE}" pattern="yyyy-MM-dd"/>
+     			   <p class="card-text">&ensp; 작성자: ${party.PARTY_CREATOR}
+									  	&ensp; 카테고리: ${party.CATEGORY_NAME}
+										&ensp; 작성일: ${formatRegDate}</p>
+   				 		</div>
+  				</div>
+ 					 <br>
 			</div>
 		</div>
-		<hr />
-	</c:forEach>
-	
+	</div>
+</c:forEach>
+
 <% request.setCharacterEncoding("UTF-8");
 String name = request.getParameter("CATEGORY_NAME");
 String keyword = request.getParameter("SEARCH_KEYWORD");
 pageContext.setAttribute("name", name);
 pageContext.setAttribute("keyword",keyword);
 %>
-
-  	
-  	<c:if test="${pages.hasParty()}">
-	<div>
-		<tr>
-			<td colspan="4">
-				<c:if test ="${pages.startPage > pages.pageSize}">
-				<a href="getPartyList.do?CATEGORY_NAME=${name}&SEARCH_KEYWORD=${keyword}&pageNo=${pages.startPage - pages.pageSize }">[이전]</a>
-				</c:if>
-			<c:forEach var="pNo"
+	<div class="container pt-5" align="center">
+ <c:if test="${pages.hasParty()}">
+<ul class="pagination">
+<c:if test ="${pages.startPage > pages.pageSize}">
+  <li class="page-item"><a class="page-link" href="getPartyList.do?CATEGORY_NAME=${name}&SEARCH_KEYWORD=${keyword}&pageNo=${pages.startPage - pages.pageSize }">이전</a></li>
+  </c:if>
+ <c:forEach var="pNo"
 					begin="${pages.startPage}"
 					end="${pages.endPage}">
-			<a href="getPartyList.do?CATEGORY_NAME=${name}&SEARCH_KEYWORD=${keyword}&pageNo=${pNo}">[${pNo}]</a>
-			</c:forEach>
-			<c:if test="${pages.endPage < pages.totalPages }" >
-			<a href="getPartyList.do?CATEGORY_NAME=${name}&SEARCH_KEYWORD=${keyword}&pageNo=${pages.startPage + pages.pageSize }"> [다음]</a>
-			</c:if>
-			</td>
-		</tr>
-	</div>
+  <li class="page-item"><a class="page-link" href="getPartyList.do?CATEGORY_NAME=${name}&SEARCH_KEYWORD=${keyword}&pageNo=${pNo}">${pNo}</a></li>
+  </c:forEach>
+  <c:if test="${pages.endPage < pages.totalPages }" >
+  <li class="page-item"><a class="page-link" href="getPartyList.do?CATEGORY_NAME=${name}&SEARCH_KEYWORD=${keyword}&pageNo=${pages.startPage + pages.pageSize }">다음</a></li>
+  </c:if>
+</ul>
 	</c:if>
+	</div>
 	
-	
+	<jsp:include page="footer.jsp"/>
   	
 </body>
 

@@ -92,40 +92,40 @@
 			      		
 			      		<br>
 			      		<br />
-  						<input class="form-check-input" type="radio" id="check1" name="option1" value="something" name="rate1" checked> 
+  						<input class="form-check-input" type="radio"   value="1" name="rate1" checked> 
   						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  						<input class="form-check-input" type="radio" id="check1" name="option1" value="something" name="rate1" checked>
+  						<input class="form-check-input" type="radio"   value="2" name="rate1" checked>
   						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  						<input class="form-check-input" type="radio" id="check1" name="option1" value="something" name="rate1" checked>
+  						<input class="form-check-input" type="radio"   value="3" name="rate1" checked>
   						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  						<input class="form-check-input" type="radio" id="check1" name="option1" value="something" name="rate1" checked>
+  						<input class="form-check-input" type="radio"   value="4" name="rate1" checked>
   						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  						<input class="form-check-input" type="radio" id="check1" name="option1" value="something" name="rate1" checked>
+  						<input class="form-check-input" type="radio"   value="5" name="rate1" checked>
   						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-primary">친절도</button></label>
   						
   						<br />
   						<br />
-  						<input class="form-check-input" type="radio" id="check1" name="option1" value="something" name="rate2" checked>
+  						<input class="form-check-input" type="radio"   value="1" name="rate2" checked>
   						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  						<input class="form-check-input" type="radio" id="check1" name="option1" value="something" name="rate2" checked>
+  						<input class="form-check-input" type="radio"   value="2" name="rate2" checked>
   						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  						<input class="form-check-input" type="radio" id="check1" name="option1" value="something" name="rate2" checked>
+  						<input class="form-check-input" type="radio"   value="3" name="rate2" checked>
   						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  						<input class="form-check-input" type="radio" id="check1" name="option1" value="something" name="rate2" checked>
+  						<input class="form-check-input" type="radio"   value="4" name="rate2" checked>
   						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  						<input class="form-check-input" type="radio" id="check1" name="option1" value="something" name="rate2" checked>
+  						<input class="form-check-input" type="radio"   value="5" name="rate2" checked>
   						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-primary">만족도</button></label>
   						<br>
   						<br />
-  						<input class="form-check-input" type="radio" id="check1" name="option1" value="something" name="rate3" checked>
+  						<input class="form-check-input" type="radio"   value="1" name="rate3" checked>
   						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  						<input class="form-check-input" type="radio" id="check1" name="option1" value="something" name="rate3" checked>
+  						<input class="form-check-input" type="radio"   value="2" name="rate3" checked>
   						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  						<input class="form-check-input" type="radio" id="check1" name="option1" value="something" name="rate3" checked>
+  						<input class="form-check-input" type="radio"   value="3" name="rate3" checked>
   						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  						<input class="form-check-input" type="radio" id="check1" name="option1" value="something" name="rate3" checked>
+  						<input class="form-check-input" type="radio"   value="4" name="rate3" checked>
   						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  						<input class="form-check-input" type="radio" id="check1" name="option1" value="something" name="rate2" checked>
+  						<input class="form-check-input" type="radio"   value="5" name="rate3" checked>
   						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-primary">가격</button></label>
   						<input type="hidden" name="party_id" value="${sDetail.party_id }"/>
   						<input type="hidden" name="sch_id" value="${sDetail.sch_id }"/>

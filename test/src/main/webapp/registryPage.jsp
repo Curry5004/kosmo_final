@@ -9,6 +9,8 @@
 </head>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
+var uid = '<%=(String)session.getAttribute("user.user_Id")%>';
+if(uid == null){
 function fn_idChk(){
 	
 	var user_id = $("#user_Id").val();
@@ -159,6 +161,7 @@ function fn_numChk(){
 	 }
 	 
 	}
+}
  
   </script>
 
@@ -171,22 +174,35 @@ function fn_numChk(){
 			enctype="multipart/form-data" onsubmit="return fn_phoneChk()">
 			<table>
 				<tr>
+				<c:if test="${empty sessionScope.user.user_Id}">
 					<td id="title">아이디</td>
 					<td><input type="text" name="user_Id" id="user_Id"
 						maxlength="50" required>
 						<button class="idChk" type="button" id="idChk"
 							onclick="fn_idChk();" value="N">중복확인</button></td>
+				</c:if>
+				<c:if test="${not empty sessionScope.user.user_Id}">
+				<input type="hidden" class="idChk" id="idChk" value="N" />
+				</c:if>
 				</tr>
 
 				<tr>
+				<c:if test="${empty sessionScope.user.user_Id}">
 					<td id="title">비밀번호</td>
 					<td><input type="password" name="password" maxlength="50" required>
 					</td>
+				</c:if>
+				<c:if test="${not empty sessionScope.user.user_Id}">
+				</c:if>
 				</tr>
 
 				<tr>
+				<c:if test="${empty sessionScope.user.user_Id}">
 					<td id="title">이름</td>
 					<td><input type="text" name="name" maxlength="50" required></td>
+				</c:if>
+				<c:if test="${not empty sessionScope.user.user_Id}">
+				</c:if>
 				</tr>
 
 				<tr>
@@ -196,15 +212,15 @@ function fn_numChk(){
 				</tr>
 
 				<tr>
-					<td id="title">생일</td>
-					<td><input type="text" name="birthDay" maxlength="10"
-						placeholder="양식)YYYY-MM-DD ex)1993-12-05" size="6"></td>
+				<c:if test="${empty sessionScope.user.user_Id}">
+				</c:if>
 				</tr>
 
 
 
 				<tr>
-
+				
+				<c:if test="${empty sessionScope.user.user_Id}">
 					<form action="#" method="post" name="phoneCheck">
 						<td id="title">휴대전화</td>
 						<td>
@@ -217,9 +233,12 @@ function fn_numChk(){
 						<button type="button" id="enterBtn" value="N" required> 확인 </button>
 							<!--인증번호를 히든으로 저장--> 
 							<input type="hidden" name="text" id="text" /></td>
-					</form>
-					
-					
+					</form>	
+				</c:if>
+				<c:if test="${not empty sessionScope.user.user_Id}">
+				<input type="hidden" class="umChk" id="numChk" value="Y" />
+				</c:if>
+				
 
 				</tr>
 				<tr>

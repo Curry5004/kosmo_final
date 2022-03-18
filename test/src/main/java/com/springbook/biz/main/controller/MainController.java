@@ -75,11 +75,11 @@ public class MainController {
 		vo.setBirthDay(birthyear + "-" + birthDay);
 		vo.setName(name);
 		session.setAttribute("user", vo); 
-		
+
 		int result = userService.idCheck(vo);
-		System.out.println("result값" + result);
-		if (result == 1) {
-			return "registryPage.jsp";
+		System.out.println("result값" + result);   	
+		if (result == 0) {
+			return "registry_form.do";
 	
 		}
 			//userService.insertUser(vo);

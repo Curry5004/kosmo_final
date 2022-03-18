@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>registryPage</title>
-c
+
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 	<style> 
@@ -32,11 +32,12 @@ c
 </head>
 
 	<body> 
+	
 	<div class="container"> 
 		<div class="input-form-row"> 
 			<div class="input-form col-md-12 mx-auto"> 
 				<h4 class="mb-3">회원가입</h4> 
-				<form method="post" action="registry.do" name="userInfo" enctype="multipart/form-data">
+					<form method="post" action="registry.do" name="userInfo" enctype="multipart/form-data">
 					<div class="row"> 
 						<div class="col-md-6 mb-3"> 
 							<label for="user_Id">아이디</label>

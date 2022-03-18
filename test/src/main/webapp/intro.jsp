@@ -76,7 +76,7 @@
   <button type="button" class="btn btn-primary" onclick="location.href='joinParty.do?PARTY_ID=${party.PARTY_ID}'">소모임 가입</button>
 </c:if>
 <c:if test="${fn:contains(idList, sessionScope.user.user_Id)}">
-  <button type="button" class="btn btn-primary" onclick="location.href='deletePartyMember.do?PARTY_ID=${party.PARTY_ID}''">소모임 탈퇴</button>
+  <button type="button" class="btn btn-primary" onclick="location.href='deletePartyMember.do?PARTY_ID=${party.PARTY_ID}'">소모임 탈퇴</button>
 </c:if>
 <c:if test="${!fn:contains(favList, sessionScope.user.user_Id)}">
   <button type="button" class="btn btn-primary" onclick="location.href='memberFav.do?PARTY_ID=${party.PARTY_ID}&USER_ID=${user.user_Id}'">찜하기</button>

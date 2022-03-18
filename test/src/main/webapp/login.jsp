@@ -26,8 +26,9 @@
 				<input type="submit" value="로그인"/>
 			</td>
 		</tr>
-		
 	</table>
+	<a href="${naver_url}"><img height="30" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
+	
 	</form>
 	<hr>
 	<a href="registry_form.do">회원가입</a>

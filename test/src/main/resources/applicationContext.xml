@@ -35,6 +35,6 @@
 	<bean class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSession"></constructor-arg>
 	</bean>
-		
-
+	
+	 <bean id="naverLoginBO" class="com.springbook.biz.util.naver.NaverLoginBO" />
 </beans>

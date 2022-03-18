@@ -4,30 +4,28 @@ import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.springbook.biz.common.Consts;
 import com.springbook.biz.user.UserService;
 import com.springbook.biz.user.UserVO;
-import com.springbook.biz.user.impl.UserDAO;
+import com.springbook.biz.util.naver.NaverLoginBO;
 
 @Controller
 public class UserController {
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private NaverLoginBO naverLoginBO;
 
 	@RequestMapping(value = "/registry.do", method = RequestMethod.POST)
 	public String insertUser(UserVO vo, Model model, HttpServletRequest request) {
@@ -158,9 +156,18 @@ public class UserController {
 
 	// 로그인 화면
 	@RequestMapping("/login.do")
-	public String login() {
-		return "login.jsp"; // main/webapp/login.jsp로 포워드
+	public String login(Model model, HttpSession session)throws Exception {
+		
+//		네이버 api 모델에 담기 
+	    String naverAuthUrl =naverLoginBO.getAuthorizationUrl(session);
+	    model.addAttribute("naver_url", naverAuthUrl);
+	    System.out.println("naver접근" + naverAuthUrl);
+
+	   
+		return "login.jsp"; 
+		
 	}
+	
 
 	// 로그인 처리
 	@RequestMapping("/loginCheck.do")

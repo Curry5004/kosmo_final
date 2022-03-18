@@ -7,13 +7,16 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
-    <title>Insert title here</title>
+ <title>Insert title here</title>
 	<!-- #BOOTSTRAP 5.1.3 합쳐지고 최소화된 최신 CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<!-- #BOOTSTRAP 5.1.3 합쳐지고 최소화된 최신 CSS -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     
+
+    
     <style>
+
         #modal.modal-open {
             display: none;
         }
@@ -30,26 +33,49 @@
 		  cursor: pointer;		
 		}
 		ul {
-			
-			width: 200px;
-			list-style-type: none;
-			margin: 0;
 			padding: 0;
+			margin: 0;
+			height: 100%;
 		}
 		li a {
-			display: block;
+			display: inline-block;
 			color: black;
-			padding: 8px
+			padding: 8px 16px;
 			font-weight: bold;
-			text-decoration-line: none;
+			text-decoration: none;
 		}
-
+		a { 
+			text-decoration:none
+		}
+		h5 {
+			display: inline-block;
+			text-align: center;
+			padding-left: 100px;
+		}
+		.abc {
+			display: inline-block;
+			float: left;
+			width: 13%;
+			text-align : left;
+			line-height: 30px;
+			margin-right : 0px;
+			margin-top : 10px;
+		}
+		.bcd {
+			text-align : center;
+		}
+		.modal-body1 {
+			padding: 0;
+			justify-content: center; 
+		}
+		
+		
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="../home.do">LOGO</a>
+          <a class="navbar-brand" href="../home.do"><font size="20px" color="red">LOGO</font></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -90,7 +116,11 @@
           </div>
         </div>
       </nav>
-      <ul>
+      <div class="bcd">
+	 	 <img src="${profile_image}" width=120 height=120 ><font size="5px">${user_id}님이 로그인 중입니다.</font></img>
+	  </div>
+      
+      <ul class="abc">
      	<li><a href="getUserInfo.do">1.개인정보 관리</a></li>
      	<li><a href="getPartyList.do">2.내가 가입한 소모임</a></li>
      	<li><a href="getPartyFavList.do">3.내가 찜한 소모임</a></li>
@@ -101,38 +131,25 @@
      	<li><a href="<%= request.getContextPath() %>/report.do">6.고객센터</a></li>
 	  	 -->
 	  </ul>
-	  <div>
-	 	 <img src="${profile_image}" width=80 height=80 >${user_id}님이 로그인 중입니다.</img>
-	  </div>
-	  <h3>내가 가입한 목록</h3>
-	  <div id="myPartyList" style="display: flex;">
+	  
+	  <h5>내가 가입한 목록</h5>
+	  <div class="modal-body1" id="myPartyList" style="display: flex;">
 	  	<c:forEach items="${mypageVO.myPartyList}" var="party">
-			<div style="display: blcok;">
-				<div><a href="../getParty.do?PARTY_ID=${party.PARTY_ID}">&ensp; <img src="${party.PARTY_TUMB_PATH}" width=200 height=200 /></a></div>
-				<div><a href="../getParty.do?PARTY_ID=${party.PARTY_ID}">&ensp; ${party.PARTY_TITLE}</a></div>
-				<div style="float:right">
-			 		<fmt:formatDate var="formatRegDate" value="${party.PARTY_REG_DATE}" pattern="yyyy-MM-dd"/>
-					&ensp; 작성자: ${party.PARTY_CREATOR}
-					&ensp; 카테고리: ${party.CATEGORY_NAME}
-					&ensp; 작성일: ${formatRegDate}
-				</div>
+			<div style="display:block;">
+				<div><a href="../getParty.do?PARTY_ID=${party.PARTY_ID}"><img src="${party.PARTY_TUMB_PATH}" width=120 height=120 hspace=50 /></a></div>
+				<div style="margin-left:50px;"><a href="../getParty.do?PARTY_ID=${party.PARTY_ID}">${party.PARTY_TITLE}</a></div>
+                       
 			</div>
 			<hr />
 		</c:forEach>
 		<div style="display:block;"><a href="getPartyList.do">더보기</a></div>
 	  </div>
-	  <h3>내가 찜한 목록</h3>
-	  <div id="favPartyList"  style="display: flex;">
+	  <h5>내가 찜한 목록</h5>
+	  <div class="modal-body1" id="favPartyList"  style="display: flex;">
 	  	<c:forEach items="${mypageVO.favPartyList}" var="party">
 			<div style="display:block;">
-				<div><a href="../getParty.do?PARTY_ID=${party.PARTY_ID}">&ensp; <img src="${party.PARTY_TUMB_PATH}" width=200 height=200 /></a></div>
-				<div><a href="../getParty.do?PARTY_ID=${party.PARTY_ID}">&ensp; ${party.PARTY_TITLE}</a></div>
-				<div style="float:right">
-			 		<fmt:formatDate var="formatRegDate" value="${party.PARTY_REG_DATE}" pattern="yyyy-MM-dd"/>
-					&ensp; 작성자: ${party.PARTY_CREATOR}
-					&ensp; 카테고리: ${party.CATEGORY_NAME}
-					&ensp; 작성일: ${formatRegDate}				
-				</div>
+				<div><a href="../getParty.do?PARTY_ID=${party.PARTY_ID}"><img src="${party.PARTY_TUMB_PATH}" width=120 height=120 hspace=50 /></a></div>
+				<div style="margin-left:50px;"><a href="../getParty.do?PARTY_ID=${party.PARTY_ID}">${party.PARTY_TITLE}</a></div>
 			</div>
 			<hr />
 		</c:forEach>

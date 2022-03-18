@@ -34,8 +34,7 @@
         #modal.modal-open {
             display: none;
         }
-		.button {
-		
+		.button {		
 		  background-color: blue;
 		
 		  border: none;

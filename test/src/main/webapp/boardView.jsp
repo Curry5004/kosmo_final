@@ -30,8 +30,10 @@
 		}
 	}
 </script>
-<jsp:include page="Nav.jsp"/>
+
 <body>
+<jsp:include page="Nav.jsp"/>
+
 
 <h2>게시판 보기</h2>
 <br><br><br>
@@ -160,6 +162,6 @@
 		 <div class="col text-center">
 	<button class="btn btn-primary btn-lg" onclick ="location.href='getBoardList.do?party_id=1';">돌아가기</button>
        </div>
-
+<jsp:include page ="footer.jsp"/>
 </body>
 </html>

@@ -13,8 +13,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>소모임- 게시글 리스트</title>
 </head>
-<jsp:include page="Nav.jsp"/>
 <body>
+<jsp:include page="Nav.jsp"/>
+<div class="container">
+<div class="row">
+<div class="btn-group">
+  <button type="button" class="btn btn-primary" onclick="location.href='getParty.do?PARTY_ID=${param.party_id}'">소개글</button>
+  <button type="button" class="btn btn-primary" onclick="location.href='getBoardList.do?party_id=${param.party_id}'">게시판</button>
+  <button type="button" class="btn btn-primary" onclick="location.href='getAlbumList.do?party_id=${param.party_id}'">앨범</button>
+  <button type="button" class="btn btn-primary" onclick="location.href='calendar.do?party_id=${param.party_id}'">일정</button>
+  <button type="button" class="btn btn-primary" onclick="location.href=''">채팅</button>
+  <c:if test="${party.PARTY_CREATOR eq user.user_Id}">
+  <button type="button" class="btn btn-primary" onclick="location.href='getPartyUserList.do?PARTY_ID=${param.party_id}'">회원관리</button>
+  </c:if>
+</div>
+</div>
+</div>
 
 <section>
 
@@ -66,6 +80,7 @@
 	
 </section>
 <footer>
+<jsp:include page ="footer.jsp"/>
 </footer>
 </body>
 </html>

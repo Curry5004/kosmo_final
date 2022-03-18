@@ -4,7 +4,11 @@
     <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
+<style>
+.pagination{
+	 justify-content : center;
+}
+</style>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
@@ -12,11 +16,18 @@
 </head>
 
 <body>
+<% request.setCharacterEncoding("UTF-8");
+String name = request.getParameter("CATEGORY_NAME");
+String keyword = request.getParameter("SEARCH_KEYWORD");
+pageContext.setAttribute("name", name);
+pageContext.setAttribute("keyword",keyword);
+%>
+
 <jsp:include page="Nav.jsp"/>
 
 		
 <c:forEach items="${PartyList}" var="party">
-	<div class="container pt-5">
+	<div class="container pt-5" align="center">
 		<div class="row">
 			<div class="col">
   				<div class="card" style="width:500px">
@@ -39,17 +50,14 @@
 	</div>
 </c:forEach>
 
-<% request.setCharacterEncoding("UTF-8");
-String name = request.getParameter("CATEGORY_NAME");
-String keyword = request.getParameter("SEARCH_KEYWORD");
-pageContext.setAttribute("name", name);
-pageContext.setAttribute("keyword",keyword);
-%>
+
 	<div class="container pt-5" align="center">
+		<div class="row"> 
+			<div class="col " >
  <c:if test="${pages.hasParty()}">
-<ul class="pagination">
+<ul class="pagination" >
 <c:if test ="${pages.startPage > pages.pageSize}">
-  <li class="page-item"><a class="page-link" href="getPartyList.do?CATEGORY_NAME=${name}&SEARCH_KEYWORD=${keyword}&pageNo=${pages.startPage - pages.pageSize }">이전</a></li>
+  <li class="page-item " ><a class="page-link" href="getPartyList.do?CATEGORY_NAME=${name}&SEARCH_KEYWORD=${keyword}&pageNo=${pages.startPage - pages.pageSize }">이전</a></li>
   </c:if>
  <c:forEach var="pNo"
 					begin="${pages.startPage}"
@@ -61,8 +69,9 @@ pageContext.setAttribute("keyword",keyword);
   </c:if>
 </ul>
 	</c:if>
+			</div>
+		</div>
 	</div>
-	
 	<jsp:include page="footer.jsp"/>
   	
 </body>

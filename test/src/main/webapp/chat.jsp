@@ -12,8 +12,70 @@
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<script>
+function scroll_go(){
+$("body").scrollTop($(document).height());
+}
+scroll_go();
+</script>
+<style>
+body{
+ background-color: #a1c0d6;
+  height: 100vh;
+  padding-top: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
+  }
+	
+.messageDiv{ background:#fff; border-radius:10px; padding:8px; margin: 8px; text-align:left; width: 30%;}
+#messages{ background:#fff; border-radius:10px; padding:8px; margin: 8px; text-align:left; width: 30%;}
+</style>
 </head>
-<body>
+<script>
+
+
+
+	function ExecuteScript() 
+	{
+		document.body.scrollTop = document.body.scrollHeight;
+	}
+
+	var msg1 = {
+			party_id : 1
+	}
+	function list() {
+		const testDiv = document.getElementById('testDiv');
+		fetch('getChatList.do',{
+    		method : 'POST',
+            mode : 'cors',
+            cache : 'no-cache',
+            /////Content Type은 json으로 명시한다.
+            headers: {'Content-Type': 'application/json'},
+            credentials : 'same-origin',
+            redirect : 'follow',
+            referrer : 'no-referrer',
+            body: JSON.stringify(msg1)
+		}).then(res => res.json())
+		.then(res => {
+			res.forEach((resEach) => {
+				var div1 = document.createElement('div');
+				div1.className += "messageDiv";
+				div1.innerHTML =resEach.user_id + " : " + resEach.content + " 작성시간 : "+ resEach.reg_date
+				testDiv.appendChild(div1);
+			})
+		})
+		.catch(function(error){
+			console.error(error);
+		})
+	}
+</script>
+<body onload="ExecuteScript(), list()">
+<div id="testDiv"></div>
+    
+    <!-- Server responses get written here -->
+    <div id="messages"></div>
+    <!-- websocket javascript -->
+    <c:set var="id" value="${sessionScope.user.user_Id }"></c:set>
     <div>
         <input type="text" id="sender" value="${sessionScope.user.name }" style="display: none;">
         <input type="text" id="messageinput">
@@ -23,10 +85,10 @@
         <button type="button" onclick="send();">Send</button>
         <button type="button" onclick="closeSocket();">Close</button>
     </div>
-    <!-- Server responses get written here -->
-    <div id="messages"></div>
-    <!-- websocket javascript -->
-    <c:set var="id" value="${sessionScope.user.user_Id }"></c:set>
+    
+    
+    
+    
     <script type="text/javascript">
         var ws;
         var messages=document.getElementById("messages");
@@ -61,7 +123,7 @@
             	  , user_name : "<c:out value='${sessionScope.user.name }'/>"
             };
         	
-        	fetch('insertChat1.do',{
+        	fetch('insertChat.do',{
         		method : 'POST',
                 mode : 'cors',
                 cache : 'no-cache',
@@ -92,6 +154,8 @@
         function writeResponse(text){
             messages.innerHTML+="<br/>"+text;
         }
+        
+        
   </script>
 </body>
 </html>

@@ -1,5 +1,7 @@
 package com.springbook.biz.chat.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +17,9 @@ public class ChatServiceImpl implements ChatService {
 	@Override
 	public void insertChat(ChatVO vo) {
 		chatDAO.insertChat(vo);
+	}
+	
+	public List<ChatVO> getChatList (ChatVO vo){
+		return chatDAO.getChatList(vo);
 	}
 }

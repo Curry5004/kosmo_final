@@ -8,4 +8,10 @@
 	VALUES (#{party_id}, #{user_id}, #{user_name}, #{content})
 </insert>
 
+<select id="getChatList" resultType="chat">
+	SELECT * FROM CHAT 
+	WHERE PARTY_ID = #{party_id}
+	ORDER BY CHAT_ID ASC 
+</select>
+
 </mapper>

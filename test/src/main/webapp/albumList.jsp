@@ -13,28 +13,33 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>소모임- 게시글 리스트</title>
 </head>
+
 <style>
 	#imgArticle {
 		float: left;
 	}
 	#like{
+	  
 		color : red;
 		position: relative; bottom: 50px; right: 50px;
 	}
 	
 </style>
-<header>
-<a class="btn btn-primary" href="getParty.do?PARTY_ID=${param.party_id}" role="button">소개글</a>
-<a class="btn btn-primary" href="getBoardList.do?party_id=${param.party_id}" role="button">게시판</a>
-<a class="btn btn-primary" href="getAlbumList.do?party_id=${param.party_id}" role="button">앨범</a>
-<a class="btn btn-primary" href="calendar.do?party_id=${param.party_id}" role="button">일정</a>
-<a class="btn btn-primary" href="index.jsp" role="button">채?팅?</a><br />
-</header>
+<jsp:include page="Nav.jsp"/>
+
 <body>
-	
+	<div id="imgArticle">
+	<c:forEach items="${albumList}" var="album">
+			<a href="getAlbum.do?alb_id=${album.alb_id}">
+			 <img src="${album.alb_img_path}" width=300 height=300 />
+			<span id="like">${album.likeCnt}</span>
+			</a>
+	</c:forEach> 
+	</div>
 <section>
 	<div>
 	<c:if test="${pages.hasBoard()}">
+	
 	<table>
 		<tr>
 			<td colspan="4">
@@ -56,22 +61,13 @@
 	</c:if>
 	</div>
 	<div>
-	<button onclick="location.href='writeAlbum.jsp?party_id=${param.party_id}';">게시글 쓰기 </button>
-	<c:if test="${empty albumList }">
-		<button onclick="location.href='writeAlbum.jsp?party_id=${param.party_id}';">첫 게시물 작성</button>
-	</c:if>
+	
 	</div>
 	
-	
-	<div id="imgArticle">
-	<c:forEach items="${albumList}" var="album">
-			<a href="getAlbum.do?alb_id=${album.alb_id}">
-			 <img src="${album.alb_img_path}" width=300 height=300 />
-			<span id="like">${album.likeCnt}</span>
-			</a>
-	</c:forEach> 
+
+		<div class="col text-right">
+	<button class="btn btn-primary" onclick="location.href='writeAlbum.jsp?party_id=${param.party_id}';">앨범작성</button>
 	</div>
-	
 	
 
 	

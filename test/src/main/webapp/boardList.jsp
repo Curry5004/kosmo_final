@@ -15,17 +15,9 @@
 </head>
 <jsp:include page="Nav.jsp"/>
 <body>
-<header>
-<a class="btn btn-primary" href="getParty.do?PARTY_ID=${param.party_id}" role="button">소개글</a>
-<a class="btn btn-primary" href="getBoardList.do?party_id=${param.party_id}" role="button">게시판</a>
-<a class="btn btn-primary" href="getAlbumList.do?party_id=${param.party_id}" role="button">앨범</a>
-<a class="btn btn-primary" href="calendar.do?party_id=${param.party_id}" role="button">일정</a>
-<a class="btn btn-primary" href="index.jsp" role="button">채?팅?</a><br />
-</header>
+
 <section>
 
-
-	
 	<c:forEach items="${boardList}" var="board">
 		<div style="display:flex;">
 			<div><a href="getBoard.do?art_id=${board.art_id}">

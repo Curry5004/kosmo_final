@@ -62,6 +62,8 @@
 <!-- 네비 예시입니다. -->
 
 <body>
+
+<a href="chat.jsp">채팅이동용</a>
 	<!-- 네비게이션 예시입니다. -->
 	  <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">

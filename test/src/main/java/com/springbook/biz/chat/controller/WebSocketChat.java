@@ -2,25 +2,35 @@ package com.springbook.biz.chat.controller;
 
 import java.util.ArrayList;
 import java.util.List;
- 
-import javax.websocket.server.ServerEndpoint;
+
+import javax.servlet.http.HttpSession;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
+import javax.websocket.RemoteEndpoint.Basic;
 import javax.websocket.Session;
- 
+import javax.websocket.server.ServerEndpoint;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
- 
-import javax.websocket.RemoteEndpoint.Basic;
+
+import com.springbook.biz.chat.ChatService;
+import com.springbook.biz.chat.ChatVO;
+import com.springbook.biz.user.UserVO;
  
 @Controller
 @ServerEndpoint(value="/echo.do")
 public class WebSocketChat {
+	
+	@Autowired
+	ChatService chatService;
     
     private static final List<Session> sessionList=new ArrayList<Session>();;
     private static final Logger logger = LoggerFactory.getLogger(WebSocketChat.class);
@@ -33,6 +43,7 @@ public class WebSocketChat {
         mav.setViewName("chat");
         return mav;
     }
+    @ResponseBody
     @OnOpen
     public void onOpen(Session session) {
         logger.info("Open session id:"+session.getId());
@@ -54,23 +65,26 @@ public class WebSocketChat {
         try {
             for(Session session : WebSocketChat.sessionList) {
                 if(!self.getId().equals(session.getId())) {
-                    session.getBasicRemote().sendText(message.split(",")[1]+" : "+message);
+                    session.getBasicRemote().sendText(message.split(",")[1].split(":")[1]+" : "+message.split(",")[1].split(":")[0]);
                 }
             }
         }catch (Exception e) {
             // TODO: handle exception
-            System.out.println(e.getMessage());
+            System.out.println(e.getMessage()+"sendAllSessionToMessage");
         }
     }
+    @ResponseBody
     @OnMessage
     public void onMessage(String message,Session session) {
-        logger.info("Message From "+message.split(",")[1] + ": "+message.split(",")[0]);
+        logger.info("Message From "+message.split(",")[1].split(":")[1] + ": "+message.split(",")[0].split(":")[1]);
+    	System.out.println(message);
         try {
             final Basic basic=session.getBasicRemote();
-            basic.sendText("to : "+message);
+            System.out.println("되니?");
+            basic.sendText(message);
         }catch (Exception e) {
             // TODO: handle exception
-            System.out.println(e.getMessage());
+            System.out.println(e.getMessage()+"onMessage");
         }
         sendAllSessionToMessage(session, message);
     }
@@ -83,6 +97,10 @@ public class WebSocketChat {
         logger.info("Session "+session.getId()+" has ended");
         sessionList.remove(session);
     }
+    
+    
 }
+
+
 
 

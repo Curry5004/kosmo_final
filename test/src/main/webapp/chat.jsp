@@ -62,8 +62,15 @@
             };
         	
         	fetch('insertChat1.do',{
-    			method: 'post',
-    			data: JSON.stringify({CONTENT : document.getElementById("messageinput").value})
+        		method : 'POST',
+                mode : 'cors',
+                cache : 'no-cache',
+                /////Content Type은 json으로 명시한다.
+                headers: {'Content-Type': 'application/json'},
+                credentials : 'same-origin',
+                redirect : 'follow',
+                referrer : 'no-referrer',
+                body: JSON.stringify(msg)
     		}).then(function(response){
     			return response.text();
     		}).then(function(text){

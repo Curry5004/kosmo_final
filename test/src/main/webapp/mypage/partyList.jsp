@@ -26,6 +26,10 @@
 			</br>
 		<%} %>
 	</c:forEach> 
+	
+	
+	
+	
 	<c:if test="${pages.hasBoard()}">
 	<div>
 		<c:if test="${pageType eq 1}">

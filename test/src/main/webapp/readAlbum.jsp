@@ -1,9 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 
 <html>
 <link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
@@ -12,15 +9,23 @@
 	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 <head>
 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<meta  charset="UTF-8">
+<title>소모임-앨범보기</title>
 </head>
-
+<style>
+	h2 { text-align: center;}
+  table { width: 100%;}
+  textarea { width: 100%;}
+ 	#outter {
+		display: block;
+		width: 30%;
+		margin: auto;
+	}
+</style>
 <script language="javascript">
 	function check() {
 
 		var f = document.Reg_form;
-
 		if (f.comment.value == "") {
 			alert("내용을 입력해주세요");
 			f.comment.focus();
@@ -29,53 +34,57 @@
 	}
 </script>
 
-
-
-
+<jsp:include page="Nav.jsp"/>
 
 <body>
-<header>
-<a class="btn btn-primary" href="getParty.do?PARTY_ID=${album.party_id}" role="button">소개글</a>
-<a class="btn btn-primary" href="getBoardList.do?party_id=${album.party_id}" role="button">게시판</a>
-<a class="btn btn-primary" href="getAlbumList.do?party_id=${album.party_id}" role="button">앨범</a>
-<a class="btn btn-primary" href="calendar.do?party_id=${param.party_id}" role="button">일정</a>
-<a class="btn btn-primary" href="index.jsp" role="button">채?팅?</a><br />
-</header>
-	<img src="${album.alb_img_path }" alt="테스트" />
-	<p>작성자 : ${album.alb_writer }</p>
-	<fmt:formatDate var="RegDate"	value="${album.alb_reg_date}" pattern="yyyy-MM-dd HH:mm:ss" />
-	<p>작성일 : ${RegDate}</p>
-	<p>좋아요 : ${album.likeCnt}</p>
+
+<h2> 앨범 보기</h2>
+<br><br><br>
+
+    <fmt:formatDate var="RegDate"	value="${album.alb_reg_date}" pattern="yyyy-MM-dd HH:mm:ss" />
+	
+	<p>작성자 : ${album.alb_writer } </p>
+	
+		<img src="${album.alb_img_path }"  />
+	
+    <p><div class="col text-right">좋아요 : ${album.likeCnt} 작성일 : ${RegDate}</div></p>
+	
+
+
 	<c:if test="${!likeList.containsKey(sessionScope.user.user_Id)}">
+		<div class="col text-right">
 		<a href="likeUp.do?alb_id=${album.alb_id}&alb_writer=${sessionScope.user.user_Id}&party_id=${album.party_id}">
 			<button>좋아요</button>
 		</a>
+		  </div>
 	</c:if>
 	<c:if test="${likeList.containsKey(sessionScope.user.user_Id)}">
+		<div class="col text-right">
 		<a href="likeDown.do?alb_id=${album.alb_id}&alb_writer=${sessionScope.user.user_Id}&party_id=${album.party_id}">
 			<button>좋아요 취소</button>
 		</a>
 	</c:if>
-s
+      </div>
 	<c:forEach var="comment" items="${commentList}" varStatus="i">
-	
-	
-	
-	
 		<fmt:formatDate var="formatRegDate"	value="${comment.alb_comment_reg_date}" pattern="yyyy-MM-dd HH:mm:ss" />
 		<fmt:formatDate var="formatModDate"	value="${comment.alb_comment_mod_date}" pattern="yyyy-MM-dd hh:mm:ss" />
 		<div style="border: 1px solid black">
-			<p>${comment.user_name}</p>
+		
 			<p>${comment.alb_comment_content}</p>
+			 <div class="col text-right">
+			${comment.user_name}
 			<c:if test="${empty formatModDate }">
 				&ensp; ${formatRegDate}
 			</c:if>
 			<c:if test="${not empty formatModDate}">
 					&ensp;  ${formatModDate} (수정됨)
 			</c:if>
+			</div>
 			<c:if test="${sessionScope.user.user_Id==comment.user_id}">
+				<div class="col text-right">
 				<a href="#" data-toggle="modal" data-target="#${i.index}">수정</a>
-
+				<a href="deleteAlbumComment.do?alb_comment_id=${comment.alb_comment_id}&alb_id=${album.alb_id}">삭제</a>
+                </div>
 				<div class="modal fade" id="${i.index}" data-backdrop="static"
 					data-keyboard="false">
 					<div class="modal-dialog modal-xl modal-dialog-centered">
@@ -83,7 +92,7 @@ s
 
 							<!-- Modal Header -->
 							<div class="modal-header">
-								<h4 class="modal-title">모달테스트입니다</h4><br />
+								<h4 class="modal-title">댓글 수정</h4><br />
 								<div>
 								
 								</div>
@@ -97,20 +106,23 @@ s
 								<textarea name="alb_comment_content" cols="30" rows="10">${comment.alb_comment_content}</textarea>
 								<input type="hidden" name="party_id" value="${album.party_id}" /> 
 								<input type="hidden" name="alb_id" value="${album.alb_id}" /> <br />
+								 <div class="col text-right">
 								 <input class="btn btn-primary" type="submit" value="수정">
+								 	<button type="button" class="btn btn-secondary"
+									data-dismiss="modal"> 취소 </button>
+									</div>
 								</form>
 							</div>
 
 							<!-- Modal footer -->
 							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary"
-									data-dismiss="modal"> 취소 </button>
+								
 							</div>
 
 						</div>
 					</div>
 				</div>
-				<a href="deleteAlbumComment.do?alb_comment_id=${comment.alb_comment_id}&alb_id=${album.alb_id}">삭제</a>
+				
 			</c:if>
 		</div>
 	</c:forEach>
@@ -121,8 +133,14 @@ s
 			<textarea name="alb_comment_content" cols="30" rows="3" id="comment"></textarea>
 			<input type="hidden" name="party_id" value="${album.party_id}" /> 
 			<input type="hidden" name="alb_id" value="${album.alb_id}" /> 
-			<input type="submit" value="댓글 등록" />
+			<div class="col text-right">
+			<input class="btn btn-primary btn-sm" type="submit" value="댓글 등록" />
+			</div>
 		</form>
 	</div>
+   <div class="col text-center">
+	<button class="btn btn-primary btn-lg" onclick ="location.href='getAlbumList.do?party_id=1';">돌아가기</button>
+    </div>
+	
 </body>
 </html>

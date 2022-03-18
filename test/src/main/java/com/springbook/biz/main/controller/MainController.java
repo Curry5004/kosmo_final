@@ -79,10 +79,10 @@ public class MainController {
 		int result = userService.idCheck(vo);
 		System.out.println("result값" + result);   	
 		if (result == 0) {
+			userService.insertUser2(vo);
 			return "registry_form.do";
 	
 		}
-			//userService.insertUser(vo);
 		
 		
 		UserVO userVO=(UserVO)session.getAttribute("user");

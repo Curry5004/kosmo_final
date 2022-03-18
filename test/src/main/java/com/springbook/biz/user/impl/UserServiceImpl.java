@@ -59,5 +59,17 @@ public class UserServiceImpl implements UserService {
 		session.invalidate();
 	}
 
+	@Override
+	public void updateUser(UserVO vo) {
+		userDAO.updateUser(vo);
+		
+	}
+
+	@Override
+	public void insertUser2(UserVO vo) {
+		userDAO.insertUser2(vo);
+		
+	}
+
 
 }

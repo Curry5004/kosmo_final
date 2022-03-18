@@ -29,6 +29,9 @@ public class UserController {
 
 	@RequestMapping(value = "/registry.do", method = RequestMethod.POST)
 	public String insertUser(UserVO vo, Model model, HttpServletRequest request) {
+	HttpSession session = request.getSession();
+	System.out.println("session 값!!!!" + session.getAttribute("user"));
+	
 		// 아이디 중복 확인
 		System.out.println("controller 진입 확인");
 		int result = userService.idCheck(vo);
@@ -121,9 +124,12 @@ public class UserController {
 					String changeName = oldName.replaceAll("\\\\", "\\\\\\\\"); 					vo.setProfile_Image(changeName); // VO갱신
 					// System.out.println("프로필 이미지 갱신완료");
 				}
-
-				// System.out.println("회원가입 시작");
+				//if(session.getAttribute("user.user_id") != null) {
+					//userService.updateUser(vo);
+//				}else {
+//				// System.out.println("회원가입 시작");
 				userService.insertUser(vo);
+//				}
 				// System.out.println("insert 완료");
 				return "registryComplete.jsp";
 			}
@@ -135,6 +141,107 @@ public class UserController {
 
 	}
 
+	@RequestMapping(value = "/registry2.do", method = RequestMethod.POST)
+	public String updateUser(UserVO vo, Model model, HttpServletRequest request) {
+	HttpSession session = request.getSession();
+		// 아이디 중복 확인
+		System.out.println("controller 진입 확인");
+				if (vo.getMbti_root().getSize() != 0) {
+
+					System.out.println("mbti 사진 업로드 시작");
+					// 저장할 경로 가져오기
+					String path = request.getSession().getServletContext().getRealPath("resources"); // 프로젝트내
+																										// resource
+																										// 폴더의
+																										// 실제경로
+					String root = path + "\\uploadFiles"; // 저장할 위치
+
+					File file = new File(root); // 경로생성용 파일 생성
+
+					// 만약 uploadFiles 폴더가 없으면 생성해라 라는뜻
+					if (!file.exists())
+						file.mkdirs();
+
+					// 업로드할 폴더 설정
+					String originFileName = vo.getMbti_root().getOriginalFilename(); // 원래
+																						// 파일이름
+					String ext = originFileName.substring(originFileName.lastIndexOf("."));
+					String ranFileName = UUID.randomUUID().toString() + ext; // 랜덤변수가
+																				// 붙은
+																				// 파일이름
+
+					File changeFile = new File(root + "\\" + ranFileName); // 파일생성
+
+					// 파일업로드
+					try {
+						vo.getMbti_root().transferTo(changeFile); // 파일 업로드
+					} catch (IllegalStateException | IOException e) {
+						e.printStackTrace();
+
+						System.out.println("mbti 이미지 에러 ");
+						return "index.jsp";
+					}
+
+					// VO 필드변경
+					String oldName = root + "\\" + ranFileName; // 변경전 이름
+					String changeName = oldName.replaceAll("\\\\", "\\\\\\\\"); 
+					
+					vo.setMbti_Path(changeName); // VO갱신
+					System.out.println("mbti 이미지 삽입완료 ");
+				}
+
+				if (vo.getProfile_root().getSize() != 0) {
+
+					// 저장할 경로 가져오기
+					String path = request.getSession().getServletContext().getRealPath("resources"); // 프로젝트내
+																										// resource
+																										// 폴더의
+																										// 실제경로
+					String root = path + "\\uploadFiles"; // 저장할 위치
+
+					File file = new File(root); // 경로생성용 파일 생성
+
+					// 만약 uploadFiles 폴더가 없으면 생성해라 라는뜻
+					if (!file.exists())
+						file.mkdirs();
+
+					// 업로드할 폴더 설정
+					String originFileName = vo.getProfile_root().getOriginalFilename(); // 원래
+																						// 파일이름
+					String ext = originFileName.substring(originFileName.lastIndexOf("."));
+					String ranFileName = UUID.randomUUID().toString() + ext; // 랜덤변수가
+																				// 붙은
+																				// 파일이름
+
+					File changeFile = new File(root + "\\" + ranFileName); // 파일생성
+
+					// 파일업로드
+					try {
+						vo.getProfile_root().transferTo(changeFile); // 파일 업로드
+					} catch (IllegalStateException | IOException e) {
+						e.printStackTrace();
+
+						// System.out.println("프로필 이미지 에러 ");
+						return "index.jsp";
+					}
+
+					// VO 필드변경
+					String oldName = root + "\\" + ranFileName; // 변경전 이름
+					String changeName = oldName.replaceAll("\\\\", "\\\\\\\\"); 					vo.setProfile_Image(changeName); // VO갱신
+					// System.out.println("프로필 이미지 갱신완료");
+				}
+				UserVO userVo = (UserVO) session.getAttribute("user");
+				String userId = userVo.getUser_Id();
+				userVo.setGender(vo.getGender());
+				userVo.setProfile_Image(vo.getProfile_Image());
+				userVo.setMbti_Path(vo.getMbti_Path());
+				userVo.setMbti_Id(vo.getMbti_Id());
+				userVo.setUser_Id(userId);
+				userService.updateUser(userVo);
+
+				return "registryComplete.jsp";
+				
+	}
 	// ajax http-> 자바로 변환 하는 어노테이션
 	@ResponseBody
 	@RequestMapping(value = "/idCheck.do", method = RequestMethod.POST)

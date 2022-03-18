@@ -28,7 +28,6 @@
 	,ART_IMG_PATH=#{art_img_path}
 	, ART_MOD_DATE=NOW()
 	WHERE ART_ID=#{art_id}
-
 </update>
 
 <delete id="deleteBoard" parameterType="board">

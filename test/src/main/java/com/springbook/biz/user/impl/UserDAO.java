@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.user.UserVO;
 
 @Repository("userDAO")
@@ -18,6 +19,12 @@ public class UserDAO {
 		mybatis.insert("UserDAO.insertUser", vo);
 		mybatis.insert("UserDAO.insertRegList", vo);
 	}
+	
+	public void insertUser2(UserVO vo) {
+//		System.out.println("Mybatis insert ()");
+		mybatis.insert("UserDAO.insertUser2", vo);
+	}
+	
 	//아이디 중복 체크
 	public int idCheck(UserVO vo){
 //		System.out.println("Mybatis idCheck");
@@ -45,6 +52,12 @@ public class UserDAO {
 	}
 	// 회원 로그아웃
 	public void logout(HttpSession session) {
+	}
+	
+	//회원 업데이트 
+	public void updateUser(UserVO vo) {
+		System.out. println ("===> Mybatis로 updateUser() 기능 처리"); 
+		mybatis.update("UserDAO.updateUser", vo);
 	}
 
 

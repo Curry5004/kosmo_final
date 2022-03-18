@@ -166,6 +166,7 @@ function fn_numChk(){
   </script>
 
 <body>
+<c:if test="${empty sessionScope.user.user_Id}">
 	<div id="wrap">
 		<br> <br> <b><font size="6" color="gray">회원가입</font></b> <br>
 		<br> <br>
@@ -174,35 +175,22 @@ function fn_numChk(){
 			enctype="multipart/form-data" onsubmit="return fn_phoneChk()">
 			<table>
 				<tr>
-				<c:if test="${empty sessionScope.user.user_Id}">
 					<td id="title">아이디</td>
 					<td><input type="text" name="user_Id" id="user_Id"
 						maxlength="50" required>
 						<button class="idChk" type="button" id="idChk"
 							onclick="fn_idChk();" value="N">중복확인</button></td>
-				</c:if>
-				<c:if test="${not empty sessionScope.user.user_Id}">
-				<input type="hidden" class="idChk" id="idChk" value="N" />
-				</c:if>
 				</tr>
 
 				<tr>
-				<c:if test="${empty sessionScope.user.user_Id}">
 					<td id="title">비밀번호</td>
 					<td><input type="password" name="password" maxlength="50" required>
 					</td>
-				</c:if>
-				<c:if test="${not empty sessionScope.user.user_Id}">
-				</c:if>
 				</tr>
 
 				<tr>
-				<c:if test="${empty sessionScope.user.user_Id}">
 					<td id="title">이름</td>
 					<td><input type="text" name="name" maxlength="50" required></td>
-				</c:if>
-				<c:if test="${not empty sessionScope.user.user_Id}">
-				</c:if>
 				</tr>
 
 				<tr>
@@ -212,15 +200,12 @@ function fn_numChk(){
 				</tr>
 
 				<tr>
-				<c:if test="${empty sessionScope.user.user_Id}">
-				</c:if>
+
 				</tr>
 
 
 
 				<tr>
-				
-				<c:if test="${empty sessionScope.user.user_Id}">
 					<form action="#" method="post" name="phoneCheck">
 						<td id="title">휴대전화</td>
 						<td>
@@ -233,13 +218,7 @@ function fn_numChk(){
 						<button type="button" id="enterBtn" value="N" required> 확인 </button>
 							<!--인증번호를 히든으로 저장--> 
 							<input type="hidden" name="text" id="text" /></td>
-					</form>	
-				</c:if>
-				<c:if test="${not empty sessionScope.user.user_Id}">
-				<input type="hidden" class="umChk" id="numChk" value="Y" />
-				</c:if>
-				
-
+					</form>
 				</tr>
 				<tr>
 					<td id="title">선호 만남 지역</td>
@@ -271,6 +250,73 @@ function fn_numChk(){
 			<br> <input type="submit" value="가입"/>
 		</form>
 	</div>
+</c:if>
+
+<c:if  test="${not empty sessionScope.user.user_Id}">
+	<div id="wrap">
+		<br> <br> <b><font size="6" color="gray">회원가입</font></b> <br>
+		<br> <br>
+
+		<form method="post" action="registry2.do" name="userInfo"
+			enctype="multipart/form-data" onsubmit="return fn_phoneChk()">
+			<table>
+				<tr>
+				<c:if test="${not empty sessionScope.user.user_Id}">
+				<input type="hidden" class="idChk" id="idChk" value="N" />
+				</c:if>
+				</tr>
+
+				<tr>
+				</tr>
+
+				<tr>
+				</tr>
+
+				<tr>
+					<td id="title">성별</td>
+					<td><input type="radio" name="gender" value="남" checked>남
+						<input type="radio" name="gender" value="여" checked>여</td>
+				</tr>
+
+				<tr>
+				</tr>
+
+
+
+				<tr>
+				<input type="hidden" class="umChk" id="numChk" value="Y" />
+				</tr>
+				<tr>
+					<td id="title">선호 만남 지역</td>
+					<td><input type="text" size="50" name="location"
+						placeholder="시, 구 까지만 작성해 주세요 ex)서울특별시 금천구" /></td>
+				</tr>
+				<tr>
+					<td id="title">MBTI Type</td>
+					<td><select name="mbti_Id">
+							<c:forEach var="temp" items="${MbtiList}">
+								<option value="${temp.MBTI_ID}">${temp.MBTI_NAME}</option>
+							</c:forEach>
+					</select></td>
+				</tr>
+				<tr>
+					<td id="title"><a
+						href="https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC"
+						target="_blank">검사하러가기</a></td>
+				</tr>
+				<tr>
+					<td id="title">MBTI 결과지</td>
+					<td><input type="file" name="mbti_root" /></td>
+				</tr>
+				<tr>
+					<td id="title">프로필 사진</td>
+					<td><input type="file" name="profile_root" /></td>
+				</tr>
+			</table>
+			<br> <input type="submit" value="가입"/>
+		</form>
+	</div>
+</c:if>
 </body>
 
 </html>

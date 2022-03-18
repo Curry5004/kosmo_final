@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 public interface UserService {
 	//회원가입
 	public void insertUser(UserVO vo);
+	
 	//아이디 중복 체크
 	public int idCheck(UserVO vo);
 	
@@ -20,5 +21,9 @@ public interface UserService {
 	// 회원 로그아웃
 	public void logout(HttpSession session);
 	
+	// 회원 정보 업데이트 (네이버용)
+	public void updateUser(UserVO vo);
 	
+	//임시인서트(네이버용)
+	public void insertUser2(UserVO vo);
 }

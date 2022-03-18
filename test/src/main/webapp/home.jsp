@@ -29,22 +29,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<!-- #BOOTSTRAP 5.1.3 합쳐지고 최소화된 최신 CSS -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script>
-     $(document).ready(function(){ 
-      var obj = JSON.parse('${result}');
-      $("#resultCode").text("결과코드 : " + obj.resultcode);
-      $("#message").text("결과메시지 : " + obj.message);
-      $("#age").text("나이 : " + obj.response.age);
-      $("#name").text("이름 : " + obj.response.name);
-      $("#birthday").text("생일 : " + obj.response.birthday);
-      $("#enc_id").text("무슨 아이디 : " + obj.response.enc_id);
-      $("#gender").text("성별 : " + obj.response.gender);
-      $("#id").text("아이디 : " + obj.response.id);
-      $("#name").text("이름 : " + obj.response.name);
-      $("#nickname").text("닉네임 : " + obj.response.nickname);
-      $("#image").children("img").attr("src", obj.response.profile_image);
-    });
-  </script>
+ 
     
     <style>
         #modal.modal-open {
@@ -78,22 +63,6 @@
 <!-- 네비 예시입니다. -->
 
 <body>
-
- <div>
-    <h6>네이버 로그인 성공 화면</h6>
-    <hr />
-    <div id="resultCode" style="text-align:center">${obj.resultcode}</div>
-    <div id="message" style="text-align:center"></div>
-    <div id="nickname" style="text-align:center"></div>
-    <div id="image" style="text-align:center"><img src=""></img</div>
-    <div id="age" style="text-align:center"></div>
-    <div id="gender" style="text-align:center"></div>
-    <div id="id" style="text-align:center"></div>
-    <div id="name" style="text-align:center"></div>
-    <div id="birthday" style="text-align:center"></div>
-    <a href="https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=${id}&client_secret=${pw}&access_token=${token}&service_provider=NAVER">로그아웃</a>
-  </div>
-
 
 	<!-- 네비게이션 예시입니다. -->
 	  <nav class="navbar navbar-expand-lg navbar-light bg-light">

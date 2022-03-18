@@ -23,6 +23,7 @@ import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.springbook.biz.main.CategoryVO;
 import com.springbook.biz.main.MainService;
 import com.springbook.biz.main.MbtiVO;
+import com.springbook.biz.user.UserService;
 import com.springbook.biz.user.UserVO;
 import com.springbook.biz.util.naver.NaverLoginBO;
 
@@ -30,6 +31,9 @@ import com.springbook.biz.util.naver.NaverLoginBO;
 public class MainController {
 	@Autowired
 	MainService mainService;
+	
+	@Autowired
+	private UserService userService;
 	
 	@Autowired
 	private NaverLoginBO naverLoginBO;
@@ -55,27 +59,30 @@ public class MainController {
 		String apiResult = naverLoginBO.getUserProfile(oauthToken);
 		model.addAttribute("result", apiResult);
 		
+		
 //		naver 정보 vo에 저장하고 session user 에 담기 
 		JSONParser jsonParser = new JSONParser();
 		JSONObject jsonObj = (JSONObject) jsonParser.parse(apiResult);
-		JSONObject resource = (JSONObject) jsonObj.get("resource"); 
-		String phone_Num = (String) resource.get("mobile"); 
-		String user_Id = (String) resource.get("name"); 
-		String birthDay = (String) resource.get("birthday");
-		String birthyear = (String) resource.get("birthyear"); 
+		System.out.println(jsonObj);
+		JSONObject response = (JSONObject) jsonObj.get("response"); 
+		String phone_Num = (String) response.get("mobile"); 
+		String user_Id = (String) response.get("id"); 
+		String name = (String) response.get("name"); 
+		String birthDay = (String) response.get("birthday");
+		String birthyear = (String) response.get("birthyear"); 
 		vo.setPhone_Num(phone_Num);
 		vo.setUser_Id(user_Id);
 		vo.setBirthDay(birthyear + "-" + birthDay);
+		vo.setName(name);
+		session.setAttribute("user", vo); 
 		
-		
-		
-		
-		
-		
-		
-
-		
-		    
+		int result = userService.idCheck(vo);
+		System.out.println("result값" + result);
+		if (result == 1) {
+			return "registryPage.jsp";
+	
+		}
+			//userService.insertUser(vo);
 		
 		
 		UserVO userVO=(UserVO)session.getAttribute("user");

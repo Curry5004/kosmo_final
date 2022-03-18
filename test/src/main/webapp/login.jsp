@@ -36,7 +36,7 @@
 		}
 </style>
 </head>
-
+<!-- 
 	<body>
 		<div class="grid-container">
 		<div class="input-form-row">
@@ -78,10 +78,10 @@
 		<footer>
 		 하단 배치
 		</footer>
-		
+	 -->	
 	
 	
-<!--  	<hr>
+  	<hr>
 	<form action ="loginCheck.do" method="post">
 	<table border="1" cellpadding="0" cellspacing="0">
 		<tr>
@@ -102,7 +102,7 @@
 	</form>
 	<hr>
 	<a href="registry_form.do">회원가입</a>
-	</div> -->
+	</div> 
 	</body>
 	
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

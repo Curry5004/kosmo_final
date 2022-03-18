@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>registryPage</title>
-c
+
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 	<style> 
@@ -105,7 +105,6 @@ c
 			</div>
 		</div>
 	</div>
-
 				   
 					
 					
@@ -113,8 +112,8 @@ c
 
 
 	
-
- <!-- <div id="wrap">
+<!-- 
+<div id="wrap">
         <br><br>
         <b><font size="6" color="gray">회원가입</font></b>
         <br><br><br>
@@ -203,7 +202,8 @@ c
             <br>
             <input type="submit" value="가입"/>
         </form>
-    </div> -->
+    </div>
+     -->
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 function fn_idChk(){

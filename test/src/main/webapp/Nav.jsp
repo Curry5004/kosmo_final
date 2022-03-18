@@ -85,7 +85,7 @@
         	<a class="nav-link" href="mypage/mypage.do">마이페이지</a>
         </li>
         <li>
-        	<a class="nav-link" href="#">관리자모드</a>
+        	<a class="nav-link" href="admin/getAdminMemberList.do">관리자모드</a>
         </li>
           <%}else if (userVO != null) {%>
           <li>

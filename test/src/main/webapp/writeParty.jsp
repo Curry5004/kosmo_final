@@ -14,8 +14,7 @@
 </head>
 
 <body>
-	
-	${sessionScope.user.user_Id}님이 로그인 중입니다. 
+	<jsp:include page="Nav.jsp"/>
 	<div class="container">
 	<form action="insertParty.do" method="POST"
 		  enctype="multipart/form-data" name="Reg_form"
@@ -89,15 +88,12 @@
 			<div>
 				<textarea class="form-control" name="PARTY_INTRODUCE" cols="30" rows="10" id="introduce"></textarea>
 			</div>
-			
-			<div>
-				<h1>결제 모듈이 들어갈 곳 입니다</h1>
-			</div>
+
 				
 			<input type="hidden" value="${user.user_Id }" name="PARTY_CREATOR"/>
 			<input type="submit" value="생성" />
 	</form>
-			<p>${user.user_Id }</p>
+
 			
 			 
 		</div>
@@ -182,5 +178,6 @@
 		}
 	}
 </script>
+
 </body>
 </html>

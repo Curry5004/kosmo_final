@@ -89,6 +89,7 @@
     </style>
 </head>
 <body>
+<jsp:include page="../Nav.jsp">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="../home.do"><font size="20px" color="red">LOGO</font></a>

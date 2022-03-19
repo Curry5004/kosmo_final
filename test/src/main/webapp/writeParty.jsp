@@ -8,10 +8,41 @@
 <meta name="viewport" content="width=device-width", initial-scale="1">
 
 <title>writeParty</title>
-
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+ <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="js/typeahead.bundle.js"></script>
+  <script src="js/scripts.js"></script>
 </head>
+<style>
+    .twitter-typeahead {
+      width: 100%;
+    }
+
+    .tt-menu {
+      z-index: 100;
+      max-height: 240px;
+      overflow-y: auto;
+      background-color: #fff;
+      margin-top: 3px;
+      border-radius: 3px;
+      width: 100%;
+      box-shadow: 0 0 3px #666;
+      padding-bottom: 6px;
+    }
+    
+    .tt-menu .tt-suggestion {
+      padding: 5px 10px;
+      text-align: left;
+      font-size: 16px !important;
+      color: #464a4c;
+    }
+    
+    .tt-menu .tt-suggestion.tt-cursor {
+      background-color: #ccc;
+    }
+
+  </style>
 
 <body>
 	<jsp:include page="Nav.jsp"/>
@@ -72,7 +103,15 @@
 			
 			<div class="col-md-6 mb-3">
 				<label>선호장소 : </label> 
-				<input type="text" class="form-control" name="PARTY_LOCATION" id="location" />
+				
+      
+        <input type="text" id="search-area" class="form-control typeahead" placeholder="읍면동 검색" name="PARTY_LOCATION" />
+      
+    
+    
+				
+				
+				
 			</div>
 			
 			<div>
@@ -156,11 +195,7 @@
 			f.title.focus();
 			return false;
 		}
-		if (f.location.value == "") {
-			alert("위치를 입력해주세요");
-			f.location.focus();
-			return false;
-		}
+		
 		if (f.maximum.value == "") {
 			alert("정원을 입력해주세요");
 			f.maximum.focus();
@@ -174,6 +209,11 @@
 		if (f.introduce.value == "") {
 			alert("소개글을 입력해주세요");
 			f.introduce.focus();
+			return false;
+		}
+		if (f.search-area.value == "") {
+			alert("위치를 입력해주세요");
+			f.location.focus();
 			return false;
 		}
 	}

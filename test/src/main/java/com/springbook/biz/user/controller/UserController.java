@@ -236,10 +236,11 @@ public class UserController {
 				userVo.setProfile_Image(vo.getProfile_Image());
 				userVo.setMbti_Path(vo.getMbti_Path());
 				userVo.setMbti_Id(vo.getMbti_Id());
+				userVo.setLocation(vo.getLocation());
 				userVo.setUser_Id(userId);
 				userService.updateUser(userVo);
 
-				return "registryComplete.jsp";
+				return "registryComplete2.jsp";
 				
 	}
 	// ajax http-> 자바로 변환 하는 어노테이션

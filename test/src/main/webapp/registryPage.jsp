@@ -7,6 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 function fn_idChk(){
@@ -163,95 +165,92 @@ function fn_numChk(){
   </script>
 
 <body>
-	<div id="wrap">
-		<br> <br> <b><font size="6" color="gray">회원가입</font></b> <br>
-		<br> <br>
-
-		<form method="post" action="registry.do" name="userInfo"
-			enctype="multipart/form-data" onsubmit="return fn_phoneChk()">
-			<table>
-				<tr>
-					<td id="title">아이디</td>
-					<td><input type="text" name="user_Id" id="user_Id"
-						maxlength="50" required>
-						<button class="idChk" type="button" id="idChk"
-							onclick="fn_idChk();" value="N">중복확인</button></td>
-				</tr>
-
-				<tr>
-					<td id="title">비밀번호</td>
-					<td><input type="password" name="password" maxlength="50" required>
-					</td>
-				</tr>
-
-				<tr>
-					<td id="title">이름</td>
-					<td><input type="text" name="name" maxlength="50" required></td>
-				</tr>
-
-				<tr>
-					<td id="title">성별</td>
-					<td><input type="radio" name="gender" value="남" checked>남
-						<input type="radio" name="gender" value="여" checked>여</td>
-				</tr>
-
-				<tr>
-					<td id="title">생일</td>
-					<td><input type="text" name="birthDay" maxlength="10"
-						placeholder="양식)YYYY-MM-DD ex)1993-12-05" size="6"></td>
-				</tr>
-
-
-
-				<tr>
-
-					<form action="#" method="post" name="phoneCheck">
-						<td id="title">휴대전화</td>
-						<td>
-						<input type="text" id="to" name="phone_Num" required />
-						<button class="numChk" type="button" id="numChk"
-							onclick="fn_numChk();" value="N" required>중복확인</button>
-						<button class="send" type="button" id="send" required>전송</button><br />
-						인증번호: <input type="text" id="userNum" required/> 
-						
-						<button type="button" id="enterBtn" value="N" required> 확인 </button>
-							<!--인증번호를 히든으로 저장--> 
-							<input type="hidden" name="text" id="text" /></td>
-					</form>
-					
-					
-
-				</tr>
-				<tr>
-					<td id="title">선호 만남 지역</td>
-					<td><input type="text" size="50" name="location"
-						placeholder="시, 구 까지만 작성해 주세요 ex)서울특별시 금천구" /></td>
-				</tr>
-				<tr>
-					<td id="title">MBTI Type</td>
-					<td><select name="mbti_Id">
-							<c:forEach var="temp" items="${MbtiList}">
-								<option value="${temp.MBTI_ID}">${temp.MBTI_NAME}</option>
-							</c:forEach>
-					</select></td>
-				</tr>
-				<tr>
-					<td id="title"><a
-						href="https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC"
-						target="_blank">검사하러가기</a></td>
-				</tr>
-				<tr>
-					<td id="title">MBTI 결과지</td>
-					<td><input type="file" name="mbti_root" /></td>
-				</tr>
-				<tr>
-					<td id="title">프로필 사진</td>
-					<td><input type="file" name="profile_root" /></td>
-				</tr>
-			</table>
-			<br> <input type="submit" value="가입"/>
-		</form>
-	</div>
+		  <div class="container"> 
+      <div class="input-form-row"> 
+         <div class="input-form col-md-12 mx-auto"> 
+            <h4 class="mb-3">회원가입</h4> 
+              <form method="post" action="registry.do" name="userInfo" enctype="multipart/form-data">
+               <div class="row"> 
+                  <div class="col-md-6 mb-3"> 
+                     <label for="user_Id">아이디</label>
+                  <input class="form-control" type="text" name="user_Id" id="user_Id" maxlength="50">
+                        <button class="btn btn-primary btn-ms" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
+                  </div>
+               
+               
+               <div class="col-md-6 mb-3">
+                  <label for="password">비밀번호</label>
+                  <input class="form-control" type="password" name="password" maxlength="50">
+               </div>
+                
+               <div class="col-md-6 mb-3">
+                  <label for="name">이름</label>
+                   <input class="form-control" type="text" name="name" maxlength="50">
+               </div>
+               
+               <div>
+                  <label for="gender">성별</label>
+                  <br>
+                  <input type="radio" name="gender" value="남" checked id="gender">남
+                  <input type="radio" name="gender" value="여" checked id="gender">여
+               </div>
+               
+               <br>
+               
+               <div class="col-md-6 mb-3">
+                  <label for="birthDay">생일</label>
+                  <input class="form-control" type="text" name="birthDay" maxlength="10" placeholder="양식)YYYY-MM-DD ex)1993-12-05" size="6" >
+               </div>
+             
+            <div>
+                    <!--  <form action="#" method="post" name="phoneCheck">-->
+                    <input  class="form-control" type="text" id="to" name="phone_Num" required />
+                  <button class="btn btn-primary btn-lg btn-block" type="button" id="numChk"
+                     onclick="fn_numChk();" value="N" required>중복확인</button>
+                  <button class="btn btn-primary btn-lg btn-block" type="button" id="send" required>전송</button><br />
+                  인증번호: <input class="form-control" type="text" id="userNum" required/> 
+                  
+                  <button class="btn btn-primary btn-lg btn-block" type="button" id="enterBtn" value="N" required> 확인 </button>
+                     <!--인증번호를 히든으로 저장--> 
+                     <input class="form-control" type="hidden" name="text" id="text" /></td>
+                    
+                 <!--   </form>-->
+            </div>
+               
+               
+              
+               
+               <div class="mb-3">
+                  <label for="location">선호 만남 지역</label>
+                  <input type="text" class="form-control" size="50" name="location" placeholder="시, 구 까지만 작성해 주세요 ex)서울특별시 금천구"/>
+               </div>
+               
+               <div>
+                  <label for="mbti_id">MBTI Type</label>
+                  <select name="mbti_Id">
+                     <c:forEach var="temp" items="${MbtiList}">
+                        <option value="${temp.MBTI_ID}">${temp.MBTI_NAME}</option>
+                     </c:forEach>   
+                  </select>
+                  <a href="https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC" target="_blank">검사하러가기</a>
+               </div>
+               
+               <div>
+                  <label for="mbti_root">MBTI 결과지</label>
+                   <input type="file" name="mbti_root"/>
+               </div>
+               
+               <div>
+                  <label for="profile_root">프로필 사진</label>
+                  <input type="file" name="profile_root"/>
+               </div>
+               </div>
+               
+               <button class="btn btn-primary btn-lg btn-block" type="submit" value="가입">가입 완료</button>
+            </form>
+         </div>
+      </div>
+   </div>
 </body>
 
 </html>

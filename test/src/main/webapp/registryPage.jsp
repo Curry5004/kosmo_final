@@ -165,7 +165,8 @@ function fn_numChk(){
   </script>
 
 <body>
-		  <div class="container"> 
+<%-- <jsp:include page="Nav.jsp"/> --%>
+	<div class="container"> 
       <div class="input-form-row"> 
          <div class="input-form col-md-12 mx-auto"> 
             <h4 class="mb-3">회원가입</h4> 

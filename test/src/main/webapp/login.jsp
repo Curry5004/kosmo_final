@@ -17,6 +17,10 @@
 	  justify-content: space-around;
 	  flex-wrap: wrap;
 	} 	
+	
+	.btn btn-primary{
+	justify-content : center;
+	}
 	body { 
 		min-height: 100vh; 
 		}
@@ -36,6 +40,7 @@
 		}
 </style>
 </head>
+<jsp:include page="Nav.jsp"/>
 <!-- 
 	<body>
 		<div class="grid-container">
@@ -80,29 +85,26 @@
 		</footer>
 	 -->	
 	
-	
-  	<hr>
-	<form action ="loginCheck.do" method="post">
-	<table border="1" cellpadding="0" cellspacing="0">
-		<tr>
-			<td bgcolor ="orange">아이디</td>
-			<td><input type ="text" name="user_Id"/></td>
-		</tr>
-		<tr>
-			<td bgcolor ="orange">비밀번호</td>
-			<td><input type ="password" name="password"/></td>
-		</tr>
-		<tr>
-			<td colspan="2" align="center">
-				<input type="submit" value="로그인"/>
-			</td>
-		</tr>
-		
-	</table>
-	</form>
-	<hr>
-	<a href="registry_form.do">회원가입</a>
-	</div> 
+	<div class="grid-container">
+		<div class="input-form-row">
+		<div class="input-form col-md-12 mx-auto"> 
+			<form action ="loginCheck.do" method="post">
+  <div class="mb-3 mt-3">
+    <label for="user_id" class="form-label">아이디 </label>
+    <input type="text" class="form-control"  placeholder="아이디를 입력해주세요" name="user_Id">
+  </div>
+  <div class="mb-3">
+    <label for="pwd" class="form-label">비밀번호 </label>
+    <input type="password" class="form-control" id="pwd" placeholder="비밀번호를 입력해주세요" name="password">
+  </div>
+  
+  <button type="submit" class="btn btn-primary" align="center">로그인</button>
+  <button type="button" class="btn btn-primary" onclick="location.href='registry_form.do'">회원가입</button>
+  
+</form>
+			</div>
+		</div>
+	</div>
 	</body>
 	
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

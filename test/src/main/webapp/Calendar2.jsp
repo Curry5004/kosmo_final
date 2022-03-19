@@ -61,12 +61,10 @@
 						<div class="wrap-header d-flex align-items-center img" style="background-image: url(images/bg.jpg);">
 				      <p id="reset">Today</p>
 			        <div id="header" class="p-0">
-								<!-- <div class="pre-button d-flex align-items-center justify-content-center"><i class="fa fa-chevron-left"></i></div> -->
 		            <div class="head-info">
 		            	<div class="head-month"></div>
 		                <div class="head-day"></div>
 		            </div>
-		            <!-- <div class="next-button d-flex align-items-center justify-content-center"><i class="fa fa-chevron-right"></i></div> -->
 			        </div>
 			      </div>
 			      <div class="calendar-wrap">
@@ -175,8 +173,6 @@
 	        setDate,
 	        daysLen = days.length;
 	    
-	    
-	// options should like '2014-01-01'
 	    function Calendar(selector, options) {
 	        this.options = options;
 	        this.draw();
@@ -210,11 +206,9 @@
 	     };
 	    Calendar.prototype.drawDays = function() {
 	        startDay = new Date(year, month-1, 1).getDay(),
-//	      下面表示这个月总共有几天
 	            nDays = new Date(year, month , 0).getDate(),
 	    
 	            n = startDay;
-//	      清除原来的样式和日期
 	        for(var k = 0; k <42; k++) {
 	            days[k].innerHTML = '';
 	            days[k].id = '';

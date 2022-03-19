@@ -295,7 +295,7 @@ public class MypageController {
 	public String getMypage(Model model, HttpServletRequest request) throws Exception{
 //		UserVO userVO = (UserVO)request.getSession().getAttribute(Consts.SESSION_KEY_USER);//세션에서 유저 VO 가져옴
 		UserVO userVO = (UserVO)request.getSession().getAttribute("user");//세션에서 유저 VO 가져옴
-		if(ObjectUtils.isEmpty(userVO)) return "index.jsp"; // 세션에 유저 정보가 ㅇ벗으면 메인 화면으로ㅓ
+		if(ObjectUtils.isEmpty(userVO)) return "index.jsp"; // 세션에 유저 정보가 없으면 메인 화면으로ㅓ
 		
 		Map<String, Object> map = new HashMap<>(); // xml 로 전달할 파라미터를 생성
 		map.put("USER_ID", userVO.getUser_Id());

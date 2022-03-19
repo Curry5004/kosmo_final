@@ -55,7 +55,7 @@
   <li class="page-item"><a class="page-link" href="calendar4.do?year=${param.year}&month=${param.month}&day=${param.day}&pageNo=${pages.startPage - pages.pageSize}">&#9664;</a></li>
   </c:if>
   <c:if test="${pages.endPage < pages.totalPages }" >
-  <li class="page-item"><a class="page-link" href="calendar4.do?year=${param.year}&month=${param.month}&day=${param.day}&pageNo=${pages.startPage + pages.pageSize}"">&#9658;</a></li>
+  <li class="page-item"><a class="page-link" href="calendar4.do?year=${param.year}&month=${param.month}&day=${param.day}&pageNo=${pages.startPage + pages.pageSize}">&#9658;</a></li>
   </c:if>
 </ul>
 	</c:if>

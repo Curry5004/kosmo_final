@@ -19,10 +19,11 @@
 		float: left;
 	}
 	#like{
-	  
+	
 		color : red;
 		position: relative; bottom: 50px; right: 50px;
 	}
+	a{text-decoration:none}
 	
 </style>
 

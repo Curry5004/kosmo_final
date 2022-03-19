@@ -159,10 +159,7 @@
                     	<td id="title">변경일자 = ${user.modified_Day}</td>  
                 </tr>
                 <tr>
-                    <td>
-                    
-                        
-                     
+                    <td> 
                     </td>
                 </tr>
                 </c:if>				

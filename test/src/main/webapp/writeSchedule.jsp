@@ -8,6 +8,23 @@
 <title>스케쥴 작성</title>
 </head>
 
+<script>
+	function dateSelect() {
+		console.log("되냐?");
+		var div = document.getElementById("date");
+		var modalInput = document.getElementById("modalInput");
+		div.innerHTML=modalInput.value;
+	}
+</script>
+
+<style>
+	#date{
+		border: 1px solid black;
+		width : 10%;
+		height : 25px;
+		text-align: center;
+	}
+</style>
 
 <body>
 <jsp:include page="Nav.jsp"/>
@@ -45,7 +62,7 @@
     <br />
     <br />
     
- 	
+ 	<div id="date"></div>
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
   	모임날짜 정하기
 </button>
@@ -63,12 +80,12 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-        <input class ="form-control" type="Date" name="sch_date"/>
+        <input class ="form-control" type="Date" name="sch_date" id="modalInput"/>
       </div>
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">확인</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="dateSelect()">확인</button>
       </div>
 
     </div>

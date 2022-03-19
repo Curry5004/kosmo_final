@@ -12,7 +12,6 @@
 
     <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="resource/fonts/icomoon/style.css">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="resource/css_footer/bootstrap.min.css">
@@ -66,8 +65,6 @@
 
 
     
-    <script src="js_footer/jquery-3.3.1.min.js"></script>
-    <script src="js_footer/popper.min.js"></script>
-    <script src="js_footer/bootstrap.min.js"></script>
+    
 </body>
 </html>

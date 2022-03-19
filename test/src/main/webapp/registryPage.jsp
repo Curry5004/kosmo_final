@@ -31,7 +31,8 @@
 	</style>
 </head>
 
-	<body> 
+	<body>
+	 
 	<jsp:include page="Nav.jsp"/>
 	<div class="container"> 
 		<div class="input-form-row"> 

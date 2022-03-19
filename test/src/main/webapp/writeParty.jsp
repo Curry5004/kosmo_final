@@ -103,16 +103,8 @@
 			
 			<div class="col-md-6 mb-3">
 				<label>선호장소 : </label> 
-				
-      
-        <input type="text" id="search-area" class="form-control typeahead" placeholder="읍면동 검색" name="PARTY_LOCATION" />
-      
-    
-    
-				
-				
-				
-			</div>
+		  <input type="text" id="search-area" class="form-control typeahead" placeholder="읍면동 검색" name="PARTY_LOCATION" />
+      		</div>
 			
 			<div>
 				<label>이미지 삽입 </label> 

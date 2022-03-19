@@ -54,7 +54,7 @@
                        <a href="getPartyList.do?CATEGORY_NAME=야구관람&SEARCH_KEYWORD"><img src="resource/img/baseball.png" width=80 height=80 /></a>
                        <a href="getPartyList.do?CATEGORY_NAME=게임/오락&SEARCH_KEYWORD"><img src="resource/img/GAME.png" width=80 height=80 /></a>
                        <a href="getPartyList.do?CATEGORY_NAME=요리/제조&SEARCH_KEYWORD"><img src="resource/img/cook.png" width=80 height=80 /></a>
-                       <a href="getPartyList.do?CATEGORY_NAME=뱐려동물&SEARCH_KEYWORD"><img src="resource/img/pet.png" width=80 height=80 /></a>
+                       <a href="getPartyList.do?CATEGORY_NAME=반려동물&SEARCH_KEYWORD"><img src="resource/img/pet.png" width=80 height=80 /></a>
                        <a href="getPartyList.do?CATEGORY_NAME=가족/결혼&SEARCH_KEYWORD"><img src="resource/img/family.png" width=80 height=80 /></a>
                        <a href="getPartyList.do?CATEGORY_NAME=자유주제&SEARCH_KEYWORD"><img src="resource/img/freetalk.png" width=80 height=80 /></a>            
                     </div>
@@ -119,7 +119,7 @@
 			<option value ="야구관람">야구관람</option>
 			<option value ="게임/오락">게임/오락</option>
 			<option value ="요리/제조">요리/제조</option>
-			<option value ="뱐려동물">뱐려동물</option>
+			<option value ="반려동물">뱐려동물</option>
 			<option value ="가족/결혼">가족/결혼</option>
 			<option value ="자유주제">자유주제</option>
 		</select>

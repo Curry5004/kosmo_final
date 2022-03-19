@@ -73,12 +73,21 @@ public class AlbumController {
 				vo.setAlb_img_path(changeName); // VO갱신
 
 			}
+			
+//			UserVO userVO = (UserVO) request.getSession().getAttribute("user");
+//			vo.setUser_id(userVO.getUser_Id());
+//			vo.setAlb_writer(userVO.getName());
+//			System.out.println(userVO.getUser_Id());
+//			albumService.insertAlbum(vo);
+//			return "home.do";
+			
 			UserVO userVO = (UserVO) request.getSession().getAttribute("user");
 			vo.setUser_id(userVO.getUser_Id());
 			vo.setAlb_writer(userVO.getName());
 			System.out.println(userVO.getUser_Id());
+			int party_id=vo.getParty_id();
 			albumService.insertAlbum(vo);
-			return "home.do";
+			return "redirect:getAlbumList.do?party_id="+party_id;
 		} else {
 			return "login.do";
 		}

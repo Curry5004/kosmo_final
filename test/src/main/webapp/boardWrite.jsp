@@ -2,11 +2,16 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <html>
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 <head>
 <title>소모임-게시글 작성하기</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+<jsp:include page="Nav.jsp"/>
 <body>
 <div class="container" style="margin-top:30px">
 	<div class="row">
@@ -31,7 +36,9 @@
 				 	이미지 삽입 : 
 					<input type="file" name="art_img" accept=".jpeg, .jpg, .png"/>
 			    </div>
+			    <div class="col text-center">
 			    <button type="submit" class="btn btn-primary">작성완료</button>
+			    </div>
 			  </form>
 		</div>
 	</div>

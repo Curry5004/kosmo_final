@@ -116,8 +116,10 @@ public class BoardController {
 		vo.setArt_writer(vo2.getUser_Id());
 		vo.setArt_user_name(vo2.getName());
 		System.out.println("컨트롤러 진입");
+		int party_id=vo.getParty_id();
 		boardService.insertBoard(vo);
-		return "home.do";
+	    
+		return "redirect:getBoardList.do?party_id="+party_id;
 	
 	}
 	@RequestMapping("modifyBoard.do")

@@ -12,4 +12,6 @@ public interface MainService {
 	public List<CategoryVO> getCategoryList(CategoryVO vo);
 
 	public List<PartyVO> searchBestParty(Map<String,Object> map);
+	
+	
 }

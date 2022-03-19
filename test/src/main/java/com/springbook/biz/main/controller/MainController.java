@@ -40,14 +40,19 @@ public class MainController {
 	}
 	
 	@RequestMapping("home.do")
-	public String homePage(Model model,HttpSession session){
+	public String homePage(Model model,HttpSession session,CategoryVO vo){
 		UserVO userVO=(UserVO)session.getAttribute("user");
 		if(userVO!=null){
 			Map<String,Object> map=new HashMap<>();
 			map.put("mbti_id", userVO.getMbti_Id());
 			model.addAttribute("bestList", mainService.searchBestParty(map));
+			
 		}
 		return "home.jsp";
-		
+	}
+	@RequestMapping("getModal.do")
+	public String getCategoryList(CategoryVO vo,Model model){
+		model.addAttribute("getModal",mainService.getCategoryList(vo));
+		return "navbar.jsp";
 	}
 }

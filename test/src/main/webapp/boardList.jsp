@@ -13,30 +13,46 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>소모임- 게시글 리스트</title>
 </head>
-<body>
-<header>
-<a class="btn btn-primary" href="getParty.do?PARTY_ID=${param.party_id}" role="button">소개글</a>
-<a class="btn btn-primary" href="getBoardList.do?party_id=${param.party_id}" role="button">게시판</a>
-<a class="btn btn-primary" href="getAlbumList.do?party_id=${param.party_id}" role="button">앨범</a>
-<a class="btn btn-primary" href="calendar.do?party_id=${param.party_id}" role="button">일정</a>
-<a class="btn btn-primary" href="index.jsp" role="button">채?팅?</a><br />
-</header>
-<section>
 
-	<button><a href="boardWrite.jsp?party_id=${param.party_id}">게시글 쓰기 </a></button>
-	<c:if test="${empty boardList }">
-		<button><a href="boardWrite.jsp">첫 게시물 작성</button>
-	</c:if>
+<style>
+	.pagination{
+	justify-content :center;
+	}
+	</style>
+<body>
+<jsp:include page="Nav.jsp"/>
+<div class="container">
+<div class="row">
+<div class="btn-group">
+  <button type="button" class="btn btn-primary" onclick="location.href='getParty.do?PARTY_ID=${param.party_id}'">소개글</button>
+  <button type="button" class="btn btn-primary" onclick="location.href='getBoardList.do?party_id=${param.party_id}'">게시판</button>
+  <button type="button" class="btn btn-primary" onclick="location.href='getAlbumList.do?party_id=${param.party_id}'">앨범</button>
+  <button type="button" class="btn btn-primary" onclick="location.href='calendar.do?party_id=${param.party_id}'">일정</button>
+  <button type="button" class="btn btn-primary" onclick="location.href=''">채팅</button>
+  <c:if test="${party.PARTY_CREATOR eq user.user_Id}">
+  <button type="button" class="btn btn-primary" onclick="location.href='getPartyUserList.do?PARTY_ID=${param.party_id}'">회원관리</button>
+  </c:if>
+</div>
+</div>
+</div>
+<br><br>
+<section>
+  <ul class="list-group">
+
 	<c:forEach items="${boardList}" var="board">
 		<div style="display:flex;">
-			<div><a href="getBoard.do?art_id=${board.art_id}">
+			<div class="col text-left" ><a href="getBoard.do?art_id=${board.art_id}">
 				&ensp; <img src="${board.art_img_path}" width=200 height=200 />
 			</a></div>
-			<div><a href="getBoard.do?art_id=${board.art_id}">
+			
+			<div class="col text-left"><a href="getBoard.do?art_id=${board.art_id}">
+			
 				&ensp;${board.art_title}</a></div>
-			<div style="float:right">
+	
+			<div class ="col text-right">	
 		 <fmt:formatDate var="formatRegDate" value="${board.art_reg_date}" pattern="yyyy-MM-dd"/>
 		 <fmt:formatDate var="formatModDate" value="${board.art_mod_date}" pattern="yyyy-MM-dd"/>
+				
 				&ensp; 작성자: ${board.art_user_name}
 				&ensp; 조회수: ${board.art_view_cnt }
 		 <c:if test="${empty formatModDate }">
@@ -49,30 +65,38 @@
 			</div>
 		</div>
 		<hr />
-	</c:forEach> 
+	</c:forEach>
+	</ul>
 	<c:if test="${pages.hasBoard()}">
-	<div>
-		<tr>
-			<td colspan="4">
+
+            <tr>
+	        <ul class="pagination" >
+           
 				<c:if test ="${pages.startPage > pages.pageSize}">
-				<a href="getBoardList.do?party_id=1&pageNo=${pages.startPage - pages.pageSize }">[이전]</a>
+				  <li class="page-item"><a class="page-link" href="getBoardList.do?party_id=${param.party_id}&pageNo=${pages.startPage - pages.pageSize }">[이전]</a>
 				</c:if>
 			<c:forEach var="pNo" 
 					begin="${pages.startPage}"
 					end="${pages.endPage}">
-			<a href="getBoardList.do?party_id=1&pageNo=${pNo}">[${pNo}]</a>
+			 <li class="page-item"><a class="page-link"a href="getBoardList.do?party_id=${param.party_id}&pageNo=${pNo}">${pNo}</a>
 			</c:forEach>
 			<c:if test="${pages.endPage < pages.totalPages }" >
-			<a href="getBoardList.do?party_id=1&pageNo=${pages.startPage + pages.pageSize }"> [다음]</a>
+			 <li class="page-item"><a class="page-link"a href="getBoardList.do?party_id=${param.party_id}&pageNo=${pages.startPage + pages.pageSize }"> [다음]</a>
 			</c:if>
-			</td>
+		   </ul>
 		</tr>
-	</div>
+	
 	</c:if>
-
+	
+	
+	
+	<div class="col text-right">
+	<button class="btn btn-primary" onclick ="location.href='boardWrite.jsp?party_id=${param.party_id}';">게시글 쓰기</button>
+	</div>
 	
 </section>
 <footer>
+<jsp:include page ="footer.jsp"/>
 </footer>
 </body>
 </html>

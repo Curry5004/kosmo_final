@@ -16,61 +16,105 @@
 </head>
  
 <body>
-<header>
-<a class="btn btn-primary" href="getParty.do?PARTY_ID=${param.PARTY_ID}" role="button">소개글</a>
-<a class="btn btn-primary" href="getBoardList.do?party_id=${param.PARTY_ID}" role="button">게시판</a>
-<a class="btn btn-primary" href="getAlbumList.do?party_id=${param.PARTY_ID}" role="button">앨범</a>
-<a class="btn btn-primary" href="calendar.do?party_id=${param.PARTY_ID}" role="button">일정</a>
-<a class="btn btn-primary" href="index.jsp" role="button">채?팅?</a>
-<c:if test="${party.PARTY_CREATOR eq user.user_Id}">
-<a class="btn btn-primary" href="getPartyUserList.do?PARTY_ID=${param.PARTY_ID}" role="button">회원관리</a>
-방장왔습니다. ${party.PARTY_CREATOR}
-<br/>
-파티번호 ${param.PARTY_ID}
-</c:if>
-</header>
+<jsp:include page="Nav.jsp"/>
 
 
+<div class="container">
+<div class="row">
+<div class="btn-group">
+  <button type="button" class="btn btn-primary" onclick="location.href='getParty.do?PARTY_ID=${param.PARTY_ID}'">소개글</button>
+  <button type="button" class="btn btn-primary" onclick="location.href='getBoardList.do?party_id=${param.PARTY_ID}'">게시판</button>
+  <button type="button" class="btn btn-primary" onclick="location.href='getAlbumList.do?party_id=${param.PARTY_ID}'">앨범</button>
+  <button type="button" class="btn btn-primary" onclick="location.href='calendar.do?party_id=${param.PARTY_ID}'">일정</button>
+  <button type="button" class="btn btn-primary" onclick="location.href=''">채팅</button>
+  <c:if test="${party.PARTY_CREATOR eq user.user_Id}">
+  <button type="button" class="btn btn-primary" onclick="location.href='getPartyUserList.do?PARTY_ID=${param.PARTY_ID}'">회원관리</button>
+  </c:if>
+</div>
+</div>
+</div>
 
-<div>
+<div class="container pt-5 ">
+<div class ="row">
+
+<div class ="col-sm">
 	<img src="${party.PARTY_TUMB_PATH}" width=200px  height="200">
 </div>
 
+<div class ="col-sm">
+
 <div>${party.CATEGORY_NAME}</div>
-<ul>
-<li>${party.PARTY_PRE_MBTI1}</li>
-<li>${party.PARTY_PRE_MBTI2}</li>
-<li>${party.PARTY_PRE_MBTI3}</li>
-<li>${party.PARTY_PRE_MBTI4}</li>
+<ul class="list-group">
+<li class="list-group-item list-group-item-action list-group-item-info">${party.PARTY_PRE_MBTI1}</li>
+<li class="list-group-item list-group-item-info">${party.PARTY_PRE_MBTI2}</li>
+<li class="list-group-item list-group-item-info">${party.PARTY_PRE_MBTI3}</li>
+<li class="list-group-item list-group-item-info">${party.PARTY_PRE_MBTI4}</li>
 </ul>
+</div>
+</div>
+</div>
 
-<p> rate1 : <fmt:formatNumber value="${rate.PARTY_RATE1 }" pattern=".0"/></p>
-<p> rate2 : <fmt:formatNumber value="${rate.PARTY_RATE2 }" pattern=".0"/></p>
-<p> rate3 : <fmt:formatNumber value="${rate.PARTY_RATE3 }" pattern=".0"/></p>
+<div class="container pt-5" >
+<div class="row">
+<ul class="list-group">
+<li class="list-group-item list-group-item-action list-group-item-primary"> rate1 : <fmt:formatNumber value="${rate.PARTY_RATE1 }" pattern=".0"/></li>
+<li class="list-group-item list-group-item-action list-group-item-primary"> rate2 : <fmt:formatNumber value="${rate.PARTY_RATE2 }" pattern=".0"/></li>
+<li class="list-group-item list-group-item-action list-group-item-primary"> rate3 : <fmt:formatNumber value="${rate.PARTY_RATE3 }" pattern=".0"/></li>
+</ul>
+</div>
+</div>
 
-<div  style="border: 1px solid black">${party.PARTY_INTRODUCE}</div>
+<div class="container pt-5">
+	<div class="row">
+		<div class="col">
+			
+  
+ 		 	<textarea class="form-control" readonly="readonly">${party.PARTY_INTRODUCE}</textarea>
+			
+		</div>
+	</div>
+</div>
+
+
+<div class="container pt-5">
+<div class="row">
+
+<div class="btn-group">
 <c:if test="${memberList[0].USER_ID==sessionScope.user.user_Id}">
-<a href="deleteParty.do?PARTY_ID=${party.PARTY_ID}"><button>소모임 제거</button></a>
+  <button type="button" class="btn btn-primary" onclick="location.href='deleteParty.do?PARTY_ID=${party.PARTY_ID}'">소모임 제거</button>
 </c:if>
 <c:if test="${!fn:contains(idList, sessionScope.user.user_Id)}">
-<a href="joinParty.do?PARTY_ID=${party.PARTY_ID}"><button>소모임가입</button></a>
+  <button type="button" class="btn btn-primary" onclick="location.href='joinParty.do?PARTY_ID=${party.PARTY_ID}'">소모임 가입</button>
 </c:if>
 <c:if test="${fn:contains(idList, sessionScope.user.user_Id)}">
-<a href="deletePartyMember.do?PARTY_ID=${party.PARTY_ID}" ><button>소모임탈퇴 </button></a>
+  <button type="button" class="btn btn-primary" onclick="location.href='deletePartyMember.do?PARTY_ID=${party.PARTY_ID}'">소모임 탈퇴</button>
 </c:if>
 <c:if test="${!fn:contains(favList, sessionScope.user.user_Id)}">
-<a href="memberFav.do?PARTY_ID=${party.PARTY_ID}&USER_ID=${user.user_Id}"><button>찜하기</button></a>
+  <button type="button" class="btn btn-primary" onclick="location.href='memberFav.do?PARTY_ID=${party.PARTY_ID}&USER_ID=${user.user_Id}'">찜하기</button>
 </c:if>
 <c:if test="${fn:contains(favList, sessionScope.user.user_Id)}">
-<a href="deleteMemberFav.do?PARTY_ID=${party.PARTY_ID}&USER_ID=${user.user_Id}"><button>찜하기 취소</button></a>
+  <button type="button" class="btn btn-primary" onclick="location.href='deleteMemberFav.do?PARTY_ID=${party.PARTY_ID}&USER_ID=${user.user_Id}'">찜하기 취소</button>
 </c:if>
-<ul>
+</div>
+</div>
+</div>
+
+
+
+
+<div class="container pt-5">
+<div class="row">
+<ul class="list-group">
 <c:forEach var="member" items="${memberList}">
-<li>이름 : ${member.NAME} , MBTI : ${member.MBTI_NAME} </li>
+<li class="list-group-item list-group-item-action list-group-item-success">이름 : ${member.NAME} , MBTI : ${member.MBTI_NAME} </li>
 </c:forEach>
 </ul>
+</div>
+</div>
 
-     
+<div class="container-fluid">
+  <div class="row">
+ <div class="col-sm-6">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <canvas id="doughnut-chart" width="25px" height="10px"></canvas>
 
@@ -94,7 +138,8 @@
     }
 });
 </script>
-
+</div>
+ <div class="col-sm-6">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <canvas id="doughnut-chart1" width="25px" height="10px"></canvas>
 
@@ -118,8 +163,11 @@
     }
 });
 </script>
-
+</div>
+</div>
+</div>
     </body>
 </html>
+<jsp:include page ="footer.jsp"/>
 </body>
 </html>

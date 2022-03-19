@@ -64,6 +64,17 @@
 </div>
 </div>
 
+<div class="container pt-5">
+	<div class="row">
+		<div class="col">
+			
+  
+ 		 	<textarea class="form-control" readonly="readonly">${party.PARTY_INTRODUCE}</textarea>
+			
+		</div>
+	</div>
+</div>
+
 
 <div class="container pt-5">
 <div class="row">
@@ -87,6 +98,8 @@
 </div>
 </div>
 </div>
+
+
 
 
 <div class="container pt-5">

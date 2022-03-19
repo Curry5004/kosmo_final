@@ -98,10 +98,10 @@ public class ScheduleController {
 	
 	@RequestMapping("cntUp.do")
 	public String cntUp(SchVO vo,Model model,HttpSession session, PageVO page, HttpServletRequest request){
-		UserVO userVO=(UserVO)session.getAttribute("user");
+		UserVO userVO=(UserVO)session.getAttribute("user");		
 		vo.setUser_id(userVO.getUser_Id());
 		scheduleService.schMemberCntUp(vo);
-		return "index.jsp";
+		return "getParty.do?PARTY_ID="+vo.getParty_id();
 	}
 	
 	@RequestMapping("cntDown.do")
@@ -109,7 +109,8 @@ public class ScheduleController {
 		UserVO userVO=(UserVO)session.getAttribute("user");
 		vo.setUser_id(userVO.getUser_Id());
 		scheduleService.schMemberCntDown(vo);
-		return "index.jsp";
+		System.out.println("취소는 됨?");
+		return "getParty.do?PARTY_ID="+vo.getParty_id();
 	}
 	
 	@RequestMapping("insertSchedule.do")
@@ -120,7 +121,7 @@ public class ScheduleController {
 			//sch_id를 구해와서 vo에 때려박아줘야한다
 			vo.setSch_id(scheduleService.getNewSchedule(vo).getSch_id());
 			scheduleService.schMemberCntUp(vo);
-			return "home.do";
+			return "getParty.do?PARTY_ID="+vo.getParty_id();
 		}else {
 			return "login.do";
 		}

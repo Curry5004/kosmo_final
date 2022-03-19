@@ -51,7 +51,33 @@
 
     <link rel="stylesheet" href="main/css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="main/css/jquery.timepicker.css">
-
+    <style>
+        #modal.modal-open {
+            display: none;
+        }
+		.button {		
+		  background-color: blue;
+		
+		  border: none;
+		
+		  color: white;
+		
+		  padding: 15px 30px;
+		
+		  text-align: center;
+		
+		  text-decoration: none;
+		
+		  display: inline-block;
+		
+		  font-size: 16px;
+		
+		  margin: 4px 2px;
+		
+		  cursor: pointer;
+		
+		}
+	</style>
     
     <link rel="stylesheet" href="main/css/flaticon.css">
     <link rel="stylesheet" href="main/css/icomoon.css">

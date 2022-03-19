@@ -18,7 +18,7 @@
 <body onload="getModal.do">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="home.jsp"><img src="resource/img/mainpic.png" width="100px" height="50px" /></a>
+    <a class="navbar-brand" href="../home.jsp"><img src="../resource/img/mainpic.png" width="100px" height="50px" /></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -38,25 +38,25 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">                
-                       <a href="getPartyList.do?CATEGORY_NAME=인문학/책/글&SEARCH_KEYWORD"><img src="resource/img/book.png" width=80 height=80 /></a>           
-                       <a href="getPartyList.do?CATEGORY_NAME=아웃도어/여행&SEARCH_KEYWORD"><img src="resource/img/outdoor.png" width=80 height=80 /></a>
-                       <a href="getPartyList.do?CATEGORY_NAME=운동/스포츠&SEARCH_KEYWORD"><img src="resource/img/execersize.png" width=80 height=80 /></a> 
-                       <a href="getPartyList.do?CATEGORY_NAME=업종/직무&SEARCH_KEYWORD"><img src="resource/img/work.png" width=80 height=80 /></a> 
-                       <a href="getPartyList.do?CATEGORY_NAME=외국/언어&SEARCH_KEYWORD"><img src="resource/img/lang.png" width=80 height=80 /></a> 
-                       <a href="getPartyList.do?CATEGORY_NAME=문화/공연/축제&SEARCH_KEYWORD"><img src="resource/img/party.png" width=80 height=80 /></a> 
-                       <a href="getPartyList.do?CATEGORY_NAME=음악/악기&SEARCH_KEYWORD"><img src="resource/img/music.png" width=80 height=80 /></a> 
-                       <a href="getPartyList.do?CATEGORY_NAME=인공예/만들기&SEARCH_KEYWORD"><img src="resource/img/make.png" width=80 height=80 /></a> 
-                       <a href="getPartyList.do?CATEGORY_NAME=댄스/무용&SEARCH_KEYWORD"><img src="resource/img/dance.png" width=80 height=80 /></a> 
-                       <a href="getPartyList.do?CATEGORY_NAME=봉사활동&SEARCH_KEYWORD"><img src="resource/img/volunteer.png" width=80 height=80 /></a> 
-                       <a href="getPartyList.do?CATEGORY_NAME=사교/인맥&SEARCH_KEYWORD"><img src="resource/img/freind.png" width=80 height=80 /></a> 
-                       <a href="getPartyList.do?CATEGORY_NAME=차/오토바이&SEARCH_KEYWORD"><img src="resource/img/car.png" width=80 height=80 /></a> 
-                       <a href="getPartyList.do?CATEGORY_NAME=사진/영상&SEARCH_KEYWORD"><img src="resource/img/camera.png" width=80 height=80 /></a> 
-                       <a href="getPartyList.do?CATEGORY_NAME=야구관람&SEARCH_KEYWORD"><img src="resource/img/baseball.png" width=80 height=80 /></a>
-                       <a href="getPartyList.do?CATEGORY_NAME=게임/오락&SEARCH_KEYWORD"><img src="resource/img/GAME.png" width=80 height=80 /></a>
-                       <a href="getPartyList.do?CATEGORY_NAME=요리/제조&SEARCH_KEYWORD"><img src="resource/img/cook.png" width=80 height=80 /></a>
-                       <a href="getPartyList.do?CATEGORY_NAME=뱐려동물&SEARCH_KEYWORD"><img src="resource/img/pet.png" width=80 height=80 /></a>
-                       <a href="getPartyList.do?CATEGORY_NAME=가족/결혼&SEARCH_KEYWORD"><img src="resource/img/family.png" width=80 height=80 /></a>
-                       <a href="getPartyList.do?CATEGORY_NAME=자유주제&SEARCH_KEYWORD"><img src="resource/img/freetalk.png" width=80 height=80 /></a>            
+                       <a href="../getPartyList.do?CATEGORY_NAME=인문학/책/글&SEARCH_KEYWORD"><img src="../resource/img/book.png" width=80 height=80 /></a>           
+                       <a href="../getPartyList.do?CATEGORY_NAME=아웃도어/여행&SEARCH_KEYWORD"><img src="../resource/img/outdoor.png" width=80 height=80 /></a>
+                       <a href="../getPartyList.do?CATEGORY_NAME=운동/스포츠&SEARCH_KEYWORD"><img src="../resource/img/execersize.png" width=80 height=80 /></a> 
+                       <a href="../getPartyList.do?CATEGORY_NAME=업종/직무&SEARCH_KEYWORD"><img src="../resource/img/work.png" width=80 height=80 /></a> 
+                       <a href="../getPartyList.do?CATEGORY_NAME=외국/언어&SEARCH_KEYWORD"><img src="../resource/img/lang.png" width=80 height=80 /></a> 
+                       <a href="../getPartyList.do?CATEGORY_NAME=문화/공연/축제&SEARCH_KEYWORD"><img src="../resource/img/party.png" width=80 height=80 /></a> 
+                       <a href="../getPartyList.do?CATEGORY_NAME=음악/악기&SEARCH_KEYWORD"><img src="../resource/img/music.png" width=80 height=80 /></a> 
+                       <a href="../getPartyList.do?CATEGORY_NAME=인공예/만들기&SEARCH_KEYWORD"><img src="../resource/img/make.png" width=80 height=80 /></a> 
+                       <a href="../getPartyList.do?CATEGORY_NAME=댄스/무용&SEARCH_KEYWORD"><img src="../resource/img/dance.png" width=80 height=80 /></a> 
+                       <a href="../getPartyList.do?CATEGORY_NAME=봉사활동&SEARCH_KEYWORD"><img src="../resource/img/volunteer.png" width=80 height=80 /></a> 
+                       <a href="../getPartyList.do?CATEGORY_NAME=사교/인맥&SEARCH_KEYWORD"><img src="../resource/img/freind.png" width=80 height=80 /></a> 
+                       <a href="../getPartyList.do?CATEGORY_NAME=차/오토바이&SEARCH_KEYWORD"><img src="../resource/img/car.png" width=80 height=80 /></a> 
+                       <a href="../getPartyList.do?CATEGORY_NAME=사진/영상&SEARCH_KEYWORD"><img src="../resource/img/camera.png" width=80 height=80 /></a> 
+                       <a href="../getPartyList.do?CATEGORY_NAME=야구관람&SEARCH_KEYWORD"><img src="../resource/img/baseball.png" width=80 height=80 /></a>
+                       <a href="../getPartyList.do?CATEGORY_NAME=게임/오락&SEARCH_KEYWORD"><img src="../resource/img/GAME.png" width=80 height=80 /></a>
+                       <a href="../getPartyList.do?CATEGORY_NAME=요리/제조&SEARCH_KEYWORD"><img src="../resource/img/cook.png" width=80 height=80 /></a>
+                       <a href="../getPartyList.do?CATEGORY_NAME=뱐려동물&SEARCH_KEYWORD"><img src="../resource/img/pet.png" width=80 height=80 /></a>
+                       <a href="../getPartyList.do?CATEGORY_NAME=가족/결혼&SEARCH_KEYWORD"><img src="../resource/img/family.png" width=80 height=80 /></a>
+                       <a href="../getPartyList.do?CATEGORY_NAME=자유주제&SEARCH_KEYWORD"><img src="../resource/img/freetalk.png" width=80 height=80 /></a>            
                     </div>
                 </div>
                 </div>
@@ -68,10 +68,10 @@
      <!-- 로그인 전 화면 -->
      <%if (userVO == null) {%>
         <li>
-           <a class="nav-link" href="login.do">로그인</a>
+           <a class="nav-link" href="../login.do">로그인</a>
         </li>
          <li>
-           <a class="nav-link" href="registry_form.do">회원가입</a>
+           <a class="nav-link" href="../registry_form.do">회원가입</a>
         </li>
          <%}else if (userVO.isAdmin()==true) {%>
          
@@ -82,10 +82,10 @@
         	<a class="nav-link" href="<%= request.getContextPath() %>/writeParty.do">방개설</a>
         </li>
          <li>
-        	<a class="nav-link" href="mypage/mypage.do">마이페이지</a>
+        	<a class="nav-link" href="mypage.do">마이페이지</a>
         </li>
         <li>
-        	<a class="nav-link" href="admin/getAdminMemberList.do">관리자모드</a>
+        	<a class="nav-link" href="../admin/getAdminMemberList.do">관리자모드</a>
         </li>
           <%}else if (userVO != null) {%>
           <li>
@@ -95,11 +95,11 @@
           	<a class="nav-link" href="<%= request.getContextPath() %>/writeParty.do">방개설</a>
           </li>
           <li>
-          	<a class="nav-link" href="mypage/mypage.do">마이페이지</a>
+          	<a class="nav-link" href="mypage.do">마이페이지</a>
           </li>
       </ul>
       <%}; %>
-    <form class="d-flex" action="getPartyList.do" method="get">
+    <form class="d-flex" action="../getPartyList.do" method="get">
 		<select name="CATEGORY_NAME">
 			<option value ="" selected>선택</option>
 			

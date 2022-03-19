@@ -204,6 +204,7 @@ function fn_numChk(){
              
             <div>
                     <!--  <form action="#" method="post" name="phoneCheck">-->
+                    <lable for=to>전화번호 </lable>
                     <input  class="form-control" type="text" id="to" name="phone_Num" required />
                   <button class="btn btn-primary btn-lg btn-block" type="button" id="numChk"
                      onclick="fn_numChk();" value="N" required>중복확인</button>

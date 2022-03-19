@@ -16,7 +16,7 @@
 
 <style>
 	#imgArticle {
-		float: left;
+		text-align: center;
 	}
 	#like{
 	  
@@ -24,6 +24,10 @@
 		position: relative; bottom: 50px; right: 50px;
 	}
 	
+	}
+	img { display: inline-block; content: ""; 
+	}
+
 </style>
 
 
@@ -43,6 +47,28 @@
 </div>
 </div>
 </div>
+<br><br>
+	<div id="imgArticle">
+	<%int i = 0;%>
+	<c:forEach items="${albumList}" var="album">
+	
+			<div style="display:inline-block;">
+				<div><a href="getAlbum.do?alb_id=${album.alb_id}">
+					<img src="${album.alb_img_path}" width=200 height=200 />
+				</a></div>
+				<span id="like">${album.likeCnt}</span>
+				<% i++; %>
+			</div>
+	
+		<% if (i%3==0) {%>
+		
+			</br>
+		<%} %>
+		
+	</c:forEach> 
+	</div>
+
+	<!-- 
 	<div id="imgArticle">
 	<c:forEach items="${albumList}" var="album">
 			<a href="getAlbum.do?alb_id=${album.alb_id}">
@@ -51,13 +77,14 @@
 			</a>
 	</c:forEach> 
 	</div>
-	
-<br><br>
+	 -->
+
 <section>
+<!-- 
 	<div>
 	<c:if test="${pages.hasBoard()}">
 	<div class= "col text-center">
-	<table>
+	
 		<tr>
 			<td colspan="4">
 				<c:if test ="${pages.startPage > pages.pageSize}">
@@ -73,9 +100,34 @@
 			</c:if>
 			</td>
 		</tr>
-	</table>
+	
 	</div>
 	</c:if>
+ -->	
+	<c:if test="${pages.hasBoard()}">
+      <div class= "col text-center">
+      <tr>
+            <ul class="pagination">
+            <c:if test ="${pages.startPage > pages.pageSize}">
+                <li class="page-item"><a class="page-link" href="getAlbumList.do?party_id=${param.party_id}&pageNo=${pages.startPage - pages.pageSize }">이전</a></li>
+            </c:if>
+            <c:forEach var="pNo" 
+                              begin="${pages.startPage}"
+                              end="${pages.endPage}">
+             <li class="page-item"><a class="page-link" href="getAlbumList.do?party_id=${param.party_id}&pageNo=${pNo}">${pNo}</a></li>
+            </c:forEach>
+            <c:if test="${pages.endPage < pages.totalPages }" >
+            <li class="page-item"><a class="page-link" href="getAlbumList.do?party_id=${param.party_id}&pageNo=${pages.startPage + pages.pageSize }">다음</a></li>
+            </c:if> 
+            </ul>
+         </td>
+      </tr>
+      </div>
+	</c:if>
+	
+
+	
+	
 	</div>
 	<div>
 	

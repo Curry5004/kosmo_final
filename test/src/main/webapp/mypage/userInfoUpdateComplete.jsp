@@ -7,8 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="Nav.jsp"/>
+<center>
 	회원정보 갱신성공
 	다시 로그인 해주세요.
-	<a href="../index.jsp">인덱스로 돌아가기</a>
+	<a href="../home.do">홈 화면으로  돌아가기</a>
+</center>
 </body>
 </html>

@@ -97,6 +97,7 @@
         <br><br><br>
 
         <form method="post" action="UpdateUserInfo.do" name="userInfo" enctype="multipart/form-data">
+        <input type="hidden" value="${user.user_Id}" name="user_Id"/>
            <table class="table table-striped">
 			  <tbody>
 			    <tr>
@@ -105,7 +106,7 @@
 			    </tr>
 			    <tr>
 			      <td id="title">비밀번호</td>
-			      <td width="300">----------</td>
+			      <td width="300"><input type="password" name="password" maxlength="50" value="${user.password}"></input></td>
 			    </tr>
 			    <tr>
 			      <td id="title">이름</td>
@@ -169,10 +170,6 @@
 			     <tr>
 			      <td id="title" width="300" height="150">프로필 사진</td>
 			      <td width="300">  <input type="file" name="profile_root"></input></td>
-			    </tr>
-			     <tr>
-			      <td id="title">MBTI Type</td>
-			      <td width="300"> ${user.mbti_Name}</td>
 			    </tr>
 			  </tbody>
 			</table>

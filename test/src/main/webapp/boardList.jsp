@@ -13,6 +13,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>소모임- 게시글 리스트</title>
 </head>
+
+<style>
+	.pagination{
+	justify-content :center;
+	}
+	</style>
 <body>
 <jsp:include page="Nav.jsp"/>
 <div class="container">
@@ -60,26 +66,30 @@
 		</div>
 		<hr />
 	</c:forEach>
-	</ul> 
+	</ul>
 	<c:if test="${pages.hasBoard()}">
-	<div class= "col text-center">
+
             <tr>
-			<td colspan="4">
+	        <ul class="pagination" >
+           
 				<c:if test ="${pages.startPage > pages.pageSize}">
-				<a href="getBoardList.do?party_id=${param.party_id}&pageNo=${pages.startPage - pages.pageSize }">[이전]</a>
+				  <li class="page-item"><a class="page-link" href="getBoardList.do?party_id=${param.party_id}&pageNo=${pages.startPage - pages.pageSize }">[이전]</a>
 				</c:if>
 			<c:forEach var="pNo" 
 					begin="${pages.startPage}"
 					end="${pages.endPage}">
-			<a href="getBoardList.do?party_id=${param.party_id}&pageNo=${pNo}">[${pNo}]</a>
+			 <li class="page-item"><a class="page-link"a href="getBoardList.do?party_id=${param.party_id}&pageNo=${pNo}">${pNo}</a>
 			</c:forEach>
 			<c:if test="${pages.endPage < pages.totalPages }" >
-			<a href="getBoardList.do?party_id=${param.party_id}&pageNo=${pages.startPage + pages.pageSize }"> [다음]</a>
+			 <li class="page-item"><a class="page-link"a href="getBoardList.do?party_id=${param.party_id}&pageNo=${pages.startPage + pages.pageSize }"> [다음]</a>
 			</c:if>
-			</td>
+		   </ul>
 		</tr>
-	</div>
+	
 	</c:if>
+	
+	
+	
 	<div class="col text-right">
 	<button class="btn btn-primary" onclick ="location.href='boardWrite.jsp?party_id=${param.party_id}';">게시글 쓰기</button>
 	</div>

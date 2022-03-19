@@ -24,8 +24,8 @@
 		position: relative; bottom: 50px; right: 50px;
 	}
 	
-	}
-	img { display: inline-block; content: ""; 
+	.pagination{
+	justify-content :center;
 	}
 
 </style>
@@ -105,9 +105,10 @@
 	</c:if>
  -->	
 	<c:if test="${pages.hasBoard()}">
-      <div class= "col text-center">
+
       <tr>
-            <ul class="pagination">
+            <ul class="pagination" >
+           
             <c:if test ="${pages.startPage > pages.pageSize}">
                 <li class="page-item"><a class="page-link" href="getAlbumList.do?party_id=${param.party_id}&pageNo=${pages.startPage - pages.pageSize }">이전</a></li>
             </c:if>
@@ -119,20 +120,15 @@
             <c:if test="${pages.endPage < pages.totalPages }" >
             <li class="page-item"><a class="page-link" href="getAlbumList.do?party_id=${param.party_id}&pageNo=${pages.startPage + pages.pageSize }">다음</a></li>
             </c:if> 
+          
             </ul>
-         </td>
       </tr>
-      </div>
 	</c:if>
 	
 
 	
 	
-	</div>
-	<div>
-	
-	</div>
-	
+
 
 		<div class="col text-right">
 	<button class="btn btn-primary" onclick="location.href='writeAlbum.jsp?party_id=${param.party_id}';">앨범작성</button>

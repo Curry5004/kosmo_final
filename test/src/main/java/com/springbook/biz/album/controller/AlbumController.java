@@ -77,8 +77,9 @@ public class AlbumController {
 			vo.setUser_id(userVO.getUser_Id());
 			vo.setAlb_writer(userVO.getName());
 			System.out.println(userVO.getUser_Id());
+			int party_id=vo.getParty_id();
 			albumService.insertAlbum(vo);
-			return "home.do";
+			return "redirect:getAlbumList.do?party_id="+party_id;
 		} else {
 			return "login.do";
 		}

@@ -29,19 +29,24 @@
 </div>
 </div>
 </div>
-
+<br><br>
 <section>
+  <ul class="list-group">
 
 	<c:forEach items="${boardList}" var="board">
 		<div style="display:flex;">
-			<div><a href="getBoard.do?art_id=${board.art_id}">
+			<div class="col text-left" ><a href="getBoard.do?art_id=${board.art_id}">
 				&ensp; <img src="${board.art_img_path}" width=200 height=200 />
 			</a></div>
-			<div><a href="getBoard.do?art_id=${board.art_id}">
+			
+			<div class="col text-left"><a href="getBoard.do?art_id=${board.art_id}">
+			
 				&ensp;${board.art_title}</a></div>
-			<div style="float:right">
+	
+			<div class ="col text-right">	
 		 <fmt:formatDate var="formatRegDate" value="${board.art_reg_date}" pattern="yyyy-MM-dd"/>
 		 <fmt:formatDate var="formatModDate" value="${board.art_mod_date}" pattern="yyyy-MM-dd"/>
+				
 				&ensp; 작성자: ${board.art_user_name}
 				&ensp; 조회수: ${board.art_view_cnt }
 		 <c:if test="${empty formatModDate }">
@@ -54,21 +59,22 @@
 			</div>
 		</div>
 		<hr />
-	</c:forEach> 
+	</c:forEach>
+	</ul> 
 	<c:if test="${pages.hasBoard()}">
-	<div>
-		<tr>
+	<div class= "col text-center">
+            <tr>
 			<td colspan="4">
 				<c:if test ="${pages.startPage > pages.pageSize}">
-				<a href="getBoardList.do?party_id=1&pageNo=${pages.startPage - pages.pageSize }">[이전]</a>
+				<a href="getBoardList.do?party_id=${param.party_id}&pageNo=${pages.startPage - pages.pageSize }">[이전]</a>
 				</c:if>
 			<c:forEach var="pNo" 
 					begin="${pages.startPage}"
 					end="${pages.endPage}">
-			<a href="getBoardList.do?party_id=1&pageNo=${pNo}">[${pNo}]</a>
+			<a href="getBoardList.do?party_id=${param.party_id}&pageNo=${pNo}">[${pNo}]</a>
 			</c:forEach>
 			<c:if test="${pages.endPage < pages.totalPages }" >
-			<a href="getBoardList.do?party_id=1&pageNo=${pages.startPage + pages.pageSize }"> [다음]</a>
+			<a href="getBoardList.do?party_id=${param.party_id}&pageNo=${pages.startPage + pages.pageSize }"> [다음]</a>
 			</c:if>
 			</td>
 		</tr>

@@ -139,7 +139,7 @@
 		</form>
 	</div>
    <div class="col text-center">
-	<button class="btn btn-primary btn-lg" onclick ="location.href='getAlbumList.do?party_id=1';">돌아가기</button>
+	<button class="btn btn-primary btn-lg" onclick ="location.href='getAlbumList.do?party_id={album.party_id}';">돌아가기</button>
     </div>
 	
 </body>

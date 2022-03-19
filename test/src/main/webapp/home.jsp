@@ -33,7 +33,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<!-- #BOOTSTRAP 5.1.3 합쳐지고 최소화된 최신 CSS -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    
+   
 <!-- 링크 -->
 
  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
@@ -78,12 +78,12 @@
 		
 		}
 	</style>
-    
+    <!-- 왠진 모르겠지만 이거 있으니까 카태고리 버튼이 시퍼렇게 됨.	  -->
     <link rel="stylesheet" href="main/css/flaticon.css">
     <link rel="stylesheet" href="main/css/icomoon.css">
     <link rel="stylesheet" href="main/css/style.css">
 <!-- 네비 예시입니다. -->
-
+ 
 <body>
 	<jsp:include page="Nav.jsp"/>
 
@@ -187,7 +187,7 @@
 	<!-- 불러오는곳 -->
 	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
-
+	<!-- 지금 있는 스크립트의 의도는?  -->
   <script src="main/js/jquery.min.js"></script>
   <script src="main/js/jquery-migrate-3.0.1.min.js"></script>
   <script src="main/js/popper.min.js"></script>

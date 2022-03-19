@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ChatDAO">
+
+<insert id="insertChat" parameterType="chat">
+	INSERT INTO CHAT (PARTY_ID, USER_ID, USER_NAME, CONTENT) 
+	VALUES (#{party_id}, #{user_id}, #{user_name}, #{content})
+</insert>
+
+<select id="getChatList" resultType="chat">
+	SELECT * FROM CHAT 
+	WHERE PARTY_ID = #{party_id}
+	ORDER BY CHAT_ID ASC 
+</select>
+
+</mapper>

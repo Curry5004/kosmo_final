@@ -12,7 +12,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 function fn_idChk(){
-	
+	 
 	var user_id = $("#user_Id").val();
 	if(user_id==""||user_id==null){
 		alert("id를 입력해주세요.");

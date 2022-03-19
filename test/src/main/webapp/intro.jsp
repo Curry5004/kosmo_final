@@ -26,7 +26,7 @@
   <button type="button" class="btn btn-primary" onclick="location.href='getBoardList.do?party_id=${param.PARTY_ID}'">게시판</button>
   <button type="button" class="btn btn-primary" onclick="location.href='getAlbumList.do?party_id=${param.PARTY_ID}'">앨범</button>
   <button type="button" class="btn btn-primary" onclick="location.href='calendar.do?party_id=${param.PARTY_ID}'">일정</button>
-  <button type="button" class="btn btn-primary" onclick="location.href=''">채팅</button>
+  <button type="button" class="btn btn-primary" onclick="location.href='chatting.do?party_id=${param.PARTY_ID }'">채팅</button>
   <c:if test="${party.PARTY_CREATOR eq user.user_Id}">
   <button type="button" class="btn btn-primary" onclick="location.href='getPartyUserList.do?PARTY_ID=${param.PARTY_ID}'">회원관리</button>
   </c:if>

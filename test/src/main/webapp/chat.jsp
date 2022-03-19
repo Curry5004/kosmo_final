@@ -1,47 +1,150 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-	<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<script>
-function scroll_go(){
-$("body").scrollTop($(document).height());
-}
-scroll_go();
-</script>
 <style>
-body{
- background-color: #a1c0d6;
-  height: 100vh;
-  padding-top: 15px;
-  padding-left: 5px;
-  padding-right: 5px;
-  }
+body {	
+	background-color: #a1c0d6;
+	padding-top: 15px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 100px;
+}
+
+
+.message_name {
+	margin-right : 8px;
+	float: right;
+	display: block; clear : both;
+	border-radius: 10px;
+	padding: 8px;
+	text-align: left;
+}
+.message_mine {
+	margin-left : 8px;
+	float: right;
+	display: inline-block; clear : both;
+	background-color: #FDF01B;
+	border-radius: 10px;
+	padding: 8px;
+	text-align: left;
+	margin-bottom: 14px;
+}
+.message_name_mine {
+	margin-right : 8px;
+	float: right;
+	display: block; clear : both;
+	border-radius: 10px;
+	padding: 8px;
+	text-align: left;
+}
+
+.timeBox {
+	margin-right : 8px;
+	float: right;
+	display: inline-block;
+	border-radius: 10px;
+	padding: 8px;
+	text-align: left;
+}
+.mesageBox{
+	vertical-align: bottom;
+}
+
+
+.message_name_other {
+	margin-right : 8px;
+	float: left;
+	display: block; clear : both;
+	border-radius: 10px;
+	padding: 8px;
+	text-align: left;
+}
+.message_other {
+	margin-left : 8px;
+	float: left;
+	display: inline-block; clear : both;
+	background: #fff;
+	border-radius: 10px;
+	padding: 8px;
+	text-align: left;
+	margin-bottom: 14px;
+}
+.message_name_other {
+	margin-right : 8px;
+	float: left;
+	display: block; clear : both;
+	border-radius: 10px;
+	padding: 8px;
+	text-align: left;
+}
+
+.timeBox_other {
+	margin-right : 8px;
+	float: left;
+	display: inline-block;
+	border-radius: 10px;
+	padding: 8px;
+	text-align: left;
+}
+.mesageBox_other{
+	vertical-align: bottom;
+}
+
+#write {
 	
-.messageDiv{ background:#fff; border-radius:10px; padding:8px; margin: 8px; text-align:left; width: 30%;}
-#messages{ background:#fff; border-radius:10px; padding:8px; margin: 8px; text-align:left; width: 30%;}
+	position: fixed;
+	z-index: 30;
+	 right: 0;
+  bottom: 0;
+}
+#chatArea {
+	display: block;
+	height: 100%;
+	margin-bottom: 75px;
+}
+#messageinput{}
+
 </style>
 </head>
 <script>
 
 
+function getDateTime(date) {
 
-	function ExecuteScript() 
-	{
-		document.body.scrollTop = document.body.scrollHeight;
-	}
+    var year = date.getFullYear();
+
+    var month = date.getMonth() + 1;
+
+    var day = date.getDate();
+
+    var hh = date.getHours();
+
+    var mm = date.getMinutes();
+
+    var ss = date.getSeconds();
+
+    return year + "-" + month + "-" + day + " " + hh + ":" + mm + ":" + ss;
+
+}
+
 
 	var msg1 = {
-			party_id : 1
+			party_id : <c:out value="${param.party_id }"/>
 	}
 	function list() {
 		const testDiv = document.getElementById('testDiv');
@@ -59,8 +162,67 @@ body{
 		.then(res => {
 			res.forEach((resEach) => {
 				var div1 = document.createElement('div');
-				div1.className += "messageDiv";
-				div1.innerHTML =resEach.user_id + " : " + resEach.content + " 작성시간 : "+ resEach.reg_date
+				
+				var name = document.createElement('div');
+		        var messageBox = document.createElement('div');
+		        var timeBox = document.createElement('span');
+		        var messageSpan = document.createElement('span');
+				if(resEach.user_id=="<c:out value='${sessionScope.user.user_Id}'/>"){
+					
+					
+		        	
+		        	
+					name.className += "message_name_mine";
+					messageSpan.className += "message_mine";
+					timeBox.className += "timeBox";
+					messageBox.className += "messageBox";
+					
+					var time = resEach.reg_date.split(" ");
+					var ampm = "";
+					if (time[4]=="PM")
+						ampm += "오후";
+					else
+						ampm += "오전";
+					
+					var timeMsg= time[1].replace(",","")+"일 "+ampm + " " +time[3]
+					timeBox.innerText=timeMsg;
+					
+					name.innerHTML = resEach.user_name;
+					messageSpan.innerHTML = resEach.content;
+					messageBox.appendChild(timeBox);
+					messageBox.appendChild(messageSpan);
+					testDiv.appendChild(name);
+					testDiv.appendChild(messageBox);
+					
+					
+					
+					
+					
+				}else{
+				
+				name.className += "message_name_other";
+				messageSpan.className += "message_other";
+				timeBox.className += "timeBox_other";
+				messageBox.className += "messageBox_other";
+				
+				var time = resEach.reg_date.split(" ");
+				var ampm = "";
+				if (time[4]=="PM")
+					ampm += "오후";
+				else
+					ampm += "오전";
+				
+				var timeMsg= time[1].replace(",","")+"일 "+ampm + " " +time[3]
+				timeBox.innerText=timeMsg;
+				
+				name.innerHTML = resEach.user_name;
+				messageSpan.innerHTML = resEach.content;
+				messageBox.appendChild(timeBox);
+				messageBox.appendChild(messageSpan);
+				testDiv.appendChild(name);
+				testDiv.appendChild(messageBox);
+				
+				}
 				testDiv.appendChild(div1);
 			})
 		})
@@ -69,33 +231,57 @@ body{
 		})
 	}
 </script>
-<body onload="ExecuteScript(), list()">
-<div id="testDiv"></div>
-    
-    <!-- Server responses get written here -->
-    <div id="messages"></div>
-    <!-- websocket javascript -->
-    <c:set var="id" value="${sessionScope.user.user_Id }"></c:set>
-    <div>
-        <input type="text" id="sender" value="${sessionScope.user.name }" style="display: none;">
-        <input type="text" id="messageinput">
-    </div>
-    <div>
-        <button type="button" onclick="openSocket();">Open</button>
-        <button type="button" onclick="send();">Send</button>
-        <button type="button" onclick="closeSocket();">Close</button>
-    </div>
-    
-    
-    
-    
-    <script type="text/javascript">
+<body onload="list() ,openSocket()">
+	<div id=chatArea>
+	<div id="testDiv"></div>
+
+	<!-- Server responses get written here -->
+	<div id="messageDiv"></div>
+	<!-- websocket javascript -->
+	<c:set var="id" value="${sessionScope.user.user_Id }"></c:set>
+	</div>
+	
+	<div id="write">
+		<input type="text" id="messageinput" >
+		<c:if test="${fn:contains(idList, sessionScope.user.user_Id)}">
+		<button type="button" onclick="send();">전송</button>
+		</c:if>
+		<button type="button" onclick="location.href='getParty.do?PARTY_ID=${param.party_id }'; closeSocket();">종료</button>
+	</div>
+
+
+
+
+	<script type="text/javascript">
+	$(function(){
+		stickyFooter();
+
+		$(window).scroll(stickyFooter).resize(stickyFooter);
+	});
+
+
+	function stickyFooter(){
+		document_height = $(document).height(); // 문서 전체 높이
+		document_scrollTop = $(document).scrollTop(); // 문서 전체 높이 중 스크롤 위치
+		window_height = $(window).height(); // 창 높이
+		footer_height = $("footer").height();
+
+		gap = document_height - footer_height - window_height; 
+		bottom = document_scrollTop - gap ; 
+
+		if(document_scrollTop > gap){
+			$("footer").css("bottom", bottom+"px");
+		}else{
+			$("footer").css("bottom","0");
+		}
+	}
         var ws;
-        var messages=document.getElementById("messages");
+        var messageDiv=document.getElementById("messageDiv");
+       
         
         function openSocket(){
             if(ws!==undefined && ws.readyState!==WebSocket.CLOSED){
-                writeResponse("WebSocket is already opened.");
+                writeResponse("이미 참가중입니다.");
                 return;
             }
             //웹소켓 객체 만드는 코드
@@ -110,7 +296,7 @@ body{
                 writeResponse(event.data);
             };
             ws.onclose=function(event){
-                writeResponse("Connection closed");
+                writeResponse("채팅을 종료합니다");
             }
         }
         
@@ -118,7 +304,7 @@ body{
         	
         	var msg = {
             	  content : document.getElementById("messageinput").value
-            	  , party_id : 1
+            	  , party_id : <c:out value="${param.party_id }"/>
             	  , user_id : "<c:out value='${sessionScope.user.user_Id }'/>"
             	  , user_name : "<c:out value='${sessionScope.user.name }'/>"
             };
@@ -133,10 +319,6 @@ body{
                 redirect : 'follow',
                 referrer : 'no-referrer',
                 body: JSON.stringify(msg)
-    		}).then(function(response){
-    			return response.text();
-    		}).then(function(text){
-    			console.log(text);
     		}).catch(function(error){
     			console.error(error);
     		})
@@ -152,7 +334,57 @@ body{
             ws.close();
         }
         function writeResponse(text){
-            messages.innerHTML+="<br/>"+text;
+        	var name = document.createElement('div');
+        	var messageBox = document.createElement('div');
+        	var timeBox = document.createElement('span');
+        	var messageSpan = document.createElement('span');
+        	
+        	msg= text.split("\",\"");
+        	var id = msg[1].split("\":\"")[1];
+        	
+        	if(id=="<c:out value="${sessionScope.user.user_Id}"/>")
+        	{
+			name.className += "message_name_mine";
+			messageSpan.className += "message_mine";
+			timeBox.className += "timeBox";
+			messageBox.className += "messageBox";
+			var now = new Date();
+			var hour = "";
+			if(now.getHours()>12)
+				hour += "오후 "+(now.getHours()-12);
+			else
+				hour += "오전 "+now.getHours();
+			var time = hour+" : "+now.getMinutes();
+			
+			
+			timeBox.innerText=time;
+			name.innerHTML = msg[2].split("\":\"")[1].replace("\"}","");
+			messageSpan.innerHTML = msg[0].split("\":\"")[1];
+			messageBox.appendChild(timeBox);
+			messageBox.appendChild(messageSpan);
+			testDiv.appendChild(name);
+			testDiv.appendChild(messageBox);
+			}else{
+				name.className += "message_name_other";
+				messageSpan.className += "message_other";
+				timeBox.className += "timeBox_other";
+				messageBox.className += "messageBox_other";
+				var now = new Date();
+				var hour = "";
+				if(now.getHours()>12)
+					hour += "오후 "+(now.getHours()-12);
+				else
+					hour += "오전 "+now.getHours();
+				var time = hour+" : "+now.getMinutes()
+				
+				timeBox.innerText=time;
+				name.innerHTML = msg[2].split("\":\"")[1].replace("\"}","");
+				messageSpan.innerHTML = msg[0].split("\":\"")[1];
+				messageBox.appendChild(timeBox);
+				messageBox.appendChild(messageSpan);
+				testDiv.appendChild(name);
+				testDiv.appendChild(messageBox);
+			}
         }
         
         

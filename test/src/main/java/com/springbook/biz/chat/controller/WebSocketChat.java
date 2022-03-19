@@ -49,7 +49,6 @@ public class WebSocketChat {
         logger.info("Open session id:"+session.getId());
         try {
             final Basic basic=session.getBasicRemote();
-            basic.sendText("Connection Established");
         }catch (Exception e) {
             // TODO: handle exception
             System.out.println(e.getMessage());
@@ -65,7 +64,7 @@ public class WebSocketChat {
         try {
             for(Session session : WebSocketChat.sessionList) {
                 if(!self.getId().equals(session.getId())) {
-                    session.getBasicRemote().sendText(message.split(",")[1].split(":")[1]+" : "+message.split(",")[1].split(":")[0]);
+                    session.getBasicRemote().sendText(message);
                 }
             }
         }catch (Exception e) {

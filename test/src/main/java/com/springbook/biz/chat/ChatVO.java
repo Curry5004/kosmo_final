@@ -2,14 +2,14 @@ package com.springbook.biz.chat;
 
 import java.util.Date;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class ChatVO {
 	private int party_id;
 	private String user_id;
 	private String user_name;
 	private String content;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss", timezone="Asia/Seoul")
 	private Date reg_date;
 	
 	

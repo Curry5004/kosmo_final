@@ -111,7 +111,6 @@ public class PartyController {
 		for(MemberListVO v:list){
 			idList.add(v.getUSER_ID());
 		}
-		System.out.println(idList.toString());
 		model.addAttribute("idList",idList);
 		
 

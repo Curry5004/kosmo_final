@@ -55,12 +55,12 @@
 	
 		<tr>
 		     
-			<td>제목:${board.art_title}</td>
+			<td>제목:&ensp;${board.art_title}</td>
 		
 	
 			<td>
 			<div class="col text-right">
-				작성자:${board.art_user_name}
+				작성자:&ensp;${board.art_user_name}
 			</div>
 			</td>
 		</tr>
@@ -160,7 +160,7 @@
 	</div>
 	
 		 <div class="col text-center">
-	<button class="btn btn-primary btn-lg" onclick ="location.href='getBoardList.do?party_id=1';">돌아가기</button>
+	<button class="btn btn-primary btn-lg" onclick ="location.href='getBoardList.do?party_id=${board.party_id}';">돌아가기</button>
        </div>
 <jsp:include page ="footer.jsp"/>
 </body>

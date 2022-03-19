@@ -13,6 +13,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>소모임- 게시글 리스트</title>
 </head>
+
+<style>
+	.pagination{
+	justify-content :center;
+	}
+	</style>
 <body>
 <jsp:include page="Nav.jsp"/>
 <div class="container">
@@ -29,19 +35,24 @@
 </div>
 </div>
 </div>
-
+<br><br>
 <section>
+  <ul class="list-group">
 
 	<c:forEach items="${boardList}" var="board">
 		<div style="display:flex;">
-			<div><a href="getBoard.do?art_id=${board.art_id}">
+			<div class="col text-left" ><a href="getBoard.do?art_id=${board.art_id}">
 				&ensp; <img src="${board.art_img_path}" width=200 height=200 />
 			</a></div>
-			<div><a href="getBoard.do?art_id=${board.art_id}">
+			
+			<div class="col text-left"><a href="getBoard.do?art_id=${board.art_id}">
+			
 				&ensp;${board.art_title}</a></div>
-			<div style="float:right">
+	
+			<div class ="col text-right">	
 		 <fmt:formatDate var="formatRegDate" value="${board.art_reg_date}" pattern="yyyy-MM-dd"/>
 		 <fmt:formatDate var="formatModDate" value="${board.art_mod_date}" pattern="yyyy-MM-dd"/>
+				
 				&ensp; 작성자: ${board.art_user_name}
 				&ensp; 조회수: ${board.art_view_cnt }
 		 <c:if test="${empty formatModDate }">
@@ -54,26 +65,31 @@
 			</div>
 		</div>
 		<hr />
-	</c:forEach> 
+	</c:forEach>
+	</ul>
 	<c:if test="${pages.hasBoard()}">
-	<div>
-		<tr>
-			<td colspan="4">
+
+            <tr>
+	        <ul class="pagination" >
+           
 				<c:if test ="${pages.startPage > pages.pageSize}">
-				<a href="getBoardList.do?party_id=1&pageNo=${pages.startPage - pages.pageSize }">[이전]</a>
+				  <li class="page-item"><a class="page-link" href="getBoardList.do?party_id=${param.party_id}&pageNo=${pages.startPage - pages.pageSize }">[이전]</a>
 				</c:if>
 			<c:forEach var="pNo" 
 					begin="${pages.startPage}"
 					end="${pages.endPage}">
-			<a href="getBoardList.do?party_id=1&pageNo=${pNo}">[${pNo}]</a>
+			 <li class="page-item"><a class="page-link"a href="getBoardList.do?party_id=${param.party_id}&pageNo=${pNo}">${pNo}</a>
 			</c:forEach>
 			<c:if test="${pages.endPage < pages.totalPages }" >
-			<a href="getBoardList.do?party_id=1&pageNo=${pages.startPage + pages.pageSize }"> [다음]</a>
+			 <li class="page-item"><a class="page-link"a href="getBoardList.do?party_id=${param.party_id}&pageNo=${pages.startPage + pages.pageSize }"> [다음]</a>
 			</c:if>
-			</td>
+		   </ul>
 		</tr>
-	</div>
+	
 	</c:if>
+	
+	
+	
 	<div class="col text-right">
 	<button class="btn btn-primary" onclick ="location.href='boardWrite.jsp?party_id=${param.party_id}';">게시글 쓰기</button>
 	</div>

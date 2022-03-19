@@ -136,9 +136,7 @@ function getDateTime(date) {
 
     var mm = date.getMinutes();
 
-    var ss = date.getSeconds();
-
-    return year + "-" + month + "-" + day + " " + hh + ":" + mm + ":" + ss;
+    return year + "-" + month + "-" + day + " " + hh + ":" + mm;
 
 }
 
@@ -183,8 +181,10 @@ function getDateTime(date) {
 						ampm += "오후";
 					else
 						ampm += "오전";
+
 					
-					var timeMsg= time[1].replace(",","")+"일 "+ampm + " " +time[3]
+					var hourMinute = time[3].split(":")[0]+":"+time[3].split(":")[1];
+					var timeMsg= time[1].replace(",","")+"일 "+ampm + " " +hourMinute;
 					timeBox.innerText=timeMsg;
 					
 					name.innerHTML = resEach.user_name;
@@ -212,7 +212,8 @@ function getDateTime(date) {
 				else
 					ampm += "오전";
 				
-				var timeMsg= time[1].replace(",","")+"일 "+ampm + " " +time[3]
+				var hourMinute = time[3].split(":")[0]+":"+time[3].split(":")[1];
+				var timeMsg= time[1].replace(",","")+"일 "+ampm + " " +hourMinute;
 				timeBox.innerText=timeMsg;
 				
 				name.innerHTML = resEach.user_name;

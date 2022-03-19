@@ -32,7 +32,7 @@ pageContext.setAttribute("keyword",keyword);
 			<div class="col">
   				<div class="card" style="width:500px">
   					<a href="getParty.do?PARTY_ID=${party.PARTY_ID}"> 
-    				<img class="card-img-top" src="resource/img/f11.jpg" alt="Card image" style="width:100%">
+    				<img class="card-img-top" src="${party.PARTY_TUMB_PATH}" alt="Card image" style="width:100%">
     				</a>
    						 <div class="card-body">
    						 	<a href="getParty.do?PARTY_ID=${party.PARTY_ID}">

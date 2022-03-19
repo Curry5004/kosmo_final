@@ -43,13 +43,12 @@
 			font-weight: bold;
 			text-decoration-line: none;
 		}
-
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="index.jsp">LOGO</a>
+          <a class="navbar-brand" href="index.jsp"><font size="20px" color="red">LOGO</font></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -90,6 +89,9 @@
           </div>
         </div>
       </nav>
+      <div>
+	 	 <img src="${profile_image}" width=100 height=100 >${user_id}님이 로그인 중입니다.</img>
+	  </div>
       <ul>
      	<li><a href="#">1.개인정보 관리</a></li>
      	<li><a href="#">2.내가 가입한 소모임</a></li>
@@ -98,9 +100,7 @@
      	<li><a href="#">5.생성한 소모임 관리</a></li>
      	<li><a href="<%= request.getContextPath() %>/report.do">6.고객센터</a></li>
 	  </ul>
-	  <div>
-	 	 <img src="${profile_image}" width=80 height=80 >${user_id}님이 로그인 중입니다.</img>
-	  </div>
+	  
 	  <h3>내가 가입한 목록</h3>
 	  <div id="myPartyList" style="display: flex;">
 	  	<c:forEach items="${mypageVO.myPartyList}" var="party">

@@ -77,7 +77,7 @@
 <body>
 <jsp:include page="Nav.jsp"/>
       <div class="bcd">
-	 	 <img src="${profile_image}" width=120 height=120 ><font size="5px">${user_id}님이 로그인 중입니다.</font></img>
+	 	 <img src="../${user.profile_Image}" width=120 height=120 ><font size="5px">${user_id}님이 로그인 중입니다.</font></img>
 	  </div>
       
       <ul class="abc">

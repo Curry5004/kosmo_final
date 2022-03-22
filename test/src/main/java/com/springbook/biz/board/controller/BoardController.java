@@ -105,8 +105,11 @@ public class BoardController {
 		
 		//VO 필드변경
 		String oldName =root + "\\" + ranFileName;	 //변경전 이름
-		String changeName=oldName.replaceAll("\\\\", "\\\\\\\\"); //DB와 string에서 \를 인식 못하기 때문에 \\로 바꿔줘야함, \\를 인식하기 위해선 \\\\를 적어야함
-		vo.setArt_img_path(changeName); //VO갱신
+		System.out.println("이미지 패스 이름"+oldName);
+		String imgFolderPath = "resources/uploadFiles/";
+		String imgPath = imgFolderPath+oldName.substring(oldName.lastIndexOf("\\")+1);
+		System.out.println("바뀐 이미지 패스"+imgPath);
+		vo.setArt_img_path(imgPath); //VO갱신
 		}
 		//1번. 세션을 불러온다 (or 매게변수에 Session을 바로받아서 진행할 수 있다.
 		HttpSession session = request.getSession();

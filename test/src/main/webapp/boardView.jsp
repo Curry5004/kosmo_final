@@ -68,7 +68,7 @@
 			<td>
 			
 			<div style="height: 300px; margin: 10px; display: inline-block">
-			<div class="card-body"><img src="images/bg.jpg" width=200 height=200 />
+			<div class="card-body"><img src="${board.art_img_path}" width=200 height=200 />
 			</div>
 			${board.art_content }
 			</div>

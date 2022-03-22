@@ -489,7 +489,7 @@
 					<button type="button" class="btn btn-primary"
 						data-bs-toggle="modal" data-bs-target="#myModal">모임날짜 정하기
 					</button>
-					<input type="hiden" name="sch_title" id="trueTitle"/>
+					<input type="hidden" name="sch_title" id="trueTitle"/>
 					<!-- The Modal -->
 					<div class="modal" id="myModal">
 						<div class="modal-dialog">

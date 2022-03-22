@@ -96,7 +96,7 @@
 	  <div class="modal-body1" id="myPartyList" style="display: flex;">
 	  	<c:forEach items="${mypageVO.myPartyList}" var="party">
 			<div style="display:block;">
-				<div><a href="../getParty.do?PARTY_ID=${party.PARTY_ID}"><img src="${party.PARTY_TUMB_PATH}" width=120 height=120 hspace=50 /></a></div>
+				<div><a href="../getParty.do?PARTY_ID=${party.PARTY_ID}"><img src="../${party.PARTY_TUMB_PATH}" width=120 height=120 hspace=50 /></a></div>
 				<div style="margin-left:50px;"><a href="../getParty.do?PARTY_ID=${party.PARTY_ID}">${party.PARTY_TITLE}</a></div>
                        
 			</div>
@@ -108,7 +108,7 @@
 	  <div class="modal-body1" id="favPartyList"  style="display: flex;">
 	  	<c:forEach items="${mypageVO.favPartyList}" var="party">
 			<div style="display:block;">
-				<div><a href="../getParty.do?PARTY_ID=${party.PARTY_ID}"><img src="${party.PARTY_TUMB_PATH}" width=120 height=120 hspace=50 /></a></div>
+				<div><a href="../getParty.do?PARTY_ID=${party.PARTY_ID}"><img src="../${party.PARTY_TUMB_PATH}" width=120 height=120 hspace=50 /></a></div>
 				<div style="margin-left:50px;"><a href="../getParty.do?PARTY_ID=${party.PARTY_ID}">${party.PARTY_TITLE}</a></div>
 			</div>
 			<hr />

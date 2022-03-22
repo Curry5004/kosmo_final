@@ -116,9 +116,12 @@ public class MypageController {
 
 				// VO 필드변경
 				String oldName = root + "\\" + ranFileName; // 변경전 이름
-				String changeName = oldName.replaceAll("\\\\", "\\\\\\\\"); 
+				System.out.println("이미지 패스 이름"+oldName);
+				String imgFolderPath = "resources/uploadFiles/";
+				String imgPath = imgFolderPath+oldName.substring(oldName.lastIndexOf("\\")+1);
+				System.out.println("바뀐 이미지 패스"+imgPath);	
 				
-				vo.setMbti_Path(changeName); // VO갱신
+				vo.setMbti_Path(imgPath); // VO갱신
 				System.out.println("mbti 이미지 삽입완료 ");
 			} else{
 				vo.setMbti_Path(vo2.getMbti_Path());
@@ -166,8 +169,10 @@ public class MypageController {
 
 			// VO 필드변경
 			String oldName = root + "\\" + ranFileName; // 변경전 이름
-			String changeName = oldName.replaceAll("\\\\", "\\\\\\\\");
-			vo.setProfile_Image(changeName); // VO갱신
+			String imgFolderPath = "resources/uploadFiles/";
+			String imgPath = imgFolderPath+oldName.substring(oldName.lastIndexOf("\\")+1);
+			System.out.println("바뀐 이미지 패스"+imgPath);	
+			vo.setProfile_Image(imgPath); // VO갱신
 			// System.out.println("프로필 이미지 갱신완료");
 		}  else{
 			vo.setProfile_Image(vo2.getProfile_Image());

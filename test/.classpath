@@ -33,6 +33,6 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/muton/git/kosmo_final_/test/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Curry/Documents/카카오톡 받은 파일/lib/json-simple-1.1.1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

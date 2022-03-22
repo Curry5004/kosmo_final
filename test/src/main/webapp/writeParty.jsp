@@ -113,7 +113,7 @@
 			
 			<div class="col-md-6 mb-3">
 				<label>멤버 정원 : </label> 
-				<input type="text" class="form-control" name="PARTY_MAXIMUM" id="maximum" />
+				<input type="number" class="form-control" name="PARTY_MAXIMUM" id="maximum" value="10" min="1" max="100"/>
 			</div>
 			
 			<div>

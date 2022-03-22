@@ -45,8 +45,8 @@
 	
 	<p>작성자 : ${album.alb_writer } </p>
 	
-		<img src="${album.alb_img_path }"  />
-	
+		<img src="${album.alb_img_path}"  />
+		<div class="one-third order-md-last img js-fullheight" style="size background-image:url(resources/uploadFiles/f6bcd10b-c979-46c5-b32f-fc6d4dd75f5a.jpg);">
     <p><div class="col text-right">좋아요 : ${album.likeCnt} 작성일 : ${RegDate}</div></p>
 	
 

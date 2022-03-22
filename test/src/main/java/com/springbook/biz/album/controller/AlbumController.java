@@ -70,7 +70,7 @@ public class AlbumController {
 				// VO 필드변경
 				String oldName = root + "\\" + ranFileName; // 변경전 이름
 				String changeName = oldName.replaceAll("\\\\", "\\\\\\\\"); 
-				vo.setAlb_img_path(changeName); // VO갱신
+				vo.setAlb_img_path(oldName); // VO갱신
 
 			}
 			
@@ -127,7 +127,15 @@ public class AlbumController {
 	public String getAlbum(AlbumVO vo, AlbumCommentVO vo2, Model model, HttpSession session) {
 		UserVO userVO = (UserVO) session.getAttribute("user"); 
 		session.setAttribute("user", userVO); 
-		model.addAttribute("album", albumService.getAlbum(vo));
+		AlbumVO getVO = albumService.getAlbum(vo);
+		String img_src = getVO.getAlb_img_path();
+		System.out.println("테스트1"+img_src.lastIndexOf("\\"));
+		img_src =img_src.substring(img_src.lastIndexOf("\\")+1);
+		String new_src= "resources/uploadFiles/"+img_src;
+		
+		System.out.println(new_src);
+		getVO.setAlb_img_path(new_src);
+		model.addAttribute("album", getVO);
 		Map<String, AlbumVO> likeList = new HashMap<String, AlbumVO>();
 
 		for (AlbumVO albumVO : albumService.getLikeList(vo)) {

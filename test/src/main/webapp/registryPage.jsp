@@ -10,6 +10,8 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="js/typeahead.bundle.js"></script>
+  <script src="js/scripts.js"></script>
 <script type="text/javascript">
 function fn_idChk(){
 	 
@@ -65,7 +67,6 @@ function fn_numChk(){
 
 
 </script>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
  <script>
   var count = 0; /* 문자 중복을 막기 위한 인증번호 */
    
@@ -163,6 +164,36 @@ function fn_numChk(){
 	}
  
   </script>
+  
+   <style>
+    .twitter-typeahead {
+      width: 100%;
+    }
+
+    .tt-menu {
+      z-index: 100;
+      max-height: 240px;
+      overflow-y: auto;
+      background-color: #fff;
+      margin-top: 3px;
+      border-radius: 3px;
+      width: 100%;
+      box-shadow: 0 0 3px #666;
+      padding-bottom: 6px;
+    }
+    
+    .tt-menu .tt-suggestion {
+      padding: 5px 10px;
+      text-align: left;
+      font-size: 16px !important;
+      color: #464a4c;
+    }
+    
+    .tt-menu .tt-suggestion.tt-cursor {
+      background-color: #ccc;
+    }
+
+  </style>
 
 <body>
 <%-- <jsp:include page="Nav.jsp"/> --%>
@@ -224,8 +255,10 @@ function fn_numChk(){
                
                <div class="mb-3">
                   <label for="location">선호 만남 지역</label>
-                  <input type="text" class="form-control" size="50" name="location" placeholder="시, 구 까지만 작성해 주세요 ex)서울특별시 금천구"/>
+                  <input type="text" id="search-area" class="form-control typeahead" placeholder="읍면동 검색" name="location"/>
                </div>
+               
+       			 
                
                <div>
                   <label for="mbti_id">MBTI Type</label>

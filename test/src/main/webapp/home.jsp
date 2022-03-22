@@ -94,12 +94,12 @@
           <div class="row d-md-flex no-gutters slider-text js-fullheight align-items-center justify-content-end" data-scrollax-parent="true">
           	<div class="one-third order-md-last img js-fullheight" style="background-image:url(images/bg_1.jpg);">
           		<img src="resource/img/f11.jpg" alt="" />
-          		<h3 class="vr">Architecture Firm</h3>
+          		<h3 class="vr">KOSMO HJSKLKY</h3>
           	</div>
 	          <div class="one-forth d-flex js-fullheight align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
 	          	<div class="text">
 		            <h1 class="mb-4">나랑 맞는 <br>친구를 찾아보세요</h1>
-		            <p>mbti모임에서는  나랑 비슷한 성향의 친구를 쉽게 찾을수 있습니다 </p>
+		            <p>MBTI모임에서는  나랑 비슷한 성향의 친구를 쉽게 찾을수 있습니다 </p>
 		            
 	            </div>
 	          </div>
@@ -114,7 +114,7 @@
           	<div class="one-third order-md-last img js-fullheight" style="background-image:url(images/bg_2.jpg);">
           	
           		<img src="resource/img/f22.jpg" alt="" />
-          		<h3 class="vr">Since - 2018</h3>
+          		<h3 class="vr">Since - 2022</h3>
           	</div>
 	          <div class="one-forth d-flex js-fullheight align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
 	          	<div class="text">

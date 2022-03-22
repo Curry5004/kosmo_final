@@ -9,6 +9,22 @@
 <meta charset="UTF-8">
 <title>게시글 상세페이지 -모달창 활용할 jsp </title>
 </head>
+<style>
+
+.map_wrap, .map_wrap * {
+	margin: 0;
+	padding: 0;
+	font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
+	font-size: 12px;
+}
+
+.map_wrap {
+	position: relative;
+	width: 100%;
+	height: 500px;
+}
+
+</style>
 <script language="javascript">
 	function check() {
 		var checked_rate1 = document.querySelector('input[name = "rate1"]:checked');
@@ -64,15 +80,59 @@
 	<div class="container pt-5">
 		<div class="row">
 			<div class="col sm-3">
-			<img src="" alt="맵이 들어올 자리"  width="100px" height="100px"/>
+			<div class="map_wrap">
+						<div id="map"
+							style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
+
+						
+					</div>
 				</div>
+				<script type="text/javascript"
+						src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8159dce1cf59e2e917f7411a46d56597&libraries=services"></script>
+<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		mapOption = { 
+		    center: new kakao.maps.LatLng(<c:out value="${sDetail.location_y}"/>, <c:out value="${sDetail.location_x+0.0034}"/>), // 지도의 중심좌표
+		    level: 3 // 지도의 확대 레벨
+		};
+		
+		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+		
+		//마커가 표시될 위치입니다 
+		var markerPosition  = new kakao.maps.LatLng((<c:out value="${sDetail.location_y}"/>), <c:out value="${sDetail.location_x}"/>); 
+		
+		//마커를 생성합니다
+		var marker = new kakao.maps.Marker({
+		position: markerPosition
+		});
+		
+		//마커가 지도 위에 표시되도록 설정합니다
+		marker.setMap(map);
+		var iwContent = '<div style="padding-right:15px; height : 40px; text-align:center;"><c:out value="${sDetail.location_name}"/></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+	    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+	// 인포윈도우를 생성합니다
+	var infowindow = new kakao.maps.InfoWindow({
+	    content : iwContent,
+	    removable : iwRemoveable
+	});
+	infowindow.open(map, marker);  
+	// 마커에 클릭이벤트를 등록합니다
+	kakao.maps.event.addListener(marker, 'click', function() {
+	      // 마커 위에 인포윈도우를 표시합니다
+	      infowindow.open(map, marker);  
+	});			
+		
+					
+</script>
 				
 				<div class="col sm-3">
 					<ul class="list-group">
 					<li class="list-group-item list-group-item-secondary"> 정모제목 : ${sDetail.sch_title }</li>
 						<li class="list-group-item list-group-item-secondary"> 파티이름 : ${party_title}</li>
 						 <li class="list-group-item list-group-item-secondary"> 주최자: ${sDetail.sch_writer} </li>
-						  <li class="list-group-item list-group-item-secondary">위치: ${sDetail.sch_location}</li>
+						  <li class="list-group-item list-group-item-secondary">장소 이름: ${sDetail.location_name}</li>
+						  <li class="list-group-item list-group-item-secondary">주소 : ${sDetail.location_address}</li>
 						   <li class="list-group-item list-group-item-secondary">참가인원: ${current_count} / ${sDetail.sch_member_count }</li>			  
 					</ul>
 					
@@ -85,8 +145,7 @@
 			      
 			      
 			      
-			        <c:forEach items="${cntList}" var="cnt"> 
-	    <c:if test="${cnt.user_id == sessionScope.user.user_Id}">  
+			        
 			      <form action="scheduleReview.do" method="post" name="Reg_form" onsubmit="return check()">
 			      <div class="form-check">
 			      		
@@ -136,8 +195,6 @@
 			      
 			      
 			      </form>
-			         </c:if>
-	    </c:forEach>
 			     <div class="container pt-5">
 			       <div class="btn-group" >
 			      <c:if test="${condition eq false}">

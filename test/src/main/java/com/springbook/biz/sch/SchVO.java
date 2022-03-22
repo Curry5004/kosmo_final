@@ -11,7 +11,10 @@ public class SchVO {
 	private String sch_title;
 	private String sch_writer;
 	private String sch_content;
-	private String sch_location;
+	private String location_address;
+	private String location_name;
+	private String location_x;
+	private String location_y;
 	private String sch_note;
 	private int sch_member_count;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -24,18 +27,6 @@ public class SchVO {
 	private String year;
 	private String month;
 	private String day;
-	
-	
-	
-	@Override
-	public String toString() {
-		return "SchVO [sch_id=" + sch_id + ", user_id=" + user_id + ", party_id=" + party_id + ", sch_title="
-				+ sch_title + ", sch_writer=" + sch_writer + ", sch_content=" + sch_content + ", sch_location="
-				+ sch_location + ", sch_note=" + sch_note + ", sch_member_count=" + sch_member_count + ", sch_date="
-				+ sch_date + ", sch_available=" + sch_available + ", member_id=" + member_id + ", rate1=" + rate1
-				+ ", rate2=" + rate2 + ", rate3=" + rate3 + ", year=" + year + ", month=" + month + ", day=" + day
-				+ ", sch_member_current_count=" + sch_member_current_count + ", name=" + name + "]";
-	}
 	public int getSch_id() {
 		return sch_id;
 	}
@@ -72,11 +63,29 @@ public class SchVO {
 	public void setSch_content(String sch_content) {
 		this.sch_content = sch_content;
 	}
-	public String getSch_location() {
-		return sch_location;
+	public String getLocation_address() {
+		return location_address;
 	}
-	public void setSch_location(String sch_location) {
-		this.sch_location = sch_location;
+	public void setLocation_address(String location_address) {
+		this.location_address = location_address;
+	}
+	public String getLocation_name() {
+		return location_name;
+	}
+	public void setLocation_name(String location_name) {
+		this.location_name = location_name;
+	}
+	public String getLocation_x() {
+		return location_x;
+	}
+	public void setLocation_x(String location_x) {
+		this.location_x = location_x;
+	}
+	public String getLocation_y() {
+		return location_y;
+	}
+	public void setLocation_y(String location_y) {
+		this.location_y = location_y;
 	}
 	public String getSch_note() {
 		return sch_note;
@@ -144,20 +153,18 @@ public class SchVO {
 	public void setDay(String day) {
 		this.day = day;
 	}
-	public int getSch_member_current_count() {
-		return sch_member_current_count;
+	@Override
+	public String toString() {
+		return "SchVO [sch_id=" + sch_id + ", user_id=" + user_id + ", party_id=" + party_id + ", sch_title="
+				+ sch_title + ", sch_writer=" + sch_writer + ", sch_content=" + sch_content + ", location_address="
+				+ location_address + ", location_name=" + location_name + ", location_x=" + location_x + ", location_y="
+				+ location_y + ", sch_note=" + sch_note + ", sch_member_count=" + sch_member_count + ", sch_date="
+				+ sch_date + ", sch_available=" + sch_available + ", member_id=" + member_id + ", rate1=" + rate1
+				+ ", rate2=" + rate2 + ", rate3=" + rate3 + ", year=" + year + ", month=" + month + ", day=" + day
+				+ "]";
 	}
-	public void setSch_member_current_count(int sch_member_current_count) {
-		this.sch_member_current_count = sch_member_current_count;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	private int sch_member_current_count;	//현재 인원 카운트 할 거 추가 
-	private String name;
+	
+	
 	
 	
 	

@@ -109,7 +109,6 @@ public class ScheduleController {
 		UserVO userVO=(UserVO)session.getAttribute("user");
 		vo.setUser_id(userVO.getUser_Id());
 		scheduleService.schMemberCntDown(vo);
-		System.out.println("취소는 됨?");
 		return "getParty.do?PARTY_ID="+vo.getParty_id();
 	}
 	
@@ -118,7 +117,6 @@ public class ScheduleController {
 		UserVO userVO=(UserVO)session.getAttribute("user");
 		if(userVO!=null){
 			scheduleService.insertSchedule(vo);
-			//sch_id를 구해와서 vo에 때려박아줘야한다
 			vo.setSch_id(scheduleService.getNewSchedule(vo).getSch_id());
 			scheduleService.schMemberCntUp(vo);
 			return "getParty.do?PARTY_ID="+vo.getParty_id();
@@ -302,13 +300,7 @@ public class ScheduleController {
 		PartyVO getVO =partyService.getParty(partyVO);
 		model.addAttribute("party_title", getVO.getPARTY_TITLE());
 		
-		
-//		// 필요한거 -> 방장 가져오기, 
-////		memberListVO.setPARTY_ID(party_id);
-//		memberListVO.setUSER_ID(userVO.getUser_Id());
-//		List<MemberListVO> list=memberListService.getJoinMemberList2(memberListVO);
-//		MemberListVO leader =list.get(0);
-//		model.addAttribute("leader", leader);
+	
 		
 		Map<String, Object> cntList = new HashMap<String, Object>();
 		cntList.put("sch_id", mapResult.get(0).getSch_id());

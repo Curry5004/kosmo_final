@@ -21,6 +21,62 @@
 		trueTitle.value=titleDummy.value;
 		console.log(trueTitle.value);
 	}
+	
+	function check() {
+		var f = document.sch_form;
+
+		if (f.location_address.value == "") {
+			alert("지도에서 주소를 입력해주세요");
+			f.location_address.focus();
+			return false;
+		}
+		if (f.content.value == "") {
+			alert("내용을 입력해주세요");
+			f.content.focus();
+			return false;
+		}
+		if (f.note.value == "") {
+			alert("메모를 입력해주세요");
+			f.note.focus();
+			return false;
+		}
+		
+		if (f.location_x.value == "") {
+			alert("지도에서 주소를 입력해주세요");
+			f.location_x.focus();
+			return false;
+		}
+		
+		if (f.location_y.value == "") {
+			alert("지도에서 주소를 입력해주세요");
+			f.location_y.focus();
+			return false;
+		}
+		
+		if (f.trueTitle.value == "") {
+			alert("제목을 입력해주세요");
+			var titleDummy = document.getElementById("titleDummy");
+			titleDummy.focus();
+			return false;
+		}
+		if (isNaN(f.member_count.value)) {
+			alert("참가인원수를 골라주세요");
+			f.member_count.focus();
+			return false;
+		}
+		
+		if (document.getElementById("date").innerHTML == "") {
+			alert("날짜를 입력해주세요");
+			return false;
+		}
+		
+		var now = new Date();
+		var date1 = new Date(document.getElementById("date").innerHTML);
+		if (date1 < now) {
+			alert("현재날짜보다 과거는 불가능합니다");
+			return false;
+		}
+	}
 </script>
 
 <style>
@@ -474,9 +530,9 @@
 			    }
 			}
 </script>			
-<form action="insertSchedule.do" method="POST" name="sch_form">
+<form action="insertSchedule.do" method="POST" name="sch_form" onsubmit="return check()">
 					<br /><br /><p>장소 이름</p>
-					<input type="hidden" name="sch_writer" value=${sessionScope.user.name }> 
+					<input type="hidden" name="sch_writer" id="sch_writer" value=${sessionScope.user.name }> 
 						<input type="hidden" name="user_id" value=${sessionScope.user.user_Id }>
 					<input class="form-control" type="text" placeholder="약속장소를 지도에서 검색해주세요"
 						name="location_address" id="location_address" /> <br /> 
@@ -534,7 +590,7 @@
 						placeholder="내용을 작성해주세요." id="content" name="sch_content"></textarea>
 					<br /> <br /> 
 					<input class="form-control" type="text"
-						placeholder="간단한 메모는 여기에~!" name="sch_note" /> <br /> <br /> <input
+						placeholder="간단한 메모는 여기에~!" name="sch_note" id="note"/> <br /> <br /> <input
 						class="btn btn-primary" type="submit" value="정모 생성하기" onclick="preSubmit()"/> <input
 						type="hidden" name="party_id" value="${param.party_id }" />
 						

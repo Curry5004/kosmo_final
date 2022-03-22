@@ -121,7 +121,7 @@
 			    </tr>
 			     <tr>
 			      <td id="title" width="300" height="150">프로필 사진</td>
-			      <td width="300"><img src="${profile_image}" width=120 height=120 ></img></td>
+			      <td width="300"><img src="../${user.profile_Image}" width=120 height=120 ></img></td>
 			    </tr>
 			     <tr>
 			      <td id="title">MBTI Type</td>

@@ -69,8 +69,11 @@ public class AlbumController {
 
 				// VO 필드변경
 				String oldName = root + "\\" + ranFileName; // 변경전 이름
-				String changeName = oldName.replaceAll("\\\\", "\\\\\\\\"); 
-				vo.setAlb_img_path(changeName); // VO갱신
+				System.out.println("이미지 패스 이름"+oldName);
+				String imgFolderPath = "resources/uploadFiles/";
+				String imgPath = imgFolderPath+oldName.substring(oldName.lastIndexOf("\\")+1);
+				System.out.println("바뀐 이미지 패스"+imgPath);
+				vo.setAlb_img_path(imgPath); // VO갱신
 
 			}
 			

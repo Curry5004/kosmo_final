@@ -33,7 +33,7 @@
 	 	<td>${member.name }</td>
 	 	<td>${member.mbti_Name }</td>
 	 	<td>
-	 		<a href="img\TEST.jpg" target="_blank">
+	 		<a href="../${member.mbti_Path }" target="_blank">
 				결과지 보기
 			</a>
 		</td>

@@ -528,7 +528,7 @@
 						placeholder="내용을 작성해주세요." id="content" name="sch_content"></textarea>
 					<br /> <br /> 
 					<input class="form-control" type="text"
-						placeholder="간단한 메모는 여기에~!" name="sch_note" /> <br /> <br /> <input
+						placeholder="간단한 메모는 여기에~!" name="sch_note"  /> <br /> <br /> <input
 						class="btn btn-primary" type="submit" value="정모 생성하기" onclick="preSubmit()"/> <input
 						type="hidden" name="party_id" value="${param.party_id }" />
 						

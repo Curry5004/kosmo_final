@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>게시글 상세페이지 -모달창 활용할 jsp </title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <style>
 
@@ -23,7 +24,32 @@
 	width: 100%;
 	height: 500px;
 }
-
+Reg_form fieldset{
+    display: inline-block; /* 하위 별점 이미지들이 있는 영역만 자리를 차지함.*/
+    border: 0; /* 필드셋 테두리 제거 */
+}
+#myform input[type=radio]{
+    display: none; /* 라디오박스 감춤 */
+}
+#myform label{
+    font-size: 3em; /* 이모지 크기 */
+    color: transparent; /* 기존 이모지 컬러 제거 */
+    text-shadow: 0 0 0 #f0f0f0; /* 새 이모지 색상 부여 */
+}
+#myform label:hover{
+    text-shadow: 0 0 0 #a00; /* 마우스 호버 */
+}
+#myform label:hover ~ label{
+    text-shadow: 0 0 0 #a00; /* 마우스 호버 뒤에오는 이모지들 */
+}
+#myform fieldset{
+    display: inline-block; /* 하위 별점 이미지들이 있는 영역만 자리를 차지함.*/
+    direction: rtl; /* 이모지 순서 반전 */
+    border: 0; /* 필드셋 테두리 제거 */
+}
+#myform input[type=radio]:checked ~ label{
+    text-shadow: 0 0 0 #a00; /* 마우스 클릭 체크 */
+}
 </style>
 <script language="javascript">
 	function check() {
@@ -146,55 +172,41 @@
 			      
 			      
 			        
-			      <form action="scheduleReview.do" method="post" name="Reg_form" onsubmit="return check()">
+			      <form action="scheduleReview.do" method="post" name="Reg_form" id="myform"onsubmit="return check()">
 			      <div class="form-check">
-			      		
-			      		<br>
-			      		<br />
-  						<input class="form-check-input" type="radio"   value="1" name="rate1" checked> 
-  						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  						<input class="form-check-input" type="radio"   value="2" name="rate1" checked>
-  						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  						<input class="form-check-input" type="radio"   value="3" name="rate1" checked>
-  						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  						<input class="form-check-input" type="radio"   value="4" name="rate1" checked>
-  						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  						<input class="form-check-input" type="radio"   value="5" name="rate1" checked>
-  						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-primary">친절도</button></label>
-  						
-  						<br />
-  						<br />
-  						<input class="form-check-input" type="radio"   value="1" name="rate2" checked>
-  						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  						<input class="form-check-input" type="radio"   value="2" name="rate2" checked>
-  						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  						<input class="form-check-input" type="radio"   value="3" name="rate2" checked>
-  						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  						<input class="form-check-input" type="radio"   value="4" name="rate2" checked>
-  						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  						<input class="form-check-input" type="radio"   value="5" name="rate2" checked>
-  						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-primary">만족도</button></label>
-  						<br>
-  						<br />
-  						<input class="form-check-input" type="radio"   value="1" name="rate3" checked>
-  						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  						<input class="form-check-input" type="radio"   value="2" name="rate3" checked>
-  						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  						<input class="form-check-input" type="radio"   value="3" name="rate3" checked>
-  						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  						<input class="form-check-input" type="radio"   value="4" name="rate3" checked>
-  						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  						<input class="form-check-input" type="radio"   value="5" name="rate3" checked>
-  						<label class="form-check-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-primary">가격</button></label>
-  						<input type="hidden" name="party_id" value="${sDetail.party_id }"/>
-  						<input type="hidden" name="sch_id" value="${sDetail.sch_id }"/>
-						<input type="hidden" name="user_id" value="${sessionScope.user.user_Id }"/>
-						<br />
+	<fieldset>
+        <input type="radio" name="rate1" value="5" id="rate1"><label for="rate1">⭐</label>
+        <input type="radio" name="rate1" value="4" id="rate2"><label for="rate2">⭐</label>
+        <input type="radio" name="rate1" value="3" id="rate3"><label for="rate3">⭐</label>
+        <input type="radio" name="rate1" value="2" id="rate4"><label for="rate4">⭐</label>
+        <input type="radio" name="rate1" value="1" id="rate5"><label for="rate5">⭐</label>
+        <label class="form-check-label"><button type="button" class="btn btn-primary">친절도</button></label>
+    </fieldset>
+    <fieldset>
+        <input type="radio" name="rate2" value="5" id="rate16"><label for="rate16">⭐</label>
+        <input type="radio" name="rate2" value="4" id="rate7"><label for="rate7">⭐</label>
+        <input type="radio" name="rate2" value="3" id="rate8"><label for="rate8">⭐</label>
+        <input type="radio" name="rate2" value="2" id="rate9"><label for="rate9">⭐</label>
+        <input type="radio" name="rate2" value="1" id="rate10"><label for="rate10">⭐</label>
+        <label class="form-check-label"><button type="button" class="btn btn-primary">만족도</button></label>
+    </fieldset>
+    <fieldset>
+        <input type="radio" name="rate3" value="5" id="rate11"><label for="rate11">⭐</label>
+        <input type="radio" name="rate3" value="4" id="rate12"><label for="rate12">⭐</label>
+        <input type="radio" name="rate3" value="3" id="rate13"><label for="rate13">⭐</label>
+        <input type="radio" name="rate3" value="2" id="rate14"><label for="rate14">⭐</label>
+        <input type="radio" name="rate3" value="1" id="rate15"><label for="rate15">⭐</label>
+        <label class="form-check-label"><button type="button" class="btn btn-primary">가성비</button></label>
+        <input type="hidden" name="party_id" value="${sDetail.party_id }"/>
+  		<input type="hidden" name="sch_id" value="${sDetail.sch_id }"/>
+		<input type="hidden" name="user_id" value="${sessionScope.user.user_Id }"/>
+    </fieldset>
 						<input class="btn btn-primary" type="submit" value="작성">
 				</div>
+			</form>
 			      
 			      
-			      </form>
+			      
 			     <div class="container pt-5">
 			       <div class="btn-group" >
 			      <c:if test="${condition eq false}">

@@ -5,10 +5,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;900&display=swap');
 .pagination{
 	 justify-content : center;
 }
+ body {
+	font-family: 'Noto Sans KR', sans-serif;
+}
 </style>
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     

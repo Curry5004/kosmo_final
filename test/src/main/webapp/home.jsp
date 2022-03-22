@@ -7,8 +7,13 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Insert title here</title>
+
 </head>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900;&display=swap');
+body {
+	font-family: 'Noto Sans KR', sans-serif;
+	}
 .carousel-item {
   height: 100vh;
   min-height: 350px;
@@ -84,7 +89,7 @@
     <link rel="stylesheet" href="main/css/style.css">
 <!-- 네비 예시입니다. -->
  
-<body>
+<body style="font-family: 'Noto Sans KR', sans-serif; font-weight:bold"> 
 	<jsp:include page="Nav.jsp"/>
 
     <section class="home-slider js-fullheight owl-carousel bg-white">

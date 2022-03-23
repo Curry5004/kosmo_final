@@ -206,7 +206,7 @@
   					<button type="button" class="btn btn-primary" onclick="location.href='cntDown.do?user_id=${sessionScope.user.user_Id}&sch_id=${sDetail.sch_id}' ">취소하기</button>
   					</c:if>
   					<c:if test="${sDetail.user_id==sessionScope.user.user_Id||leader.USER_ID==sessionScope.user.user_Id}">
-  					<button type="button" class="btn btn-primary" onclick="location.href='deleteSch.do?&sch_id=${sDetail.sch_id}&year=${param.year}&month=${param.month}&day=${param.day}&party_id=${param.party_id}'">정모삭제하기</button>
+  					<button type="button" class="btn btn-primary" onclick="location.href='deleteSch2.do?&sch_id=${sDetail.sch_id}&year=${param.year}&month=${param.month}&day=${param.day}&party_id=${param.party_id }'">정모삭제하기</button>
   					</c:if>
 			      </div>
 			      

@@ -96,6 +96,18 @@ public class ScheduleController {
 		return "redirect:calendar.do?year="+year+"&month="+month+"&day="+day+"&party_id="+party_id;
 	}
 	
+	@RequestMapping("deleteSch2.do")
+	public String deleteSch2(SchVO vo,Model model){
+		String year=vo.getYear();
+		String month=vo.getMonth();
+		String day=vo.getDay();
+		int party_id=vo.getParty_id();
+		scheduleService.deleteSch(vo);
+		System.out.println("딜리트 왜 안돼? ");
+		System.out.println(vo.toString());
+		return "redirect:calendar3.do?year="+year+"&month="+month+"&day="+day+"&party_id="+party_id;
+	}
+	
 	@RequestMapping("cntUp.do")
 	public String cntUp(SchVO vo,Model model,HttpSession session, PageVO page, HttpServletRequest request){
 		UserVO userVO=(UserVO)session.getAttribute("user");		
@@ -267,10 +279,23 @@ public class ScheduleController {
 	}
 	
 	@RequestMapping("calendar4.do") 
-	public String myPageGetScheduleDetail(SchVO vo, Model model, PageVO page, MemberListVO memberListVO,PartyVO partyVO,HttpSession session ) {	
+	public String myPageGetScheduleDetail(SchVO vo, Model model, PageVO page, MemberListVO memberListVO,PartyVO partyVO,HttpSession session) {	
 		UserVO userVO = (UserVO) session.getAttribute("user");
 		session.setAttribute("user", userVO);
+		System.out.println("처음값 확인용:" + vo.getDay());
 		vo.setUser_id(userVO.getUser_Id());
+		//System.out.println(vo.getYear());
+		if(vo.getYear()==null) {
+		   vo.setYear((String) session.getAttribute("year"));
+		   vo.setMonth((String) session.getAttribute("month"));
+		   vo.setDay((String) session.getAttribute("day"));
+		}else {
+			session.setAttribute("year", null);
+			session.setAttribute("month", null);
+			session.setAttribute("day", null);
+		 
+		}
+		String sessionChk = (String) session.getAttribute("year");
 		int count = scheduleService.getSchCnt2(vo);
 		String year=vo.getYear();
 		String month=vo.getMonth();
@@ -284,7 +309,7 @@ public class ScheduleController {
 		}
 		int startRow = (currentPage-1) * listSize;
 		System.out.println("startRow 확인 : "+startRow);
-		
+	
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("user_id", userVO.getUser_Id());
 		map.put("startRow", startRow);
@@ -294,13 +319,14 @@ public class ScheduleController {
 		map.put("day",day);
 		map.put("sch_id", vo.getSch_id());
 		
+		
+		
 		PageVO pages = new PageVO(count, currentPage, listSize, pageSize);
 		List<SchVO> mapResult = scheduleService.getScheduleDetail2(map);
 		partyVO.setPARTY_ID(mapResult.get(0).getParty_id());
 		PartyVO getVO =partyService.getParty(partyVO);
 		model.addAttribute("party_title", getVO.getPARTY_TITLE());
-		
-	
+		vo.setParty_id(getVO.getPARTY_ID());
 		
 		Map<String, Object> cntList = new HashMap<String, Object>();
 		cntList.put("sch_id", mapResult.get(0).getSch_id());
@@ -315,16 +341,38 @@ public class ScheduleController {
 		System.out.println(pages.toString());
 		model.addAttribute("current_count",sch_member_current_count );
 		
-		return "CalendarDetail2.jsp";	
+		System.out.println("mapResult=" + mapResult.toString());
+		System.out.println("pages=" + pages.toString());
+		System.out.println("cntList="+scheduleService.getCntList(cntList));
+		System.out.println("current_count="+ sch_member_current_count);
+		System.out.println("getVO" + getVO.toString());
+		
+        session.setAttribute("year", year);
+        session.setAttribute("month", month);
+        session.setAttribute("day", day);
+        System.out.println("체크!!!!!"+sessionChk);
+        if(sessionChk!=null) {
+       	return "redirect:calendar4.do?year="+vo.getYear()+"&month="+vo.getMonth()+"&day="+vo.getDay()+"&party_id"+vo.getParty_id();    			
+       }else {
+        	return "CalendarDetail2.jsp?party_id="+vo.getParty_id();
+        }
+			
 	}
 	
 	
 	@RequestMapping("scheduleReview.do")
-	public String scheduleReview(SchVO vo,Model model) {
+	public String scheduleReview(SchVO vo,Model model,HttpSession session, PartyVO partyVO, PageVO page) {
 		// 로그인 AOP 구현하면 좋을듯
 		scheduleService.scheduleReview(vo);
-		return "registryComplete.jsp";
+		
+		return "calendar4.do";
 		
 	}
+		
+		
+	
+		
+		
+	
 	
 }

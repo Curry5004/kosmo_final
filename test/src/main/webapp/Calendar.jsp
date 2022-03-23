@@ -38,12 +38,12 @@
 
 			
 			
-		<div style="text-align:center">${sessionScope.user.name}님 환영합니다.</div>
+		
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">MBTI</h2>
+					<h2 class="heading-section">커넥트MBTI</h2>
 					
 					<a class="btn btn-primary" href="writeSchedule.jsp?party_id=${param.party_id}" role="button">일정 잡기</a>
 				</div>

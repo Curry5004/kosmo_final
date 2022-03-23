@@ -45,7 +45,7 @@
 				
 		
 		
-		<div style="text-align:center">${sessionScope.user.name}님 환영합니다.</div>
+		
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">

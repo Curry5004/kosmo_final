@@ -89,18 +89,25 @@ Reg_form fieldset{
      	</ul>
 		</div>
 			</div>
-
 <c:forEach items="${SchDetail}" var="sDetail">
+<div class="container pt-5">
+<div class="row" >
+<div class="col-sm-3" style="float:none; margin:0 auto">
+
 <c:if test="${pages.hasBoard()}">
 <ul class="pagination">
 <c:if test="${pages.startPage > pages.pageSize}">
   <li class="page-item"><a class="page-link" href="calendar4.do?year=${param.year}&month=${param.month}&day=${param.day}&pageNo=${pages.startPage - pages.pageSize}">&#9664;</a></li>
   </c:if>
   <c:if test="${pages.endPage < pages.totalPages }" >
-  <li class="page-item"><a class="page-link" href="calendar4.do?year=${param.year}&month=${param.month}&day=${param.day}&pageNo=${pages.startPage + pages.pageSize}"">&#9658;</a></li>
+  <li class="page-item"><a class="page-link" href="calendar4.do?year=${param.year}&month=${param.month}&day=${param.day}&pageNo=${pages.startPage + pages.pageSize}"">&#9654;</a></li>
   </c:if>
 </ul>
 	</c:if>
+	</div>
+</div>
+</div>
+	
 	
 	
 	<div class="container pt-5">
@@ -228,9 +235,9 @@ Reg_form fieldset{
 	</div>
 			<div class="container pt-5">
 				<div class="row">
-					<div class="mt-4 p-5 bg-primary text-white rounded">
-					  <p>${sDetail.sch_content}</p>
-					</div>
+					
+					  <textarea class="form-control" readonly="readonly" >${sDetail.sch_content}</textarea>
+					
 				</div>
 			</div>
 	

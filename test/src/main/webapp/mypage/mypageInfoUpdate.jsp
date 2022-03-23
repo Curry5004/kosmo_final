@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
  <title>Insert title here</title>
@@ -11,9 +12,9 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<!-- #BOOTSTRAP 5.1.3 합쳐지고 최소화된 최신 CSS -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    
+    <!--   
     <style>
-
+	
         #modal.modal-open {
             display: none;
         }
@@ -74,32 +75,33 @@
 		}
 		
     </style>
+    -->
 </head>
 <body>
 <jsp:include page="Nav.jsp"/>
-      
-      
-      <ul class="abc">
-     	<li><a href="getUserInfo.do">1.개인정보 관리</a></li>
-     	<li><a href="getPartyList.do">2.내가 가입한 소모임</a></li>
-     	<li><a href="getPartyFavList.do">3.내가 찜한 소모임</a></li>
-     	<li><a href="getPartyCreatorList.do">4.생성한 소모임 관리</a></li>
-     	<li><a href="../calendar3.do?user_id=${sessionScope.user.user_Id }">5.스케쥴러</a></li>
+   
+   <div class="container pt-5 ">
+   		<div class="row">
+   			<div class="col-sm-2">
+   				<div class="list-group">
+     	<a class="list-group-item list-group-item-action list-group-item-secondary" href="getUserInfo.do">1.개인정보 관리</a>
+     	<a class="list-group-item list-group-item-action list-group-item-secondary" href="getPartyList.do">2.내가 가입한 소모임</a>
+     	<a class="list-group-item list-group-item-action list-group-item-secondary" href="getPartyFavList.do">3.내가 찜한 소모임</a>
+     	<a class="list-group-item list-group-item-action list-group-item-secondary" href="getPartyCreatorList.do">4.생성한 소모임 관리</a>
+     	<a class="list-group-item list-group-item-action list-group-item-secondary" href="../calendar3.do?user_id=${sessionScope.user.user_Id }">5.스케쥴러</a>
      	
      	<!-- 
      	<li><a href="<%= request.getContextPath() %>/report.do">6.고객센터</a></li>
 	  	 -->
-	  </ul>
-
-	<div id="wrap">
-		<!-- <h1>${user.user_Id}님 환영합니다.</h1> -->
-        <!-- <b><font size="6" color="gray">개인정보 변경하기</font></b> -->
-        <br><br><br>
-
-        <form method="post" action="UpdateUserInfo.do" name="userInfo" enctype="multipart/form-data">
-        <input type="hidden" value="${user.user_Id}" name="user_Id"/>
-           <table class="table table-striped">
-			  <tbody>
+	  </div>
+	 </div>
+   			
+   			
+   				<div class="col-sm-8">
+   			   <form method="post" action="UpdateUserInfo.do" name="userInfo" enctype="multipart/form-data">
+      			  <input type="hidden" value="${user.user_Id}" name="user_Id"/>
+   					<table	class="table table-striped">
+   						  <tbody>
 			    <tr>
 			      <td id="title">아이디</td>
 			      <td width="300">${user.user_Id}</td>
@@ -160,9 +162,7 @@
                 </tr>
                 <tr>
                     <td>
-                    
-                        
-                     
+
                     </td>
                 </tr>
                 </c:if>				
@@ -173,13 +173,14 @@
 			    </tr>
 			  </tbody>
 			</table>
-            <br>
-            <div class="ff">
-            <span style="color:red">회원내용을 변경하면 다시 로그인 하셔야합니다.</span>
-            <br>
+			<span style="color:red">회원내용을 변경하면 다시 로그인 하셔야합니다.</span>
+			<div class="col-sm-3" style="float:none; margin:0 auto">
            <button type="submit" class="btn btn-primary">변경하기</button>
            </div>
-        </form>
-    </div>
+   		</form>
+   			</div>
+   		</div>
+   	</div>
+   
 </body>
 </html>

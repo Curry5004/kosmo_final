@@ -18,7 +18,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     
     
-    
+    <!--  
     <style>
         #modal.modal-open {
             display: none;
@@ -87,19 +87,25 @@
       } 
       
     </style>
+     -->
 </head>
 <body>
 <jsp:include page="Nav.jsp"/>
       
-      <ul class="abc">
-        <li><a href="getUserInfo.do">1.개인정보 관리</a></li>
-        <li><a href="getPartyList.do">2.내가 가입한 소모임</a></li>
-        <li><a href="getPartyFavList.do">3.내가 찜한 소모임</a></li>
-        <li><a href="getPartyCreatorList.do">4.생성한 소모임 관리</a></li>
-        <li><a href="../calendar3.do?user_id=${sessionScope.user.user_Id }">5.스케쥴러</a></li>
-     </ul>
+      <div class="container pt-5">
+      	<div class="row">
+      	<div class="col-sm-2">
+     <div class="list-group">
+     	<a class="list-group-item list-group-item-action list-group-item-secondary" href="getUserInfo.do">1.개인정보 관리</a>
+     	<a class="list-group-item list-group-item-action list-group-item-secondary" href="getPartyList.do">2.내가 가입한 소모임</a>
+     	<a class="list-group-item list-group-item-action list-group-item-secondary" href="getPartyFavList.do">3.내가 찜한 소모임</a>
+     	<a class="list-group-item list-group-item-action list-group-item-secondary" href="getPartyCreatorList.do">4.생성한 소모임 관리</a>
+     	<a class="list-group-item list-group-item-action list-group-item-secondary" href="../calendar3.do?user_id=${sessionScope.user.user_Id }">5.스케쥴러</a>
+     	</div>
+     	</div>
+  <div class="col-sm-8">   	
 <h4>${pageName }</h4>
-</br>
+
    <%int i = 0;%>
    <c:forEach items="${boardList}" var="board">
          <div style="display:inline-block;">
@@ -107,20 +113,24 @@
                 <img src="${board.PARTY_TUMB_PATH}" width=150 height=150 hspace=100/>
             </a></div>
             <div style="margin-left:100px;"><a href="../getParty.do?PARTY_ID=${board.PARTY_ID}">
-                ${board.PARTY_ID}파티 번호
+               <button type="button" class="btn btn-primary" onclick="location.href='getPartyFavList.do'"> ${board.PARTY_ID}번 파티</button>
             </a></div>
             <% i++; %>
          </div>
       <% if (i%3==0) {%>
-         </br>
+       
       <%} %>
+     
    </c:forEach> 
-
+  
+   	</div>
+   </div>
+</div>
 </body>
 <c:if test="${pages.hasBoard()}">
-<footer>
+
    <c:if test="${pageType eq 1}">
-      <tr>
+      
             <ul class="pagination">
             <c:if test ="${pages.startPage > pages.pageSize}">
                 <li class="page-item"><a class="page-link" href="getPartyList.do?pageNo=${pages.startPage - pages.pageSize }">이전</a></li>
@@ -134,11 +144,10 @@
             <li class="page-item"><a class="page-link" href="getPartyList.do?pageNo=${pages.startPage + pages.pageSize }">다음</a></li>
             </c:if> 
             </ul>
-         </td>
-      </tr>
+   
    </c:if>
    <c:if test="${pageType eq 2}">
-      <tr>
+      
             <ul class="pagination">
             <c:if test ="${pages.startPage > pages.pageSize}">
                 <li class="page-item"><a class="page-link" href="getPartyFavList.do?pageNo=${pages.startPage - pages.pageSize }">이전</a></li>
@@ -152,11 +161,10 @@
             <li class="page-item"><a class="page-link" href="getPartyFavList.do?pageNo=${pages.startPage + pages.pageSize }">다음</a></li>
             </c:if> 
             </ul>
-         </td>
-      </tr>
+     
    </c:if>
    <c:if test="${pageType eq 3}">
-      <tr>
+     
             <ul class="pagination">
             <c:if test ="${pages.startPage > pages.pageSize}">
                 <li class="page-item"><a class="page-link" href="getPartyCreatorList.do?pageNo=${pages.startPage - pages.pageSize }">이전</a></li>
@@ -170,9 +178,9 @@
             <li class="page-item"><a class="page-link" href="getPartyCreatorList.do?pageNo=${pages.startPage + pages.pageSize }">다음</a></li>
             </c:if> 
             </ul>
-         </td>
-      </tr>
-   </c:if>
-</footer>
-</c:if>
+       
+  		 </c:if>
+
+	</c:if>
+
 </html>

@@ -18,7 +18,8 @@ function fn_idChk(){
 	var user_id = $("#user_Id").val();
 	if(user_id==""||user_id==null){
 		alert("id를 입력해주세요.");
-	}else {
+	}
+	else {
 	console.log(user_id);
 	$.ajax({
 		url : "idCheck.do",
@@ -235,7 +236,7 @@ function fn_numChk(){
                </div>
              
             <div>
-                    <!--  <form action="#" method="post" name="phoneCheck">-->
+                     <!--   <form action="#" method="post" name="phoneCheck">-->
                     <lable for=to>전화번호 </lable>
                     <input  class="form-control" type="text" id="to" name="phone_Num" required />
                   <button class="btn btn-primary btn-lg btn-block" type="button" id="numChk"
@@ -247,7 +248,7 @@ function fn_numChk(){
                      <!--인증번호를 히든으로 저장--> 
                      <input class="form-control" type="hidden" name="text" id="text" /></td>
                     
-                 <!--   </form>-->
+                  <!--    </form>-->
             </div>
                
                
@@ -272,16 +273,16 @@ function fn_numChk(){
                
                <div>
                   <label for="mbti_root">MBTI 결과지</label>
-                   <input type="file" name="mbti_root"/>
+                   <input type="file" name="mbti_root" required/>
                </div>
                
                <div>
                   <label for="profile_root">프로필 사진</label>
-                  <input type="file" name="profile_root"/>
+                  <input type="file" name="profile_root" required />
                </div>
                </div>
                
-               <button class="btn btn-primary btn-lg btn-block" type="submit" value="가입">가입 완료</button>
+               <button class="btn btn-primary btn-lg btn-block" type="submit" value="가입" required >가입 완료</button>
             </form>
          </div>
       </div>

@@ -43,10 +43,8 @@ public class UserController {
 
 					System.out.println("mbti 사진 업로드 시작");
 					// 저장할 경로 가져오기
-					String path = request.getSession().getServletContext().getRealPath("resources"); // 프로젝트내
-																										// resource
-																										// 폴더의
-																										// 실제경로
+					String path = request.getSession().getServletContext().getRealPath("resources"); 
+					System.out.println("저장할 경로 가져오기: "+path);
 					String root = path + "\\uploadFiles"; // 저장할 위치
 
 					File file = new File(root); // 경로생성용 파일 생성
@@ -58,12 +56,18 @@ public class UserController {
 					// 업로드할 폴더 설정
 					String originFileName = vo.getMbti_root().getOriginalFilename(); // 원래
 																						// 파일이름
+					System.out.println("업로드할 폴더 설정하기 가져오기"+originFileName);
 					String ext = originFileName.substring(originFileName.lastIndexOf("."));
 					String ranFileName = UUID.randomUUID().toString() + ext; // 랜덤변수가
 																				// 붙은
 																				// 파일이름
 
-					File changeFile = new File(root + "\\" + ranFileName); // 파일생성
+					String newRoot = root.replace("\\", "/");
+					System.out.println("바뀐 경로:"+newRoot);
+					File changeFile = new File(newRoot + "/" + ranFileName); // 파일생성
+					
+					System.out.println("업로드 될 경로:"+changeFile);
+					
 
 					// 파일업로드
 					try {

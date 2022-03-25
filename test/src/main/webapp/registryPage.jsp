@@ -202,7 +202,7 @@ function fn_numChk(){
       <div class="input-form-row"> 
          <div class="input-form col-md-12 mx-auto"> 
             <h4 class="mb-3">회원가입</h4> 
-              <form method="post" action="registry.do" name="userInfo" enctype="multipart/form-data">
+              <form method="post" action="registry.do" name="userInfo" enctype="multipart/form-data" onsubmit="return fn_phoneChk()">
                <div class="row"> 
                   <div class="col-md-6 mb-3"> 
                      <label for="user_Id">아이디</label>

@@ -127,8 +127,11 @@
    </div>
 </div>
 </body>
-<c:if test="${pages.hasBoard()}">
 
+<c:if test="${pages.hasBoard()}">
+ <div class="container pt-5">
+ 	<div class="row">
+ 		<div class="col-sm-3" style="float:none; margin:0 auto">
    <c:if test="${pageType eq 1}">
       
             <ul class="pagination">
@@ -146,8 +149,14 @@
             </ul>
    
    </c:if>
+   			</div>
+   		</div>
+   </div>
+   
    <c:if test="${pageType eq 2}">
-      
+      <div class="container pt-5">
+      	<div class="row">
+      		<div class="col-sm-3"  style="float:none; margin:0 auto" >
             <ul class="pagination">
             <c:if test ="${pages.startPage > pages.pageSize}">
                 <li class="page-item"><a class="page-link" href="getPartyFavList.do?pageNo=${pages.startPage - pages.pageSize }">이전</a></li>
@@ -161,10 +170,15 @@
             <li class="page-item"><a class="page-link" href="getPartyFavList.do?pageNo=${pages.startPage + pages.pageSize }">다음</a></li>
             </c:if> 
             </ul>
-     
+            </div>
+        </div>
+     </div>
    </c:if>
+   
    <c:if test="${pageType eq 3}">
-     
+     	<div class="container pt-5">
+     		<div class="row">
+     			<div class="col-sm-3">
             <ul class="pagination">
             <c:if test ="${pages.startPage > pages.pageSize}">
                 <li class="page-item"><a class="page-link" href="getPartyCreatorList.do?pageNo=${pages.startPage - pages.pageSize }">이전</a></li>
@@ -178,7 +192,9 @@
             <li class="page-item"><a class="page-link" href="getPartyCreatorList.do?pageNo=${pages.startPage + pages.pageSize }">다음</a></li>
             </c:if> 
             </ul>
-       
+            	</div>
+            </div>
+       </div>
   		 </c:if>
 
 	</c:if>

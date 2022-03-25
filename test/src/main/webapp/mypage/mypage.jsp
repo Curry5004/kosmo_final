@@ -83,19 +83,6 @@
 <jsp:include page="Nav.jsp"/>
      <div class="container pt-5">
      	<div class="row" >
-     		<div class="col-sm-3" style="float:none; margin:0 auto">
-				<div class="card" style="width: 400px">
-					<img class="card-img-top" src="${profile_image}" alt="프로필 사진">
-					<div class="card-body">
-						<h4 class="card-title">${user_id}님이 로그인 중입니다.</h4>
-					</div>
-				</div>
-			</div>
-     	</div>
-     </div>
-     
-     <div class="container pt-5">
-     	<div class="row">
      		<div class="col-sm-2">
      				<div class="list-group">
      	<a class="list-group-item list-group-item-action list-group-item-secondary" href="getUserInfo.do">1.개인정보 관리</a>
@@ -108,6 +95,24 @@
      	<li><a href="<%= request.getContextPath() %>/report.do">6.고객센터</a></li>
 	  	 -->
 	  </div>
+     		</div>
+     	
+     		<div class="col-sm-3" style="float:none; margin:0 auto">
+				<div class="card" style="width: 400px">
+					<img class="card-img-top" src="${profile_image}" alt="프로필 사진">
+					<div class="card-body">
+						<h4 class="card-title">${user_id}님이 로그인 중입니다.</h4>
+					</div>
+				</div>
+			</div>
+
+     	</div>
+     </div>
+     
+     <div class="container pt-5">
+     	<div class="row">
+     		<div class="col-sm-2">
+     				
      		</div>
      		<div class="col-sm-8">
      			<h5>내가 가입한 목록</h5>

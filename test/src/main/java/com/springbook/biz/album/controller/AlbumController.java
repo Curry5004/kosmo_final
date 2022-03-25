@@ -36,13 +36,11 @@ public class AlbumController {
 			if (vo.getAlb_img().getSize() != 0) {
 
 				// 저장할 경로 가져오기
-				String path = request.getSession().getServletContext().getRealPath("resources"); // 프로젝트내
-																									// resource
-																									// 폴더의
-																									// 실제경로
-				String root = path + "\\uploadFiles"; // 저장할 위치
+				String path = request.getSession().getServletContext().getRealPath("/"); // 프로젝트내
+				System.out.println("path:"+path);
+																		
 
-				File file = new File(root); // 경로생성용 파일 생성
+				File file = new File(path); // 경로생성용 파일 생성
 
 				// 만약 uploadFiles 폴더가 없으면 생성해라 라는뜻
 				if (!file.exists())
@@ -56,7 +54,8 @@ public class AlbumController {
 																			// 붙은
 																			// 파일이름
 
-				File changeFile = new File(root + "\\" + ranFileName); // 파일생성
+				File changeFile = new File(path + "/" + ranFileName); // 파일생성
+				System.out.println(changeFile);
 
 				// 파일업로드
 				try {
@@ -68,12 +67,12 @@ public class AlbumController {
 				}
 
 				// VO 필드변경
-				String oldName = root + "\\" + ranFileName; // 변경전 이름
-				System.out.println("이미지 패스 이름"+oldName);
-				String imgFolderPath = "resources/uploadFiles/";
-				String imgPath = imgFolderPath+oldName.substring(oldName.lastIndexOf("\\")+1);
-				System.out.println("바뀐 이미지 패스"+imgPath);
-				vo.setAlb_img_path(imgPath); // VO갱신
+//				String oldName = path + "\\" + ranFileName; // 변경전 이름
+//				System.out.println("이미지 패스 이름"+oldName);
+//				String imgFolderPath = "resources\\uploadFiles\\";
+//				String imgPath = imgFolderPath+oldName.substring(oldName.lastIndexOf("\\")+1);
+//				System.out.println("바뀐 이미지 패스"+imgPath);
+				vo.setAlb_img_path(ranFileName); // VO갱신
 
 			}
 			

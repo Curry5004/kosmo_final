@@ -1,5 +1,6 @@
 package com.springbook.biz.schedule.controller;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -10,12 +11,17 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.http.cookie.SM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
 import com.springbook.biz.board.PageVO;
+import com.springbook.biz.chat.ChatVO;
 import com.springbook.biz.memberList.MemberListService;
 import com.springbook.biz.memberList.MemberListVO;
 import com.springbook.biz.party.PartyService;
@@ -125,7 +131,7 @@ public class ScheduleController {
 		}
 	}
 	
-	@RequestMapping("calendar.do")
+	@RequestMapping(value="calendar.do",produces = "application/text; charset=UTF-8")
 	public String getScheduleList(SchVO vo,Model model,HttpServletRequest request){
 		UserVO userVO=(UserVO)request.getSession().getAttribute("user");
 		vo.setUser_id(userVO.getUser_Id());
@@ -183,7 +189,23 @@ public class ScheduleController {
 		
 		model.addAttribute("party_id", request.getParameter("party_id"));
 		List<SchVO> getList=scheduleService.getScheduleList(vo);
-		model.addAttribute("SchduleList", getList);
+//		DateFormat dateFormat = new SimpleDateFormat("dd");
+//		Map<Integer, List<SchVO>> scheduleMap =new HashMap<>();
+//		for(int i=1; i<=31; i++){
+//			scheduleMap.put(i, new ArrayList<>());
+//		}
+//		for(SchVO schVo:getList){
+//			Integer date =Integer.parseInt(dateFormat.format(schVo.getSch_date()));
+//			List<SchVO> todayScheduleList = scheduleMap.get(date);
+//			System.out.println("todayScheduleList전 : "+todayScheduleList);
+//			todayScheduleList.add(schVo);
+//			System.out.println("todayScheduleList후 : "+todayScheduleList);
+//			scheduleMap.put(date, todayScheduleList);
+//		}
+//		Gson gson = new Gson();
+//		
+//		String json = gson.toJson(scheduleMap.toString());
+		model.addAttribute("ScheduleList", getList);
 		List<String> checkList =new ArrayList<>();
 		
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd");
@@ -327,4 +349,69 @@ public class ScheduleController {
 		
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="getDayScheduleList.do",produces = "application/text; charset=UTF-8")
+	public String getChatList(@RequestBody SchVO vo, Model model , HttpServletRequest request){
+		UserVO userVO=(UserVO)request.getSession().getAttribute("user");
+		vo.setUser_id(userVO.getUser_Id());
+		
+		switch (vo.getMonth()) {
+		case "1":
+			vo.setMonth("01");
+			break;
+		case "2":
+			vo.setMonth("02");
+			break;
+		case "3":
+			vo.setMonth("03");
+			break;
+		case "4":
+			vo.setMonth("04");
+			break;
+		case "5":
+			vo.setMonth("05");
+			break;
+		case "6":
+			vo.setMonth("06");
+			break;
+		case "7":
+			vo.setMonth("07");
+			break;
+		case "8":
+			vo.setMonth("08");
+			break;
+		case "9":
+			vo.setMonth("09");
+			break;
+		default:
+			vo.setMonth(request.getParameter("month"));
+			break;
+		}
+		
+		List<SchVO> getList=scheduleService.getScheduleList(vo);
+		DateFormat dateFormat = new SimpleDateFormat("dd");
+		Map<Integer, List<SchVO>> scheduleMap =new HashMap<>();
+		for(int i=1; i<=31; i++){
+			scheduleMap.put(i, new ArrayList<>());
+		}
+		for(SchVO schVo:getList){
+			Integer date =Integer.parseInt(dateFormat.format(schVo.getSch_date()));
+			List<SchVO> todayScheduleList = scheduleMap.get(date);
+			System.out.println("todayScheduleList전 : "+todayScheduleList);
+			todayScheduleList.add(schVo);
+			System.out.println("todayScheduleList후 : "+todayScheduleList);
+			scheduleMap.put(date, todayScheduleList);
+		}
+		System.out.println("넣기전 맵테스트"+getList);
+		System.out.println("맵테스트"+scheduleMap);
+		Gson gson = new Gson();
+		
+		String json = gson.toJson(scheduleMap.toString());
+		
+		
+		System.out.println(json);
+		
+		return json;
+		
+	}
 }

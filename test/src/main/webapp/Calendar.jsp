@@ -18,7 +18,7 @@
 	<link rel="stylesheet" href="css/style.css">
 
 	</head>
-	<body>
+	<body onload="list()">
 	<jsp:include page="Nav.jsp"/>
 	
 	<div class="container">
@@ -147,8 +147,30 @@
   <script src="js/popper.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script>
+  function list(){
+	  
+	  var msg1= {
+				party_id : <c:out value="${param.party_id }"/>,
+				year:<c:out value="${year}"/>,
+				month:<c:out value="${month}"/>
+		}
+	 
+		fetch('getDayScheduleList.do',{
+  		method : 'POST',
+          mode : 'cors',
+          cache : 'no-cache',
+          /////Content Type은 json으로 명시한다.
+          headers: {'Content-Type': 'application/json'},
+          credentials : 'same-origin',
+          redirect : 'follow',
+          referrer : 'no-referrer',
+          body: JSON.stringify(msg1)
+		}).then(res => res.json())
+		.then(res => console.log(res));
+  }
   
   var checkList="<c:out value='${checkList}'/>";
+  var ScheduleList="<c:out value='${ScheduleList}'/>";
   (function($) {
 	  var year=${year};
 	    var month=${month};

@@ -110,7 +110,7 @@
    <c:forEach items="${boardList}" var="board">
          <div style="display:inline-block;">
             <div><a href="../getParty.do?PARTY_ID=${board.PARTY_ID}">
-                <img src="${board.PARTY_TUMB_PATH}" width=150 height=150 hspace=100/>
+                <img src="../${board.PARTY_TUMB_PATH}" width=150 height=150 hspace=100/>
             </a></div>
             <div style="margin-left:100px;"><a href="../getParty.do?PARTY_ID=${board.PARTY_ID}">
                <button type="button" class="btn btn-primary" onclick="location.href='getPartyFavList.do'"> ${board.PARTY_ID}번 파티</button>

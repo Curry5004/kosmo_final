@@ -98,8 +98,8 @@
      		</div>
      	
      		<div class="col-sm-3" style="float:none; margin:0 auto">
-				<div class="card" style="width: 400px">
-					<img class="card-img-top" src="${profile_image}" alt="프로필 사진">
+				<div class="card" style="width: 200px">
+					<img class="card-img-top" src="../${user.profile_Image}" alt="프로필 사진" width=150 height=150>
 					<div class="card-body">
 						<h4 class="card-title">${user_id}님이 로그인 중입니다.</h4>
 					</div>
@@ -118,7 +118,7 @@
      			<h5>내가 가입한 목록</h5>
      			<c:forEach items="${mypageVO.myPartyList}" var="party">
 					<div class="card" style="width: 400px">
-						<a href="../getParty.do?PARTY_ID=${party.PARTY_ID}"><img class="card-img-top" src="${party.PARTY_TUMB_PATH}" alt="Card image"></a>
+						<a href="../getParty.do?PARTY_ID=${party.PARTY_ID}"><img class="card-img-top" src="../${party.PARTY_TUMB_PATH}" alt="Card image" width=150 height=150></a>
 						<div class="card-body">
 							<h4 class="card-title"><a href="../getParty.do?PARTY_ID=${party.PARTY_ID}">${party.PARTY_TITLE}</a></h4>
 							
@@ -144,10 +144,10 @@
      			</div>
      		
      			<div class="col-sm-8">
+     			<h5>찜한목록</h5>
      				<c:forEach items="${mypageVO.favPartyList}" var="party">
-     				<h5>찜한목록</h5>
 					<div class="card" style="width: 400px">
-						<a href="../getParty.do?PARTY_ID=${party.PARTY_ID}"><img class="card-img-top" src="${party.PARTY_TUMB_PATH}" alt="찜한목록"></a>
+						<a href="../getParty.do?PARTY_ID=${party.PARTY_ID}"><img class="card-img-top" src="../${party.PARTY_TUMB_PATH}" alt="찜한목록" width=150 height=150></a>
 						<div class="card-body">
 							<h4 class="card-title"><a href="../getParty.do?PARTY_ID=${party.PARTY_ID}">${party.PARTY_TITLE}</a></h4>
 						

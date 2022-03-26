@@ -304,7 +304,7 @@ function getDateTime(date) {
                 return;
             }
             //웹소켓 객체 만드는 코드
-            ws=new WebSocket("ws://localhost:8080/biz/echo.do");
+            ws=new WebSocket("ws://3.38.185.179:8080/test/echo.do");
             
             ws.onopen=function(event){
                 if(event.data===undefined) return;

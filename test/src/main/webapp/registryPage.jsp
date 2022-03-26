@@ -206,33 +206,33 @@ function fn_numChk(){
                <div class="row"> 
                   <div class="col-md-6 mb-3"> 
                      <label for="user_Id">아이디</label>
-                  <input class="form-control" type="text" name="user_Id" id="user_Id" maxlength="50">
+                  <input class="form-control" type="text" name="user_Id" id="user_Id" maxlength="50" required>
                         <button class="btn btn-primary btn-ms" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
                   </div>
                
                
                <div class="col-md-6 mb-3">
                   <label for="password">비밀번호</label>
-                  <input class="form-control" type="password" name="password" maxlength="50">
+                  <input class="form-control" type="password" name="password" maxlength="50" required>
                </div>
                 
                <div class="col-md-6 mb-3">
                   <label for="name">이름</label>
-                   <input class="form-control" type="text" name="name" maxlength="50">
+                   <input class="form-control" type="text" name="name" maxlength="50" required>
                </div>
                
                <div>
                   <label for="gender">성별</label>
                   <br>
-                  <input type="radio" name="gender" value="남" checked id="gender">남
-                  <input type="radio" name="gender" value="여" checked id="gender">여
+                  <input type="radio" name="gender" value="남" checked id="gender" required>남
+                  <input type="radio" name="gender" value="여" checked id="gender" required>여
                </div>
                
                <br>
                
                <div class="col-md-6 mb-3">
                   <label for="birthDay">생일</label>
-                  <input class="form-control" type="text" name="birthDay" maxlength="10" placeholder="양식)YYYY-MM-DD ex)1993-12-05" size="6" >
+                  <input class="form-control" type="text" name="birthDay" maxlength="10" placeholder="양식)YYYY-MM-DD ex)1993-12-05" size="6" required>
                </div>
              
             <div>
@@ -256,7 +256,7 @@ function fn_numChk(){
                
                <div class="mb-3">
                   <label for="location">선호 만남 지역</label>
-                  <input type="text" id="search-area" class="form-control typeahead" placeholder="읍면동 검색" name="location"/>
+                  <input type="text" id="search-area" class="form-control typeahead" placeholder="읍면동 검색" name="location" required/>
                </div>
                
        			 

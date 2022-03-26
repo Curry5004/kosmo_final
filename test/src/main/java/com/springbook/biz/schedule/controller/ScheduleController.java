@@ -11,7 +11,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.http.cookie.SM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,9 +18,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.springbook.biz.board.PageVO;
-import com.springbook.biz.chat.ChatVO;
 import com.springbook.biz.memberList.MemberListService;
 import com.springbook.biz.memberList.MemberListVO;
 import com.springbook.biz.party.PartyService;
@@ -351,7 +351,7 @@ public class ScheduleController {
 	
 	@ResponseBody
 	@RequestMapping(value="getDayScheduleList.do",produces = "application/text; charset=UTF-8")
-	public String getChatList(@RequestBody SchVO vo, Model model , HttpServletRequest request){
+	public String getChatList(@RequestBody SchVO vo, Model model , HttpServletRequest request) throws JsonProcessingException{
 		UserVO userVO=(UserVO)request.getSession().getAttribute("user");
 		vo.setUser_id(userVO.getUser_Id());
 		
@@ -404,10 +404,9 @@ public class ScheduleController {
 		}
 		System.out.println("넣기전 맵테스트"+getList);
 		System.out.println("맵테스트"+scheduleMap);
+		
 		Gson gson = new Gson();
-		
-		String json = gson.toJson(scheduleMap.toString());
-		
+		String json = gson.toJson(scheduleMap);
 		
 		System.out.println(json);
 		

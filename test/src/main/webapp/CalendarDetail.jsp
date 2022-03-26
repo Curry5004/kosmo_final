@@ -8,6 +8,9 @@
 <head>
 <meta charset="UTF-8">
 <title>게시글 상세페이지 -모달창 활용할 jsp </title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;900&display=swap" rel="stylesheet">
 </head>
 <style>
 
@@ -23,7 +26,12 @@
 	width: 100%;
 	height: 500px;
 }
-
+.container pt-5{
+	justify-content :center;
+}
+body{
+	font-family: 'Noto Sans KR', sans-serif;
+}
 </style>
 <body>
 <jsp:include page="Nav.jsp"/>
@@ -42,9 +50,12 @@
 </div>
 </div>
 </div>
-
-<section>
 <c:forEach items="${SchDetail}" var="sDetail">
+
+<div class="container pt-5">
+<div class="row" >
+<div class="col-sm-3" style="float:none; margin:0 auto">
+
  <c:if test="${pages.hasBoard()}">
 <ul class="pagination">
 <c:if test="${pages.startPage > pages.pageSize}">
@@ -52,12 +63,16 @@
   </c:if>
  <!--  ${sDetail.sch_title }-->
  <c:if test="${pages.endPage < pages.totalPages }" >
-  <li class="page-item"><a class="page-link" href="calendar2.do?year=${param.year}&month=${param.month}&day=${param.day}&party_id=${param.party_id }&pageNo=${pages.startPage + pages.pageSize}">&#9658;</a></li>
+  <li class="page-item"><a class="page-link" href="calendar2.do?year=${param.year}&month=${param.month}&day=${param.day}&party_id=${param.party_id }&pageNo=${pages.startPage + pages.pageSize}">&#9654;</a></li>
   </c:if>  
 </ul>
 </c:if>
 
-	<div class="container pt-5">
+</div>
+</div>
+</div>
+
+	<div class="container">
 		<div class="row">
 			<div class="col-sm">
 			
@@ -147,9 +162,9 @@
 	
 	<div class="container pt-5">
 		<div class="row">
-			<div class="mt-4 p-5 bg-primary text-white rounded">
-				<p> ${sDetail.sch_content}</p>
-			</div>
+			
+				<textarea class="form-control" rows="5" id="comment" name="text" readonly="readonly">${sDetail.sch_content}</textarea>
+			
 		</div>
 	</div>
 	
@@ -165,7 +180,7 @@
 	
 	
 	
-</section>
+
 <jsp:include page="footer.jsp"/>
 
 </body>

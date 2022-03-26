@@ -323,7 +323,7 @@ public class ScheduleController {
 	public String scheduleReview(SchVO vo,Model model) {
 		// 로그인 AOP 구현하면 좋을듯
 		scheduleService.scheduleReview(vo);
-		return "registryComplete.jsp";
+		return "home.do";
 		
 	}
 	

@@ -6,6 +6,9 @@
 <%@ page import="com.springbook.biz.user.UserVO" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<style>
+
+</style>
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -18,7 +21,7 @@
 <body onload="getModal.do">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="home.jsp"><img src="resource/img/mainpic.png" width="100px" height="50px" /></a>
+    <a class="navbar-brand" href="home.jsp"><img src="resource/img/mbti.png" width="100px" height="80px" /></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

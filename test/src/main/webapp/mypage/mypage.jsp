@@ -7,6 +7,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;900&display=swap" rel="stylesheet">
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
  <title>Insert title here</title>
@@ -16,7 +20,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     
 
-    
+    <!--  
     <style>
 
         #modal.modal-open {
@@ -73,51 +77,93 @@
 		
 		
     </style>
+    -->
 </head>
-<body>
+<body style="font-family: 'Noto Sans KR', sans-serif;">
 <jsp:include page="Nav.jsp"/>
-      <div class="bcd">
-	 	 <img src="../${user.profile_Image}" width=120 height=120 ><font size="5px">${user_id}님이 로그인 중입니다.</font></img>
-	  </div>
-      
-      <ul class="abc">
-     	<li><a href="getUserInfo.do">1.개인정보 관리</a></li>
-     	<li><a href="getPartyList.do">2.내가 가입한 소모임</a></li>
-     	<li><a href="getPartyFavList.do">3.내가 찜한 소모임</a></li>
-     	<li><a href="getPartyCreatorList.do">4.생성한 소모임 관리</a></li>
-     	<li><a href="../calendar3.do?user_id=${sessionScope.user.user_Id }">5.스케쥴러</a></li>
+     <div class="container pt-5">
+     	<div class="row" >
+     		<div class="col-sm-2">
+     				<div class="list-group">
+     	<a class="list-group-item list-group-item-action list-group-item-secondary" href="getUserInfo.do">1.개인정보 관리</a>
+     	<a class="list-group-item list-group-item-action list-group-item-secondary" href="getPartyList.do">2.내가 가입한 소모임</a>
+     	<a class="list-group-item list-group-item-action list-group-item-secondary" href="getPartyFavList.do">3.내가 찜한 소모임</a>
+     	<a class="list-group-item list-group-item-action list-group-item-secondary" href="getPartyCreatorList.do">4.생성한 소모임 관리</a>
+     	<a class="list-group-item list-group-item-action list-group-item-secondary" href="../calendar3.do?user_id=${sessionScope.user.user_Id }">5.스케쥴러</a>
      	
      	<!-- 
      	<li><a href="<%= request.getContextPath() %>/report.do">6.고객센터</a></li>
 	  	 -->
-	  </ul>
-	  
-	  <h5>내가 가입한 목록</h5>
-	  <div class="modal-body1" id="myPartyList" style="display: flex;">
-	  	<c:forEach items="${mypageVO.myPartyList}" var="party">
-			<div style="display:block;">
-				<div><a href="../getParty.do?PARTY_ID=${party.PARTY_ID}"><img src="../${party.PARTY_TUMB_PATH}" width=120 height=120 hspace=50 /></a></div>
-				<div style="margin-left:50px;"><a href="../getParty.do?PARTY_ID=${party.PARTY_ID}">${party.PARTY_TITLE}</a></div>
-                       
+	  </div>
+     		</div>
+     	
+     		<div class="col-sm-3" style="float:none; margin:0 auto">
+				<div class="card" style="width: 200px">
+					<img class="card-img-top" src="../${user.profile_Image}" alt="프로필 사진" width=150 height=150>
+					<div class="card-body">
+						<h4 class="card-title">${user_id}님이 로그인 중입니다.</h4>
+					</div>
+				</div>
 			</div>
-			<hr />
-		</c:forEach>
-		<div style="display:block;"><a href="getPartyList.do">더보기</a></div>
-	  </div>
-	  <h5>내가 찜한 목록</h5>
-	  <div class="modal-body1" id="favPartyList"  style="display: flex;">
-	  	<c:forEach items="${mypageVO.favPartyList}" var="party">
-			<div style="display:block;">
-				<div><a href="../getParty.do?PARTY_ID=${party.PARTY_ID}"><img src="../${party.PARTY_TUMB_PATH}" width=120 height=120 hspace=50 /></a></div>
-				<div style="margin-left:50px;"><a href="../getParty.do?PARTY_ID=${party.PARTY_ID}">${party.PARTY_TITLE}</a></div>
-			</div>
-			<hr />
-		</c:forEach>
-		<div style="display:block;"><a href="getPartyFavList.do">더보기</a></div>
-	  </div>
-	  <div style="display: flex;">
-	  	
-	  </div>
 
+     	</div>
+     </div>
+     
+     <div class="container pt-5">
+     	<div class="row">
+     		<div class="col-sm-2">
+     				
+     		</div>
+     		<div class="col-sm-8">
+     			<h5>내가 가입한 목록</h5>
+     			<c:forEach items="${mypageVO.myPartyList}" var="party">
+					<div class="card" style="width: 400px">
+						<a href="../getParty.do?PARTY_ID=${party.PARTY_ID}"><img class="card-img-top" src="../${party.PARTY_TUMB_PATH}" alt="Card image" width=150 height=150></a>
+						<div class="card-body">
+							<h4 class="card-title"><a href="../getParty.do?PARTY_ID=${party.PARTY_ID}">${party.PARTY_TITLE}</a></h4>
+							
+						</div>
+					</div>
+				</c:forEach>
+     		</div>
+     	</div>
+     </div>
+     
+     	<div class="container pt-5">
+     		<div class="row">
+     			<div class="col-sm-3" style="float:none; margin:0 auto">
+     				<button type="button" class="btn btn-primary" onclick="location.href='getPartyList.do'">더보기</button>
+     			</div>
+     		</div>
+     	</div>
+     	
+     	<div class="container pt-5">
+     		<div class="row">
+     			<div class="col-sm-2">
+     			
+     			</div>
+     		
+     			<div class="col-sm-8">
+     			<h5>찜한목록</h5>
+     				<c:forEach items="${mypageVO.favPartyList}" var="party">
+					<div class="card" style="width: 400px">
+						<a href="../getParty.do?PARTY_ID=${party.PARTY_ID}"><img class="card-img-top" src="../${party.PARTY_TUMB_PATH}" alt="찜한목록" width=150 height=150></a>
+						<div class="card-body">
+							<h4 class="card-title"><a href="../getParty.do?PARTY_ID=${party.PARTY_ID}">${party.PARTY_TITLE}</a></h4>
+						
+						</div>
+					</div>
+				</c:forEach>
+     			</div>
+     		</div>
+     	</div>
+     	
+     	<div class="container pt-5">
+     		<div class="row">
+     			<div class="col-sm-3" style="float:none; margin:0 auto">
+     				<button type="button" class="btn btn-primary" onclick="location.href='getPartyFavList.do'">더보기</button>
+     			</div>
+     		</div>
+     	</div>
 </body>
 </html>

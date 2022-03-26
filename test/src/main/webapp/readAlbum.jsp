@@ -10,7 +10,7 @@
 <head>
 
 <meta  charset="UTF-8">
-<title>소모임-앨범보기</title>
+<title>커넥트MBTI</title>
 </head>
 <style>
 	h2 { text-align: center;}

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>index</title>
+<title>커넥트MBTI</title>
 </head>
 <body>
 	<h1>인덱스</h1>

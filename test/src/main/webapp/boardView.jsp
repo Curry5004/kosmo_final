@@ -8,7 +8,7 @@
 	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 <head>
 <meta charset="UTF-8">
-<title>소모임-글 보기</title>
+<title>커넥트MBTI</title>
 </head>
 <style>
 	h2 { text-align: center;}

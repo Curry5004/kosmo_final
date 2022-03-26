@@ -11,7 +11,7 @@
 	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>소모임- 게시글 리스트</title>
+<title>커넥트MBTI</title>
 </head>
 
 <style>

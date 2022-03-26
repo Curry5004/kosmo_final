@@ -17,7 +17,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
-    <title>검색결과</title>
+    <title>커넥트MBTI</title>
 </head>
 
 <body>

@@ -19,7 +19,7 @@
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>커넥트MBTI</title>
 <style>
 body {	
 	background-color: #a1c0d6;

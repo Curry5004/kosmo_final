@@ -19,7 +19,7 @@
     <!-- Style CSS -->
     <link rel="stylesheet" href="resource/css_footer/style.css">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>커넥트MBTI</title>
 </head>
 <body>
  <div class="content d-flex align-items-center bg-light">

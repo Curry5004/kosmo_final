@@ -84,7 +84,7 @@ body{
 						
 					</div>
 					<script type="text/javascript"
-						src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8159dce1cf59e2e917f7411a46d56597&libraries=services"></script>
+						src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1c6ef14c76df7571d654fbbc97b66b63&libraries=services"></script>
 <script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = { 

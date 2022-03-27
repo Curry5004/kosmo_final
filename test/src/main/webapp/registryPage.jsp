@@ -161,7 +161,7 @@ function fn_numChk(){
 	       }else if($("#enterBtn").val() != "Y"){
 	          alert("휴대폰 인증을 완료해주세요.");
 	          return false;
-	       }
+	       } 
 	 }
 	 
 	}
@@ -200,6 +200,7 @@ function fn_numChk(){
 
 <body>
 <jsp:include page="Nav.jsp"/>
+
 	<div class="container"> 
       <div class="input-form-row"> 
          <div class="input-form col-md-12 mx-auto"> 
@@ -289,7 +290,6 @@ function fn_numChk(){
          </div>
       </div>
    </div>
-<jsp:include page="footer.jsp"/>
 </body>
 
 </html>

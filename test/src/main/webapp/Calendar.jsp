@@ -5,6 +5,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="en">
   <head>
+  <style>
+  .message{
+  	z-index: -200;
+  }
+  </style>
   
     
   	<title>커넥트MBTI</title>
@@ -18,7 +23,7 @@
 	<link rel="stylesheet" href="css/style.css">
 
 	</head>
-	<body>
+	<body onload="list()">
 	<jsp:include page="Nav.jsp"/>
 	
 	<div class="container">
@@ -52,7 +57,7 @@
 				<div class="col-md-12">
 					<div class="elegant-calencar d-md-flex">
 						<div class="wrap-header d-flex align-items-center img" style="background-image: url(images/bg.jpg);">
-				      <p id="reset">Today</p>
+				      
 			        <div id="header" class="p-0">
 								<!-- <div class="pre-button d-flex align-items-center justify-content-center"><i class="fa fa-chevron-left"></i></div> -->
 		            <div class="head-info">
@@ -147,8 +152,12 @@
   <script src="js/popper.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script>
+
+  var schMap ;
+  
   
   var checkList="<c:out value='${checkList}'/>";
+  var ScheduleList="<c:out value='${ScheduleList}'/>";
   (function($) {
 	  var year=${year};
 	    var month=${month};
@@ -178,13 +187,11 @@
 	        this.getOptions();
 	        this.drawDays();
 	        var that = this,
-	            reset = document.getElementById('reset'),
 	            pre = document.getElementsByClassName('pre-button'),
 	            next = document.getElementsByClassName('next-button');
 	            
 	            pre[0].addEventListener('click', function(){that.preMonth(); });
 	            next[0].addEventListener('click', function(){that.nextMonth(); });
-	            reset.addEventListener('click', function(){that.reset(); });
 	        while(daysLen--) {
 	        	if(daysLen>=startDay){
 	            days[daysLen].addEventListener('mouseover', function(){that.clickDay(this); });
@@ -201,11 +208,9 @@
 	     };
 	    Calendar.prototype.drawDays = function() {
 	        startDay = new Date(year, month-1, 1).getDay(),
-//	      下面表示这个月总共有几天
 	            nDays = new Date(year, month , 0).getDate(),
 	    
 	            n = startDay;
-//	      清除原来的样式和日期
 	        for(var k = 0; k <42; k++) {
 	            days[k].innerHTML = '';
 	            days[k].id = '';
@@ -216,9 +221,10 @@
 	        	if(i<10){a="0"+i;}
 	        	else{a=i;}
 	        	if(checkList.indexOf(a)!=-1){
-	            days[n].innerHTML = '<a href="calendar2.do?year=${year}&month=${month}&day='+a+'&party_id=${party_id}">'+i+'</a>'; }
+	            	days[n].innerHTML = '<a href="calendar2.do?year=${year}&month=${month}&day='+a+'&party_id=${party_id}">'+i+'</a>'; 
+	            }
 	        	else{days[n].innerHTML =i;}
-	            n++;
+	            	n++;
 	        }
 	       
 	       
@@ -279,14 +285,7 @@
 	        }
 	    };
 	    
-	     Calendar.prototype.reset = function() {
-	         month = today.getMonth()+1;
-	         year = today.getFullYear();
-	         day = today.getDate();
-	         this.options = undefined;
-	         this.drawDays();
-	         window.location.href='http://localhost:8081/biz/calendar.do?year='+year+"&month="+0+month+"&day="+day+"&party_id="+party_id;
-	     };
+	    
 	    
 	    Calendar.prototype.setCookie = function(name, expiredays){
 	        if(expiredays) {
@@ -320,7 +319,59 @@
 	        
 	}, false);
 
-	})(jQuery);</script>
+	})(jQuery);
+  
+  function list(){
+	  
+	  var msg1= {
+				party_id : <c:out value="${param.party_id }"/>,
+				year:<c:out value="${year}"/>,
+				month:<c:out value="${month}"/>
+		}
+	 
+		fetch('getDayScheduleList.do',{
+  		method : 'POST',
+          mode : 'cors',
+          cache : 'no-cache',
+          /////Content Type은 json으로 명시한다.
+          headers: {'Content-Type': 'application/json'},
+          credentials : 'same-origin',
+          redirect : 'follow',
+          referrer : 'no-referrer',
+          body: JSON.stringify(msg1)
+		}).then(res => res.json())
+		.then(res => Object.keys(res).forEach(resEach => {
+			if(res[resEach].length!=0){
+				var days = document.getElementsByTagName('td');
+				var n=0;
+				var startNum=0;
+				while(days[n].innerHTML==""){
+					n++;
+					startNum++;
+				}
+				var key=(startNum+parseInt(resEach)-1);
+				days[key].innerHTML = '<a href="calendar2.do?year=${year}&month=${month}&day='+resEach+'&party_id=${party_id}">'+resEach+'</a>'; 
+				
+				var toolbar ="";
+				toolbar+=res[resEach].length+"개의 모임이 있습니다"
++`
+`;
+				for(i=0;i<res[resEach].length;i++)
+					toolbar+="모임장소 : " + res[resEach][i].location_name
++`
+`;
+				
+				days[key].title=toolbar;
+			}
+			
+			})
+		)
+		.catch(function(error){
+			console.error(error);
+		})
+	}
+  
+  </script>
 	<div id="data"></div><script>
 	
 </script>

@@ -155,11 +155,13 @@ function fn_numChk(){
 	 }else{
 		 if($("#enterBtn").val() == "Y"&& $("#idChk").val() == "Y" && $("#numChk").val() == "Y"){
 			 alert("회원가입에 성공하였습니다.");
-		 }else{
-			 $("#enterBtn").attr("value", "N");
-			 alert("회원가입에 필수적으로 기입해야 할 사항이 누락되었습니다. 확인 바랍니다. "); 
-			 return false;
-		 }
+		 }else if($("#idChk").val() != "Y"){
+	          alert("아이디 중복체크를 완료해주세요."); 
+	          return false;
+	       }else if($("#enterBtn").val() != "Y"){
+	          alert("휴대폰 인증을 완료해주세요.");
+	          return false;
+	       }
 	 }
 	 
 	}
@@ -197,7 +199,7 @@ function fn_numChk(){
   </style>
 
 <body>
-<%-- <jsp:include page="Nav.jsp"/> --%>
+<jsp:include page="Nav.jsp"/>
 	<div class="container"> 
       <div class="input-form-row"> 
          <div class="input-form col-md-12 mx-auto"> 

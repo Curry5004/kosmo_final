@@ -35,7 +35,6 @@
             </div>
             <ul class="list-unstyled nav-links mb-5">
               <li><a href="home.jsp">메인</a></li>
-              <li><a href="Report.jsp">문의사항</a></li>
               <li><a href="#">상담문의 : 010-7242-0712</a></li>
             
             </ul>

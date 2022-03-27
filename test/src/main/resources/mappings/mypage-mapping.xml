@@ -26,7 +26,7 @@
 	SELECT p.PARTY_ID, p.PARTY_TUMB_PATH
 	FROM PARTY p
 	INNER JOIN MEMBER_LIST m on p.PARTY_ID=m.PARTY_ID
-	WHERE  USER_ID = #{user_Id} 
+	WHERE  USER_ID = #{user_Id} and PARTY_AVAILABLE=true
 	LIMIT #{listSize} OFFSET #{startRow};
 	
 </select>
@@ -36,7 +36,7 @@
 	SELECT COUNT(*)
 	FROM PARTY p
 	INNER JOIN MEMBER_LIST m on p.PARTY_ID=m.PARTY_ID
-	WHERE  USER_ID = #{user_Id} ;
+	WHERE  USER_ID = #{user_Id} AND PARTY_AVAILABLE=true;
 	
 </select>
 
@@ -45,7 +45,7 @@
 	SELECT p.PARTY_ID, p.PARTY_TUMB_PATH
 	FROM PARTY p
 	INNER JOIN MEMBER_FAV m on p.PARTY_ID=m.PARTY_ID
-	WHERE USER_ID = #{user_Id} 
+	WHERE USER_ID = #{user_Id} AND p.PARTY_AVAILABLE=true
 	LIMIT #{listSize} OFFSET #{startRow};
 </select>
 
@@ -53,7 +53,7 @@
 	SELECT COUNT(*)
 	FROM PARTY p
 	INNER JOIN MEMBER_FAV m on p.PARTY_ID=m.PARTY_ID
-	WHERE USER_ID = #{user_Id} ;
+	WHERE USER_ID = #{user_Id} and PARTY_AVAILABLE=true;
 </select>
 
 
@@ -76,14 +76,14 @@
 <select id="getFavParty" parameterType="Map" resultType="party">
 	select * from party p1
 	left join member_fav mf1 on p1.PARTY_ID = mf1.PARTY_ID
-	where mf1.USER_ID = #{USER_ID}
+	where mf1.USER_ID = #{USER_ID} AND PARTY_AVAILABLE = TRUE
 	LIMIT 5
 </select>
 	
 <select id="getMyParty" parameterType="Map" resultType="party">
 	select * from party p1
 	left join member_list ml1 on p1.PARTY_ID = ml1.PARTY_ID
-	where ml1.USER_ID = #{USER_ID}
+	where ml1.USER_ID = #{USER_ID} AND PARTY_AVAILABLE = TRUE
 	LIMIT 5
 </select>
 	

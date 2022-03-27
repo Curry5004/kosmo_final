@@ -34,7 +34,7 @@
 				</div>
 				 <div class="form-group">  
 				 	이미지 삽입 : 
-					<input type="file" name="art_img" accept=".jpeg, .jpg, .png"/>
+					<input type="file" name="art_img" accept=".jpeg, .jpg, .png" required/>
 			    </div>
 			    <div class="col text-center">
 			    <button type="submit" class="btn btn-primary">작성완료</button>

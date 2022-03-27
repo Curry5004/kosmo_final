@@ -108,7 +108,7 @@
 			
 			<div>
 				<label>이미지 삽입 </label> 
-				<input type="file" name="PARTY_TUMB" accept=".jpeg, .jpg, .png"/>
+				<input type="file" name="PARTY_TUMB" accept=".jpeg, .jpg, .png" required/>
 			</div>
 			
 			<div class="col-md-6 mb-3">

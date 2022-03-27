@@ -57,9 +57,9 @@
 <div class="container pt-5" >
 <div class="row">
 <ul class="list-group">
-<li class="list-group-item list-group-item-action list-group-item-primary"> rate1 : <fmt:formatNumber value="${rate.PARTY_RATE1 }" pattern=".0"/></li>
-<li class="list-group-item list-group-item-action list-group-item-primary"> rate2 : <fmt:formatNumber value="${rate.PARTY_RATE2 }" pattern=".0"/></li>
-<li class="list-group-item list-group-item-action list-group-item-primary"> rate3 : <fmt:formatNumber value="${rate.PARTY_RATE3 }" pattern=".0"/></li>
+<li class="list-group-item list-group-item-action list-group-item-primary"> 친절도 : <fmt:formatNumber value="${rate.PARTY_RATE1 }" pattern=".0"/></li>
+<li class="list-group-item list-group-item-action list-group-item-primary"> 만족도 : <fmt:formatNumber value="${rate.PARTY_RATE2 }" pattern=".0"/></li>
+<li class="list-group-item list-group-item-action list-group-item-primary"> 가성비 : <fmt:formatNumber value="${rate.PARTY_RATE3 }" pattern=".0"/></li>
 </ul>
 </div>
 </div>

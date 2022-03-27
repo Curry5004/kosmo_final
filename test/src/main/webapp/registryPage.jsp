@@ -275,12 +275,12 @@ function fn_numChk(){
                
                <div>
                   <label for="mbti_root">MBTI 결과지</label>
-                   <input type="file" name="mbti_root" required/>
+                   <input type="file" name="mbti_root" accept=".jpeg, .jpg, .png" required/>
                </div>
                
                <div>
                   <label for="profile_root">프로필 사진</label>
-                  <input type="file" name="profile_root" required />
+                  <input type="file" name="profile_root" accept=".jpeg, .jpg, .png" required />
                </div>
                </div>
                
